@@ -1,0 +1,227 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Formación Transversal Doctoral
+#+date: 2024-10-01
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+begin_comment
+* Lecture
+** Questions and keywords
+** Notes
+** Summary
+#+end_comment
+
+* Introducción 2024-10-01 
+** Questions and keywords
+- Voxel-Based Morphometry :: permite comparar diferencias
+  estructurales en el cerebro en el volumen de materia gris [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- inhomogenidad ::variaciones en las intensidades de los pixeles de
+  las imágenes médicas. Son varaciones no deseadas y se deben al
+  equipo o condiciones ambientales.
+- desplazamiento (químico):: diferencia de frecuencia de resonancia
+  entre diferentes tejidos (grasa, agua). Puede causar distorsiones. [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- suceptibilidad magnética :: materiales en el cuerpo que generan
+  artefactos que distorsionan la imagen. [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- artefacto de gibbs ::distribución Rician que aparece en imágenes de
+  baja intensidad de señal [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- ruido rician :: [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- movimiento ::
+- artefactos en la resonancia :: [[https://youtu.be/gXVME6VlwHw?si=84rGT-H9oHU4dqMx][youtube]]
+- proyecto :: sobre las necesidades reales del doctorante. Elaboración
+  de artícullo científico o la organización de evento académico
+  simulado. Juego de Roles.
+- ORCID ::
+- Google Scholar ::
+- para qué usar LLMs?
+- TeXstudio ::
+- ¿Para que usar texstudio?
+- ¿es necsario usar texstudio o se puede usar alternativas como Overleaf CodeStudio o Emacs?
+- pdfgear :: herramienta que permite examinar los papers extensos. [[https://www.pdfgear.com/chat-pdf/][pdf-gear-chatgpt]]
+- gamma :: herramienta asistida IA para generar presentaciones. Sólo 8 presentaciones.
+- ¿personalizar el gpt para la investigación?
+- Me parece que podria ser adecuado revisar la **gestión del tiempo**
+- ¿qué es el evento doctoral? :: participan todos los doctorantes. 
+- ¿cuándo es el eventoo doctoral? :: se realizará en noviembre.
+- Miedos de la investigación ::
+- originalidad del trabajo de investigación doctoral ::
+- ¿qué son los rpas?¿puedo generarlos? :: 
+** Notes
+- líneas de investigación del tutor se enfoca en imágenes médicas de
+  resonancia magnética. Doctorado en Modelamiento Matemático.
+- alternativamente imágenes de cáncer de mama de termografía
+- Martes Miercoles y Jueves de 9 a 11
+- Tutorias 11 a 13
+- lugar tutoria aula, zoom, oficina
+- Cec Laboratorio 5
+- Evaluación: Prueba 30%, Proyecto 30%, Taller 20%, Evento Doctoral 20%
+| item            | aporte |
+|-----------------+--------|
+| Prueba          |    30% |
+| Proyecto        |    30% |
+| Taller          |    20% |
+| Evento Doctoral |    20% |
+- objetivo :: obtener habilitades clave para complementar formación académica y científica.
+- el curso aborda la identificación digital del investigador.
+- centrado en el proceso de publicación
+- redacción en LaTeX
+- es normal no se sabe a donde llegamos en la tesis doctoral
+- es aportar al corpus con mejoras
+
+** Summary:
+Esta clase tiene por objetivo proveer de conocimientos enfocados en la
+carrera de investigación académica, en donde se requiere aprender a
+manejar el perfil digital del investigador, para que sea identificable
+en la comunidad científica. También se centrará en el proceso de
+publicación así como la redacción usando herramientas como
+LaTeX. También se resuelven dudas sobre el proceso del doctorante en
+un doctorado.
+** the phd journey stages of a doctoral journey
+- Embarking on a PhD journey is a unique adventure that spans 3-5
+  years, characterized by intellectual and emotional growth.
+- Unlike structured undergraduate or master’s programs, a PhD is
+  self-directed, offering both freedom and challenges.
+- **Candidates face pressure to publish and contribute new knowledge**,
+  testing their resilience.
+- The journey is rewarding, filled with the excitement of deep
+  exploration, discovery, and collaboration with leading experts.
+- Perseverance and dedication are crucial, as the journey is not just
+  about earning a title but about pushing boundaries and making
+  meaningful contributions to society.
+  
+** DONE buscar el paper estados de animo del doctorante: [[https://researcher.life/blog/article/the-phd-journey-stages-of-a-doctoral-journey/][paper]]
+
+* Capítulo 1 Identificación digital del Investigador 2024-10-02 
+** Questions and keywords
+- nombre científico :: sistema universal de nomenclatura para ser
+  identificado efectivamente en la comunidad científica
+- es real el número de presuntas citas del academia eu? :: 
+- ¿qué es networking digital? :: relaciones profesionales a través de
+  tecnologías digitales (e.g. LinkedIn)
+- identificación digital :: perfil académico son las herramientas o
+  plataformas que permiten al investigador ser reconocido y localizado
+- cómo está escrito mi nombre científico? hay problemas con la tilde de falconí?
+- fragmentación de identidad :: Maria G. Perez, M. G. Perez. Varios
+  nombres con los que aparece en una plataforma y disminuye o afecta
+  el número de publicaciones. En mi caso en google aparecía como Lenin
+  Falconi (216 citas) y Lenin Falconí(2 citas). 
+- conflicto ético :: subir el mismo pdf que ya cedí derechos a la
+  revista al research gate.
+- cómo resolver el problema de cómo soy citado :: existe un orden para
+  colocar el nombre y el apellido? No encuentro info pero el IMRAD es
+  una opción a revisar.
+- Clarivate :: que está haciendo actualmente? citas? perfiles?
+- JCR :: Journal Citation Reports. Herramienta que da datos sobre le
+  impacto y la influencia de las revistas académicas.
+- SJR :: Scientific Journal Ranking. indicador qu emide la influencia de un
+  revista. Usa el número de citas recibidas por una revista. $Q_1, Q_2, Q_3, Q_4$
+- SCImago :: portal que incluye indicadores científicos de revistas.
+- No me queda claro con que correo crear el Scopus
+- puedo hacer un merge ya que tenngo un mendeley con gmail y otro con epn 
+** Notes
+- visibilidad y reconocimiento son esenciales
+- existen varias plataformas como ORCID; research gate, google scholar
+  para gestionar el perfil del Investigador
+- aprender a gestionar la producción académica
+*** claves o recomendaciones
+- crear un perfil completo: información personal, afiliacion, áreas de
+  estudios, lista actualizada
+- usar identificadores únicos como **ORCID**
+*** Importancia
+- visibilidad
+- reconocimiento
+- impacto
+*** Plataformas
+- ORCID
+- Research Gate :: red social para científicos/académicos
+- Google Scholar :: tiene métricas de publicación
+- otras: researchID, Academia.edu, Mendeley, 
+*** Gestión de Producción académica
+- organizar las publicaciones. E.g. Mendeley Mis Publicaciones.
+- actualizar perfiles
+- revisar los estándares de citación
+*** Ética y Buenas prácticas
++ autenticidad
++ colaboración :: reconocer coautores
++ privacidad
+** Summary
+A fin de que la identidad del investigador sea visible dentro de la
+comunidad científica, es necesario gestionar adecuadamente el perfil
+del investigador. De esta manera las diferentes plataformas existentes
+pueden colocar adecuadamente los trabajos en los que hemos
+colaborado. Entre estas plataformas estan ORCID, Google Scholar,
+Research Gate, Mendeley, entre otras. Uno de los problemas frecuentes
+es la fragmentación del nombre del investigador que consiste en que
+este aparezca escrito de distintas maneras en diferentes publicaciones
+o plataformas. Se recomienda crear un perfil completo con la
+afiliación (el email de la institución). También se sugiere usar
+identificadores únicos como ORCID y actualizar periódicamente las
+publicaciones y otros detalles.
+
+- Sí existieron perfiles duplicados en Google Scholar:
+  - Lenin Falconi
+  - Lenin Falconí
+
+** TODO Tareas [75%]
+- [ ] revisar si en research gate el paper subido es como un draft no
+  el finalmente publicado
+- [X] revisar si existen duplicados en Google Scholar: 
+- [X] crear o resolver el problema de mi perfil en google scholar.
+- [X] revisar concepto de a hombros de gigantes que aparece en google
+  scholar
+
+* 2024-10-03 Taller Perfil de Identificación Digital del Autor
+** Questions and keywords
+** Notes
+** Summary
+** TODO Tareas [0%]
+- [ ] Uniformar el número de autores con mi nombre y publicaciones en Scopus
+- [ ] Generar Orcid una vez solucionado en Scopus
+- [ ] Colocar el Perfil de Orcid como Sandra Sanchez
+- [ ] Revisar Mendeley
+- [ ] Revisar IEEE xplore
+- [ ] revisar IEEE cs digital library
+- [ ] Revisar researchID
+- [ ] Revisar microsoft academic research
+- [ ] revisar dblp computer science bibliography
+- [ ] revisar springer
+- [ ] revisar acm digital library
+- [ ] revisar science direct
+
+* 2024-10-08 Capítulo 2 Difusión científica
+** Questions and keywords
+- divulgación científica :: 
+** Notes
+- permite acercar al públlico al conocimiento científico
+- creatividad y expresión oral son claves para socializar el conocimiento
+- objetivos:
+  - mejorar las habilidades de comunicación
+  - adaptar el mensaje según las características y conocimientos de
+    las distitnas audiencias
+  - estimular el pensamiento crítico. analizar diferentes perspectivas.
+- creatividad:
+  - atraer la atención :: metáforas, analogías para captar interés
+  - facilitar a comprensión con el uso ejemplos creativos. simplificar
+    ideas complejas. visualización.
+  - interés y curiosidad: proyectos interactivos talleres, actividades
+    de motivación
+  - ejemplos: ciencia en la calle, podcast, videos, teatro científico 
+*** Estrategias de Expresión Oral
+- Conocer la audiencia :: adaptar el lenguaje según el público que
+  atiende.
+- Usar recursos visuales para enriquecer la experiencia y fomentar la
+  atención
+- narrativa efectiva :: en vez de presentar datos, presentar historias
+- participación activa :: debates, encuestas, conectar con audiencia
+** Summary
+** Todo Tareas
+- [ ] Comentar la tarea de Mario
+- [ ] Sergio Luján-Mora revisar el perfil del catedrático
