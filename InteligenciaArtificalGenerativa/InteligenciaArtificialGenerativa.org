@@ -1,0 +1,164 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Inteligencia Artificial Generativa
+#+date: 2024-10-02
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+begin_comment
+* Lecture
+** Questions and keywords
+** Notes
+** Summary
+#+end_comment
+
+* Modelamiento Generativo 2024-10-02 
+** Questions and keywords
+- modelo generativo :: produce datos nuevos similares al dataset de
+  entrenamiento. son esencialmente probabilisticos.
+- modelos discriminativos :: son modelos que clasifican (supervisado,
+  no supervisado y por refuerzo)
+- modelos generativos condicionales :: $P(\mathbf{x}|y)$
+- GAN :: es un modelo generativo (herramienta) mas un discriminativo
+  (lupa). El generativo quiere engañar al discriminativo. El modelo
+  discriminativo no puede distinguir el dato real y el falso. Aparecen
+  en 2014.
+- AGI inteligencia artificial general :: requiere conocimiento,
+  razonamiento, pensamiento creativo, vision, lenguaje. debe
+  confundirse con la humana
+- no entiendo como dice que los modelos generativo y discrimintivo "share notes" :: al
+  parecer la nota que se comparte es el valor que el discriminador
+  obtiene indicando si el fake generado es mejor
+- cuanto es un zetabyte :: 
+- ¿puede usar un modelo generativo en el tiempo? ::
+- transformers ::
+- aprendizaje por refuerzo con realimetntación humana :: aprovecha el
+  feedback humano para mejorar
+- RLHF :: requiere datos de entrenamiento de humanos
+- transformers :: atención, sensitiva contexto
+- gan ::  requiere competencia de modelos
+** Notes
+- Modelo discrimintavio estima $P(y|x)$
+  - Predecir el clima
+  - categorizar libros
+  - categorizar imagenes
+- Modelo discriminativo tiene una probabilidad de que la predicción
+  corresponda a una clase.
+- El modelo generativo estima $P(x)$ pero hay la opción
+  condicional. E.g. hacer un vangoh pero nocturno
+- Existen varias aplicaciones en redes, en graficos, juegos,
+  marketing, educativas, médicas, industriales, chatbots
+- Existen diferentes juegos de entrada y salida para la I. Generativa:
+  - prompt a texto
+  - promt a imagen y
+  - de imagen a imagen
+- Tiene generalización y particularidad
+- Los GANs es una combinacion entre modelo generativo y discriminativo
+- Inteligencia artificial generativa puede:
+  - escribir codigo para una website
+  - contestar a un cliente preguntas de servicio
+  - generar una imagen
+- Inteligencia artificial general: hacer trabajos humanos 100%. Esto es discutible.
+- Factores que facilitan la IA generativa son:
+  - aumento poder computacional
+  - grandes cantidades de datos
+  - competencias geopoliticas y entre desarrolladores
+  - herramientas y modelos disponibles (comunidad)
+- transformers
+** Summary
+Los modelos generativos son aquellos modelos de /machine learning/ que
+entrenan un modelo capaz de producir nuevos datos similares a los de
+un conjunto de datos. Un modelo generativo es esencialmente
+probabilístico ya que se desea poder obtener diferentes variaciones
+del resultado final antes que el mismo resultado cada vez. Estos
+modelos no requieren que el dataset tenga etiquetas. Trata de modelar
+la probabilidad de observar un objeto $\mathbf{x}$
+
+Un ejemplo de modelo discriminativo son los clasificadores. Pues,
+éstos tratan de predecir una etiqueta. Es decir trata de modelar la
+probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
+
+- Modelo discriminativo :: $P(y|\mathbf{x})$
+- Modelo Generativo :: $P(\mathbf{x})$
+- Modelo Generativo Condicional :: es la probabilidad de ver una
+  observación $\mathbf{x}$ con una etiqueta $y$ específica i.e. $P(\mathbf{x}|y)$
+
+* 2024-10-07 Entrenamiento y Evaluación de Modelos
+** Questions and keywords
+- stable diffusion:: ¿que es?
+- personally identifiable information :: ??
+- las ideas sobre transferlearning sobre el tamaño del dataset y el
+  orden en que se ejecutan o son nuevas o son equivocadas no las
+  conozco y debo averiguar. Por ejemplo se afirmó que fine tuning se
+  hace luego de transfer learning
+- espacio latente :: está relacionado al concepto de embeddings
+- métricas modelos generativos:
+  - inception score IS (img) :: evalua imagenes eneradas segin la
+    probabilidad de pertenecer a distintas categorías. Quería generar
+    gatos son gatos o no.
+  - frechet inception distance FID (img) :: mide distancia entre las
+    distribuciones de las imágenes relates y las generadas.
+  - bleu (texto) :: similitud del texto generado y el de referencia
+  - Rouge (texto) :: similitud del texto generado y el de referencia
+- injusticia entre comparar lo que la máquina hace con respecto a lo
+  que hace el humano
+- gold standard :: evaluación inteligente realizada por humanos u otras IA
+- test de turing :: aplica como medida en IA generativa?
+** Notes
+- recopilación de datos:
+  - grandes volumenes
+  - datos diversos
+  - datos ricos
+  - requiere pre procesamiento
+- preprocesamiento es una tarea adecuada
+- privacidad y seguridad :: los datos han de cumplir con PII con su
+  respectiva controles de seguridad.
+*** Entrenamimento de modelos
+- el hardware a utilizar
+- el tiempo requerido se refleja en el tamaño del dataset, la
+  complejidad del modelo y el número de rondas de entrenamient
+- el costo
+- técnicas avanzadas de entrenamiento:
+  - Transfer learning :: transfiere conocimiento de una tarea a otra
+  - fine tuning :: es un tipo de transfer learning para un dataset más
+    pequeño. se usa luego de transfer learning
+  - human in the loop :: ajusta las respuestas con lo que el humano da feedback
+  - embeddings :: representaciones únicas de entidades de
+    datos. representan la información de manera compacta
+*** Evaluación de modelos:
+- en modelos generativos cómo se evalúa su desempeño
+- evaluación discriminativa :: puede usar precisión/accuracy. Pero no
+  son aplicables para medir la creatividad del modelo
+- en general se mide el progreso del modelo en el tiempo
+- criterios de comparación entre diferentes versiones del modelo
+- comparación del modelo con el rendimiento humano
+- hay metricas específicas par atexto, imagen o audio
+- la comparación con el rendimiento humano. comparación de
+  habilidades. se puede suponer que es una comparación injusta. por
+  ejmplo, comparar si el producto generado por la IA debe ser
+  comparado con el trabajo humano.
+- una relativa amenaza sobre las habilitades humanas
+** TODO Métricas de Evaluación de Imagenes generadas por GAN (FID y LPIPS) [66%]
+- [X] Investigación de FID
+- [X] Investigación de LPIPS
+- [ ] Generar documento
+** Summary
+* 2024-10-09 Exposición métricas
+** Questions and keywords
+- n-grams ::
+- BLEU :: cómo es y cómo funciona
+- ROUGE :: cómo varía cuando es alto o bajo. Cuando es 1 son idénticos si es menor, difiere.
+- ¿se verificó el cómputo de ROUGE y METEOR? :: 
+** Notes
+- METEOR parece ser superior a BLEU
+- Valores altos de METEOR implica una alta similitud del texto generado con el original
+- METEOR parece ser superior que ROUGE 
+** Summary
