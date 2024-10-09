@@ -20,6 +20,7 @@
 ** Summary
 #+end_comment
 
+#+end_comment
 * Introducción 2024-10-01 
 ** Questions and keywords
 - Voxel-Based Morphometry :: permite comparar diferencias
@@ -225,3 +226,172 @@ publicaciones y otros detalles.
 ** Todo Tareas
 - [ ] Comentar la tarea de Mario
 - [ ] Sergio Luján-Mora revisar el perfil del catedrático
+* 2024-10-09 Sergio Lujan Presentación Científica Visual y Oral
+** Questions and keywords
+- congreso :: presentación oral del trabajo científico. 
+- journal ::
+- poster ::
+- se puede hacer un poster en latex ::
+- qué herramientas están disponibles para crear pósters word? adobe? cuáles has usado? ::
+- se podría usar QR en un poster :: powerpoint (suficiente con cambio
+  de tamaño de diapositiva), adobe design, photoshop
+- buscar url makesigns tutorials para el tema de poster ::
+- puedo en latex resaltar durante la presentacion :: 
+** Notes
+- Publicar no es investigar.
+- Publicar es el resultado final de la investigación
+*** Congresos
+- En el congreso se ha de prestar atención al apartado
+  **presentation**. Ejemplo 15 min presentar el artículo y 5 minutos
+  para preguntas
+- Permite establecer relaciones profesionales, conocer posibles tutores y coautores
+- Recomendaciones: 
+  - la presentación de un congreso en diferentes formatos
+  - llegar una media hora antes de presentar en el congreso
+  - traer o llevar la info en la USB y con equipos de
+    interfaz para conectar es decir conversores VGA/HDMI/RGA para usar el portatil
+  - no suponer que siempre hay un ordenador para la
+   presentación. A veces se indica que se debe traer su propio
+   ordenador o tableta. Contact al chairman
+  - Se tiene que asistir al congreso. Puede vulnerar la publicación indexada
+*** poster científico
+- presentación visual de un trabajo A2, A2, A0
+- hace visible el trabajo en propia institución
+- también en encuentro científico
+- How to make an academic poster de Buket en Elsevier
+- Es una sala de un congreso con carteles y el expositor
+- Puede ser menos estresante para iniciar en el mundo de las publicaciones científicas
+- Es importante para recibir críticas constructivas, comentarios y sugeriencias
+- Puede generar discusión en la audiencia
+- Debe ser muy visual, colores, 
+- Recomendaciones:
+  - Tener un plan claro de que decir cuando uno está en el poster. Se
+    puede interactuar con las personas
+  - Hacerlo cuando existe posibilidad de artículo asociado al congreso
+  - Evitar que sea aburrido o una réplica de un artículo científico
+  - Quedarte junto al Poster
+  - La conferencia puede cobrar caro la movilización del poster
+  - Preferible un solo documento
+  - asegurar la legibilidad desde una distancia de lectura del poster (e.g. 1 metro)
+  - sonreir amabilidad
+  - llevar libreta, apuntar ideas y preguntas que surjan genera que se
+    toma en serio a la gente
+  - Debe romper la estructura del articulo científico con una
+    jerarquía visual que guíe el proceso de lectura.
+  - Usar números para guiar la lectura
+  - generalmente se lee desde la **esquina superior izquierda**
+  - la afiliación en la parte superior
+  - invierta dinero en hacer un buen trabajo (impresión)
+  - tratar el poster con cuidado con mimo
+  - comprar el tubo para planos de arquitectura para viajar con el poster
+  - ir preparado con un sistema de fijación adecuado porque no
+    necesariamente el congreso lo dara
+  - Checar errores ortográficos
+  - usar un buen contraste entre el texto y el fondo (background)
+  - distinguir los encabezados del resto del texto por ejemplo con
+    otro tipo de letra o color de fondo
+  - cuidar la alineación del contenido
+  - Puedes usar PowerPoint directamente para hacer el poster
+- Concejos:
+  - Consula varias veces las instrucciones de presentación
+  - jerarquía visual o usar números y letras para ayudar la lectura
+  - No es un ariculo científico
+  - es un medio de comunicación: graficos, tablas
+  - leer sobre diseño visual o solicitar ayuda del experto
+  - Existen plantillas en internet para hacer el poster
+  - **PosterPresentation.com**
+- Errores de posters:
+  - Considerar el poster como si fuera un artículo científico. Lo que
+    hace es reducir el tamaño de la letra y aumentar las columnas de texto.
+  - No se pone las referencias
+  - Un summary en medio del poster es desorden
+  - ausencia de datos de contacto y su afiliación
+  - multiples páginas A4. EL pegar puede dificultar la lectura
+  - No cumplir el formato de tamaño indicado
+  - No usar cinta de embalaje para pegar el poster o tratar de ocultarlo
+  - NO usar imagenes de alta calidad o de baja resolución 
+**** Protocolo de presentación
+- Revisar las instrucciones de cada congreso. Leer instrucciones varias veces
+*** Presentación del artículo con audiencia
+- Se suele indicar con anticipación el tiempo
+- libro d Sergio Lujan la comunicación oral, claves para realizar
+  buenas presentaciones.
+- ejemplo presentaciones de Steve Jobs son marqueteras pero hay puntos
+  a considerar de su manera de exponer y hacerla atractiva
+- buenaspresentaciones.es
+- En una presentación siempre indicar un indice/agenda para guiar a la audiencia
+- 5 errores mas grandes de una presenntación:
+  1. letras microscópicas:
+     1. se puede leer a 3 meros desde el ordenador
+  2. tener diapositivas confusas con mucho detalle
+     1. 6 líneas con 6 palabras por línea
+     2. mejor horizontal que vertical
+  3. Colores que no se pueden leer
+     1. Negro sobre blanco es lo que mejor se ve
+     2. considerar daltónnicos marron gris
+  4. No Practicar
+     1. Practicar la presentacion muchas veces antes de presentar
+        puede considerar una falta de respeto.
+     2. un mes de preparación para que el día de la presentación todo
+        vaya bien
+  5. No conocer el equipamiento audiovisual incorrecto
+     1. Llevar el PowerPoint
+     2. Llevar el PDF y ponerlo a pantalla completa C-l
+- volver a presentar la diapositiva de índice destacando lo que viene a continuación
+**** Antes de la presentación:
+- una presentación de un artículo no es el artículo
+- el índice no es por tanto las secciones del artículo
+- las refrencias no van en la presentacion, se peude derivar al articulo
+- la presentación oral del artículo es otro contexto
+- incluir la presentación con e contenido y otra de cierre
+- presentación de inicio:
+  - titulo y subtitulo (opc)
+  - nomre de los autores
+  - procedencia de los autores
+  - opcional lugar y fecha esto se usa cuando se pone en internet
+- presentacion de contenido
+- duplica la presentacion si se requiere refozar algun contenido de la presentacion
+- evitar ir para atras y adelante (son gratis)
+- si la presentación es larga hace run resumen luego de cada apartado
+- usar diapositivas en blanco para hace rpausa, evita distracciones
+  del publico: atajo de powerpoint para poner una diapositiva en blanco
+- incluir diapositivas de backup al final de la presentación para
+  explicar algujn tema complejo por si hay preguntas sobre todo para
+  tesis doctoral
+- es mala practica pasar transparencias sin comentarlas
+- usar animaciones minimalistas
+- evitar figuras complejas, estas deben ir al articulo
+- checar las condiciones luminicas de la sala
+- usar colores de alto contraste
+- más simple la letra mejor: evita sans o tipos manuscritos
+- no sacrificar la legibilidad por  el estilo
+**** Consejos durante la presntación:
+- adaptarse a las circunstancias
+- marcar el inicio de la presentacion
+- presentarse si el chairman no lo hizo
+- no moverse mucho en el estrado
+- mover cabeza y mirar al publico
+- sobre tiempo: ir a las de respaldo o resumen
+- falta tiempo? no ir de prisa por todas lsa idapositivas recalcar las importantes
+- utiliza el cursor para señlar
+- usar diapositivas en blanco o negro para centrar la atención
+**** Despues de la presentación
+- indicar la terminación
+- agradecer la atención
+- abrir turno de preguntas
+- intentar obtener información en el cofee break sobre que tal estuvo la presentación 
+**** Errores Comunes
+- no es una buena idea las mayusculas en el texto de la diapositiva
+- usar varios tipos de letras sin consistencia
+- no poner animaciones o cuidar la velocidad de la animación
+- imagnes de baja calidad
+- uso excesivo de negrita. usarlo para resaltar puntos clave
+- ciudado con que la animacion pase sola y no da tiempo a leer
+** Summary
+La presentación no es para mí sino para las personas que asisten para
+ir y verla. Pensar en ellos y ponerlos como prioridad.
+** TODO Tareas [%]
+- [ ] localizar bueanspresentaciones.es
+- [ ] localizar las plantillas de poster
+- [ ] localizar acm avoid the big five presentation mistake
+- [ ] localizar el libro de Sergio Lujan 
