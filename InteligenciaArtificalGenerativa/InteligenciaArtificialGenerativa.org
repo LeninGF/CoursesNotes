@@ -151,14 +151,51 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - [X] Investigación de LPIPS
 - [ ] Generar documento
 ** Summary
-* 2024-10-09 Exposición métricas
+* 2024-10-09 Exposición métricas y  Representación del Conocimiento
 ** Questions and keywords
 - n-grams ::
 - BLEU :: cómo es y cómo funciona
 - ROUGE :: cómo varía cuando es alto o bajo. Cuando es 1 son idénticos si es menor, difiere.
-- ¿se verificó el cómputo de ROUGE y METEOR? :: 
+- ¿se verificó el cómputo de ROUGE y METEOR? ::
+- decoder :: 
+- encoder ::
+- hay algun limite para el tamaño del espacio latente? ::
+- espacio latente ::
+- que tan complicado es generar una fake imagen medica ::
+- que tan raro es hacer una genreación en el tiempo ::
+- cómo funciona pytorch a nivel de autoencodres, vaes ::
+- se puede establecer una relacion entre la entropia de shannon y el espacio latente ::
+- cómo se llama el paper de Jona :: un espacio latente independiente
+  del tipo de dato. es sobre representación platónica. asumen que es
+  parte de la realidad. Mientras es más completo el modelo converge el
+  tema de lenguaje y de imagen para generar una imagen de manzana y
+  viceversa. The Platonic Representation Hypothesis
+- modelado paramétrico :: 
+- likelihood o verosimilitud :: identificar parámetros que maximicen la probabilidad
+- MLE :: máxima verosimilitud
+- densidad tractable :: se define de antemano: normal bernoulli
+- densidad aproximada :: depende de los datos
+- que se debe hacer en la tarea? :: resumen analisis discusion?
 ** Notes
+*** Exposicion
 - METEOR parece ser superior a BLEU
 - Valores altos de METEOR implica una alta similitud del texto generado con el original
 - METEOR parece ser superior que ROUGE 
+*** Represetacion del conocimiento
+- Reducir el espacio de alta dimensionalidad a un espacio latente con menores dimensiones
+- el espacio latente aprende representaciones simplificadas de datos
+- los nuevos datos son variar coordenadas en el espacio latente
+- este movimiento en el espacio latente podría por ejemplo afectar las
+  expresiones faciales de un rostro si es una ia generativa de rostros
+  o avegentar o rejuvenecer
+- el espacio latente permite explorar **relaciones abstractas** entre los datos
+- un modelado paramétrico es una familia de distribuciones de probabilidad
+- la verosimilitud se calcula con el logaritmo para tener una suma de
+  los logaritmos de las probabilidad
+- MLE selecciona que valores de parámetros $\theta$ que maximizan la verosimilitud
+- hay varios approaches para el modelado de la función de
+  densidad. esto se conoce como taxonomía
+
 ** Summary
+** TODO Tarea [%]
+- [ ] leer el paper del aula virtual. Presentar conclusiones.
