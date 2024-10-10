@@ -395,3 +395,36 @@ ir y verla. Pensar en ellos y ponerlos como prioridad.
 - [ ] localizar las plantillas de poster
 - [ ] localizar acm avoid the big five presentation mistake
 - [ ] localizar el libro de Sergio Lujan 
+* 2024-10-10 Comunicación
+** Questions and keywords
+- revisar temas de etiqueta para los congresos :: uso de utensillos
+** Notes
+- importancia de la comunicación:
+  - atraer la atencion
+  - evitar malentendidos
+  - facilitar la colaboracion
+- técnicas para mejorar la escucha activa:
+  - contacto visual :: interés, respeto
+  - preguntar :: para entender el mensaje del hablante
+  - lenguaje corporal :: asentir y evitar distracciones
+    - tono de voz adecuado para ser escuchado
+    - gestos para énfasis y emoción
+    - contacto visual
+    - sonreir
+  - evitar interrupciones :: dejar completar el pensamiento de la
+    persona que habla
+- Presentaciones persuasivas: captar la atención del público, hacer un
+  desarrollo lógico y resumir los puntos clave
+- cómo manejar las preguntas:
+  - escuchar, mantener la calma, responder concisamente
+- considerar el problema del contexto intercultural, sensibilidad, respeto, claridad
+- preparar las exposiciones con varias sesiones de práctica previa
+** Summary
+** TODO Deber Semana 2
+- [ ] Crear presentaciones creativas individuales sobre Segmentación
+  Semántica de 5 a 10 minutos. usar recursos visuales y técnicas de
+  narración. Revisar el libro
+- [ ] Desarrollar un podcast de divulgación. investigar, escribir un
+  gion y grabar el episodio
+- [ ] hacer una infografía científica. resuma conceptos clave de
+  manera visual y atractiva
