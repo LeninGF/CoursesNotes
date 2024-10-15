@@ -428,3 +428,42 @@ ir y verla. Pensar en ellos y ponerlos como prioridad.
   gion y grabar el episodio
 - [ ] hacer una infografía científica. resuma conceptos clave de
   manera visual y atractiva
+* 2024-10-15 Medios de Divulgación Científica
+** Questions and keywords
+- divulgación :: comunicar la ciencia al público general
+- revistas científicas :: publicación periódica, de investigación,
+  cumple con rigor académico como la revisión por pares
+- JCR ::
+- conferencia :: encuentro para presentar y discutir
+  trabajos. Presentación oral, posters, workshops, interacción directa
+- libros científicos :: tratan a profundidad un tema específico
+  científico. E.g. libros de Springer. Son exhaustivos, y documentan y
+  difunden conocimientos consolidados
+- blog científico :: digitales, lenguaje informal, actualización
+  frecuente, interacción con lectores. usa lenguaje accesible con
+  objetivo de popularizar la ciencia
+- podcast-científico :: programa de audio que trata un tema cientifico
+  de manera divulgativa. audiencia amplia, flexibilidad temática,
+  entrevistas, discusiones
+- documentales :: alphago
+- museos de ciencia :: dinosaurio?
+- redes sociales :: 
+** Notes
+- comunican la información científica al público general
+- usan tele, web, documentales, revistas
+- transferencia de conocimiento se forma de la fuente, la importancia
+  de la info y el impacto o calidad de la comunicacion
+- la revisión por pares se hace con expertos de un área
+- la conferencia se puede aprovechar para tener contactos
+- es frecuente que un científico tenga su blog científico
+- la divulgación científica conecta la ciencia con la sociedad e
+  influir en las políticas públicas, promueven pensamiento crítico
+- libres:
+  - IEEE Access (cuesta unos 3000 usd)
+- desafío de divulgación:
+  - la calidad afectada por la cantidad
+- existe el problema de que se cede los derechos al realizar la
+  publicacón
+** TODO tareas [%]
+- [ ] Revisar las publicaciones accesibles desde la EPN
+** Summary
