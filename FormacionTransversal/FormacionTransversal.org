@@ -395,3 +395,75 @@ ir y verla. Pensar en ellos y ponerlos como prioridad.
 - [ ] localizar las plantillas de poster
 - [ ] localizar acm avoid the big five presentation mistake
 - [ ] localizar el libro de Sergio Lujan 
+* 2024-10-10 Comunicación
+** Questions and keywords
+- revisar temas de etiqueta para los congresos :: uso de utensillos
+** Notes
+- importancia de la comunicación:
+  - atraer la atencion
+  - evitar malentendidos
+  - facilitar la colaboracion
+- técnicas para mejorar la escucha activa:
+  - contacto visual :: interés, respeto
+  - preguntar :: para entender el mensaje del hablante
+  - lenguaje corporal :: asentir y evitar distracciones
+    - tono de voz adecuado para ser escuchado
+    - gestos para énfasis y emoción
+    - contacto visual
+    - sonreir
+  - evitar interrupciones :: dejar completar el pensamiento de la
+    persona que habla
+- Presentaciones persuasivas: captar la atención del público, hacer un
+  desarrollo lógico y resumir los puntos clave
+- cómo manejar las preguntas:
+  - escuchar, mantener la calma, responder concisamente
+- considerar el problema del contexto intercultural, sensibilidad, respeto, claridad
+- preparar las exposiciones con varias sesiones de práctica previa
+** Summary
+** TODO Deber Semana 2
+- [ ] Crear presentaciones creativas individuales sobre Segmentación
+  Semántica de 5 a 10 minutos. usar recursos visuales y técnicas de
+  narración. Revisar el libro
+- [ ] Desarrollar un podcast de divulgación. investigar, escribir un
+  gion y grabar el episodio
+- [ ] hacer una infografía científica. resuma conceptos clave de
+  manera visual y atractiva
+* 2024-10-15 Medios de Divulgación Científica
+** Questions and keywords
+- divulgación :: comunicar la ciencia al público general
+- revistas científicas :: publicación periódica, de investigación,
+  cumple con rigor académico como la revisión por pares
+- JCR ::
+- conferencia :: encuentro para presentar y discutir
+  trabajos. Presentación oral, posters, workshops, interacción directa
+- libros científicos :: tratan a profundidad un tema específico
+  científico. E.g. libros de Springer. Son exhaustivos, y documentan y
+  difunden conocimientos consolidados
+- blog científico :: digitales, lenguaje informal, actualización
+  frecuente, interacción con lectores. usa lenguaje accesible con
+  objetivo de popularizar la ciencia
+- podcast-científico :: programa de audio que trata un tema cientifico
+  de manera divulgativa. audiencia amplia, flexibilidad temática,
+  entrevistas, discusiones
+- documentales :: alphago
+- museos de ciencia :: dinosaurio?
+- redes sociales :: 
+** Notes
+- comunican la información científica al público general
+- usan tele, web, documentales, revistas
+- transferencia de conocimiento se forma de la fuente, la importancia
+  de la info y el impacto o calidad de la comunicacion
+- la revisión por pares se hace con expertos de un área
+- la conferencia se puede aprovechar para tener contactos
+- es frecuente que un científico tenga su blog científico
+- la divulgación científica conecta la ciencia con la sociedad e
+  influir en las políticas públicas, promueven pensamiento crítico
+- libres:
+  - IEEE Access (cuesta unos 3000 usd)
+- desafío de divulgación:
+  - la calidad afectada por la cantidad
+- existe el problema de que se cede los derechos al realizar la
+  publicacón
+** TODO tareas [%]
+- [ ] Revisar las publicaciones accesibles desde la EPN
+** Summary
