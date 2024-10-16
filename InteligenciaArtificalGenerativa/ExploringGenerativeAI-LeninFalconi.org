@@ -1,0 +1,176 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: Análisis de Artículo "Exploring GAI"
+#+date: 2024-10-16
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+#+bibliography: bibliography.bib
+#+LATEX_HEADER: \usepackage[a4paper, margin=2.5cm]{geometry}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee,autolang=other,maxcitenames=99, maxbibnames=99]{biblatex}
+
+* Introducción
+En este documento se realiza un análisis crítico sobre la taxonomía y
+tipos de Inteligencia Artificial Generativa (IAG) propuestos por los
+autores \citeauthor{strobel2024exploring}. Para esto se realiza un
+breve resumen de los puntos esenciales del artículo, seguido de una
+discusión sobre las ideas del artículo y finalmente se exponen las
+conclusiones sobre el artículo y sus implicaciones.
+* Resumen
+El artículo \citetitle{strobel2024exploring}
+[cite:@strobel2024exploring] estudia la inteligencia artificial
+generativa (IAG) desde la perspectiva de las diferentes aplicaciones
+basadas en esta tecnología. Para esto, los autores elaboran una
+taxonomía e identifican varios tipos de la misma mediante la revisión
+de 100 aplicaciones reales aleatorias. El objetivo de la taxonomía es
+comprender las características de la IAG para poder hacer estimaciones
+sobre su orientación futura, y facilitar la inversión informada en el
+desarrollo de sus aplicaciones. A su vez, la taxonomía aporta una
+estructura que facilite la comprensión teórica de IAG dentro del campo
+de /deep learning/, caracterizado por cambios acelerados.
+
+
+La IAG establece un cambio respecto del enfoque tradicional de
+/machine learning/, en donde el objetivo principal de los modelos es
+el realizar predicciones (clasificación, clusterización, etc.) y que,
+por tanto, se las denomina Inteligencias Artificiales Discriminativas
+(IAD). Por su parte, la IAG se caracteriza por la generación de nuevos
+datos y contenido. Sin embargo, el enfoque de los autores es
+específicamente sobre las IAG basadas en Deep Generative Models (DGM),
+que son modelos basados en /deep learning/ como las redes GAN, los
+Auto encoders Variacionales, Transformers y los Latent Diffusion
+Models.
+
+
+Como parte esencial del proceso para realizar la taxonomía, los
+autores utilizan la metodología de /Design Science Research/ (DSR)
+usando 2 iteraciones de tipo empírico [fn:1] con la finalidad de
+depurar la identificación de Tipos, Dimensiones y Características de
+la IAG y una iteración final para la evaluación del artefacto
+(i.e. taxonomía). En general, los autores identifican 5 tipos de
+IAG: 1) Reimaginador, 2) Generador, 3) Asistente, 4) Sintetizador[fn:2],
+y 5) Habilitador. Estos tipos de IAG se conforman comparando el grado
+de modificación de los datos de entrada y el grado de creatividad. De
+esta manera, un Reimaginador será un tipo de IAG que partiendo de un
+dato de entrada ofrece modificaciones sobre dicho dato sin salir del
+contexto (e.g. modificar el estilo de una imagen). En el lado opuesto,
+en cambio, se tendría al Sintetizador, cuyo objetivo sería obtener
+nuevas muestras del dato de entrada por lo cual tienen un bajo nivel
+de creatividad y un alto nivel de modificación (i.e. la muestra
+sintética ha de ser diferente). Otros dos tipos de IAG contrapuestos
+son el Asistente y el Generador. El Asistente, se puede decir, según
+la gráfica presentada por \citeauthor{strobel2024exploring}, que es el
+más restringido de los tipos ya que se corresponde con bajo niveles de
+creatividad y bajo nivel de modificación de la información. Esto es
+congruente ya que si se desea realizar, por ejemplo, un asistente
+educativo, éste no podría crear un conocimiento falso (alta
+creatividad) o por fuera del contexto de la materia estudiada (i.e
+contexto). Finalmente, el último tipo que aborda es el /Enabler/ que
+tiene que ver con la infraestructura y herramientas que permite el
+desarrollo de IAG tanto a individuos como a organizaciones.
+
+
+Dentro de las características de la taxonomía derivada por los autores
+está la identificación de 3 Meta Dimensiones (Diseño del Sistema,
+Acceso al Sistema y Valor del Sistema), 10 Dimensiones (Tipo de
+Entrada, Modalidad, Tipo de Salida, Operación, Interfaz de Usuario,
+Apertura, Ajuste Fino, Extensibilidad, Valor, Ganancia) y 38
+características de las aplicaciones de IAG. El objetivo de esta
+taxonomía es poder comparar, clasificar y determinar el potencial de
+las aplicaciones generativas.
+* Discusión
+Si bien los autores del artículo están fundamentados en la
+investigación académica, su trabajo demuestra una fuerte conciencia y
+consideración por las implicaciones empresariales. No se centran
+únicamente en los aspectos teóricos de la IAG; en cambio, buscan
+cerrar la brecha entre la teoría y la práctica proporcionando un marco
+que sea tanto conceptualmente sólido como prácticamente útil para la
+toma de decisiones empresariales.
+
+
+El empleo de la DSR para diseñar y perfeccionar el artefacto de la
+taxonomía da un realce e interés científico al artículo. Muestra cómo
+se puede utilizar dicha metodología para resolver preguntas de
+investigación diversas (en este caso, las características y
+dimensiones de la IAG) y la combinación de una investigación mixta
+(i.e. no sólo se depende de análisis cuantitativo). Pues, como indican
+los autores, el análisis cuantitativo tuvo que ser complementado con
+el cualitativo para obtener mejores descripciones.
+
+
+No obstante, me parece que al centrarse en una orientación hacia los
+negocios (aplicación de la IAG en la práctica) se afecta la
+posibilidad de un aporte teórico que complemente al marco teórico de
+Inteligencia Artificial. Esto se refleja, a mí parecer, en que no
+existe una métrica o indicación sistemática de cómo clasificar un
+modelo de IAG en determinada clase. Si bien los autores proporcionan
+un gráfico que presenta los 5 tipos de IAG en función de dos variables
+que son la creatividad y el nivel de modificación, no indica cómo se
+estima, calcula o valora los niveles de estas variables para una IAG
+cualquiera. Esto me parece que indica que la clasificación
+proporcionada por los autores es *subjetiva* y que posiblemente para
+poder hacer nuevas categorizaciones se deba repetir sistemáticamente
+la etapa de evaluación de la DSR. Es más, los autores están
+conscientes de este particular y lo enuncian dentro de la sección de
+investigación futura.
+
+
+Sobre los 5 tipos identificados, me parece que el tipo /Enabler/ no es
+apropiado ya que se trata más de herramientas y plataformas que de
+modelos. Posiblemente, este problema se debe al enfoque hacia negocio
+que tienen los autores. Pues, desde una perspectiva teórica de IA o
+Machine Learning, poco interesaría la disponibilidad de proveedores de
+servicios para entrenar o modificar IAG. El enfoque sería más en las
+características de los diferentes IAG y posiblemente en una
+formalización matemática de los mismos así como en una integración a
+un corpus de Deep Learning.
+
+* Conclusiones
+- Los autores proveen de una contribución a la comprensión de la IAG
+  esclareciendo los tipos posibles que pueden encontrarse en
+  aplicaciones reales.
+- La taxonomía empírica basada en aplicaciones ofrece una plataforma
+  estructurada para el análisis de aplicaciones de IAG y guiar la toma
+  de decisiones informadas para la inversión.
+- Los autores están conscientes de la existencia de un posible sesgo
+  en su investigación.
+- Considero que este trabajo se puede utilizar de base para generar
+  uno más interesante que aborde temas esencialmente teóricos de IAG
+  como un subconjunto del /Deep Learning/. Pues, es notorio que el
+  enfoque de los autores al centrarse en una perspectiva de
+  inversiones no permite un desarrollo más teórico y considero, en
+  consecuencia, que no permite que el investigador de IA pueda
+  nutrirse de la taxonomía propuesta; sea porque parezca no necesaria
+  al experto o porque algunas de las características identificadas no
+  se relacionan con el desarrollo de un marco teórico sólido que
+  permita a los investigadores potenciar el descubrimiento de GAPs en
+  la IAG y desarrollar más esta tecnología.
+#+print_bibliography:
+
+* Footnotes
+[fn:2]En el caso del Sintetizador es interesante notar que se quieren
+obtener un nuevo dato de la misma distribución probabilística pero con
+¿diferente varianza?
+
+[fn:1]El enfoque usado por los autores se denomina
+/empirical-to-conceptual/ i.e. desde lo empírico hacia lo conceptual.

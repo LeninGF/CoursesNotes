@@ -1,0 +1,169 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Métricas de Evaluación de IA Generativa
+#+date: 2024-10-07
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+#+bibliography: bibliography.bib
+#+LATEX_HEADER: \usepackage[a4paper, margin=2.5cm]{geometry}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+
+* TODO Instrucciones [100%]
+- [X] Investigar las métricas asignadas FID: Frechet Inception
+  Distance
+- [X] Investigar las métricas asignadas LPIPS: Learned Perceptual
+  Image Patch Similarity
+- [X] Definir la métrica y su fórmula básica
+- [X] ¿Cómo se interpreta la métrica y qué representa en el contexto
+  específico?
+- [X] Ventajas y Limitaciones de la métrica
+- [X] Indicar cómo se puede aplicar la métrica en un caso específico
+- [X] Describir el tipo de dato a utilizar
+- [X] Detallar los pasos para calcular la métrica
+
+* Frechet Inception Distance (FID)
+** Concepto
+- Calcula la distancia entre los feature vectors calculados de
+  imágenes reales y generadas [cite:@Brownlee2019].
+- Indica que tan similares son dos grupos en términos estadísticos de
+  la media $\mu$ y la covarianza $\Sigma$ de componentes de /computer vision/
+- Scores más bajos indican que los grupos son más similares.
+- Evalúa la calidad de las imágenes generadas [cite:@wiki2024].
+- Propuesto en [cite:@Heusel2017] en el año 2017.
+- Técnicamente utiliza la última capa de pooling de la red Inception
+  V3 de 2048 componentes [cite:@wiki2024].
+** Ecuación:
+La Ecuación [[eq-FID]] define el cálculo de FID como:
+#+NAME: eq-FID
+\begin{equation}
+  FID = \|\mu - \mu_w\|^2 + tr(\Sigma + \Sigma_w - 2(\Sigma \Sigma_w)^{\frac{1}{2}})
+\end{equation}
+
+
+Donde:
+- $\mathcal{N}(\mu, \Sigma)$ :: distribución multivariable normalizada
+  de un inception v3 sobre imágenes reales
+- $\mathcal{N}(\mu_w, \Sigma_w)$ :: distribución multivariable normalizada
+  de un inception v3 sobre imágenes generadas (falsas)
+** Interpretación
+La fórmula del FID combina la diferencia en las medias $((|\mu -
+\mu_w|^2))$ y la diferencia en las covarianzas $((\text{tr}(\Sigma +
+\Sigma_w - 2(\Sigma \Sigma_w)^{\frac{1}{2}})))$ de las características
+extraídas de las imágenes reales y generadas. Un **FID más bajo** indica
+que las imágenes generadas **son más similares** a las imágenes reales en
+términos de sus características estadísticas.
+** Limitaciones de la métrica
+En [cite:@Chong2019] se demuestra que tanto el /Inception Score/ como
+la Frechet Inception Distance son métricas sesgadas. El valor obtenido
+por ambas métricas se demuestra no confiable. Pues, su valor depende
+del sesgo del Modelo y no de la métrica en sí. A fin de corregir este
+problema, se sugiere la extrapolación de las métricas usando métodos
+de integración de Quasi-Monte Carlo.
+** Ejemplo de cálculo
+La métrica está contenida dentro de la librería de Pytorch. Se utiliza
+el extractor de características de Inception v3. Los datos de entrada
+son mini batches de imágenes con 3 canales RGB de forma $(3\times H
+\times W)$. Las imágenes se redimensionan a $299\times 299$.
+
+El siguiente código permite calcular Frechet Inception Distance
+utilizando la capa 64 del modelo de Inception. Para esto se genera dos
+muestras de 100 imágenes. Las imágenes reales varían aleatoriamente
+sus valores entre 0 y 199 y las falsas entre 100 y 255. En ambos casos
+las imágenes son de 3 canales (RGB) con un tamaño de $299 \times 299$
+
+#+begin_src python :session :results output :exports both
+import torch
+from torchmetrics.image.fid import FrechetInceptionDistance
+fid = FrechetInceptionDistance(feature=64)
+imgs_dist1 = torch.randint(0, 200, (100, 3, 299, 299), dtype=torch.uint8)
+imgs_dist2 = torch.randint(100, 255, (100, 3, 299, 299), dtype=torch.uint8)
+fid.update(imgs_dist1, real=True)
+fid.update(imgs_dist2, real=False)
+print(fid.compute())
+#+end_src
+
+#+RESULTS:
+: tensor(12.6464)
+
+* Learned Perceptual  Image Patch Similarity (LPIPS)
+** Concepto:
+- Calcula la similitud perceptiva de dos imágenes [cite:@lightningLPIPS2024].
+- Computa la similitud entre las activaciones de dos patches imágenes
+  para una red convolucional pre definida [cite:@lightningLPIPS2024].
+- Iguala la percepción humana.
+- Un score más bajo de LPIPS implica que las imágenes son más semejantes.
+- Propuesto en el paper [cite:@Zhang2018] de 2018.
+- De acuerdo a los autores en [cite:@lightningLPIPS2024], las
+  activaciones internas de redes entrenadas en tareas de clasificación
+  de alto nivel (e.g. ImageNet, VGG) se corresponden con el juicio de
+  percepción humana.
+** Ecuación
+Dadas una imagen real $x$ y una imagen generada $x_0$ con una red
+neuronal convolucional $\mathcal{F}$, se obtienen la pila de vectores
+componentes (/feature stack/) de $\mathcal{L}$ capas, y se normalizan
+con respecto a la dimensión del canal $\hat{y}^l$, $\hat{y}_0^l$ para
+una capa $l$. Las activaciones se escalan con respecto del vector
+$w^l$ y se calcula la distancia $\ell_2$, como indica la ecuación [[eq-LPIPS]]
+
+#+NAME: eq-LPIPS
+\begin{equation}
+  d(x, x_0) = \sum\limits_{l}\frac{1}{H_lW_l}\sum\limits_{h,w}||w_{l}\odot(\hat{y}^l_{hw}- \hat{y}_{0_{hw}}^l)||^2_2
+\end{equation}
+** Interpretación
+La métrica se basa en la hipótesis de que una red pre-entrenada para
+resolver una tarea de clasificación visual contiene /deep embeddings/
+que son de interés y emulan la percepción visual humana. Para esto, se
+obtiene las componentes normalizadas de las imágenes $x$ y $x_0$ en
+una capa $l$ (el paper considera las capas 1 a 5). Luego se obtiene la
+normalización euclidia $\ell_2$ normalizada.  
+** Limitaciones de la métrica
+** Ejemplo de cálculo
+Los image patches a ser utilizados han de tener la forma
+~(N,3,H,W)~. El siguiente código presenta cómo se puede utilizar la
+librería de ~torchmetrics~ para obtener LPIPS en una muestra de 10
+imágenes RGB de $100 \times 100$
+
+#+begin_src python :session :results output :exports both
+from torch import rand
+from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity
+lpips = LearnedPerceptualImagePatchSimilarity(net_type='squeeze')
+img1 = (rand(10, 3, 100, 100) * 2) - 1
+img2 = (rand(10, 3, 100, 100) * 2) - 1
+print(lpips(img1, img2))
+#+end_src
+
+#+RESULTS:
+: tensor(0.1020)
+
+* Aplicaciones Pŕacticas
+En ambos casos, tanto FID como LPIPS se pueden utilizar para evaluar
+la calidad de imágenes generadas con un modelo generativo. Una
+aplicación, sería la generación de imágenes médicas sintéticas. Por
+ejemplo, las imágenes de termografía de cáncer de mama suelen no ser
+muy frecuentes dado que la mamografía se considera médicamente como el
+gold standard. La generación de imágenes de buena calidad puede ayudar
+a explorar modelos de deep learning aplicados a diagnóstico asistido
+por computador.
+
+#+print_bibliography:
+

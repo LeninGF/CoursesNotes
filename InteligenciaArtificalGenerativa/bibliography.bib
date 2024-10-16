@@ -1,0 +1,76 @@
+@article{Heusel2017,
+	title        = {GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium},
+	author       = {Martin Heusel and Hubert Ramsauer and Thomas Unterthiner and Bernhard Nessler and Sepp Hochreiter},
+	year         = 2017,
+	month        = 6,
+	journal      = {Advances in Neural Information Processing Systems},
+	publisher    = {Neural information processing systems foundation},
+	volume       = {2017-December},
+	pages        = {6627--6638},
+	doi          = {10.18034/ajase.v8i1.9},
+	issn         = 10495258,
+	url          = {https://arxiv.org/abs/1706.08500v6},
+	abstract     = {Generative Adversarial Networks (GANs) excel at creating realistic images with complex models for which maximum likelihood is infeasible. However, the convergence of GAN training has still not been proved. We propose a two time-scale update rule (TTUR) for training GANs with stochastic gradient descent on arbitrary GAN loss functions. TTUR has an individual learning rate for both the discriminator and the generator. Using the theory of stochastic approximation, we prove that the TTUR converges under mild assumptions to a stationary local Nash equilibrium. The convergence carries over to the popular Adam optimization, for which we prove that it follows the dynamics of a heavy ball with friction and thus prefers flat minima in the objective landscape. For the evaluation of the performance of GANs at image generation, we introduce the "Fr\'echet Inception Distance" (FID) which captures the similarity of generated images to real ones better than the Inception Score. In experiments, TTUR improves learning for DCGANs and Improved Wasserstein GANs (WGAN-GP) outperforming conventional GAN training on CelebA, CIFAR-10, SVHN, LSUN Bedrooms, and the One Billion Word Benchmark.}
+}
+@misc{Brownlee2019,
+	title        = {{H}ow to {I}mplement the {F}rechet {I}nception {D}istance ({F}{I}{D}) for {E}valuating {G}{A}{N}s - {M}achine{L}earning{M}astery.com --- machinelearningmastery.com},
+	author       = {Jason Brownlee},
+	year         = 2019,
+	url          = {https://machinelearningmastery.com/how-to-implement-the-frechet-inception-distance-fid-from-scratch/},
+	note         = {[Accessed 09-10-2024]}
+}
+@misc{lightning2024,
+	title        = {{F}rechet {I}nception {D}istance ({F}{I}{D})},
+	author       = {lightning.ai},
+	year         = 2024,
+	url          = {https://lightning.ai/docs/torchmetrics/stable/image/frechet_inception_distance.html},
+	note         = {[Accessed 09-10-2024]}
+}
+@misc{wiki2024,
+	title        = {Fréchet inception distance},
+	author       = {Wikipedia contributors},
+	year         = 2024,
+	url          = {https://en.wikipedia.org/w/index.php?title=Fr%C3%A9chet_inception_distance&oldid=1250059515},
+	note         = {[Online; accessed 9-October-2024]}
+}
+@article{Chong2019,
+	title        = {Effectively Unbiased FID and Inception Score and where to find them},
+	author       = {Min Jin Chong and David Forsyth},
+	year         = 2019,
+	month        = 11,
+	journal      = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
+	publisher    = {IEEE Computer Society},
+	pages        = {6069--6078},
+	doi          = {10.1109/CVPR42600.2020.00611},
+	issn         = 10636919,
+	url          = {https://arxiv.org/abs/1911.07023v3},
+	abstract     = {This paper shows that two commonly used evaluation metrics for generative models, the Fr\'echet Inception Distance (FID) and the Inception Score (IS), are biased -- the expected value of the score computed for a finite sample set is not the true value of the score. Worse, the paper shows that the bias term depends on the particular model being evaluated, so model A may get a better score than model B simply because model A's bias term is smaller. This effect cannot be fixed by evaluating at a fixed number of samples. This means all comparisons using FID or IS as currently computed are unreliable. We then show how to extrapolate the score to obtain an effectively bias-free estimate of scores computed with an infinite number of samples, which we term $\overline\{\textrm\{FID\}\}_\infty$ and $\overline\{\textrm\{IS\}\}_\infty$. In turn, this effectively bias-free estimate requires good estimates of scores with a finite number of samples. We show that using Quasi-Monte Carlo integration notably improves estimates of FID and IS for finite sample sets. Our extrapolated scores are simple, drop-in replacements for the finite sample scores. Additionally, we show that using low discrepancy sequence in GAN training offers small improvements in the resulting generator.}
+}
+@article{Zhang2018,
+	title        = {The Unreasonable Effectiveness of Deep Features as a Perceptual Metric},
+	author       = {Richard Zhang and Phillip Isola and Alexei A. Efros and Eli Shechtman and Oliver Wang},
+	year         = 2018,
+	month        = 1,
+	journal      = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
+	publisher    = {IEEE Computer Society},
+	pages        = {586--595},
+	doi          = {10.1109/CVPR.2018.00068},
+	isbn         = 9781538664209,
+	issn         = 10636919,
+	url          = {https://arxiv.org/abs/1801.03924v2},
+	abstract     = {While it is nearly effortless for humans to quickly assess the perceptual similarity between two images, the underlying processes are thought to be quite complex. Despite this, the most widely used perceptual metrics today, such as PSNR and SSIM, are simple, shallow functions, and fail to account for many nuances of human perception. Recently, the deep learning community has found that features of the VGG network trained on ImageNet classification has been remarkably useful as a training loss for image synthesis. But how perceptual are these so-called "perceptual losses"? What elements are critical for their success? To answer these questions, we introduce a new dataset of human perceptual similarity judgments. We systematically evaluate deep features across different architectures and tasks and compare them with classic metrics. We find that deep features outperform all previous metrics by large margins on our dataset. More surprisingly, this result is not restricted to ImageNet-trained VGG features, but holds across different deep architectures and levels of supervision (supervised, self-supervised, or even unsupervised). Our results suggest that perceptual similarity is an emergent property shared across deep visual representations.}
+}
+
+@misc{lightningLPIPS2024,
+	title        = {{L}earned {P}erceptual {I}mage {P}atch {S}imilarity ({L}{P}{I}{P}{S})},
+	author       = {lightning.ai},
+	year         = {2024},
+	note         = {[Accessed 09-10-2024]},
+	howpublished = {\url{https://lightning.ai/docs/torchmetrics/stable/image/learned_perceptual_image_patch_similarity.html}}
+}
+
+@article{strobel2024exploring,
+	title        = {Exploring generative artificial intelligence: A taxonomy and types},
+	author       = {Strobel, Gero and Banh, Leonardo and M{\"o}ller, Frederik and Schoormann, Thorsten},
+	year         = 2024
+}

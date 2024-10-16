@@ -197,5 +197,76 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
   densidad. esto se conoce como taxonomía
 
 ** Summary
-** TODO Tarea [%]
-- [ ] leer el paper del aula virtual. Presentar conclusiones.
+** TODO Tarea [100%]
+- [X] leer el paper del aula virtual. Presentar conclusiones.
+* 2024-10-14 Capitulo 2 Redes Neuronales
+** Questions and keywords
+- redes neuronales ::
+- axones :: 
+- dendritas ::
+- funciones de activación ::
+- relu :: no comprendo bien la fórmula de la relu
+- revisar ajuste de pesos del perceptron ::
+- gradient descent ::
+- stochastic gradient descent ::
+- minibatch ::
+- red neuronal se puede aplicar en aprendizaje por refuerzo :: las
+  salidas son acciones, pero que son las entradas
+- algoritmo de back propagation ::
+- ¿se menciona el problema del gradiente cuando las capas son muy grandes :: el
+  gradiente desaparece por la profundidad
+- deep neural netowrks :: tiene 3 o más capas ocultas
+- 0 :: negro
+- 255 :: blanco
+- kernel :: ??
+- lo que no mencionan es que los valores de la convolución también se aprenden 
+** Notes
+*** Exposición Jona audio
+- FAD :: Freched Audio Distance. Similar al FID pero con audio.
+  - utiliza todo el dataset 
+- Signal to noise ratio :: cuando el valor es más alto la señal es más
+  nitida. Es el cociente de la Potencia de la señal dividido para la Potencia del ruido. Se toma logaritmo
+  - es fácil de calcular
+  - es estandard
+  - sus dificultades que no captura todas las caracteristicas perceptuales el audio
+*** Capítulo 2 redes neuronales artificiales
+- son una analogía de las redes nueronales biológicas
+- el perceptron es usar una recta para separar las clases (boundary regions)
+- $h(x_1,x_2)= g(w_0+w_1x_1+w_2x_2)$
+- funcioes de activacion:
+  - step function
+  - sigmoid
+  - relu
+- aplicaciones son logica binaria como la compuerta lógica OR en función de la tabla de verdad
+- algoritmo de descenso del gradiente. Sugiero revisar cómo opera el
+  algoritmo para hacer el ajuste de pesos. Se parte aleatoriamente y se usa la gradiente
+- el perceptron separa las clases en forma lineal
+- las rdes neuronale multicapas son para problemas que no son
+  linealmente dependientes. Para resolver en casos que la región a
+  separar no es lineal. Ejemplo son círculos concéntricos
+- el algoritmo de backpropagation se usa cuando existen varias capas.
+- Overfitting sobre ajuste de los datos :: la red presenta una metrica
+  de evaluacion con un muy buen score en los datos de entrenamiento
+  pero pobre en los datos de testeo
+- Dropout :: desactiva neuronas aleatoriamente durante el entrenamiento
+- Frameworks de DeepLearning:
+  - Pytorch
+  - Tensorflow [[https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.64829&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false][tensorflow-playground]]
+*** Computer vision
+- imagen :: matriz de pixels con valores en tres capas RGB en un rango de 0 a 255
+- convolución :: filtro que usa un kernel que extrae características
+  de una región de la imágen. algo parecido a un detector de bordes
+- la convolucion permite disminuir el tamaño de la matriz de la imagen
+  y obtener valores segun el conocimiento local
+- el detector de borde:
+  |-1|-1|-1|
+  |-1|8|-1|
+  |-1|-1|-1|
+- pooling :: obtiene un valor del resultado de la convolucional e.g. el max-pooling
+- flattening ::
+- los pasos de convolucion y pooling se repitenn varias
+  veces. mientras estoy raliezando convolution and pooling estoy en
+  low level features, es decir reconociendo curvas y bordes y al final
+  de la red ya tengo una operación de alto nivel que sería reconocer objetos.
+- redes neuronales convolucionales sirven para reconcoer objetos en imagenes 
+** Summary
