@@ -467,3 +467,50 @@ ir y verla. Pensar en ellos y ponerlos como prioridad.
 ** TODO tareas [%]
 - [ ] Revisar las publicaciones accesibles desde la EPN
 ** Summary
+* Semana 3 Preguntas
+1. La investigación en cáncer de mama tiene un impacto social directo
+   ya que permite introducir a la inteligencia artificial como un
+   apoyo al diagnóstico del padecimiento e inclusive reducir tiempos
+   de atención. Se prevee que dada la longevidad y las bajas tasas de
+   natalidad, en un futuro será necesario apoyarse tecnológicamente en
+   la interpretación de imágenes médicas para poder atender al
+   creciente número de pacientes
+2. El área de estudio de Machine Learning aplicado a cáncer de mama
+   tiene una afectación seria en el tema ético debido a que los datos
+   que se utilizan proveen de seres humanos lo que obliga la
+   conformación y aprobación de comités éticos para el uso de los datos.
+3. Principalmente haciendo uso de Twitter siguiendo a personalidades
+   de interés como Sebastian Rashka, Andrew Ng, Yann Lecunn, G Hinton
+   y canales como Deeplearning.ai que hacen diversos posts webs como
+   The Batch donde colocan información actual y de tipo Trend en IA.
+4. He colaborado con otros investigadores a través de las red social
+   de LinkedIn y Research Gate a través de las cuáles he recibido
+   preguntas sobre las publicaciones y los datos utilizados.
+5. Creo que el tomar un doctorado es en sí un desafío y cada día que
+   se desarrolla un poco del proyecto de investigación contribuye a la
+   solución. Principalmente, trato de apoyarme en una actualización
+   continua por medio de las redes y los papers para poder tener una
+   comprensión general de los temas abordados.
+6. Considero que un desarrollo serio en el tema de Inteligencia
+   Artificial y Cáncer de Mama puede aportar sobre todo estableciendo
+   un marco o benchmark adecuado para la evaluación de los modelos
+   basados en aprendizaje automático.
+7. La manera de equilibrar es verificar si las proposiciones que hago
+   tengan relación o existan en el corpus bibliográfico. Esto me
+   permite saber si algún otro investigador está realizando trabajo
+   relacionado y pueda incluirlo en la revisión de literatura.
+8. Considero que la IA General está siendo desarrollada. Por esta
+   razón, se puede hablar de las expectativas que se tiene sobre sus
+   avances como apoyar a la investigación en cáncer, frenar el
+   calentamiento climático, etc.
+9. La IA Generativa actualmente incide en diferentes partes de la
+   sociedad. El desarrollo de los GPT y otros modelos de lenguaje se
+   pueden usar como asistentes para la redacción y la consulta de
+   datos. También modifica la manera en que interactuamos con las
+   máquinas. Sin embargo, problemas como la alucinación son puntos de
+   mejora y a ser vigilados para mejorar el sistema.
+10. Considero que una manera fácil de socializar el conocimiento
+    científico sería la publicación y mantenimiento de blogs en donde
+    se discuta sobre los proyectos de investigación y también escribir
+    sobre temas de la inteligencia artificial. Algo como IA y la
+    comunidad.
