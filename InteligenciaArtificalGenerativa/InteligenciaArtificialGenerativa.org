@@ -195,7 +195,6 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - MLE selecciona que valores de parámetros $\theta$ que maximizan la verosimilitud
 - hay varios approaches para el modelado de la función de
   densidad. esto se conoce como taxonomía
-
 ** Summary
 ** TODO Tarea [100%]
 - [X] leer el paper del aula virtual. Presentar conclusiones.
@@ -259,9 +258,13 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - la convolucion permite disminuir el tamaño de la matriz de la imagen
   y obtener valores segun el conocimiento local
 - el detector de borde:
-  |-1|-1|-1|
-  |-1|8|-1|
-  |-1|-1|-1|
+  |----+----+-----|
+  | -1 | -1 |  -1 |
+  |----+----+-----|
+  | -1 |  8 |  -1 |
+  |----+----+-----|
+  | -1 | -1 | - 1 |
+  |----+----+-----|
 - pooling :: obtiene un valor del resultado de la convolucional e.g. el max-pooling
 - flattening ::
 - los pasos de convolucion y pooling se repitenn varias
@@ -270,3 +273,40 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
   de la red ya tengo una operación de alto nivel que sería reconocer objetos.
 - redes neuronales convolucionales sirven para reconcoer objetos en imagenes 
 ** Summary
+* 2024-10-16 Redes ConvNet VGG
+** Questions and keywords
+- embeddings ::
+- en verdad se puede usar una red convolucional en series de tiempo? ::
+- segun la profesora que no va redes neuronales recurrentes en series de tiempo?? :: 
+- espectograma ::
+- bloques residuales :: 
+** Notes
+*** CNN
+- importante la invarianza a la traslación
+- las convnets son versatiles par usar modelos pre-entrenados
+- la primeras capas detectan caracteristicas simples como bordes
+- el modelo de redes neuronales convolucionales pueden adaptarse a
+  otros problemas porque reconocen patrones
+- invarianza a la posición
+- procesan datos en secuencia???
+- procesan datos en paralelo???
+- modelos pre-entrenados:
+  - vgg16:
+    - Desarrollado en Oxford
+    - Uso repetido de convolucionales con filtros de $3 \times 3$
+    - 16 capas : 13 conv + 3 densas
+    - capas de max pooling
+    - el vector de caracteristica 4096
+  - resnet50
+  - inceptionv3
+*** Series de tiempo
+- determinar coomo funcionan las convnets en series de tiempo
+*** Speech recognition
+- ????
+  
+** Summary
+** TODO Tareas
+- [ ] consulta sobre embeddings aula virtual
+  - [ ] word2vec
+  - [ ] glove
+  - [ ] bert
