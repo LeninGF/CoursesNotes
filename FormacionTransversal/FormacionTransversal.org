@@ -514,3 +514,48 @@ ir y verla. Pensar en ellos y ponerlos como prioridad.
     se discuta sobre los proyectos de investigación y también escribir
     sobre temas de la inteligencia artificial. Algo como IA y la
     comunidad.
+* 2024-10-17 Transferencia de Conocimiento
+** Questions and keywords
+- Qué modelos de transf de conocimeinto usa la EPN?
+- persuación es típico del marketing
+- compatibilidad con valores, creencias y necesidades??
+** Notes
+- Identificar modelos de transferencia de conocimeinto
+- Modelo de Innovacion de Rogers :: tiene las siguientes etapas
+  - conocimiento: expone la *innovación*
+  - se procede a una etapa de persuación con ventajas y desventajas
+  - se procede a tomar la *decisión* de adoptar o rechazar la innovación
+  - proceso de *implementación*
+  - los tipos de adoptantes son: innovadores 2.5%, adoptantes
+    tempranos 13.5%, mayoría temprana 34%, mayoría tardía
+    34%,rezagados 16%
+- una innovación puede quedar afectada para su difusión dependiendo de
+  las *ventajas relativas*, la *compatibilidad*, la *complejidad*,
+  *observabilidad*
+- Modelo de Aprendizaje Social de Bandura :: ocurre en un contexto
+  social. La transferencia de conocimiento se da por la interacción
+  social. Se aplica principalmente en entornos educativos.
+- Modelo SECI :: tiene 4 aspectos
+  - Socialización :: compartir por interacción
+  - Externalización :: articulación de ideas
+  - combinación :: crear nuevo conocimiento mediante la combinación de
+    diferentes cuerpos
+  - internalización :: aprender y aplicar el conocimiento
+- Modelo de 4 etapas de Choo :: tiene 4 etapas
+  - diagnostico organizacional
+  - identificar y recolectar conocimiento
+  - organizar y compartir el conocimiento
+  - adaptación de herramientas
+- Modelo basado en la relación :: se fundamenta en las redes de
+  confianza
+- la transferencia del conocimiento permite *innovar*, *desarrollar
+  las organizaciones* y promueve una cultura de *aprendizaje continuo*
+*** Taller
+- averiguar que factores influyen en la transferencia de conocimeinto
+- encontrar ejemplos de exito de transferencia del conocimiento
+** Summary
+** TODO tarea
+- [ ] averiguar en donde subir y resolver los tres puntos
+- [ ] factores que influyen en transf
+- [ ] desafios de transf tecn
+- [ ] ejemplos exitosos
