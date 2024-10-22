@@ -183,9 +183,9 @@ publicaciones y otros detalles.
 ** Questions and keywords
 ** Notes
 ** Summary
-** TODO Tareas [0%]
+** TODO Tareas [8%]
 - [ ] Uniformar el número de autores con mi nombre y publicaciones en Scopus
-- [ ] Generar Orcid una vez solucionado en Scopus
+- [X] Generar Orcid una vez solucionado en Scopus
 - [ ] Colocar el Perfil de Orcid como Sandra Sanchez
 - [ ] Revisar Mendeley
 - [ ] Revisar IEEE xplore
@@ -223,15 +223,22 @@ publicaciones y otros detalles.
 - narrativa efectiva :: en vez de presentar datos, presentar historias
 - participación activa :: debates, encuestas, conectar con audiencia
 ** Summary
-** Todo Tareas
-- [ ] Comentar la tarea de Mario
-- [ ] Sergio Luján-Mora revisar el perfil del catedrático
+** Todo Tareas [100%]
+- [X] Comentar la tarea de Mario
+- [X] Sergio Luján-Mora revisar el perfil del catedrático
 * 2024-10-09 Sergio Lujan Presentación Científica Visual y Oral
 ** Questions and keywords
 - congreso :: presentación oral del trabajo científico. 
-- journal ::
-- poster ::
-- se puede hacer un poster en latex ::
+- journal :: publicación en revistas de un trabajo escrito
+- poster :: es una exposición en la conferencia en donde los
+  investigadores utilizan una presentación visual y exponen oralmente
+  sobre su investigación. Sirve para formar contactos y obtener retro
+  alimentación por parte de las personas que se interesan en el
+  trabajo
+- se puede hacer un poster en latex :: [[https://www.ctan.org/pkg/beamerposter][beamerposter]],
+  [[https://github.com/deselaers/latex-beamerposter/tree/master][latex-beamer-poster-github]], [[https://groups.google.com/g/beamerposter][google-group]],[[https://tex.stackexchange.com/questions/341/how-to-create-posters-using-latex][discussion-tex-exchange]]. La
+  posición general es que no se use LaTeX. simplemente powerpoint. Sin
+  embargo existe en [[https://www.overleaf.com/learn/latex/Posters][Overleaf]]
 - qué herramientas están disponibles para crear pósters word? adobe? cuáles has usado? ::
 - se podría usar QR en un poster :: powerpoint (suficiente con cambio
   de tamaño de diapositiva), adobe design, photoshop
@@ -389,9 +396,10 @@ publicaciones y otros detalles.
 - ciudado con que la animacion pase sola y no da tiempo a leer
 ** Summary
 La presentación no es para mí sino para las personas que asisten para
-ir y verla. Pensar en ellos y ponerlos como prioridad.
-** TODO Tareas [%]
-- [ ] localizar bueanspresentaciones.es
+ir y verla. Pensar en ellos y ponerlos como prioridad. El sitio web de
+Sergio Lujan está en [[http://buenaspresentaciones.es/][buenaspresentaciones.es]]
+** TODO Tareas [25%]
+- [X] localizar bueanspresentaciones.es
 - [ ] localizar las plantillas de poster
 - [ ] localizar acm avoid the big five presentation mistake
 - [ ] localizar el libro de Sergio Lujan 
