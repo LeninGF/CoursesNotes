@@ -1,0 +1,315 @@
+
+#+title: Word Embeddings
+#+date: 2024-10-20
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+bibliography: bibliography.bib
+#+cite_export: biblatex
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: Madrid
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee,autolang=other,maxcitenames=99, maxbibnames=99]{biblatex}
+
+* Introducción
+\subsection{Word Embeddings}
+** Word Embeddings
+- Son representaciones vectoriales densas de las palabras en un espacio vectorial continuo
+- *Objetivo:* capturar relaciones *semánticas* y *sintácticas* entre palabras
+- Permiten que las máquinas comprendan y procesen el lenguaje natural
+\subsection{Neural Word Embeddings}
+** Neural Word Embeddings
+- Utilizan redes neuronales artificiales
+- La arquitectura predice la palabra siguiente dado un conjunto de
+  palabras vecinas en una secuencia
+- Los pesos aprendidos en las capas ocultas sirven como
+  representaciones numéricas vectoriales [cite:@SezererSurvey2021]
+\subsection{Modelado de Lenguaje}
+** Modelado de Lenguaje
+- Un modelo del lenguaje asigna probabilidades a una secuencia de palabras
+- Se asume que la probabilidad de cada palabra es independiente
+- La probabilidad es el producto de las probabilidades condicionales de cada subsecuencia
+\begin{equation}
+  \label{}
+  P(x_1,\dots,x_t) = P(x_1)P(x_2|x_1)P(x_3|x_2,x_1)\dots P(x_t|x_{t-1},\dots,x_1 )
+\end{equation}
+
+\begin{equation}
+  \label{}
+  P(x_1,\dots,x_t) = \prod_{i=1}^tP(x_i|x_{i-1},\dots,x_1 )
+\end{equation}
+
+* Word2vec
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+** Word2Vec
+- Propuesto por \citeauthor{mikolov2013efficient} en 2013 [cite:@mikolov2013efficient]
+- El modelo está formado por dos arquitecturas principales:
+  1. Continuos Bag-of-Words (CBOW): predice una palabra en función del contexto[fn:1]
+  2. Skip-gram: Dada una palabra predice las palabras de contexto
+- CBOW y Skip-gram aprenden /word-embeddings/ mediante el
+  entrenamiento de una /shallow neural network/ en un gran *corpus* de texto
+- Los /word vectors/ aprendidos capturan relaciones semánticas y sintácticas
+- *Palabras de significado similar* tienen *representaciones vectoriales similares*
+- Operaciones algebraicas lineales sobre /word vectors/ revelan
+  analogías interesantes
+** Continuos Bag of Words (CBOW)
+- Las palabras de contexto se tratan como un /bag/[fn:2] *sin considerar su orden*
+- El modelo calcula el promedio de los /context word vectors/
+\begin{equation}
+  \label{}
+  p(w_t | w_c) = softmax(w_c \cdot w_t)
+\end{equation}
+
+donde:
+- $w_t$ es el /target word vector/
+- $w_c$ es el /average context word vector/
+
+** Skip-gram
+- El modelo aprende a identificar las palabras que aparecen
+  frecuentemente cerca de la /target word/
+\begin{equation}
+  \label{}
+  p(w_c | w_t) = \prod_{w_i \in context} p(w_i | w_t)
+\end{equation}
+
+Donde:
+- $w_c$: representa las /context words/
+- $w_t$: es el /target word vector/
+* GloVe
+** GloVe
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- GloVe: Global Vectors for Word Representation
+- Desarrollado por \citeauthor{pennington2014glove} en 2014 [cite:@pennington2014glove]
+- Combina las fortalezas de métodos de Global Matrix
+  Factorization[fn:3] y métodos locales de contexto de ventana[fn:4]
+- Usa /global-word-co-ocurrence/ para aprender representaciones de las palabras
+- El modelo predice la probabilidad de co-ocurrencia de dos palabras
+  basado en sus representaciones vectoriales
+- GloVe aprende embeddings de palabras que codifican relaciones
+  semánticas al minimizar la diferencia entre las probabilidades de
+  co-ocurrencia predichas y reales.
+\begin{equation}
+  \label{}
+  w_i^T w_j + b_i + b_j = log(X_{ij})
+\end{equation}
+donde
+- $w_i$ and $w_j$ son los vectores de las palabras $i$ y $j$
+- $b_i$ and $b_j$: son los bias
+- $X_{ij}$: cuenta de co-ocurrencia de las palabras $i$ y $j$x
+- GloVe tiene un rendimiento /state of the art/ en cálculo de
+  similitud, analogía con palabras y /named entity recognition/
+* BERT EMBEDDINGS
+** BERT EMBEDDINGS
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Propuesto en 2018 por
+  \citeauthor{devlinBert2018} [cite:@devlinBert2018]
+- BERT: Bidirectional Encoder Representations from Transformers
+- Modelo de Deep Learning basado en la arquitectura de *Transformers*
+- Entrenado en un dataset masivo de texto no etiquetado
+- Utilzó dos técnicas *no supervisadas*  su diseño:
+  1. Masked Language Modeling(MLM)
+  2. Next Sentence Prediction
+- El diseño bi-direccional permite capturar contexto de una palabra en
+  ambos sentidos (derecha $\rightarrow$ izquierda e izq $\rightarrow$
+  der)
+- El modelo pre-entrenado de BERT puede ser /fine-tuned/ para tareas
+  específicas de NLP (e.g. clasificación)
+- BERT ha alcanzado un desempeño *state of the art* en resolver 11
+  tareas de Lenguaje Natural (e.g. question-answering, named entity
+  recognition, language inference, etc.)
+- Se usa una sola arquitectura para resolver diferentes tareas.
+- Se utilizaron dos etapas para conformar BERT: pre-training y
+  fine-tuning
+|--------------------+-------|
+| Métrica            | Score |
+|--------------------+-------|
+| GLUE[fn:5]         | 80.5% |
+| MultiNLI Acc[fn:6] | 86.7% |
+| SQuAD[fn:7]        | 93.2% |
+|--------------------+-------|
+** BERT EMBEDDINGS
+#+CAPTION: Procedimientos de pre-training y fine-tuning
+[[./images/BERT-PreTrainingFineTuning.png]]
+** Masked Language Modeling (MLM)
+- Consiste en enmascarar aleatoriamente algunos de los tokens de
+  entrada y predecir el id del vocabulario original de la palabra enmascarada
+- El enmascaramiento es necesario para evitar que el modelo haga
+  predicciones triviales
+- El porcentaje de enmascaramiento utilizado es del 15%.
+- Los vectores del /hidden state/ final correspondientes a los tokens
+  de máscara se pasan por una /softmax/ sobre el vocabulario
+- No consiste en hacer una reconstrucción (denoising auto-encoder)
+- Una limitante de este procedimiento es que se genera una
+  discrepancia entre el pre-training y el fine-tuning ya que el token
+  enmascarado no aparecería en el fine-tuning
+** Next Sentence Prediction (NSP)
+- Varias tareas de Lenguaje Natural como Question Answering (QA),
+  Natural Language Inference (NLI) dependen de comprender la relación
+  entre 2 oraciones.
+- Consiste en la predicción binaria de la siguiente oración. Es decir
+  dadas dos oraciones $A$ y $B$, el 50% del tiempo $B$ es la siguiente
+  oración[fn:8] y 50% del tiempo es una oración aleatoria cualquiera[fn:9]
+- Permite mejorar la capacidad de entender el contexto en y la
+  coherencia en textos largos
+
+** Arquitectura
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Transformer encoder bidireccional multi capa basado en el diseño de
+  \citeauthor{vaswani2017attention} [cite:@vaswani2017attention]
+- Sea $L$ el número de bloques de Transformer (capas), $H$ el /hidden
+  state/ y $A$ el número de /self attention heads/, entonces:
+|---------------+--------------------------+------------|
+| Modelo        | Arquitectura             | Parámetros |
+|---------------+--------------------------+------------|
+| *BERT_{BASE}* | $L=12$, $H=768$, $A=12$  | 110M       |
+| *BERT_{BASE}* | $L=24$, $H=1024$, $A=16$ | 340M       |
+|---------------+--------------------------+------------|
+- La entrada del modelo permite representar tanto oraciones solas como
+  pares de oraciones (e.g. Pregunta, Respuesta) en una sola secuencia
+  de tokens.
+- BERT utiliza /WordPiece embeddings/ con un vocabulario de 30000
+  tokens.
+- WordPiece embeddings permite manejar palabras desconocidas o fuera
+  del vocabulario al dividir las palabras en subunidades (e.g. playing
+  $\rightarrow$ play y ##ing)
+- La entrada combina: /token embeddings/, /segment embeddings/ y
+  /position embeddings/
+- Token Embeddings: dispone de un vocabulario de 30000 tokens
+- Segment Embeddings: Distingue entre pares de oraciones.
+- Position Embeddings: Codifican (/Encode/) la posición de cada token
+  en la secuencia
+#+CAPTION: Input Embeddings
+[[./images/BERT-Input.png]]
+** Cálculo de BERT Embeddings
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+Para obtener los BERT embeddings se utiliza la librería de HuggingFace
+#+BEGIN_EXPORT latex
+\tiny
+#+END_EXPORT
+#+begin_src python :session :results output :exports both
+from transformers import BertTokenizer, BertModel
+import torch
+print(torch.__version__)
+#+end_src
+
+#+RESULTS:
+: 2.4.1
+#+BEGIN_EXPORT latex
+\normalsize
+#+END_EXPORT
+Se procede a cargar el tokenizador pre-entrenado y el modelo
+#+BEGIN_EXPORT latex
+\tiny
+#+END_EXPORT
+#+begin_src python :session :results output :exports both
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertModel.from_pretrained('bert-base-uncased')
+#+end_src
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+\normalsize
+#+END_EXPORT
+Se declara un texto y se lo codifica
+#+begin_comment
+物以类聚 人以群分 Birds of a feather flock together.
+放长线钓大鱼 throw a long line to catch a big fish — adopt a long-term plan to secure sth big
+放下屠刀，立地成佛  Put down the butcher's knife and become a Buddha on the ground
+百万买宅，千万买邻 Millions buy homes, thousands buy neighbors
+百足之虫，死而不僵 A hundred footed insect, dead but not stiff
+#+end_comment
+#+BEGIN_EXPORT latex
+\tiny
+#+END_EXPORT
+#+begin_src python :session :results output :exports both
+text = "42 is the answer to the ultimate question of life, the Universe and Everything"
+encoded_input = tokenizer(text, return_tensors='pt')
+token_ids = encoded_input['input_ids']
+attention_mask = encoded_input['attention_mask']
+print(f"Token ID: {token_ids}")
+print(f"Attention mask: {attention_mask}")
+#+end_src
+
+#+RESULTS:
+: Token ID: tensor([[ 101, 4413, 2003, 1996, 3437, 2000, 1996, 7209, 3160, 1997, 2166, 1010,
+:          1996, 5304, 1998, 2673,  102]])
+: Attention mask: tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])
+#+BEGIN_EXPORT latex
+\normalsize
+#+END_EXPORT
+Obtención de los Embeddings
+#+BEGIN_EXPORT latex
+\tiny
+#+END_EXPORT
+#+begin_src python :session :results output :exports both
+with torch.no_grad():
+   outputs = model(**encoded_input)
+   embeddings = outputs.last_hidden_state
+print(f"Word Embeddings Shape: {embeddings.shape}")
+#+end_src
+
+#+RESULTS:
+: Word Embeddings Shape: torch.Size([1, 17, 768])
+#+BEGIN_EXPORT latex
+\normalsize
+#+END_EXPORT
+Decodificando los tokens
+#+BEGIN_EXPORT latex
+\tiny
+#+END_EXPORT
+#+begin_src python :session :results output :exports both
+decodedText = tokenizer.decode(token_ids[0], skip_special_tokens=False)
+print(f"Decoded Text: {decodedText}")
+tokenizedText = tokenizer.tokenize(decodedText)
+print(f"Tokenized Text: {tokenizedText}")
+encodedText = tokenizer.encode(text, return_tensors='pt')  
+print(f"Encoded Text: {encodedText}")
+#+end_src
+
+#+RESULTS:
+: Decoded Text: [CLS] 42 is the answer to the ultimate question of life, the universe and everything [SEP]
+: Tokenized Text: ['[CLS]', '42', 'is', 'the', 'answer', 'to', 'the', 'ultimate', 'question', 'of', 'life', ',', 'the', 'universe', 'and', 'everything', '[SEP]']
+: Encoded Text: tensor([[ 101, 4413, 2003, 1996, 3437, 2000, 1996, 7209, 3160, 1997, 2166, 1010,
+:          1996, 5304, 1998, 2673,  102]])
+#+BEGIN_EXPORT latex
+\normalsize
+#+END_EXPORT
+* Referencias Bibliográficas
+** Referencias Bibliográficas
+#+print_bibliography:
+* Footnotes
+[fn:9]NotNext 
+
+[fn:8]IsNext 
+[fn:7]SQuAD:Stanford Question Answering Dataset
+[fn:6]MultiNLI:Multi-Genre Natural Language Inference (MultiNLI)  
+
+[fn:5]GLUE: General Language Understanding Evaluation 
+[fn:4]Skip-gram 
+
+[fn:3]Latent Semantic Analysis(LSA) 
+[fn:2]Bolsa 
+
+[fn:1]Palabras que rodean a la palabra objetivo 

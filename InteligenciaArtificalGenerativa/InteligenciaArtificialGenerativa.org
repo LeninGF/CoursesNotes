@@ -310,3 +310,29 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
   - [ ] word2vec
   - [ ] glove
   - [ ] bert
+* 2024-10-21 Redes Resneet
+** Questions and keywords
+- bloque residual::
+- revisar el ejemplo de calculo en los slides
+- ¿permite el bloque residual aumentar el número de capas de una red?
+- en los slides se menciona que fine tuning es reentrenar por completo
+  pero partiendo de los pesos pre-entrenados
+- ¿resnet 150 dice que tiene 177 capas?
+- congelamiento de capas :: sólo entrena las últimas capas (extractor de características)
+** Notes
+- La red Resent aprende la diferencia entre la función sin activación y la entrada $f(Wx+b)-x$
+- Ejemplo x=2, W=0.5 y b=1. Considere Relu $f(z)=max(0,z)$
+- evita que la gradiente se desvanezca al utilizar el residuo
+- la neurona residual puede mantener el valor original sin cambios (salida cercana a la entrada)
+- asegura que fluya el gradiente
+- Ejemplos de redes resnet es ResNet50, ResNet152
+- Se puede usar para hacer fine-tuning
+- se puede usar en freeze layers
+- Resnet son utilizadas en aplicacinoes de visión por computador (e.g. detección de objetos)
+- Fine - Tuning:
+  - Tiene más probabilidad de Overfitting si los datos son pocos
+  - es adecuado si se tiene un conjunto grande de datos
+- Layer Freeze:
+  - para conjuntos de datos de pocos samples
+- Ejercicio 1 clasificación de imágenes con freeze layers
+** Summary
