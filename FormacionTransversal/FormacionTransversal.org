@@ -559,3 +559,93 @@ ir y verla. Pensar en ellos y ponerlos como prioridad.
 - [ ] factores que influyen en transf
 - [ ] desafios de transf tecn
 - [ ] ejemplos exitosos
+* 2024-10-22 Evaluación de Comunicación Científica
+** Questions and keywords
+- comunicación científica :: transmitir hallazgos, métodos,
+  resultados, conceptos científicos a un público específico
+  (académico, empresas). Integra tanto la divulgación y la difusión
+  científica. tiene por objetivo una transmisión efectiva del
+  conocimiento
+- canales :: medios de comunicación e.g. Vicerrectorado de
+  Investigación tiene una unidad de Difusión. Por ejemplo, canales
+  disponibles a través de la EPN. ¿¿¿¿¿¿¿¿Canales del MSP????????
+  También puede ser los congresos y las revistas
+- divulgación científica :: hacer accesible la información científica
+  al público general (fuera del ámbito académico).
+- ¿autogestionar lo del blog de IA? ::
+- CUIDADO :: se evaluara la creatividad en el tema del PodCast
+- Difusión Científica :: promoción de resultados científicos a público especializado
+- Métodos para evaluación de la Comunicación científica :: Factor de
+  impacto, revisión por pares
+- Factor de Impacto :: frecuencia de citación de los artículos.
+- Indice de Impacto :: son un instrumento para evaluar la *importancia
+  relativa* dentro de un mismo campo científico. el JCR tiene el
+  Factor de Impacto [[https://biblioguias.uam.es/tutoriales/JCR/Factor_Impacto][FactorImpacto]]
+- indice h :: productividad del investigador e impacto
+- revisión por pares :: proceso crítico de expertos sobre trabajos
+  antes de su publicación garantizando la calidad y validez de la
+  investigación. a través de varias iteraciones. Dota de credibilidad
+  y calidad
+- JCR :: [[https://biblioguias.uam.es/tutoriales/JCR/Factor_Impacto][JCR-FactorImpacto]] Este factor permite medir la importancia de la revista
+** Notes
+- existen métricas para medir la calidad de la comunicación e.g. que
+  tán accesible se hace el conocimiento científico
+- garantiza la difusión de la investigación entre expertos y al público general
+- puede ser verbal o escrita
+- usa diferentes medios: revistas, congresos, vídeos, redes sociales, github
+- estudiar el público implica conocer el público al que le llega la
+  comunicación de la investigación (e.g. Salud)
+- divulgacion cientifica != comunicación científica
+- la divulgación científica se hace a través de libros y artículos
+  (tal vez como en el periódico ya que no es académico), programas de
+  tv, redes, charlas públicas.
+- La *difusión científica* se hace a travpes de publicaciones
+  cientificas como revistas, papers, conferencias, posters, simposios.
+- la comunicación cientifica permite la promocion de pensamiento
+  critico, toma de decisiones informadas y el acceso a la información.
+- la complejidad del lenguaje es un desafío de la comunicación científica
+- la comunicacion cientifica permite combatir la desinformación
+- la comunicación cientifica es un proceso de desarrollo para
+  comunicarse con colegas y colaboradores y críticos
+- evaluación de revistas :: indice h, factor de impacto (en un rol secundario redes soc)
+** Factor de Impacto
+- indice bibliométrico
+- compara revistas y evalua su importancia relativa
+- compara el número de citas en un año $y_i$ en los artículos
+  publicados en $y_{i-1}$ y $y_{i-2}$ con respecto al total de
+  artículos publicados en esos años. Sea el número de citas en un año
+  $i$ designado por $C_{t_i}$ y el total de artículos en un año
+  $A_{t_i}$, entonces el factor de impacto es:
+
+$$FI_{t_i}=\frac{C_{t_i}}{A_{t_{i-1}}+A_{t_{i-2}}}$$
+- La revista politécnica ha pasado de LatinIndex a WOS y ahora es SCOPUS.
+** Alternativas al FI:
+- SCImago con el índice SJR para *SCOPUS*
+- Journal Citation Indicator JCI
+- El análisis de la revista en Web Of Science se puede hacer en
+  [[https://jcr.help.clarivate.com/Content/jcr3-journal-profile.htm][JournalCitationReportClarivateWOS-help]]
+** Revistas de Interés para yo
+- He encontrado en un libro en scholar: [[https://link.springer.com/chapter/10.1007/978-3-030-32606-7_2][medicalImageSegmentationUsingDL]]
+** Revistas
+- checkar que tenga scopus: [[https://www.risti.xyz/index.php/es/][RISTI]] de procedencia española
+- checkar la revista de la poli
+** Importante
+- En el tema de PodCast se quiere evaluar la novedad, la creatividad y
+  el ingenio en la presentación.
+- También quiere evaluar el tema del blog
+- **Requisito del Doctorado que sea publicado en el WOS y el JCR**
+** Guías para Evaluar las Revistas
+- [[https://biblioguias.uam.es/tutoriales/JCR/Factor_Impacto][https://biblioguias.uam.es/tutoriales/JCR/Factor_Impacto]]
+- [[https://www.scimagojr.com/][https://www.scimagojr.com/]]
+- [[https://www.recursoscientificos.fecyt.es/servicios/formacion/material][CoursosInformacionClariVite]]
+- [[https://www.um.es/web/biblioteca/investigar-publicar/apoyo-investigacion/produccion-cientifica][apoyoProduccionCientificaUniversidadMurcia]]
+- [[https://clarivate.com/webofsciencegroup/support/support-jcr/][GettingStartedJCR]] :: ayuda de Clarivate sobre temas de JCR y otros demonios
+- [[https://www.springernature.com/gp/authors][Guia de Autores Springer]]
+** Guía de Evaluación de Congresos
+- Para buscar el congreso se puede hacer una busqueda en google con
+  los términos:
+#+begin_quote
+call for papers 2024 in ai with special issues
+#+end_quote
+- Para ver si esta rankeado el congreo buscar: [[https://portal.core.edu.au/conf-ranks/][conference ranking core]]
+** Summary
