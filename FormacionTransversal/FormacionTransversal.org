@@ -20,7 +20,7 @@
 ** Summary
 #+end_comment
 
-#+end_comment
+
 * Introducción 2024-10-01 
 ** Questions and keywords
 - Voxel-Based Morphometry :: permite comparar diferencias
@@ -619,11 +619,13 @@ ir y verla. Pensar en ellos y ponerlos como prioridad.
 
 $$FI_{t_i}=\frac{C_{t_i}}{A_{t_{i-1}}+A_{t_{i-2}}}$$
 - La revista politécnica ha pasado de LatinIndex a WOS y ahora es SCOPUS.
+- el factor de impacto es un valor absoluto sin maximo
 ** Alternativas al FI:
 - SCImago con el índice SJR para *SCOPUS*
 - Journal Citation Indicator JCI
 - El análisis de la revista en Web Of Science se puede hacer en
   [[https://jcr.help.clarivate.com/Content/jcr3-journal-profile.htm][JournalCitationReportClarivateWOS-help]]
+- indice i10 de google scholar
 ** Revistas de Interés para yo
 - He encontrado en un libro en scholar: [[https://link.springer.com/chapter/10.1007/978-3-030-32606-7_2][medicalImageSegmentationUsingDL]]
 ** Revistas
@@ -648,4 +650,24 @@ $$FI_{t_i}=\frac{C_{t_i}}{A_{t_{i-1}}+A_{t_{i-2}}}$$
 call for papers 2024 in ai with special issues
 #+end_quote
 - Para ver si esta rankeado el congreo buscar: [[https://portal.core.edu.au/conf-ranks/][conference ranking core]]
+** Enlaces revisados en clase
+- [[https://ietresearch.onlinelibrary.wiley.com/?skip=true][https://ietresearch.onlinelibrary.wiley.com/?skip=true]]
+- [[https://www.risti.xyz/index.php/es/indexacion][https://www.risti.xyz/index.php/es/indexacion]]
+** Summary
+* Taller 23-10-2024
+** Questions and keywords
+- para que sirve la pagina mdpi :: 
+** Notes
+- existe otras metricas disponibles
+- google scholaqr permite ver las metricas de una revista si el acceso
+  esta restringido por WOS
+- revisar el siguiente link sobre [[https://guides.libraries.uc.edu/information_technology][information technology]]
+- otro enlace a revisar [[https://www.mdpi.com/journal/applsci/about][mdpi]]
+- revisar las metricas y los rankings en google scholar [[https://scholar.google.com/citations?view_op=top_venues&hl=en][top publications]]
+** TODO tarea [%]
+- [ ] hacer los pasos de la guía de [[https://guides.libraries.uc.edu/c.php?g=222356&p=1474532][cincinati-research-impact]]
+- [ ] revisar la fecha de la prueba
+- [ ] Revisar [[https://clarivate.libguides.com/jcr][https://clarivate.libguides.com/jcr]]
+- [ ] Revisar [[https://biblioguias.uam.es/evaluacion/calidad_publicaciones][https://biblioguias.uam.es/evaluacion/calidad_publicaciones]]
+- [ ] Revisar [[https://biblioguias.ucm.es/calidad-revistas/eigenfactor][https://biblioguias.ucm.es/calidad-revistas/eigenfactor]]
 ** Summary
