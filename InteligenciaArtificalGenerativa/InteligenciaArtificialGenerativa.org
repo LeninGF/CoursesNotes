@@ -336,3 +336,49 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
   - para conjuntos de datos de pocos samples
 - Ejercicio 1 clasificación de imágenes con freeze layers
 ** Summary
+* 2024-10-23 GoogleNet e Inception
+** Questions and keywords
+- inception bloque ::
+- hierarchical sofmax :: se uso en word2vec pero podriamos usar para
+  un pruning?
+- word2vec utiliza CBOW(continuos bag of words) ::
+- one-hot vector ::
+- skip-gram :: predice las palabras de contexto dadas una palabra
+- word2vec se entrena para cada corpus o ya está entrenado? ::
+- cómo usar word2vec en español ::
+- co-ocurrence matrix ::
+- context window ::
+- glove se usa en calculo de similitud :: 
+** Notes
+*** GoogleNet Inception
+- los bloques inception rducen el costo computacional
+*** Ejercicio
+- consiste en modificar la estructura del Inception
+- se usa el cifar 10
+*** Exposiciones - word2vec
+- word2vec permite la matematizacion del lenguaje
+- usa una red neuronal de una capa
+- crea dos matrices principales
+- permite hacer analogías de palabras:
+  Rey - Hombre + Mujer = Reina
+- el coseno de similitud permite saber que las palabras son
+  similares. esto permite verificar que los embeddings funciona
+- contexto limitado
+- capa de entrada: palabras actual
+- capa oculta son las neuronas de los embeddings
+- tiene dos arquitecturas CBOW y skip-gram
+- el objetivo de CBOW es maximizar la probabilidad de predecir la
+  palabra objetivo dada las palabras de contexto
+- skip-gram:
+  - inpt: palabra
+  - capa oculta: 
+  - salida: es el embedding resultante
+*** GLoVe
+- Stanford
+- trabaja relaciones semanticas reina es a rey y sintácticas big a bigger
+- su nucleo es una matriz de co-ocurrencia
+- la matriz de co-ocurrencia cuenta las palabras en una ventana de contexto pares
+- lo malo es que requiere una gran cantidad de datos  para entrenar
+- costoso  para matrices grandes
+
+** Summary
