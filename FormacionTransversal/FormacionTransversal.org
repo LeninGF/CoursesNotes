@@ -685,3 +685,7 @@ call for papers 2024 in ai with special issues
 - [ ] Revisar [[https://biblioguias.uam.es/evaluacion/calidad_publicaciones][https://biblioguias.uam.es/evaluacion/calidad_publicaciones]]
 - [ ] Revisar [[https://biblioguias.ucm.es/calidad-revistas/eigenfactor][https://biblioguias.ucm.es/calidad-revistas/eigenfactor]]
 ** Summary
+** 2024-10-24 Exposiciones
+** TODO podcast [%]
+- [ ] grabar podcast
+- [ ] guiones
