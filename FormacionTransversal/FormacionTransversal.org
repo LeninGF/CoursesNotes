@@ -689,3 +689,28 @@ call for papers 2024 in ai with special issues
 ** TODO podcast [%]
 - [ ] grabar podcast
 - [ ] guiones
+* 2024-10-29 Publicación Científica Semana 5
+** Questions and keywords
+- Actas de conferencias ::
+- Proceso editorial :: evaluación rigurosa
+- Springer :: ¿como funciona?
+- preprint :: difusión inmediata de investigación antes de revisión
+  por pares. facilitan retroalimentación de la comunidad pero puede no tener valicdación por pares.
+- arxiv :: ¿es arxiv un preprint?
+** Notes
+- Tipos de publicaciones: paper, libros, capítulos
+- congresos y conferencias pueden incluir papers en capítulos, libros o special issues
+- revistas de opinion son de síntesis de temas, para audiencias no
+  especializadas. pueden ser influyentes
+- una tesis doctoral puede abrir una linea de investigacion
+** Summary
+** TODO [0%]
+- [ ] Identificar los requerimientos del doctorado
+- [ ] Iniciar los requerimientos de publicación del doctorado
+- [ ] Revisar que se disponga del libro the craft of scientific writing
+- [ ] Revisar que exista el tema de enlaces de SCOPUS y WOS para educarse en publicaciones
+- [ ] Realizar taller
+  - [ ] checkar peer review en ieee
+  - [ ] checkar peer review en elsevier
+  - [ ] estructura y formato de articulo de revista e informe técnico
+  - [ ] publico objetivo de revista e informe técnico
