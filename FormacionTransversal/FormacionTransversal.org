@@ -714,3 +714,47 @@ call for papers 2024 in ai with special issues
   - [ ] checkar peer review en elsevier
   - [ ] estructura y formato de articulo de revista e informe técnico
   - [ ] publico objetivo de revista e informe técnico
+* 2024-10-31 Identificadores de la publicacion
+** Questions and keywords
+- issn ::
+- isbn ::
+- doi :: digital object identifier
+- existe deposito legal en ecuador? ::
+- checar la tabla de resumen
+** Notes
+- facilitan la busqueda de documentos e.g. doi, isbn, issn
+- los identificadores son:
+  - singulras es decir unicos
+  - son *persistentes* se mantienen indefinidos en el tiempo
+  - estan construidos segun *normas*
+  - son *versatiles* se aplican a diferentes documentos
+- son importantes para una *identificación precisa* de fuentes bibliográficas
+- simplifican el proceso de citación
+- en un futuro se espera que se integren con block-chain
+- en un futuro se espera disponer de identificadores para datasets
+- en un futuro se espera que los modelos de IA queden identificados
+- permiten una gestión eficiente de las colecciones bibliográficas
+*** ISBN Identificador de Libros
+- 5 agrupos de digitos
+- los 3 primeros digitos son materiales
+- los siguientes dos identifican al editor su pais de origen
+- los 4 digitos identifica al editor
+- los 3 digitos el titulo
+- el ultimo digito es de control
+- aparece en la contraportada
+*** ISSN
+- es para publicaciones seriadas como las de Springer
+- usa 8 caracteres
+- se vincula al titulo de la publicación. Un cambio en el titulo lo
+  cambia al códgio
+- no identifica el pais de la editorial o editores
+*** DOI
+- identificador permanente para publicaciones electrónicas
+- usa metadatos
+- facilita citacion de articulos
+- contiene 3 partes
+  - el directorio que es siempre el mismo
+  - luego se tiene el publisher id i.e. identifica al editor se
+    denomina prefijo
+  - el sufijo es un identificador o item id del objeto digital
+** Summary
