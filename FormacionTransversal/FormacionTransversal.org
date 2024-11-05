@@ -20,7 +20,6 @@
 ** Summary
 #+end_comment
 
-#+end_comment
 * Introducción 2024-10-01 
 ** Questions and keywords
 - Voxel-Based Morphometry :: permite comparar diferencias
@@ -199,7 +198,8 @@ publicaciones y otros detalles.
 
 * 2024-10-08 Capítulo 2 Difusión científica
 ** Questions and keywords
-- divulgación científica :: 
+- divulgación científica :: comunicar ideas y descubrimientos
+  científicos al público general
 ** Notes
 - permite acercar al públlico al conocimiento científico
 - creatividad y expresión oral son claves para socializar el conocimiento
@@ -223,6 +223,14 @@ publicaciones y otros detalles.
 - narrativa efectiva :: en vez de presentar datos, presentar historias
 - participación activa :: debates, encuestas, conectar con audiencia
 ** Summary
+La difusión científica tiene por objeto acercar al público al
+conocimiento científico.Debido a que la audiencia puede ser variable,
+es necesario que el investigador se desarrolle de tal manera que pueda
+adecuar su mensaje según el público objetivo. El uso de metáforas y
+analogías permite atraer el interés y facilitar la comprensión de
+conceptos, términos y problemas científicos por parte del público
+general. También se ha de considerar la posibilidad de usar distintos
+recursos como vídeos, podcast y otros.
 ** Todo Tareas [100%]
 - [X] Comentar la tarea de Mario
 - [X] Sergio Luján-Mora revisar el perfil del catedrático
@@ -243,7 +251,7 @@ publicaciones y otros detalles.
 - se podría usar QR en un poster :: powerpoint (suficiente con cambio
   de tamaño de diapositiva), adobe design, photoshop
 - buscar url makesigns tutorials para el tema de poster ::
-- puedo en latex resaltar durante la presentacion :: 
+  - puedo en latex resaltar durante la presentacion :: 
 ** Notes
 - Publicar no es investigar.
 - Publicar es el resultado final de la investigación
@@ -261,7 +269,7 @@ publicaciones y otros detalles.
    presentación. A veces se indica que se debe traer su propio
    ordenador o tableta. Contact al chairman
   - Se tiene que asistir al congreso. Puede vulnerar la publicación indexada
-*** poster científico
+*** póster científico
 - presentación visual de un trabajo A2, A2, A0
 - hace visible el trabajo en propia institución
 - también en encuentro científico
@@ -382,7 +390,7 @@ publicaciones y otros detalles.
 - falta tiempo? no ir de prisa por todas lsa idapositivas recalcar las importantes
 - utiliza el cursor para señlar
 - usar diapositivas en blanco o negro para centrar la atención
-**** Despues de la presentación
+**** Después de la presentación
 - indicar la terminación
 - agradecer la atención
 - abrir turno de preguntas
@@ -395,14 +403,71 @@ publicaciones y otros detalles.
 - uso excesivo de negrita. usarlo para resaltar puntos clave
 - ciudado con que la animacion pase sola y no da tiempo a leer
 ** Summary
-La presentación no es para mí sino para las personas que asisten para
-ir y verla. Pensar en ellos y ponerlos como prioridad. El sitio web de
-Sergio Lujan está en [[http://buenaspresentaciones.es/][buenaspresentaciones.es]]
+Es importante entender que la presentación de un trabajo **no es para
+mí** sino para las personas que asisten para ir y verla. Pensar en
+ellos y ponerlos como prioridad. Existen diferentes modalidades en las
+que se puede presentar un trabajo científico: póster, conferencia,
+artículo. En éste último, se ha de guardar con los lineamientos de la
+editorial y se ha de tener cuidados esencialmente en la redacción del
+documento. Es importante recordar que publicar no es
+investigar. Publicar es el resultado final de la investigación.
+
+Por otro lado, en cuanto a los póster científicos, que son
+presentaciones visuales en distintos formatos de tamaño como A2, A1,
+A0, es importante realizar un buen trabajo visual y estar presente
+durante toda la sesión para recibir la retroalimentación de las
+personas que se acercan a revisar la propuesta de
+investigación. También es un buen inicio en el mundo de publicación
+científica. Se debe cuidar de tener preparado lo que se va a decir en
+el póster. Se puede facilitar la lectura usando números para guiar la
+lectura observando que se lee desde la **esquina superior
+izquierda**. No se debe olvidar que esté presente la filiación y los
+datos de los investigadores. El póster puede permitir formar contactos
+y es importante facilitar información de contacto. El transporte del
+póster debe hacerse con cuidado y prever de sistemas de sujeción
+adecuados. Se debe evitar errores ortográficos y hacer un contraste
+adecuado en los colores usados. En ocasiones la sesión de póster puede
+tener instrucciones explícitas dadas por la organización. Es
+importante que el contenido del póster sea adecuado y no un resumen
+del artículo científico. Si existe, mas bien el póster ha de
+incentivar al lector hacia la lectura del artículo.
+
+En cuanto a las presentaciones en conferencias es importante
+considerar algunos detalles. El principal es la preparación con
+anticipación. Evitar la improvisación. Para esto considerar las
+instrucciones de cada congreso. Estar presente una media hora antes de
+la presentación de la charla. Disponer la presentación en más de un
+formato (i.e. powerpoint, pdf). Tener a la mano USB o computador ya
+que no todos los congresos dan insumos para llevar a cabo la
+presentación. Revisar que los tipos de letras y sus tamaños sean
+adecuados. Puedan ser legibles a unos 3 metros del
+computador. Considerar máximo 6 líneas con 6 palabras por línea. Se
+sugiere un mes de preparación para la charla.
+
+En cuanto a la presentación, está deberá disponer de un índice para
+guiar al auditorio a los puntos que serán expuestos. No se usa
+referencias bibliográficas en la presentación. Y el índice no son las
+secciones del artículo necesariamente. Es más de ser necesario hacer
+énfasis en algún contenido, se puede repetir la presentación a fin de
+evitar el ir hacia atrás en la presentación. Es recomendable disponer
+de diapositivas adicionales para las preguntas o explicar temas
+adicionales. Las figuras deben ser sencillas. Evitar pasar por las
+presentaciones sin comentarlas o ir de prisa por ellas. En caso de
+querer centrar la atención del público, disponer de diapositivas en
+blanco o negro. No olvidar señalar la terminación de la presentación,
+agradecer la atención y abrir el turno para preguntas. Usar el coffee
+break para saber cómo estuvo la presentación. En cuanto a las imágenes
+observar la calidad de la imagen usada. Hacer un uso adecuado de
+mayúsculas y negrita.
+
+El sitio web de Sergio Lujan está en
+[[http://buenaspresentaciones.es/][buenaspresentaciones.es]]
 ** TODO Tareas [25%]
 - [X] localizar bueanspresentaciones.es
 - [ ] localizar las plantillas de poster
 - [ ] localizar acm avoid the big five presentation mistake
-- [ ] localizar el libro de Sergio Lujan 
+- [ ] localizar el libro de Sergio Lujan
+- [ ] Locallizar PosterPresentation.com
 * 2024-10-10 Comunicación
 ** Questions and keywords
 - revisar temas de etiqueta para los congresos :: uso de utensillos
@@ -572,7 +637,6 @@ Enlace a los archivos:
 - [[https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin_falconi_epn_edu_ec/EqzdsHXmcIxGoIr4LoTJtAUB3B_O_HEtP-6a4ltEYk-wig?e=dg16Iy][onedrive]]
 - https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin_falconi_epn_edu_ec/EqzdsHXmcIxGoIr4LoTJtAUB3B_O_HEtP-6a4ltEYk-wig?e=dg16Iy
 
-
 * 2024-10-22 Evaluación de Comunicación Científica
 ** Questions and keywords
 - comunicación científica :: transmitir hallazgos, métodos,
@@ -668,7 +732,7 @@ call for papers 2024 in ai with special issues
 - [[https://ietresearch.onlinelibrary.wiley.com/?skip=true][https://ietresearch.onlinelibrary.wiley.com/?skip=true]]
 - [[https://www.risti.xyz/index.php/es/indexacion][https://www.risti.xyz/index.php/es/indexacion]]
 ** Summary
-* Taller 23-10-2024
+* Taller 2024-10-23
 ** Questions and keywords
 - para que sirve la pagina mdpi :: 
 ** Notes
