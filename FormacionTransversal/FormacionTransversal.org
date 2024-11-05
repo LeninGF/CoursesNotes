@@ -758,3 +758,113 @@ call for papers 2024 in ai with special issues
     denomina prefijo
   - el sufijo es un identificador o item id del objeto digital
 ** Summary
+* 2024-11-05 Partes del Artículo Científico
+** Questions and keywords
+- artículo ciuentífico :: describir resultados a la comunidad científica
+- IMRaD :: Introducción, Métodos, Resultados, Discusión
+- que es la a en Imrad ::
+- Materiales y Métodos :: que uso y como se aplicó. datos usados y que
+  se usó
+- Modelo de Reloj de Arena ::
+- King Model :: 
+- cuál es el problema con la SLR y Materiales y Métodos ::
+- revisar nuevamente como aparecen mis apellidos en publicaciones cientificas ::
+-  :: 
+** Notes
+- La estructura básica de un artículo científico sigue IMRAD
+- la discusión es que significan los resultados y sus implicaciones
+- a parte de Imrad existen la estructura de reloj de arena y king model
+*** Hourglass Model
+- Contiene 3 áreas importantes que son introducción, cuerpo y discusión
+*** King Model
+- a parte de los 3 indicados en reloj de arena se añade: titulo,
+  abstract, hourglass model y referencia
+- introduccion 25%
+- cuerpo 50%
+- discusion 15%
+- referencias 10%
+*** Titulo
+- vende el paper
+- equilibrio entre vago y extenso
+- pocas palabras posibles que describen el contenido del artículo
+- identifica el tema principal del articulo
+- específico, inequivoco y completo
+- evitar abreviaturas a parte de las necesarias
+- de 7 a 10 palabras
+- evitar expresiones redundantes: a research of, the analysis of,
+  effect of
+*** Autorías y afiliaciones
+- identificar adecuadamente los apellidos de los autores
+- no hay una regla sobre la cantidad de autores en un paper
+- depende del grupo colaborador
+- existen varias maneras de escribir: Lenin Falconí Lenin G. Falconí,
+  Lenin Gonzalo Falconí y L. Falconí
+*** Abstract
+- resumen breve y conciso de la investigación
+- descripción del artículo
+- refleja historia del artículo
+- indica el problema abordadox
+- **tiempo pasado perfecto y voz pasiva**
+- oraciones cortas y concisas
+- no puede ir citas, tablas, ecuaciones, etc
+- de 100 a 300 palabras
+- Puede reproducir la **IMRaD** indicando los metodos, resultados
+- ayuda determinar la *relevancia* del estudio
+- Estructura: existen diferentes estructuras del abstract revisar en la ppt
+- **el abstract es un punto de ancla para invitar al lector a revisar
+  el articulo completo**
+*** Introducción
+- definir la terminología
+- conecta el tema con investigaciones previas
+- indica los objetivos de investigacin
+- **tiempo simple present** par aconocimientos establecidos
+- **tiempo pasado** para revisión de literatura
+- usa referencias del estado del arte así se haya parafraseado una idea
+- flujo coherente y organizado
+- describir el problema y la solución propuesta
+- prsentar el alcance del problema investigado
+- breve revisión de estudios previos y de la informacion disponible en
+  la literatura científica
+- describe brevemente la metodología del experimento
+- declara resultados principales del experimento
+**** recomendaciones
+1. establecer el contexto
+2. necesidad: identifica brecha o gap de la investigación en el
+   panorama actual de la investigación. determina la importancia y
+   *justifica la investigación*
+3. tarea :: explicar lo que se ha hecho para abordar la necesidad identificada
+4. objeto del documento: vista previa de la estructura del articulo para orientar a los
+   lectores sobre las siguientes secciones y el esquema de
+   ortganización del articulo
+*** Metodología o Materiales y Métodos
+- usa **voz activa en tiempo pasado**
+- proporciona detalle para reproduccion de los resultados
+- hacer un párrafo con una oración temática sobr elos materiales y
+  métodos para facilitar al lector la comprensión
+- ¿qué tiene de especial el enfoque del investigador?
+- ¿qué justifica la intervención?
+- puede usarse diagramas y tablas para esquematizar
+- Contiene:
+  - diseño del estudio i.e. experimental, observacional, etc
+  - población: participantes, crieterios de inclusion exclusion
+  - recoleccion de datos: metodos y herramientas usadas como
+    cuestionarios, entrevistas
+  - análisis: téncias estadísticas o métodos de análisis aplicados
+  - ética: consentimiento informado y aprobación ética
+- no explicar nuevamente un metodo familiar usado
+*** Resultados y Discusión
+- usar gráficos y tablas
+- hacer comparaciones
+- usar pruebas estadísticas
+- **usa tiempo pasado**
+- relacinar los resultados con los objetivos del artículo y no todos
+  los resultados de la investigación hay un límite de hojas
+**** recomendaciones
+1. reafirmar los hallazgos clave
+2. interpretar los resultados: ¿qué signific los resultados?
+   identificar patrones, tendencias
+3. claridad y dirección
+4. no abusar de la primera persona
+5. explicar las fotalezas y limitaciones de los resultados o métodos
+6. combina **tiempo presente y pasado**
+** Summary
