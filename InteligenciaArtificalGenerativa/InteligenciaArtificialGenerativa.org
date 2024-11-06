@@ -555,4 +555,12 @@ print(next_chars)
   **one-hot** en la vectorización del modelo de lenguaje
 - sin embargo, embedding requiere un mayor entrenamiento
 - Control del Overfitting con Dropout  en las LSTM 
+*** Ejercicios
+- vocabulary_size 8000
+- wordvec_dim 100
+- max_tex_len 200
+- cargar datos del imdb
+- usar pad_sequences seteado a max_tex_len para el padding
+- para representar enone hot usar to_categorical(xtrain, vocabulary_size)
+- hacer el one-hot tambien para el xtest
 ** Summary
