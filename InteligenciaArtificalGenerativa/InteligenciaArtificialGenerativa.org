@@ -1,3 +1,4 @@
+
 #+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
 #+options: author:t broken-links:nil c:nil creator:nil
 #+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
@@ -532,4 +533,26 @@ print(next_chars)
   cada uno de los documentos del corpus no tienen la misma cantdiad de
   palabras padding equilibra esto.
 [[https://colab.research.google.com/drive/1g7p2hjIwdAswOuKua0OB_37mLSm09XXs?hl=es#scrollTo=-kY3hT8WOWLC][colab-rnn-keras-problema3]]
+** Summary
+* 2024-11-06 RNN y LST
+** Questions and keywords
+- forward propagation ::
+- vanishing gradeint :: gradientes con valores cercanos a 0
+- simple rnn ::
+- que pasa si se diseña una RNN que no comparta los pesos $W_a$? ::
+- LSTM ::
+- recurrent dropout :: aquel que se hace en las LSTM
+- no me queda claro como comparar el one-hot y el embedding :: 
+** Notes
+- RNN son suceptibles al vanishing gradient
+- Las GRU cells alivian el vanishing gradient
+- las GRU usan un calculo y segun el valor de la compuerta GU toma el
+  valor del estado anterior o el valor calculado
+- LSTM reducen efectos de exploding y vanishing gradient
+- LSTM guardan información de contexto en las celdas
+- 0 olvida 1 actualiza
+- la capa de **embedding** reduce la dimensión con respecto a
+  **one-hot** en la vectorización del modelo de lenguaje
+- sin embargo, embedding requiere un mayor entrenamiento
+- Control del Overfitting con Dropout  en las LSTM 
 ** Summary

@@ -1,3 +1,4 @@
+
 #+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
 #+options: author:t broken-links:nil c:nil creator:nil
 #+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
@@ -931,4 +932,13 @@ call for papers 2024 in ai with special issues
 4. no abusar de la primera persona
 5. explicar las fotalezas y limitaciones de los resultados o métodos
 6. combina **tiempo presente y pasado**
+** Summary
+* 2024-11-06 Recomendaciones de redacción de Tesis
+** Questions and keywords
+** Notes
+- Texto sin referencias
+- citas sin referencia
+- precisión linguística
+- mantener los acronimos y no variar
+- solicitar lectura del trabajo por parte de otros para medir el nivel de comprensibilidad del texto
 ** Summary
