@@ -346,8 +346,9 @@ recursos como vídeos, podcast y otros.
      1. Negro sobre blanco es lo que mejor se ve
      2. considerar daltónnicos marron gris
   4. No Practicar
-     1. Practicar la presentacion muchas veces antes de presentar
-        puede considerar una falta de respeto.
+     1. Practicar la presentacion muchas veces antes de presentar. Se
+        puede considerar una falta de respeto no tener preparada la
+        presentación.
      2. un mes de preparación para que el día de la presentación todo
         vaya bien
   5. No conocer el equipamiento audiovisual incorrecto
@@ -355,7 +356,8 @@ recursos como vídeos, podcast y otros.
      2. Llevar el PDF y ponerlo a pantalla completa C-l
 - volver a presentar la diapositiva de índice destacando lo que viene a continuación
 **** Antes de la presentación:
-- una presentación de un artículo no es el artículo
+- una presentación de un artículo no es el artículo. Es narrar la
+  historia del problema, su solución, la perspectiva de los investigadores, etc.
 - el índice no es por tanto las secciones del artículo
 - las refrencias no van en la presentacion, se peude derivar al articulo
 - la presentación oral del artículo es otro contexto
@@ -417,8 +419,8 @@ Por otro lado, en cuanto a los póster científicos, que son
 presentaciones visuales en distintos formatos de tamaño como A2, A1,
 A0, es importante realizar un buen trabajo visual y estar presente
 durante toda la sesión para recibir la retroalimentación de las
-personas que se acercan a revisar la propuesta de
-investigación. También es un buen inicio en el mundo de publicación
+personas que se acercan a revisar la propuesta de investigación e
+incluso anotarla. También es un buen inicio en el mundo de publicación
 científica. Se debe cuidar de tener preparado lo que se va a decir en
 el póster. Se puede facilitar la lectura usando números para guiar la
 lectura observando que se lee desde la **esquina superior
@@ -452,14 +454,14 @@ secciones del artículo necesariamente. Es más de ser necesario hacer
 énfasis en algún contenido, se puede repetir la presentación a fin de
 evitar el ir hacia atrás en la presentación. Es recomendable disponer
 de diapositivas adicionales para las preguntas o explicar temas
-adicionales. Las figuras deben ser sencillas. Evitar pasar por las
-presentaciones sin comentarlas o ir de prisa por ellas. En caso de
-querer centrar la atención del público, disponer de diapositivas en
-blanco o negro. No olvidar señalar la terminación de la presentación,
-agradecer la atención y abrir el turno para preguntas. Usar el coffee
-break para saber cómo estuvo la presentación. En cuanto a las imágenes
-observar la calidad de la imagen usada. Hacer un uso adecuado de
-mayúsculas y negrita.
+adicionales. Las figuras deben ser sencillas pero de buena
+calidad. Evitar pasar por las presentaciones sin comentarlas o ir de
+prisa por ellas. En caso de querer centrar la atención del público,
+disponer de diapositivas en blanco o negro. No olvidar señalar la
+terminación de la presentación, agradecer la atención y abrir el turno
+para preguntas. Usar el coffee break para saber cómo estuvo la
+presentación. En cuanto a las imágenes observar la calidad de la
+imagen usada. Hacer un uso adecuado de mayúsculas y negrita.
 
 El sitio web de Sergio Lujan está en
 [[http://buenaspresentaciones.es/][buenaspresentaciones.es]]
@@ -494,6 +496,13 @@ El sitio web de Sergio Lujan está en
 - considerar el problema del contexto intercultural, sensibilidad, respeto, claridad
 - preparar las exposiciones con varias sesiones de práctica previa
 ** Summary
+Una comunicación efectiva permite evitar malentendidos, facilitar la
+colaboración y sobre todo facilita la comprensión del mensaje. Existen
+varias maneras en que se puede establecer una buena comunicación como
+es hacer una escucha activa, que mantenga un contacto visual adecuado,
+un lenguaje corporal apropiado. Se ha de evitar interrumpir al otro
+participante. Se debe considerar el contexto intercultural y adaptar
+los gestos, tonos y el mensaje.
 ** TODO Deber Semana 2
 - [ ] Crear presentaciones creativas individuales sobre Segmentación
   Semántica de 5 a 10 minutos. usar recursos visuales y técnicas de
@@ -541,6 +550,22 @@ El sitio web de Sergio Lujan está en
 ** TODO tareas [%]
 - [ ] Revisar las publicaciones accesibles desde la EPN
 ** Summary
+Existen diferentes medios para hacer una divulgación o difusión del
+conocimiento científico. Desde medios que son en sí cientificos como
+las conferencias y las revistas. propios del medio académico. También
+existen otros más informales que buscan comunicar la ciencia al
+público en general. Estos son los podcast, documentales, blogs,
+etc. Los diferentes medios de divulgación buscan conectar la ciencia
+con la sociedad. Esto permite fomentar un a cultura científica de
+pensamiento crítico. La comunicación científica busca explicar la
+importancia de los descubrimientos científicos y sus impactos mediante
+una exposición clara y precisa y usando diferentes formatos para
+diferentes audiencias. Sin embargo, entre sus principales desafíos
+están la excesiva simplificación de los temas, la posibilidad de
+sesgos o distorsiones en la información y la profunidad de los
+temas. Como estrategias para promover el acceso al conocimiento
+científico está accesos abiertos, educación inclusiva y uso de
+tecnología.
 * Semana 3 Preguntas
 1. La investigación en cáncer de mama tiene un impacto social directo
    ya que permite introducir a la inteligencia artificial como un
@@ -628,6 +653,15 @@ El sitio web de Sergio Lujan está en
 - averiguar que factores influyen en la transferencia de conocimeinto
 - encontrar ejemplos de exito de transferencia del conocimiento
 ** Summary
+El uso de modelos de transferencia de conocimiento puede orientar para
+que la universidad pueda ejectuar una transferencia efectiva del
+conocimiento científico que dispone. Existen diferentes modelos. Es
+importante socializar los beneficios que tienen las innovaciones a fin
+de que se realice la transferencia de conocimiento. También es útil
+que la complejidad del constructo no sea elevada y mostrar los
+resultados. Es importante reconocer que la transferencia de
+conocimiento incentiva la innovación, el crecimiento organizacional y
+un aprendizaje contínuo.
 ** TODO tarea
 - [ ] averiguar en donde subir y resolver los tres puntos
 - [ ] factores que influyen en transf
@@ -733,6 +767,18 @@ call for papers 2024 in ai with special issues
 - [[https://ietresearch.onlinelibrary.wiley.com/?skip=true][https://ietresearch.onlinelibrary.wiley.com/?skip=true]]
 - [[https://www.risti.xyz/index.php/es/indexacion][https://www.risti.xyz/index.php/es/indexacion]]
 ** Summary
+La comunicación científica transmite hallazgos, métodos, resultados,
+conceptos a un público específico. Integra tanto la divulgación como
+la difusión científica. La difusión científica, por su parte, se
+encarga de la transmisión de información al público
+académico. Mientras que la divulgación científica es a un público
+general no iniciado en temas científicos.La primera usa conferencias,
+revistas y libros. La segunda puede usar blogs, podcasts, etc.
+
+La evaluación de la comunicación científica ocurre de diferntes
+maneras por ejemplo por revisión por pares, por índices bibliométricos
+como el factor de impacto o el índice h. Éste último evalua tanto la
+productividad del autor como el impacto de la publicación.
 * Taller 2024-10-23
 ** Questions and keywords
 - para que sirve la pagina mdpi :: 
@@ -781,8 +827,8 @@ call for papers 2024 in ai with special issues
   - [ ] publico objetivo de revista e informe técnico
 * 2024-10-31 Identificadores de la publicacion
 ** Questions and keywords
-- issn ::
-- isbn ::
+- issn :: international standard serial number
+- isbn :: international standard book number
 - doi :: digital object identifier
 - existe deposito legal en ecuador? ::
 - checar la tabla de resumen
@@ -823,6 +869,11 @@ call for papers 2024 in ai with special issues
     denomina prefijo
   - el sufijo es un identificador o item id del objeto digital
 ** Summary
+Los identificadores de publicación facilitan la localización e
+identificación de un documento publicado. son persistentes únicos y
+normados. ISBN que es para libros usa 13 dígitos en 5 grupos y
+contiene informació geográfica y de la editorial. El ISSN para
+publicaciones seriales como periódicos tiene 8 dígitso
 * 2024-11-05 Partes del Artículo Científico
 ** Questions and keywords
 - artículo ciuentífico :: describir resultados a la comunidad científica

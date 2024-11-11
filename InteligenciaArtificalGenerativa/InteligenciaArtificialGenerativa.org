@@ -564,3 +564,34 @@ print(next_chars)
 - para representar enone hot usar to_categorical(xtrain, vocabulary_size)
 - hacer el one-hot tambien para el xtest
 ** Summary
+* 2024-11-11 Multiclassification
+** Questions and keywords
+- binary crossentropy ::
+- word2vec ::
+- glove ::
+- skip-gram ::
+- CBOW :: 
+- pad_sequences ::
+- ngrams ::  divide una palabra en mas unidades por ejemplo para
+  conjugaciones o palabras raras
+- como se usa sparse categorical cross entropy ::
+- revisar la interpretación del recall :: recuerdo que recall puede
+  ser importante en casos como predecir cancer en vez de precision
+  creo que por la idea de encontrar clases malignas
+- qué significa o cómo funciona la matrix de confusion ::
+- no comprendo como se puede usar el trade off de precision y recall :: al
+  parecer se acepta si y solo si se supera un valor umbral. no queda claro
+** Notes
+- Uso de Softmax
+- Uso de One-hot
+- Uso de to_categorical y pd.Series
+- FastText usa ngrams
+- gensim libreria contiene word2vec y fasttext
+- en keras un modelo multiclass se cambia loss con categorical
+  crossentropy y la capa final que tiene tantas neuronas como clases y va a usar softmax
+- observar la *paradoja del accuracy* en donde el valor puede ser algo
+  sólo porque hay mayor cantidad de elementos de una clase
+- uso de ~sklearn metrics~ para confusion matrix
+- observar que el support en el reporte de clasificación tienen que
+  ver con todos los ejemplos verdaderos de una clase
+** Summary
