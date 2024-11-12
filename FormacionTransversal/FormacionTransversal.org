@@ -868,3 +868,43 @@ call for papers 2024 in ai with special issues
 5. explicar las fotalezas y limitaciones de los resultados o métodos
 6. combina **tiempo presente y pasado**
 ** Summary
+* 2024-11-12 Proceso de envío y aceptación de un artículo científico
+** Questions and keywords
+- 
+** Notes
+- consiste de varias etapas desde la preparación hasta la publicación
+  editorial
+  1. Preparación del artículo:
+     1. observar lineamientos de la editorial
+     2. considerar que la estructura será IMRaD, King Model, Reloj de Arena
+  2. Selección de revista. se ha de considerar los siguientes puntos
+     1. factores de calidad como la indexación y factores de impacto **JCR**
+     2. prestigio de comité editorial
+     3. las bases de datos en la que estan indexadas
+     4. el scope de la revista
+     5. el costo
+  3. políticas editoriales: son los contratos legales y de derechos de
+     autoría que se definen entre la editorial y los autores
+  4. Envío del Manuscrito
+     1. comprobación y revisión del manuscrito
+     2. puede presentarse carta de presentación del autor o autores
+     3. realizar el envío a través del sistema de gestión o plataforma
+        del journal
+     4. se integra en los procesos de revisión
+  5. Proceso de Revisión por Pares:
+     1. envío a revisores
+     2. la evaluación puede ser un proceso repetitivo
+     3. decisión editorial: la editorial utilizando el feedback de los
+        revisores decide la publicación del artículo
+  6. Aceptación y publicación: notificación al autor sobre la
+     publicación del artículo.
+** Enlaces de interés
+- buscar Ulrich International Directory
+** Revistas
+- MDPI
+- IEEE Access $3000 USD
+** TODO [% ]
+- checar que se espera hacer del tarea de redaccion de paper
+- obtener mas publicaciones
+- determinar si se puede publicar solo
+** Summary
