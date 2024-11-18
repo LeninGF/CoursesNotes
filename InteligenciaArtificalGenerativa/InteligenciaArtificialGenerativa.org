@@ -595,3 +595,57 @@ print(next_chars)
 - observar que el support en el reporte de clasificación tienen que
   ver con todos los ejemplos verdaderos de una clase
 ** Summary
+* 2024-11-18 LSTM multiclass
+** Questions and keywords
+- NMT ::
+- Aki :: proyecto con datos pre-entrenado para traducción de texto
+- sent :: token para indicar inicio/fin de oración
+- temperatura :: que tan aleatoria son las predicciones. Es un
+  paralelo a la física. Mientras el valor es más alto es más
+  creativo. 1 es neutro.
+- chas_window :: la ventana de caracter controla la cantidad de
+  caracteres nuevos? Parece que no el programa introduce un
+  contador. Por el código, parece que chars_windows tiene que ver con
+  el input_shape del tensor de entrada al modelo.
+- ¿se puede usar accuracy en generación de texto? :: segun profesor se
+  requeire itervención humana para evaluar la coherencia del texto gnerado
+- por que el volcabulario en 5 en el ejemplo? ::
+- como se declara el input shape en el programa de keras :: (chars_window, vocab)
+- la capa lstm que no retorna secuencias ¿es un solo valor o una especie de flatten? :: 
+** Notes
+- Se usa modelos pre entrenados para generar texto
+- Para poder comprender las oraciones es necesario hacer un pre procesamiento
+*** Generación de texto
+- la generación de texto con palabras requiere un dataset grande
+- es más económico la generación de texto a nivel de caracteres pero
+  tiene más errores
+- Se usa funciones como ~index2char~ para convertir el índice numérico
+  a su correspondiente caracter
+- ~def scale sofmax~ :: normaliza la softmax
+- El valor de temperatura, en código sencillo, vuelve caótico el resultado. Simula creatividad.
+- Los modelos de generación de texto son similares a clasificación
+- Si los resultados no son coeherentes se requeire más épocas de entrenamiento.
+- **el ejemplo del taller toma bastante tiempo**
+**** Preparacion de datos
+1. transformar texto en secuencia de indices
+2. X y Y estan en one hot
+3. char window la mism alongitud de caracteres con padding en X
+*** Ejercicio
+- Frases de Sheldon
+- configuracion inicial
+  - cjars_window = 20
+  - step = 3
+  - m epochs 5
+  - batch de 128
+- obtener vocabulario
+- transformar secuencias en caracterres y represetntaciones numericas
+- definir el modelo
+- compilar
+- resumin
+- entrenar
+- generar texto
+*** Neuro Machine Translation
+- pasar de un lenguaje a otro automáticamente
+- mas grande el texto requeire más contexto i.e. más unidades RNN
+- Objetivo obtener un traductor de portugues a español
+** Summary
