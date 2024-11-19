@@ -1,0 +1,114 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:nil toc:nil todo:t |:t
+#+title: Template Talleres
+#+date: 2024-10-25
+#+author: Lenin Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: Español
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_class_options: [12pt]
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=30mm, right=30mm, bottom=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+
+#+latex_header: \setlength\headheight{43.0pt} 
+
+#+bibliography: bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee,autolang=other,maxcitenames=99, maxbibnames=99]{biblatex}
+
+
+#+begin_export latex
+\fancyhead[L]{\includegraphics[]{./images/LogoEPN}}
+\fancyhead[C]{ ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\DOCTORADO EN INFORMATICA}
+\fancyhead[R]{\includegraphics[]{./images/DoctoradoLogo}}
+
+#+end_export
+
+#+latex: \input{./caratula.tex}
+
+#+latex: \pagestyle{fancy}
+
+#+TOC: headlines 2
+
+* Introducción
+- Breve presentación sobre el propósito del taller.
+- Importancia del taller en el contexto del programa de doctorado.
+
+* Objetivos del Taller
+- Objetivo general del taller.
+- Objetivos específicos del taller.
+
+* Descripción del Taller
+
+** Temas Abordados
+- Listado de los principales temas tratados durante el taller:
+  - Tema 1
+  - Tema 2
+  - ---
+
+** Actividades Realizadas
+- Descripción de las actividades práccticas o ejercicios realizados:
+  - Actividad 1: Descripción
+  - Actividad 2: Descripción
+  - ---        
+
+* Aprendizajes Clave
+- Reflexiones sobre lo aprendido:
+  - Aprendizaje 1
+  - Aprendizaje 2
+  - ---
+- Diga cómo estos aprendizajes aplican a su investigación o desarrollo profesional
+
+* Conclusiones
+- Resumen de la experiencia del taller.
+- Valoración de la utilidad del taller para su formación académica.
+  
+* Recomendaciones
+- Sugerencias para mejorar futuros talleres
+- Temas o enfoques que podrían ser relevantes para próximas ediciones.
+  
+* Referencias
+- Lista de materiales utilizados, lecturas recomendadas y cualquier
+  otra fuente relevantes
+
+#+begin_comment
+Indicaciones Generales
+
+Sobre la redacción: ésta debe ser en un estilo simple y descriptivo,
+cuidando la gramática y la ortografía. Las referencias bibliográficas
+serán de utilidad para evitar el plagio y deberán manejarse según las
+normas para citas bibliográficas, que en ámbito académico la más común
+es la norma IEEE.
+
+Sobre el formato del texto: El tipo de letra, tamaño y márgenes pueden
+ser los que word tiene por defecto al crear un documento nuevo. Se
+recomienda utilizar tipos de letras simples como la calibri, arial,
+con tamaños de 12 para el texto principal, 10 para las notas al pie y
+14 para títulos. Márgenes de 3 cm resultan convenientes.
+
+Adicionalmente, se puede utilizar el estilo del formado IEEE, cuya
+característica principal es la doble columna, donde además se
+establece el tamaño y tipo de letra para cada sección. Se recomienda
+revisar bien los detalles de este formato antes de usarlo o usar una
+plantilla.
+#+end_comment

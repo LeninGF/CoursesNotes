@@ -936,3 +936,997 @@ call for papers 2024 in ai with special issues
 - Revisar enlaes de **PosterSessionOnline** que contiene plantillas
   predefinidas para crear los posters 
 ** Summary
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Formación Transversal Doctoral
+#+date: 2024-10-01
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+begin_comment
+* Lecture
+** Questions and keywords
+** Notes
+** Summary
+#+end_comment
+
+* Introducción 2024-10-01 
+** Questions and keywords
+- Voxel-Based Morphometry :: permite comparar diferencias
+  estructurales en el cerebro en el volumen de materia gris [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- inhomogenidad ::variaciones en las intensidades de los pixeles de
+  las imágenes médicas. Son varaciones no deseadas y se deben al
+  equipo o condiciones ambientales.
+- desplazamiento (químico):: diferencia de frecuencia de resonancia
+  entre diferentes tejidos (grasa, agua). Puede causar distorsiones. [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- suceptibilidad magnética :: materiales en el cuerpo que generan
+  artefactos que distorsionan la imagen. [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- artefacto de gibbs ::distribución Rician que aparece en imágenes de
+  baja intensidad de señal [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- ruido rician :: [[https://copilot.microsoft.com/sl/cyJa0Qfypsy][Copilot]]
+- movimiento ::
+- artefactos en la resonancia :: [[https://youtu.be/gXVME6VlwHw?si=84rGT-H9oHU4dqMx][youtube]]
+- proyecto :: sobre las necesidades reales del doctorante. Elaboración
+  de artícullo científico o la organización de evento académico
+  simulado. Juego de Roles.
+- ORCID ::
+- Google Scholar ::
+- para qué usar LLMs?
+- TeXstudio ::
+- ¿Para que usar texstudio?
+- ¿es necsario usar texstudio o se puede usar alternativas como Overleaf CodeStudio o Emacs?
+- pdfgear :: herramienta que permite examinar los papers extensos. [[https://www.pdfgear.com/chat-pdf/][pdf-gear-chatgpt]]
+- gamma :: herramienta asistida IA para generar presentaciones. Sólo 8 presentaciones.
+- ¿personalizar el gpt para la investigación?
+- Me parece que podria ser adecuado revisar la **gestión del tiempo**
+- ¿qué es el evento doctoral? :: participan todos los doctorantes. 
+- ¿cuándo es el eventoo doctoral? :: se realizará en noviembre.
+- Miedos de la investigación ::
+- originalidad del trabajo de investigación doctoral ::
+- ¿qué son los rpas?¿puedo generarlos? :: 
+** Notes
+- líneas de investigación del tutor se enfoca en imágenes médicas de
+  resonancia magnética. Doctorado en Modelamiento Matemático.
+- alternativamente imágenes de cáncer de mama de termografía
+- Martes Miercoles y Jueves de 9 a 11
+- Tutorias 11 a 13
+- lugar tutoria aula, zoom, oficina
+- Cec Laboratorio 5
+- Evaluación: Prueba 30%, Proyecto 30%, Taller 20%, Evento Doctoral 20%
+| item            | aporte |
+|-----------------+--------|
+| Prueba          |    30% |
+| Proyecto        |    30% |
+| Taller          |    20% |
+| Evento Doctoral |    20% |
+- objetivo :: obtener habilitades clave para complementar formación académica y científica.
+- el curso aborda la identificación digital del investigador.
+- centrado en el proceso de publicación
+- redacción en LaTeX
+- es normal no se sabe a donde llegamos en la tesis doctoral
+- es aportar al corpus con mejoras
+  
+** Summary:
+Esta clase tiene por objetivo proveer de conocimientos enfocados en la
+carrera de investigación académica, en donde se requiere aprender a
+manejar el perfil digital del investigador, para que sea identificable
+en la comunidad científica. También se centrará en el proceso de
+publicación así como la redacción usando herramientas como
+LaTeX. También se resuelven dudas sobre el proceso del doctorante en
+un doctorado.
+** the phd journey stages of a doctoral journey
+- Embarking on a PhD journey is a unique adventure that spans 3-5
+  years, characterized by intellectual and emotional growth.
+- Unlike structured undergraduate or master’s programs, a PhD is
+  self-directed, offering both freedom and challenges.
+- **Candidates face pressure to publish and contribute new knowledge**,
+  testing their resilience.
+- The journey is rewarding, filled with the excitement of deep
+  exploration, discovery, and collaboration with leading experts.
+- Perseverance and dedication are crucial, as the journey is not just
+  about earning a title but about pushing boundaries and making
+  meaningful contributions to society.
+  
+** DONE buscar el paper estados de animo del doctorante: [[https://researcher.life/blog/article/the-phd-journey-stages-of-a-doctoral-journey/][paper]]
+
+* Capítulo 1 Identificación digital del Investigador 2024-10-02 
+** Questions and keywords
+- nombre científico :: sistema universal de nomenclatura para ser
+  identificado efectivamente en la comunidad científica
+- es real el número de presuntas citas del academia eu? :: 
+- ¿qué es networking digital? :: relaciones profesionales a través de
+  tecnologías digitales (e.g. LinkedIn)
+- identificación digital :: perfil académico son las herramientas o
+  plataformas que permiten al investigador ser reconocido y localizado
+- cómo está escrito mi nombre científico? hay problemas con la tilde de falconí?
+- fragmentación de identidad :: Maria G. Perez, M. G. Perez. Varios
+  nombres con los que aparece en una plataforma y disminuye o afecta
+  el número de publicaciones. En mi caso en google aparecía como Lenin
+  Falconi (216 citas) y Lenin Falconí(2 citas). 
+- conflicto ético :: subir el mismo pdf que ya cedí derechos a la
+  revista al research gate.
+- cómo resolver el problema de cómo soy citado :: existe un orden para
+  colocar el nombre y el apellido? No encuentro info pero el IMRAD es
+  una opción a revisar.
+- Clarivate :: que está haciendo actualmente? citas? perfiles?
+- JCR :: Journal Citation Reports. Herramienta que da datos sobre le
+  impacto y la influencia de las revistas académicas.
+- SJR :: Scientific Journal Ranking. indicador qu emide la influencia de un
+  revista. Usa el número de citas recibidas por una revista. $Q_1, Q_2, Q_3, Q_4$
+- SCImago :: portal que incluye indicadores científicos de revistas.
+- No me queda claro con que correo crear el Scopus
+- puedo hacer un merge ya que tenngo un mendeley con gmail y otro con epn 
+** Notes
+- visibilidad y reconocimiento son esenciales
+- existen varias plataformas como ORCID; research gate, google scholar
+  para gestionar el perfil del Investigador
+- aprender a gestionar la producción académica
+*** claves o recomendaciones
+- crear un perfil completo: información personal, afiliacion, áreas de
+  estudios, lista actualizada
+- usar identificadores únicos como **ORCID**
+*** Importancia
+- visibilidad
+- reconocimiento
+- impacto
+*** Plataformas
+- ORCID
+- Research Gate :: red social para científicos/académicos
+- Google Scholar :: tiene métricas de publicación
+- otras: researchID, Academia.edu, Mendeley, 
+*** Gestión de Producción académica
+- organizar las publicaciones. E.g. Mendeley Mis Publicaciones.
+- actualizar perfiles
+- revisar los estándares de citación
+*** Ética y Buenas prácticas
++ autenticidad
++ colaboración :: reconocer coautores
++ privacidad
+** Summary
+A fin de que la identidad del investigador sea visible dentro de la
+comunidad científica, es necesario gestionar adecuadamente el perfil
+del investigador. De esta manera las diferentes plataformas existentes
+pueden colocar adecuadamente los trabajos en los que hemos
+colaborado. Entre estas plataformas estan ORCID, Google Scholar,
+Research Gate, Mendeley, entre otras. Uno de los problemas frecuentes
+es la fragmentación del nombre del investigador que consiste en que
+este aparezca escrito de distintas maneras en diferentes publicaciones
+o plataformas. Se recomienda crear un perfil completo con la
+afiliación (el email de la institución). También se sugiere usar
+identificadores únicos como ORCID y actualizar periódicamente las
+publicaciones y otros detalles.
+
+- Sí existieron perfiles duplicados en Google Scholar:
+  - Lenin Falconi
+  - Lenin Falconí
+
+** TODO Tareas [75%]
+- [ ] revisar si en research gate el paper subido es como un draft no
+  el finalmente publicado
+- [X] revisar si existen duplicados en Google Scholar: 
+- [X] crear o resolver el problema de mi perfil en google scholar.
+- [X] revisar concepto de a hombros de gigantes que aparece en google
+  scholar
+
+* 2024-10-03 Taller Perfil de Identificación Digital del Autor
+** Questions and keywords
+** Notes
+** Summary
+** TODO Tareas [8%]
+- [ ] Uniformar el número de autores con mi nombre y publicaciones en Scopus
+- [X] Generar Orcid una vez solucionado en Scopus
+- [ ] Colocar el Perfil de Orcid como Sandra Sanchez
+- [ ] Revisar Mendeley
+- [ ] Revisar IEEE xplore
+- [ ] revisar IEEE cs digital library
+- [ ] Revisar researchID
+- [ ] Revisar microsoft academic research
+- [ ] revisar dblp computer science bibliography
+- [ ] revisar springer
+- [ ] revisar acm digital library
+- [ ] revisar science direct
+
+* 2024-10-08 Capítulo 2 Difusión científica
+** Questions and keywords
+- divulgación científica :: comunicar ideas y descubrimientos
+  científicos al público general
+** Notes
+- permite acercar al públlico al conocimiento científico
+- creatividad y expresión oral son claves para socializar el conocimiento
+- objetivos:
+  - mejorar las habilidades de comunicación
+  - adaptar el mensaje según las características y conocimientos de
+    las distitnas audiencias
+  - estimular el pensamiento crítico. analizar diferentes perspectivas.
+- creatividad:
+  - atraer la atención :: metáforas, analogías para captar interés
+  - facilitar a comprensión con el uso ejemplos creativos. simplificar
+    ideas complejas. visualización.
+  - interés y curiosidad: proyectos interactivos talleres, actividades
+    de motivación
+  - ejemplos: ciencia en la calle, podcast, videos, teatro científico 
+*** Estrategias de Expresión Oral
+- Conocer la audiencia :: adaptar el lenguaje según el público que
+  atiende.
+- Usar recursos visuales para enriquecer la experiencia y fomentar la
+  atención
+- narrativa efectiva :: en vez de presentar datos, presentar historias
+- participación activa :: debates, encuestas, conectar con audiencia
+** Summary
+La difusión científica tiene por objeto acercar al público al
+conocimiento científico.Debido a que la audiencia puede ser variable,
+es necesario que el investigador se desarrolle de tal manera que pueda
+adecuar su mensaje según el público objetivo. El uso de metáforas y
+analogías permite atraer el interés y facilitar la comprensión de
+conceptos, términos y problemas científicos por parte del público
+general. También se ha de considerar la posibilidad de usar distintos
+recursos como vídeos, podcast y otros.
+** Todo Tareas [100%]
+- [X] Comentar la tarea de Mario
+- [X] Sergio Luján-Mora revisar el perfil del catedrático
+* 2024-10-09 Sergio Lujan Presentación Científica Visual y Oral
+** Questions and keywords
+- congreso :: presentación oral del trabajo científico. 
+- journal :: publicación en revistas de un trabajo escrito
+- poster :: es una exposición en la conferencia en donde los
+  investigadores utilizan una presentación visual y exponen oralmente
+  sobre su investigación. Sirve para formar contactos y obtener retro
+  alimentación por parte de las personas que se interesan en el
+  trabajo
+- se puede hacer un poster en latex :: [[https://www.ctan.org/pkg/beamerposter][beamerposter]],
+  [[https://github.com/deselaers/latex-beamerposter/tree/master][latex-beamer-poster-github]], [[https://groups.google.com/g/beamerposter][google-group]],[[https://tex.stackexchange.com/questions/341/how-to-create-posters-using-latex][discussion-tex-exchange]]. La
+  posición general es que no se use LaTeX. simplemente powerpoint. Sin
+  embargo existe en [[https://www.overleaf.com/learn/latex/Posters][Overleaf]]
+- qué herramientas están disponibles para crear pósters word? adobe? cuáles has usado? ::
+- se podría usar QR en un poster :: powerpoint (suficiente con cambio
+  de tamaño de diapositiva), adobe design, photoshop
+- buscar url makesigns tutorials para el tema de poster ::
+  - puedo en latex resaltar durante la presentacion :: 
+** Notes
+- Publicar no es investigar.
+- Publicar es el resultado final de la investigación
+*** Congresos
+- En el congreso se ha de prestar atención al apartado
+  **presentation**. Ejemplo 15 min presentar el artículo y 5 minutos
+  para preguntas
+- Permite establecer relaciones profesionales, conocer posibles tutores y coautores
+- Recomendaciones: 
+  - la presentación de un congreso en diferentes formatos
+  - llegar una media hora antes de presentar en el congreso
+  - traer o llevar la info en la USB y con equipos de
+    interfaz para conectar es decir conversores VGA/HDMI/RGA para usar el portatil
+  - no suponer que siempre hay un ordenador para la
+   presentación. A veces se indica que se debe traer su propio
+   ordenador o tableta. Contact al chairman
+  - Se tiene que asistir al congreso. Puede vulnerar la publicación indexada
+*** póster científico
+- presentación visual de un trabajo A2, A2, A0
+- hace visible el trabajo en propia institución
+- también en encuentro científico
+- How to make an academic poster de Buket en Elsevier
+- Es una sala de un congreso con carteles y el expositor
+- Puede ser menos estresante para iniciar en el mundo de las publicaciones científicas
+- Es importante para recibir críticas constructivas, comentarios y sugeriencias
+- Puede generar discusión en la audiencia
+- Debe ser muy visual, colores, 
+- Recomendaciones:
+  - Tener un plan claro de que decir cuando uno está en el poster. Se
+    puede interactuar con las personas
+  - Hacerlo cuando existe posibilidad de artículo asociado al congreso
+  - Evitar que sea aburrido o una réplica de un artículo científico
+  - Quedarte junto al Poster
+  - La conferencia puede cobrar caro la movilización del poster
+  - Preferible un solo documento
+  - asegurar la legibilidad desde una distancia de lectura del poster (e.g. 1 metro)
+  - sonreir amabilidad
+  - llevar libreta, apuntar ideas y preguntas que surjan genera que se
+    toma en serio a la gente
+  - Debe romper la estructura del articulo científico con una
+    jerarquía visual que guíe el proceso de lectura.
+  - Usar números para guiar la lectura
+  - generalmente se lee desde la **esquina superior izquierda**
+  - la afiliación en la parte superior
+  - invierta dinero en hacer un buen trabajo (impresión)
+  - tratar el poster con cuidado con mimo
+  - comprar el tubo para planos de arquitectura para viajar con el poster
+  - ir preparado con un sistema de fijación adecuado porque no
+    necesariamente el congreso lo dara
+  - Checar errores ortográficos
+  - usar un buen contraste entre el texto y el fondo (background)
+  - distinguir los encabezados del resto del texto por ejemplo con
+    otro tipo de letra o color de fondo
+  - cuidar la alineación del contenido
+  - Puedes usar PowerPoint directamente para hacer el poster
+- Concejos:
+  - Consula varias veces las instrucciones de presentación
+  - jerarquía visual o usar números y letras para ayudar la lectura
+  - No es un ariculo científico
+  - es un medio de comunicación: graficos, tablas
+  - leer sobre diseño visual o solicitar ayuda del experto
+  - Existen plantillas en internet para hacer el poster
+  - **PosterPresentation.com**
+- Errores de posters:
+  - Considerar el poster como si fuera un artículo científico. Lo que
+    hace es reducir el tamaño de la letra y aumentar las columnas de texto.
+  - No se pone las referencias
+  - Un summary en medio del poster es desorden
+  - ausencia de datos de contacto y su afiliación
+  - multiples páginas A4. EL pegar puede dificultar la lectura
+  - No cumplir el formato de tamaño indicado
+  - No usar cinta de embalaje para pegar el poster o tratar de ocultarlo
+  - NO usar imagenes de alta calidad o de baja resolución 
+**** Protocolo de presentación
+- Revisar las instrucciones de cada congreso. Leer instrucciones varias veces
+*** Presentación del artículo con audiencia
+- Se suele indicar con anticipación el tiempo
+- libro d Sergio Lujan la comunicación oral, claves para realizar
+  buenas presentaciones.
+- ejemplo presentaciones de Steve Jobs son marqueteras pero hay puntos
+  a considerar de su manera de exponer y hacerla atractiva
+- buenaspresentaciones.es
+- En una presentación siempre indicar un indice/agenda para guiar a la audiencia
+- 5 errores mas grandes de una presenntación:
+  1. letras microscópicas:
+     1. se puede leer a 3 meros desde el ordenador
+  2. tener diapositivas confusas con mucho detalle
+     1. 6 líneas con 6 palabras por línea
+     2. mejor horizontal que vertical
+  3. Colores que no se pueden leer
+     1. Negro sobre blanco es lo que mejor se ve
+     2. considerar daltónnicos marron gris
+  4. No Practicar
+     1. Practicar la presentacion muchas veces antes de presentar. Se
+        puede considerar una falta de respeto no tener preparada la
+        presentación.
+     2. un mes de preparación para que el día de la presentación todo
+        vaya bien
+  5. No conocer el equipamiento audiovisual incorrecto
+     1. Llevar el PowerPoint
+     2. Llevar el PDF y ponerlo a pantalla completa C-l
+- volver a presentar la diapositiva de índice destacando lo que viene a continuación
+**** Antes de la presentación:
+- una presentación de un artículo no es el artículo. Es narrar la
+  historia del problema, su solución, la perspectiva de los investigadores, etc.
+- el índice no es por tanto las secciones del artículo
+- las refrencias no van en la presentacion, se peude derivar al articulo
+- la presentación oral del artículo es otro contexto
+- incluir la presentación con e contenido y otra de cierre
+- presentación de inicio:
+  - titulo y subtitulo (opc)
+  - nomre de los autores
+  - procedencia de los autores
+  - opcional lugar y fecha esto se usa cuando se pone en internet
+- presentacion de contenido
+- duplica la presentacion si se requiere refozar algun contenido de la presentacion
+- evitar ir para atras y adelante (son gratis)
+- si la presentación es larga hace run resumen luego de cada apartado
+- usar diapositivas en blanco para hace rpausa, evita distracciones
+  del publico: atajo de powerpoint para poner una diapositiva en blanco
+- incluir diapositivas de backup al final de la presentación para
+  explicar algujn tema complejo por si hay preguntas sobre todo para
+  tesis doctoral
+- es mala practica pasar transparencias sin comentarlas
+- usar animaciones minimalistas
+- evitar figuras complejas, estas deben ir al articulo
+- checar las condiciones luminicas de la sala
+- usar colores de alto contraste
+- más simple la letra mejor: evita sans o tipos manuscritos
+- no sacrificar la legibilidad por  el estilo
+**** Consejos durante la presntación:
+- adaptarse a las circunstancias
+- marcar el inicio de la presentacion
+- presentarse si el chairman no lo hizo
+- no moverse mucho en el estrado
+- mover cabeza y mirar al publico
+- sobre tiempo: ir a las de respaldo o resumen
+- falta tiempo? no ir de prisa por todas lsa idapositivas recalcar las importantes
+- utiliza el cursor para señlar
+- usar diapositivas en blanco o negro para centrar la atención
+**** Después de la presentación
+- indicar la terminación
+- agradecer la atención
+- abrir turno de preguntas
+- intentar obtener información en el cofee break sobre que tal estuvo la presentación 
+**** Errores Comunes
+- no es una buena idea las mayusculas en el texto de la diapositiva
+- usar varios tipos de letras sin consistencia
+- no poner animaciones o cuidar la velocidad de la animación
+- imagnes de baja calidad
+- uso excesivo de negrita. usarlo para resaltar puntos clave
+- ciudado con que la animacion pase sola y no da tiempo a leer
+** Summary
+Es importante entender que la presentación de un trabajo **no es para
+mí** sino para las personas que asisten para ir y verla. Pensar en
+ellos y ponerlos como prioridad. Existen diferentes modalidades en las
+que se puede presentar un trabajo científico: póster, conferencia,
+artículo. En éste último, se ha de guardar con los lineamientos de la
+editorial y se ha de tener cuidados esencialmente en la redacción del
+documento. Es importante recordar que publicar no es
+investigar. Publicar es el resultado final de la investigación.
+
+Por otro lado, en cuanto a los póster científicos, que son
+presentaciones visuales en distintos formatos de tamaño como A2, A1,
+A0, es importante realizar un buen trabajo visual y estar presente
+durante toda la sesión para recibir la retroalimentación de las
+personas que se acercan a revisar la propuesta de investigación e
+incluso anotarla. También es un buen inicio en el mundo de publicación
+científica. Se debe cuidar de tener preparado lo que se va a decir en
+el póster. Se puede facilitar la lectura usando números para guiar la
+lectura observando que se lee desde la **esquina superior
+izquierda**. No se debe olvidar que esté presente la filiación y los
+datos de los investigadores. El póster puede permitir formar contactos
+y es importante facilitar información de contacto. El transporte del
+póster debe hacerse con cuidado y prever de sistemas de sujeción
+adecuados. Se debe evitar errores ortográficos y hacer un contraste
+adecuado en los colores usados. En ocasiones la sesión de póster puede
+tener instrucciones explícitas dadas por la organización. Es
+importante que el contenido del póster sea adecuado y no un resumen
+del artículo científico. Si existe, mas bien el póster ha de
+incentivar al lector hacia la lectura del artículo.
+
+En cuanto a las presentaciones en conferencias es importante
+considerar algunos detalles. El principal es la preparación con
+anticipación. Evitar la improvisación. Para esto considerar las
+instrucciones de cada congreso. Estar presente una media hora antes de
+la presentación de la charla. Disponer la presentación en más de un
+formato (i.e. powerpoint, pdf). Tener a la mano USB o computador ya
+que no todos los congresos dan insumos para llevar a cabo la
+presentación. Revisar que los tipos de letras y sus tamaños sean
+adecuados. Puedan ser legibles a unos 3 metros del
+computador. Considerar máximo 6 líneas con 6 palabras por línea. Se
+sugiere un mes de preparación para la charla.
+
+En cuanto a la presentación, está deberá disponer de un índice para
+guiar al auditorio a los puntos que serán expuestos. No se usa
+referencias bibliográficas en la presentación. Y el índice no son las
+secciones del artículo necesariamente. Es más de ser necesario hacer
+énfasis en algún contenido, se puede repetir la presentación a fin de
+evitar el ir hacia atrás en la presentación. Es recomendable disponer
+de diapositivas adicionales para las preguntas o explicar temas
+adicionales. Las figuras deben ser sencillas pero de buena
+calidad. Evitar pasar por las presentaciones sin comentarlas o ir de
+prisa por ellas. En caso de querer centrar la atención del público,
+disponer de diapositivas en blanco o negro. No olvidar señalar la
+terminación de la presentación, agradecer la atención y abrir el turno
+para preguntas. Usar el coffee break para saber cómo estuvo la
+presentación. En cuanto a las imágenes observar la calidad de la
+imagen usada. Hacer un uso adecuado de mayúsculas y negrita.
+
+El sitio web de Sergio Lujan está en
+[[http://buenaspresentaciones.es/][buenaspresentaciones.es]]
+** TODO Tareas [25%]
+- [X] localizar bueanspresentaciones.es
+- [ ] localizar las plantillas de poster
+- [ ] localizar acm avoid the big five presentation mistake
+- [ ] localizar el libro de Sergio Lujan
+- [ ] Locallizar PosterPresentation.com
+* 2024-10-10 Comunicación
+** Questions and keywords
+- revisar temas de etiqueta para los congresos :: uso de utensillos
+** Notes
+- importancia de la comunicación:
+  - atraer la atencion
+  - evitar malentendidos
+  - facilitar la colaboracion
+- técnicas para mejorar la escucha activa:
+  - contacto visual :: interés, respeto
+  - preguntar :: para entender el mensaje del hablante
+  - lenguaje corporal :: asentir y evitar distracciones
+    - tono de voz adecuado para ser escuchado
+    - gestos para énfasis y emoción
+    - contacto visual
+    - sonreir
+  - evitar interrupciones :: dejar completar el pensamiento de la
+    persona que habla
+- Presentaciones persuasivas: captar la atención del público, hacer un
+  desarrollo lógico y resumir los puntos clave
+- cómo manejar las preguntas:
+  - escuchar, mantener la calma, responder concisamente
+- considerar el problema del contexto intercultural, sensibilidad, respeto, claridad
+- preparar las exposiciones con varias sesiones de práctica previa
+** Summary
+Una comunicación efectiva permite evitar malentendidos, facilitar la
+colaboración y sobre todo facilita la comprensión del mensaje. Existen
+varias maneras en que se puede establecer una buena comunicación como
+es hacer una escucha activa, que mantenga un contacto visual adecuado,
+un lenguaje corporal apropiado. Se ha de evitar interrumpir al otro
+participante. Se debe considerar el contexto intercultural y adaptar
+los gestos, tonos y el mensaje.
+** TODO Deber Semana 2
+- [ ] Crear presentaciones creativas individuales sobre Segmentación
+  Semántica de 5 a 10 minutos. usar recursos visuales y técnicas de
+  narración. Revisar el libro
+- [ ] Desarrollar un podcast de divulgación. investigar, escribir un
+  gion y grabar el episodio
+- [ ] hacer una infografía científica. resuma conceptos clave de
+  manera visual y atractiva
+* 2024-10-15 Medios de Divulgación Científica
+** Questions and keywords
+- divulgación :: comunicar la ciencia al público general
+- revistas científicas :: publicación periódica, de investigación,
+  cumple con rigor académico como la revisión por pares
+- JCR ::
+- conferencia :: encuentro para presentar y discutir
+  trabajos. Presentación oral, posters, workshops, interacción directa
+- libros científicos :: tratan a profundidad un tema específico
+  científico. E.g. libros de Springer. Son exhaustivos, y documentan y
+  difunden conocimientos consolidados
+- blog científico :: digitales, lenguaje informal, actualización
+  frecuente, interacción con lectores. usa lenguaje accesible con
+  objetivo de popularizar la ciencia
+- podcast-científico :: programa de audio que trata un tema cientifico
+  de manera divulgativa. audiencia amplia, flexibilidad temática,
+  entrevistas, discusiones
+- documentales :: alphago
+- museos de ciencia :: dinosaurio?
+- redes sociales :: 
+** Notes
+- comunican la información científica al público general
+- usan tele, web, documentales, revistas
+- transferencia de conocimiento se forma de la fuente, la importancia
+  de la info y el impacto o calidad de la comunicacion
+- la revisión por pares se hace con expertos de un área
+- la conferencia se puede aprovechar para tener contactos
+- es frecuente que un científico tenga su blog científico
+- la divulgación científica conecta la ciencia con la sociedad e
+  influir en las políticas públicas, promueven pensamiento crítico
+- libres:
+  - IEEE Access (cuesta unos 3000 usd)
+- desafío de divulgación:
+  - la calidad afectada por la cantidad
+- existe el problema de que se cede los derechos al realizar la
+  publicacón
+** TODO tareas [%]
+- [ ] Revisar las publicaciones accesibles desde la EPN
+** Summary
+Existen diferentes medios para hacer una divulgación o difusión del
+conocimiento científico. Desde medios que son en sí cientificos como
+las conferencias y las revistas. propios del medio académico. También
+existen otros más informales que buscan comunicar la ciencia al
+público en general. Estos son los podcast, documentales, blogs,
+etc. Los diferentes medios de divulgación buscan conectar la ciencia
+con la sociedad. Esto permite fomentar un a cultura científica de
+pensamiento crítico. La comunicación científica busca explicar la
+importancia de los descubrimientos científicos y sus impactos mediante
+una exposición clara y precisa y usando diferentes formatos para
+diferentes audiencias. Sin embargo, entre sus principales desafíos
+están la excesiva simplificación de los temas, la posibilidad de
+sesgos o distorsiones en la información y la profunidad de los
+temas. Como estrategias para promover el acceso al conocimiento
+científico está accesos abiertos, educación inclusiva y uso de
+tecnología.
+* Semana 3 Preguntas
+1. La investigación en cáncer de mama tiene un impacto social directo
+   ya que permite introducir a la inteligencia artificial como un
+   apoyo al diagnóstico del padecimiento e inclusive reducir tiempos
+   de atención. Se prevee que dada la longevidad y las bajas tasas de
+   natalidad, en un futuro será necesario apoyarse tecnológicamente en
+   la interpretación de imágenes médicas para poder atender al
+   creciente número de pacientes
+2. El área de estudio de Machine Learning aplicado a cáncer de mama
+   tiene una afectación seria en el tema ético debido a que los datos
+   que se utilizan proveen de seres humanos lo que obliga la
+   conformación y aprobación de comités éticos para el uso de los datos.
+3. Principalmente haciendo uso de Twitter siguiendo a personalidades
+   de interés como Sebastian Rashka, Andrew Ng, Yann Lecunn, G Hinton
+   y canales como Deeplearning.ai que hacen diversos posts webs como
+   The Batch donde colocan información actual y de tipo Trend en IA.
+4. He colaborado con otros investigadores a través de las red social
+   de LinkedIn y Research Gate a través de las cuáles he recibido
+   preguntas sobre las publicaciones y los datos utilizados.
+5. Creo que el tomar un doctorado es en sí un desafío y cada día que
+   se desarrolla un poco del proyecto de investigación contribuye a la
+   solución. Principalmente, trato de apoyarme en una actualización
+   continua por medio de las redes y los papers para poder tener una
+   comprensión general de los temas abordados.
+6. Considero que un desarrollo serio en el tema de Inteligencia
+   Artificial y Cáncer de Mama puede aportar sobre todo estableciendo
+   un marco o benchmark adecuado para la evaluación de los modelos
+   basados en aprendizaje automático.
+7. La manera de equilibrar es verificar si las proposiciones que hago
+   tengan relación o existan en el corpus bibliográfico. Esto me
+   permite saber si algún otro investigador está realizando trabajo
+   relacionado y pueda incluirlo en la revisión de literatura.
+8. Considero que la IA General está siendo desarrollada. Por esta
+   razón, se puede hablar de las expectativas que se tiene sobre sus
+   avances como apoyar a la investigación en cáncer, frenar el
+   calentamiento climático, etc.
+9. La IA Generativa actualmente incide en diferentes partes de la
+   sociedad. El desarrollo de los GPT y otros modelos de lenguaje se
+   pueden usar como asistentes para la redacción y la consulta de
+   datos. También modifica la manera en que interactuamos con las
+   máquinas. Sin embargo, problemas como la alucinación son puntos de
+   mejora y a ser vigilados para mejorar el sistema.
+10. Considero que una manera fácil de socializar el conocimiento
+    científico sería la publicación y mantenimiento de blogs en donde
+    se discuta sobre los proyectos de investigación y también escribir
+    sobre temas de la inteligencia artificial. Algo como IA y la
+    comunidad.
+* 2024-10-17 Transferencia de Conocimiento
+** Questions and keywords
+- Qué modelos de transf de conocimeinto usa la EPN?
+- persuación es típico del marketing
+- compatibilidad con valores, creencias y necesidades??
+** Notes
+- Identificar modelos de transferencia de conocimeinto
+- Modelo de Innovacion de Rogers :: tiene las siguientes etapas
+  - conocimiento: expone la *innovación*
+  - se procede a una etapa de persuación con ventajas y desventajas
+  - se procede a tomar la *decisión* de adoptar o rechazar la innovación
+  - proceso de *implementación*
+  - los tipos de adoptantes son: innovadores 2.5%, adoptantes
+    tempranos 13.5%, mayoría temprana 34%, mayoría tardía
+    34%,rezagados 16%
+- una innovación puede quedar afectada para su difusión dependiendo de
+  las *ventajas relativas*, la *compatibilidad*, la *complejidad*,
+  *observabilidad*
+- Modelo de Aprendizaje Social de Bandura :: ocurre en un contexto
+  social. La transferencia de conocimiento se da por la interacción
+  social. Se aplica principalmente en entornos educativos.
+- Modelo SECI :: tiene 4 aspectos
+  - Socialización :: compartir por interacción
+  - Externalización :: articulación de ideas
+  - combinación :: crear nuevo conocimiento mediante la combinación de
+    diferentes cuerpos
+  - internalización :: aprender y aplicar el conocimiento
+- Modelo de 4 etapas de Choo :: tiene 4 etapas
+  - diagnostico organizacional
+  - identificar y recolectar conocimiento
+  - organizar y compartir el conocimiento
+  - adaptación de herramientas
+- Modelo basado en la relación :: se fundamenta en las redes de
+  confianza
+- la transferencia del conocimiento permite *innovar*, *desarrollar
+  las organizaciones* y promueve una cultura de *aprendizaje continuo*
+*** Taller
+- averiguar que factores influyen en la transferencia de conocimeinto
+- encontrar ejemplos de exito de transferencia del conocimiento
+** Summary
+El uso de modelos de transferencia de conocimiento puede orientar para
+que la universidad pueda ejectuar una transferencia efectiva del
+conocimiento científico que dispone. Existen diferentes modelos. Es
+importante socializar los beneficios que tienen las innovaciones a fin
+de que se realice la transferencia de conocimiento. También es útil
+que la complejidad del constructo no sea elevada y mostrar los
+resultados. Es importante reconocer que la transferencia de
+conocimiento incentiva la innovación, el crecimiento organizacional y
+un aprendizaje contínuo.
+** TODO tarea
+- [ ] averiguar en donde subir y resolver los tres puntos
+- [ ] factores que influyen en transf
+- [ ] desafios de transf tecn
+- [ ] ejemplos exitosos
+** podcast
+Enlace a los archivos:
+- [[https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin_falconi_epn_edu_ec/EqzdsHXmcIxGoIr4LoTJtAUB3B_O_HEtP-6a4ltEYk-wig?e=dg16Iy][onedrive]]
+- https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin_falconi_epn_edu_ec/EqzdsHXmcIxGoIr4LoTJtAUB3B_O_HEtP-6a4ltEYk-wig?e=dg16Iy
+
+* 2024-10-22 Evaluación de Comunicación Científica
+** Questions and keywords
+- comunicación científica :: transmitir hallazgos, métodos,
+  resultados, conceptos científicos a un público específico
+  (académico, empresas). Integra tanto la divulgación y la difusión
+  científica. tiene por objetivo una transmisión efectiva del
+  conocimiento
+- canales :: medios de comunicación e.g. Vicerrectorado de
+  Investigación tiene una unidad de Difusión. Por ejemplo, canales
+  disponibles a través de la EPN. ¿¿¿¿¿¿¿¿Canales del MSP????????
+  También puede ser los congresos y las revistas
+- divulgación científica :: hacer accesible la información científica
+  al público general (fuera del ámbito académico).
+- ¿autogestionar lo del blog de IA? ::
+- CUIDADO :: se evaluara la creatividad en el tema del PodCast
+- Difusión Científica :: promoción de resultados científicos a público especializado
+- Métodos para evaluación de la Comunicación científica :: Factor de
+  impacto, revisión por pares
+- Factor de Impacto :: frecuencia de citación de los artículos.
+- Indice de Impacto :: son un instrumento para evaluar la *importancia
+  relativa* dentro de un mismo campo científico. el JCR tiene el
+  Factor de Impacto [[https://biblioguias.uam.es/tutoriales/JCR/Factor_Impacto][FactorImpacto]]
+- indice h :: productividad del investigador e impacto
+- revisión por pares :: proceso crítico de expertos sobre trabajos
+  antes de su publicación garantizando la calidad y validez de la
+  investigación. a través de varias iteraciones. Dota de credibilidad
+  y calidad
+- JCR :: [[https://biblioguias.uam.es/tutoriales/JCR/Factor_Impacto][JCR-FactorImpacto]] Este factor permite medir la importancia de la revista
+** Notes
+- existen métricas para medir la calidad de la comunicación e.g. que
+  tán accesible se hace el conocimiento científico
+- garantiza la difusión de la investigación entre expertos y al público general
+- puede ser verbal o escrita
+- usa diferentes medios: revistas, congresos, vídeos, redes sociales, github
+- estudiar el público implica conocer el público al que le llega la
+  comunicación de la investigación (e.g. Salud)
+- divulgacion cientifica != comunicación científica
+- la divulgación científica se hace a través de libros y artículos
+  (tal vez como en el periódico ya que no es académico), programas de
+  tv, redes, charlas públicas.
+- La *difusión científica* se hace a travpes de publicaciones
+  cientificas como revistas, papers, conferencias, posters, simposios.
+- la comunicación cientifica permite la promocion de pensamiento
+  critico, toma de decisiones informadas y el acceso a la información.
+- la complejidad del lenguaje es un desafío de la comunicación científica
+- la comunicacion cientifica permite combatir la desinformación
+- la comunicación cientifica es un proceso de desarrollo para
+  comunicarse con colegas y colaboradores y críticos
+- evaluación de revistas :: indice h, factor de impacto (en un rol secundario redes soc)
+** Factor de Impacto
+- indice bibliométrico
+- compara revistas y evalua su importancia relativa
+- compara el número de citas en un año $y_i$ en los artículos
+  publicados en $y_{i-1}$ y $y_{i-2}$ con respecto al total de
+  artículos publicados en esos años. Sea el número de citas en un año
+  $i$ designado por $C_{t_i}$ y el total de artículos en un año
+  $A_{t_i}$, entonces el factor de impacto es:
+
+$$FI_{t_i}=\frac{C_{t_i}}{A_{t_{i-1}}+A_{t_{i-2}}}$$
+- La revista politécnica ha pasado de LatinIndex a WOS y ahora es SCOPUS.
+- el factor de impacto es un valor absoluto sin maximo
+** Alternativas al FI:
+- SCImago con el índice SJR para *SCOPUS*
+- Journal Citation Indicator JCI
+- El análisis de la revista en Web Of Science se puede hacer en
+  [[https://jcr.help.clarivate.com/Content/jcr3-journal-profile.htm][JournalCitationReportClarivateWOS-help]]
+- indice i10 de google scholar
+** Revistas de Interés para yo
+- He encontrado en un libro en scholar: [[https://link.springer.com/chapter/10.1007/978-3-030-32606-7_2][medicalImageSegmentationUsingDL]]
+** Revistas
+- checkar que tenga scopus: [[https://www.risti.xyz/index.php/es/][RISTI]] de procedencia española
+- checkar la revista de la poli
+** Importante
+- En el tema de PodCast se quiere evaluar la novedad, la creatividad y
+  el ingenio en la presentación.
+- También quiere evaluar el tema del blog
+- **Requisito del Doctorado que sea publicado en el WOS y el JCR**
+** Guías para Evaluar las Revistas
+- [[https://biblioguias.uam.es/tutoriales/JCR/Factor_Impacto][https://biblioguias.uam.es/tutoriales/JCR/Factor_Impacto]]
+- [[https://www.scimagojr.com/][https://www.scimagojr.com/]]
+- [[https://www.recursoscientificos.fecyt.es/servicios/formacion/material][CoursosInformacionClariVite]]
+- [[https://www.um.es/web/biblioteca/investigar-publicar/apoyo-investigacion/produccion-cientifica][apoyoProduccionCientificaUniversidadMurcia]]
+- [[https://clarivate.com/webofsciencegroup/support/support-jcr/][GettingStartedJCR]] :: ayuda de Clarivate sobre temas de JCR y otros demonios
+- [[https://www.springernature.com/gp/authors][Guia de Autores Springer]]
+** Guía de Evaluación de Congresos
+- Para buscar el congreso se puede hacer una busqueda en google con
+  los términos:
+#+begin_quote
+call for papers 2024 in ai with special issues
+#+end_quote
+- Para ver si esta rankeado el congreo buscar: [[https://portal.core.edu.au/conf-ranks/][conference ranking core]]
+** Enlaces revisados en clase
+- [[https://ietresearch.onlinelibrary.wiley.com/?skip=true][https://ietresearch.onlinelibrary.wiley.com/?skip=true]]
+- [[https://www.risti.xyz/index.php/es/indexacion][https://www.risti.xyz/index.php/es/indexacion]]
+** Summary
+La comunicación científica transmite hallazgos, métodos, resultados,
+conceptos a un público específico. Integra tanto la divulgación como
+la difusión científica. La difusión científica, por su parte, se
+encarga de la transmisión de información al público
+académico. Mientras que la divulgación científica es a un público
+general no iniciado en temas científicos.La primera usa conferencias,
+revistas y libros. La segunda puede usar blogs, podcasts, etc.
+
+La evaluación de la comunicación científica ocurre de diferntes
+maneras por ejemplo por revisión por pares, por índices bibliométricos
+como el factor de impacto o el índice h. Éste último evalua tanto la
+productividad del autor como el impacto de la publicación.
+* Taller 2024-10-23
+** Questions and keywords
+- para que sirve la pagina mdpi :: 
+** Notes
+- existe otras metricas disponibles
+- google scholaqr permite ver las metricas de una revista si el acceso
+  esta restringido por WOS
+- revisar el siguiente link sobre [[https://guides.libraries.uc.edu/information_technology][information technology]]
+- otro enlace a revisar [[https://www.mdpi.com/journal/applsci/about][mdpi]]
+- revisar las metricas y los rankings en google scholar [[https://scholar.google.com/citations?view_op=top_venues&hl=en][top publications]]
+** TODO tarea [%]
+- [ ] hacer los pasos de la guía de [[https://guides.libraries.uc.edu/c.php?g=222356&p=1474532][cincinati-research-impact]]
+- [ ] revisar la fecha de la prueba
+- [ ] Revisar [[https://clarivate.libguides.com/jcr][https://clarivate.libguides.com/jcr]]
+- [ ] Revisar [[https://biblioguias.uam.es/evaluacion/calidad_publicaciones][https://biblioguias.uam.es/evaluacion/calidad_publicaciones]]
+- [ ] Revisar [[https://biblioguias.ucm.es/calidad-revistas/eigenfactor][https://biblioguias.ucm.es/calidad-revistas/eigenfactor]]
+** Summary
+** 2024-10-24 Exposiciones
+** TODO podcast [%]
+- [ ] grabar podcast
+- [ ] guiones
+* 2024-10-29 Publicación Científica Semana 5
+** Questions and keywords
+- Actas de conferencias ::
+- Proceso editorial :: evaluación rigurosa
+- Springer :: ¿como funciona?
+- preprint :: difusión inmediata de investigación antes de revisión
+  por pares. facilitan retroalimentación de la comunidad pero puede no tener valicdación por pares.
+- arxiv :: ¿es arxiv un preprint?
+** Notes
+- Tipos de publicaciones: paper, libros, capítulos
+- congresos y conferencias pueden incluir papers en capítulos, libros o special issues
+- revistas de opinion son de síntesis de temas, para audiencias no
+  especializadas. pueden ser influyentes
+- una tesis doctoral puede abrir una linea de investigacion
+** Summary
+** TODO [0%]
+- [ ] Identificar los requerimientos del doctorado
+- [ ] Iniciar los requerimientos de publicación del doctorado
+- [ ] Revisar que se disponga del libro the craft of scientific writing
+- [ ] Revisar que exista el tema de enlaces de SCOPUS y WOS para educarse en publicaciones
+- [ ] Realizar taller
+  - [ ] checkar peer review en ieee
+  - [ ] checkar peer review en elsevier
+  - [ ] estructura y formato de articulo de revista e informe técnico
+  - [ ] publico objetivo de revista e informe técnico
+* 2024-10-31 Identificadores de la publicacion
+** Questions and keywords
+- issn :: international standard serial number
+- isbn :: international standard book number
+- doi :: digital object identifier
+- existe deposito legal en ecuador? ::
+- checar la tabla de resumen
+** Notes
+- facilitan la busqueda de documentos e.g. doi, isbn, issn
+- los identificadores son:
+  - singulras es decir unicos
+  - son *persistentes* se mantienen indefinidos en el tiempo
+  - estan construidos segun *normas*
+  - son *versatiles* se aplican a diferentes documentos
+- son importantes para una *identificación precisa* de fuentes bibliográficas
+- simplifican el proceso de citación
+- en un futuro se espera que se integren con block-chain
+- en un futuro se espera disponer de identificadores para datasets
+- en un futuro se espera que los modelos de IA queden identificados
+- permiten una gestión eficiente de las colecciones bibliográficas
+*** ISBN Identificador de Libros
+- 5 agrupos de digitos
+- los 3 primeros digitos son materiales
+- los siguientes dos identifican al editor su pais de origen
+- los 4 digitos identifica al editor
+- los 3 digitos el titulo
+- el ultimo digito es de control
+- aparece en la contraportada
+*** ISSN
+- es para publicaciones seriadas como las de Springer
+- usa 8 caracteres
+- se vincula al titulo de la publicación. Un cambio en el titulo lo
+  cambia al códgio
+- no identifica el pais de la editorial o editores
+*** DOI
+- identificador permanente para publicaciones electrónicas
+- usa metadatos
+- facilita citacion de articulos
+- contiene 3 partes
+  - el directorio que es siempre el mismo
+  - luego se tiene el publisher id i.e. identifica al editor se
+    denomina prefijo
+  - el sufijo es un identificador o item id del objeto digital
+** Summary
+Los identificadores de publicación facilitan la localización e
+identificación de un documento publicado. son persistentes únicos y
+normados. ISBN que es para libros usa 13 dígitos en 5 grupos y
+contiene informació geográfica y de la editorial. El ISSN para
+publicaciones seriales como periódicos tiene 8 dígitso
+* 2024-11-05 Partes del Artículo Científico
+** Questions and keywords
+- artículo ciuentífico :: describir resultados a la comunidad científica
+- IMRaD :: Introducción, Métodos, Resultados, Discusión
+- que es la a en Imrad ::
+- Materiales y Métodos :: que uso y como se aplicó. datos usados y que
+  se usó
+- Modelo de Reloj de Arena ::
+- King Model :: 
+- cuál es el problema con la SLR y Materiales y Métodos ::
+- revisar nuevamente como aparecen mis apellidos en publicaciones cientificas ::
+-  :: 
+** Notes
+- La estructura básica de un artículo científico sigue IMRAD
+- la discusión es que significan los resultados y sus implicaciones
+- a parte de Imrad existen la estructura de reloj de arena y king model
+*** Hourglass Model
+- Contiene 3 áreas importantes que son introducción, cuerpo y discusión
+*** King Model
+- a parte de los 3 indicados en reloj de arena se añade: titulo,
+  abstract, hourglass model y referencia
+- introduccion 25%
+- cuerpo 50%
+- discusion 15%
+- referencias 10%
+*** Titulo
+- vende el paper
+- equilibrio entre vago y extenso
+- pocas palabras posibles que describen el contenido del artículo
+- identifica el tema principal del articulo
+- específico, inequivoco y completo
+- evitar abreviaturas a parte de las necesarias
+- de 7 a 10 palabras
+- evitar expresiones redundantes: a research of, the analysis of,
+  effect of
+*** Autorías y afiliaciones
+- identificar adecuadamente los apellidos de los autores
+- no hay una regla sobre la cantidad de autores en un paper
+- depende del grupo colaborador
+- existen varias maneras de escribir: Lenin Falconí Lenin G. Falconí,
+  Lenin Gonzalo Falconí y L. Falconí
+*** Abstract
+- resumen breve y conciso de la investigación
+- descripción del artículo
+- refleja historia del artículo
+- indica el problema abordadox
+- **tiempo pasado perfecto y voz pasiva**
+- oraciones cortas y concisas
+- no puede ir citas, tablas, ecuaciones, etc
+- de 100 a 300 palabras
+- Puede reproducir la **IMRaD** indicando los metodos, resultados
+- ayuda determinar la *relevancia* del estudio
+- Estructura: existen diferentes estructuras del abstract revisar en la ppt
+- **el abstract es un punto de ancla para invitar al lector a revisar
+  el articulo completo**
+*** Introducción
+- definir la terminología
+- conecta el tema con investigaciones previas
+- indica los objetivos de investigacin
+- **tiempo simple present** par aconocimientos establecidos
+- **tiempo pasado** para revisión de literatura
+- usa referencias del estado del arte así se haya parafraseado una idea
+- flujo coherente y organizado
+- describir el problema y la solución propuesta
+- prsentar el alcance del problema investigado
+- breve revisión de estudios previos y de la informacion disponible en
+  la literatura científica
+- describe brevemente la metodología del experimento
+- declara resultados principales del experimento
+**** recomendaciones
+1. establecer el contexto
+2. necesidad: identifica brecha o gap de la investigación en el
+   panorama actual de la investigación. determina la importancia y
+   *justifica la investigación*
+3. tarea :: explicar lo que se ha hecho para abordar la necesidad identificada
+4. objeto del documento: vista previa de la estructura del articulo para orientar a los
+   lectores sobre las siguientes secciones y el esquema de
+   ortganización del articulo
+*** Metodología o Materiales y Métodos
+- usa **voz activa en tiempo pasado**
+- proporciona detalle para reproduccion de los resultados
+- hacer un párrafo con una oración temática sobr elos materiales y
+  métodos para facilitar al lector la comprensión
+- ¿qué tiene de especial el enfoque del investigador?
+- ¿qué justifica la intervención?
+- puede usarse diagramas y tablas para esquematizar
+- Contiene:
+  - diseño del estudio i.e. experimental, observacional, etc
+  - población: participantes, crieterios de inclusion exclusion
+  - recoleccion de datos: metodos y herramientas usadas como
+    cuestionarios, entrevistas
+  - análisis: téncias estadísticas o métodos de análisis aplicados
+  - ética: consentimiento informado y aprobación ética
+- no explicar nuevamente un metodo familiar usado
+*** Resultados y Discusión
+- usar gráficos y tablas
+- hacer comparaciones
+- usar pruebas estadísticas
+- **usa tiempo pasado**
+- relacinar los resultados con los objetivos del artículo y no todos
+  los resultados de la investigación hay un límite de hojas
+**** recomendaciones
+1. reafirmar los hallazgos clave
+2. interpretar los resultados: ¿qué signific los resultados?
+   identificar patrones, tendencias
+3. claridad y dirección
+4. no abusar de la primera persona
+5. explicar las fotalezas y limitaciones de los resultados o métodos
+6. combina **tiempo presente y pasado**
+** Summary
+* 2024-11-06 Recomendaciones de redacción de Tesis
+** Questions and keywords
+** Notes
+- Texto sin referencias
+- citas sin referencia
+- precisión linguística
+- mantener los acronimos y no variar
+- solicitar lectura del trabajo por parte de otros para medir el nivel de comprensibilidad del texto
+** Summary

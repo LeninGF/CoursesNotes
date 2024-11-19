@@ -1,3 +1,4 @@
+
 #+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
 #+options: author:t broken-links:nil c:nil creator:nil
 #+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
@@ -380,5 +381,271 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - la matriz de co-ocurrencia cuenta las palabras en una ventana de contexto pares
 - lo malo es que requiere una gran cantidad de datos  para entrenar
 - costoso  para matrices grandes
+** Summary
 
+** 2024-10-28 YOLO
+** Questions and keywords
+- YOLO ::
+- object detection :: identificar y localizar objetos en una imagen/escena
+- mAP :: mean average precision
+- idea :: combinar yolo y redes de grafos para poder explicar escenas
+  es mejor que transformers que combinen texto e imagen
+** Notes
+- Es un modelo pre-entrenado
+- detecta uno o múltiples objetos usando bounding boxes
+- Ventajas: preciso, abierto, rápido
+- 91 fps para YOLO high
+*** Yolo v1
+- 24 capas, 4 max pooling y 2 capas
+- input 448x448
+- usa Relu a las capas intermedias
+- capa de salida usa activación lineal para obtener coordenadas
+- usa batch normalization
+- usa:
+  - bloques residuales: divide la imagen en un acuadricula y predice
+    la probabilidad de un objeto en las celdas
+  - regresion de cajas delimitadores: poner las coordenadas de los objetos
+- se queda con la caja que tenga mayor precision del objeto
+*** Batch Normalization
+- ttoma por bloques los datos y para que tengan una media cercana a 0 y varianza cercana a 1
+- es normalizar los valores
+- evita el vanishing gradient y el exploding gradient
+- reduce dependencia d einicio de pesos
+- reduce sobre-ajuste
+- limita la variación del gradiente
+*** Métrica IoU
+- Es el area de intersección sobre area de unión
+- Mientras más cercano a 1 excelente superposición
+- cercano a 0, no hay objeto
+** Summary
+** TODO [%]
+- app para celular, usar version 5
+- checar la aplicacion de detección de melanoma con YOLO
+- Análisis papers version 3 y 4 (2 papers). Son papers de Arxiv
+- Prueba el proximo miercoles
+
+* 2024-10-30 RNN
+** Questions and keywords
+- RNN ::
+- consultar la clasificación de muchos a uno y muchos a muchos en RNN
+- encoder :: representar la información en un embedding
+- decoder :: reconstruye la información de salida
+- unigram ::
+- bigram ::
+- trigram ::
+- token ::
+- preguntar a jonathan de donde saco la funcion print examples 
+** Notes
+- retener información de los datos anteriores
+- son redes que trabajen en una secuencia de datos
+- retiene información de palabras anteriores
+- este diseño ayuda a comprender el contexto
+- RNN tiene una estructura d emuchos a uno
+*** Modelos de secuencia a secuencia
+- son utiles en procesameinto de lenguaje natural
+- en computer vision para comprender escenas e.g. en vídeo
+- Muchos a uno :: una sola salida por ejemplo un clasificador de sentimentos
+- muchos a muchos:
+  - Generador de Texto
+  - Traductor de Texto: formado por un *encoder* y un *decoder*
+  - Modelos de Lenguaje: generan texto. Predeice la siguiente palabra. 
+** Ejercicio
+Comparar el número de parámetros de una ANN wrt RNN:
+1. vocabulario de 10000
+2. usan una capa densa de 256 unidades
+3. Usar summary para ver la arquitectura y el número de parámetros
+4. embedding de 64 para RNN
+[[https://colab.research.google.com/drive/1Rid1ImfCW1UqvslNzztA0lUae-VK2qT8?hl=es#scrollTo=xPYsGMEb5sdU][colab-compare-rnn-y-ann]]
+*** Modelos de lenguaje
+- Buscan predecir la probabilidad de secuencias de palabras se usan: unigram, bigram y trigram
+- En general es calcular la probabilidad de la palabra actual en función de las anterioresl.
+- skip-gram: calcula probabilidad de palabras cercanas. tantos anteriores y posteriores
+- las redes neuronales usan /Softmax/
+*** Capa de embedding
+- recibe secuencia de tokens que representan el texto a procesar
+- se convierte las palabras en indices o vectores
+- la capa converte a cada token en un vector de números que captura relaciones semánticas
+- palabras con significados similares tendran representaciones vectoriales cercanas
+*** Capa RNN
+- son celdas que procesan la secuencia
+- permiten al modelo recordar información anterior
+- la salida es una probabilidad o una rpedicción de clases
+*** Diccionarios de vocabulario
+1. obtener palabras únicas
+2. se crea un diccionario donde cada palabra es la clave y el indice es el valor
+3. se puede obtener el diccionario inverso
+*** Ejercicio 1
+construir un diccinario por palabras y por indices a partir de las sheldon_quotes
+#+begin_src python :results output :exports both :session
+sheldon_quotes = ["You're afraid of insects and women, Ladybugs must render you catatonic.",
+                  'Scissors cuts paper, paper covers rock, rock crushes lizard, lizard poisons Spock, Spock smashes scissors, scissors decapitates lizard, lizard eats paper, paper disproves Spock, Spock vaporizes rock, and as it always has, rock crushes scissors.']
+all_words = ''.join(sheldon_quotes).split(' ')
+print(all_words)
+#+end_src
+
+#+RESULTS:
+: ["You're", 'afraid', 'of', 'insects', 'and', 'women,', 'Ladybugs', 'must', 'render', 'you', 'catatonic.Scissors', 'cuts', 'paper,', 'paper', 'covers', 'rock,', 'rock', 'crushes', 'lizard,', 'lizard', 'poisons', 'Spock,', 'Spock', 'smashes', 'scissors,', 'scissors', 'decapitates', 'lizard,', 'lizard', 'eats', 'paper,', 'paper', 'disproves', 'Spock,', 'Spock', 'vaporizes', 'rock,', 'and', 'as', 'it', 'always', 'has,', 'rock', 'crushes', 'scissors.']
+
+#+begin_src python :results output :exports both :session
+unique_words = list(set(all_words))
+print(len(unique_words))
+#+end_src
+
+#+RESULTS:
+: 35
+
+#+begin_src python :results output :exports both :session
+index_to_word = {i:wd for i, wd in enumerate(sorted(unique_words))}
+print(index_to_word.items())
+#+end_src
+
+#+RESULTS:
+: dict_items([(0, 'Ladybugs'), (1, 'Spock'), (2, 'Spock,'), (3, "You're"), (4, 'afraid'), (5, 'always'), (6, 'and'), (7, 'as'), (8, 'catatonic.Scissors'), (9, 'covers'), (10, 'crushes'), (11, 'cuts'), (12, 'decapitates'), (13, 'disproves'), (14, 'eats'), (15, 'has,'), (16, 'insects'), (17, 'it'), (18, 'lizard'), (19, 'lizard,'), (20, 'must'), (21, 'of'), (22, 'paper'), (23, 'paper,'), (24, 'poisons'), (25, 'render'), (26, 'rock'), (27, 'rock,'), (28, 'scissors'), (29, 'scissors,'), (30, 'scissors.'), (31, 'smashes'), (32, 'vaporizes'), (33, 'women,'), (34, 'you')])
+
+#+begin_src python :results output :exports both :session
+word_to_index = {wd:i for i, wd in enumerate(sorted(unique_words))}
+print(word_to_index.items())
+#+end_src
+
+#+RESULTS:
+: dict_items([('Ladybugs', 0), ('Spock', 1), ('Spock,', 2), ("You're", 3), ('afraid', 4), ('always', 5), ('and', 6), ('as', 7), ('catatonic.Scissors', 8), ('covers', 9), ('crushes', 10), ('cuts', 11), ('decapitates', 12), ('disproves', 13), ('eats', 14), ('has,', 15), ('insects', 16), ('it', 17), ('lizard', 18), ('lizard,', 19), ('must', 20), ('of', 21), ('paper', 22), ('paper,', 23), ('poisons', 24), ('render', 25), ('rock', 26), ('rock,', 27), ('scissors', 28), ('scissors,', 29), ('scissors.', 30), ('smashes', 31), ('vaporizes', 32), ('women,', 33), ('you', 34)])
+*** Ejercicio 2
+Dividir los textos en caracteres para poder hacer generación de texto
+mediante dos secuencias.
+
+Se requeire una funcion ~print_examples~ para que se pueda ver como se transforman los datos
+#+begin_src python :results output :exports both :session
+step = 2
+chars_window = 10
+next_chars = []
+sentences = []
+all_char = all_words
+for i in range(0, len(all_char) - chars_window,step):
+    sentences.append(all_char[i:i+chars_window])
+    next_chars.append(all_char[i+chars_window])
+print(next_chars)
+#+end_src
+
+#+RESULTS:
+: ['catatonic.Scissors', 'paper,', 'covers', 'rock', 'lizard,', 'poisons', 'Spock', 'scissors,', 'decapitates', 'lizard', 'paper,', 'disproves', 'Spock', 'rock,', 'as', 'always', 'rock', 'scissors.']
+*** Keras
+- el padding permite colocar el vector de un mismo tamaño. Es decir si
+  cada uno de los documentos del corpus no tienen la misma cantdiad de
+  palabras padding equilibra esto.
+[[https://colab.research.google.com/drive/1g7p2hjIwdAswOuKua0OB_37mLSm09XXs?hl=es#scrollTo=-kY3hT8WOWLC][colab-rnn-keras-problema3]]
+** Summary
+* 2024-11-06 RNN y LST
+** Questions and keywords
+- forward propagation ::
+- vanishing gradeint :: gradientes con valores cercanos a 0
+- simple rnn ::
+- que pasa si se diseña una RNN que no comparta los pesos $W_a$? ::
+- LSTM ::
+- recurrent dropout :: aquel que se hace en las LSTM
+- no me queda claro como comparar el one-hot y el embedding :: 
+** Notes
+- RNN son suceptibles al vanishing gradient
+- Las GRU cells alivian el vanishing gradient
+- las GRU usan un calculo y segun el valor de la compuerta GU toma el
+  valor del estado anterior o el valor calculado
+- LSTM reducen efectos de exploding y vanishing gradient
+- LSTM guardan información de contexto en las celdas
+- 0 olvida 1 actualiza
+- la capa de **embedding** reduce la dimensión con respecto a
+  **one-hot** en la vectorización del modelo de lenguaje
+- sin embargo, embedding requiere un mayor entrenamiento
+- Control del Overfitting con Dropout  en las LSTM 
+*** Ejercicios
+- vocabulary_size 8000
+- wordvec_dim 100
+- max_tex_len 200
+- cargar datos del imdb
+- usar pad_sequences seteado a max_tex_len para el padding
+- para representar enone hot usar to_categorical(xtrain, vocabulary_size)
+- hacer el one-hot tambien para el xtest
+** Summary
+* 2024-11-11 Multiclassification
+** Questions and keywords
+- binary crossentropy ::
+- word2vec ::
+- glove ::
+- skip-gram ::
+- CBOW :: 
+- pad_sequences ::
+- ngrams ::  divide una palabra en mas unidades por ejemplo para
+  conjugaciones o palabras raras
+- como se usa sparse categorical cross entropy ::
+- revisar la interpretación del recall :: recuerdo que recall puede
+  ser importante en casos como predecir cancer en vez de precision
+  creo que por la idea de encontrar clases malignas
+- qué significa o cómo funciona la matrix de confusion ::
+- no comprendo como se puede usar el trade off de precision y recall :: al
+  parecer se acepta si y solo si se supera un valor umbral. no queda claro
+** Notes
+- Uso de Softmax
+- Uso de One-hot
+- Uso de to_categorical y pd.Series
+- FastText usa ngrams
+- gensim libreria contiene word2vec y fasttext
+- en keras un modelo multiclass se cambia loss con categorical
+  crossentropy y la capa final que tiene tantas neuronas como clases y va a usar softmax
+- observar la *paradoja del accuracy* en donde el valor puede ser algo
+  sólo porque hay mayor cantidad de elementos de una clase
+- uso de ~sklearn metrics~ para confusion matrix
+- observar que el support en el reporte de clasificación tienen que
+  ver con todos los ejemplos verdaderos de una clase
+** Summary
+* 2024-11-18 LSTM multiclass
+** Questions and keywords
+- NMT ::
+- Aki :: proyecto con datos pre-entrenado para traducción de texto
+- sent :: token para indicar inicio/fin de oración
+- temperatura :: que tan aleatoria son las predicciones. Es un
+  paralelo a la física. Mientras el valor es más alto es más
+  creativo. 1 es neutro.
+- chas_window :: la ventana de caracter controla la cantidad de
+  caracteres nuevos? Parece que no el programa introduce un
+  contador. Por el código, parece que chars_windows tiene que ver con
+  el input_shape del tensor de entrada al modelo.
+- ¿se puede usar accuracy en generación de texto? :: segun profesor se
+  requeire itervención humana para evaluar la coherencia del texto gnerado
+- por que el volcabulario en 5 en el ejemplo? ::
+- como se declara el input shape en el programa de keras :: (chars_window, vocab)
+- la capa lstm que no retorna secuencias ¿es un solo valor o una especie de flatten? :: 
+** Notes
+- Se usa modelos pre entrenados para generar texto
+- Para poder comprender las oraciones es necesario hacer un pre procesamiento
+*** Generación de texto
+- la generación de texto con palabras requiere un dataset grande
+- es más económico la generación de texto a nivel de caracteres pero
+  tiene más errores
+- Se usa funciones como ~index2char~ para convertir el índice numérico
+  a su correspondiente caracter
+- ~def scale sofmax~ :: normaliza la softmax
+- El valor de temperatura, en código sencillo, vuelve caótico el resultado. Simula creatividad.
+- Los modelos de generación de texto son similares a clasificación
+- Si los resultados no son coeherentes se requeire más épocas de entrenamiento.
+- **el ejemplo del taller toma bastante tiempo**
+**** Preparacion de datos
+1. transformar texto en secuencia de indices
+2. X y Y estan en one hot
+3. char window la mism alongitud de caracteres con padding en X
+*** Ejercicio
+- Frases de Sheldon
+- configuracion inicial
+  - cjars_window = 20
+  - step = 3
+  - m epochs 5
+  - batch de 128
+- obtener vocabulario
+- transformar secuencias en caracterres y represetntaciones numericas
+- definir el modelo
+- compilar
+- resumin
+- entrenar
+- generar texto
+*** Neuro Machine Translation
+- pasar de un lenguaje a otro automáticamente
+- mas grande el texto requeire más contexto i.e. más unidades RNN
+- Objetivo obtener un traductor de portugues a español
 ** Summary
