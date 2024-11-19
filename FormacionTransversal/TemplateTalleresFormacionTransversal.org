@@ -39,7 +39,7 @@
 
 #+begin_export latex
 \fancyhead[L]{\includegraphics[]{./images/LogoEPN}}
-\fancyhead[C]{ ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\DOCTORADO EN INFORMATICA}
+\fancyhead[C]{ ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\DOCTORADO EN INFORMATICA}
 \fancyhead[R]{\includegraphics[]{./images/DoctoradoLogo}}
 
 #+end_export
