@@ -908,3 +908,31 @@ call for papers 2024 in ai with special issues
 - obtener mas publicaciones
 - determinar si se puede publicar solo
 ** Summary
+* 2024-11-19 Easy Chair y Poster 
+** Questions and keywords
+- easy-chair :: sistema gratuito como se usa
+- poster :: 
+** Notes
+*** trabajo de laboratorio
+- se propone un trabajo para simular el proceso de una conferencia
+- se busca desarrollar cada etapa
+*** Poster cientifico
+- es punto de partida para discusiones sobre la investigación con
+  otros profesionales
+- mantiene algunas secciones del paper pero se debe adaptar ya que el
+  poster tiene objetivo de ser gráfico
+- jerarquia visual :: usa diferentes tamaños de letra y define una
+  secuencia de lectura del poster
+- tipografia :: fuentes legibles
+- colores :: contraste adecuado
+- espacio en blanco :: evita la saturacion de informacion
+- Entre las herramientas disponibles estan:
+  - latex beamer tikz
+  - powerpoint
+  - canva
+  - adobe illustrator
+  - Mac Pages
+  - Inkscape :: recomendada para imagenes vectoriales
+- Revisar enlaes de **PosterSessionOnline** que contiene plantillas
+  predefinidas para crear los posters 
+** Summary
