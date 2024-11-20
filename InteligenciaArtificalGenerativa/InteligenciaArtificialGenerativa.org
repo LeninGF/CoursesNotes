@@ -94,12 +94,15 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 
 * 2024-10-07 Entrenamiento y Evaluación de Modelos
 ** Questions and keywords
-- stable diffusion:: ¿que es?
-- personally identifiable information :: ??
+- stable diffusion :: generan imagenes o un dato revirtiendo la
+  contaminación de éste por ruido.
+- personally identifiable information PII :: information used to
+  identify a person e.g. name, phone, face
 - las ideas sobre transferlearning sobre el tamaño del dataset y el
   orden en que se ejecutan o son nuevas o son equivocadas no las
   conozco y debo averiguar. Por ejemplo se afirmó que fine tuning se
-  hace luego de transfer learning
+  hace luego de transfer learning. De acuerdo a Gemini Fine Tuning es
+  un método específico dentro de transfer learning.
 - espacio latente :: está relacionado al concepto de embeddings
 - métricas modelos generativos:
   - inception score IS (img) :: evalua imagenes eneradas segin la
@@ -130,7 +133,7 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - técnicas avanzadas de entrenamiento:
   - Transfer learning :: transfiere conocimiento de una tarea a otra
   - fine tuning :: es un tipo de transfer learning para un dataset más
-    pequeño. se usa luego de transfer learning
+    pequeño.
   - human in the loop :: ajusta las respuestas con lo que el humano da feedback
   - embeddings :: representaciones únicas de entidades de
     datos. representan la información de manera compacta
@@ -141,22 +144,48 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - en general se mide el progreso del modelo en el tiempo
 - criterios de comparación entre diferentes versiones del modelo
 - comparación del modelo con el rendimiento humano
-- hay metricas específicas par atexto, imagen o audio
+- hay metricas específicas para texto, imagen o audio
 - la comparación con el rendimiento humano. comparación de
   habilidades. se puede suponer que es una comparación injusta. por
   ejmplo, comparar si el producto generado por la IA debe ser
   comparado con el trabajo humano.
 - una relativa amenaza sobre las habilitades humanas
-** TODO Métricas de Evaluación de Imagenes generadas por GAN (FID y LPIPS) [66%]
+** TODO Métricas de Evaluación de Imagenes generadas por GAN (FID y LPIPS) [100%]
 - [X] Investigación de FID
 - [X] Investigación de LPIPS
-- [ ] Generar documento
+- [X] Generar documento
 ** Summary
+Para realizar el entrenamiento de modelos de machine learning es
+importante partir de obtener datos. En ocaciones esto puede requerir
+autorizaciones ya que pueden estar involucrados datos personales.
+
+Con los datos obtenidos pasamos a la etapa de procesamiento que
+siempre es necesaria y a la de entrenamiento en donde se ha de
+observar el hardware a utilizar y los costos involucrados por el
+tiempo de computación. Se puede seleccionar entre técnicas como
+transfer learnign o fine tuning. La primera, se aplica cuando el
+dataset es pequeño o similar al original y consiste en reutilizar los
+pesos ya entrenados. Usando al modelo básicamente como un extractor de
+características para luego sustituir las etapas de salida con una red
+simple para completar el problema. En cambio en Fine Tuning, que se
+usa cuando tenemos suficientes datos, se trata de re-entrenar el
+modelo por completo. Se puede decir que se usa los pesos
+pre-entrenados como puntos de partida. Finalmente, se puede combinar
+transfer learning y fine tuning al congelar unas capas y ajustar otras.
+
+Finalmente está la evaluación de los modelos. En donde se ha de tener
+en cuenta que en modelos discriminativos, se tiene medidas
+discriminativas como accuracy, precision, recall. En cambio en modelos
+generativos en donde se pretende a veces medir la creatividad del
+modelo existen otras métricas como Inception Score, Frechet Inceptin
+Distance, Bleu Rouge y finalmente comparar con un humano.
+
 * 2024-10-09 Exposición métricas y  Representación del Conocimiento
 ** Questions and keywords
-- n-grams ::
-- BLEU :: cómo es y cómo funciona
-- ROUGE :: cómo varía cuando es alto o bajo. Cuando es 1 son idénticos si es menor, difiere.
+- n-grams :: secuencia consecutiva de texto. E.g. separar en bigramas
+  la oración Lenin se cree astuto. [Lenin se], [se cree] [cree astuto]
+- BLEU :: medir similitud de texto. Valor cercano a 1 implica textos similares
+- ROUGE :: Se centra en la recuperacón de información. Cuando es 1 son idénticos si es menor, difiere.
 - ¿se verificó el cómputo de ROUGE y METEOR? ::
 - decoder :: 
 - encoder ::
@@ -197,6 +226,27 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - hay varios approaches para el modelado de la función de
   densidad. esto se conoce como taxonomía
 ** Summary
+*** Métricas IAG
+Inception Score y Freched Inception Distance:
+- se usan en imagenes
+- valor alto de IS indica que son de alta calidad y de clases diferentes
+- FID compara la distribucion de las características de las imágenes reales y las generadas
+- Un valor bajo de FID indica que las imágenes generadas son similares a las reales.
+- BLEU y ROUGE son para evaluación de texto generado.
+- BLEU usa n-grams (secuencia de palabras)
+- BLEU más cercano a 1 significa mayor similitud entre el generado y el de referencia
+- ROUGE se enfoa en la recuperación de información relevante.
+*** Representación del conocimiento
+El espacio latente permite hacer una representación útil y de menor
+dimensionalidad de los datos de un fenómeno. Es decir, una
+representacion simplificada de los datos. Al traducir los datos por
+medio del modelo a un espacio latente se pueden hacer operaciones
+matemáticas sobre los mismos que pueden devenir en nuevas
+representaciones. Es decir, se establecen relaciones abstractas.  El
+MLE o estimación de máxima verosimilitud, es un método estadístico que
+permite determinar los parámetros más probables de un modelo. Es decir
+encontrar la mejor configuración de parámetros que ajustan el modelo a
+sus predicciones.
 ** TODO Tarea [100%]
 - [X] leer el paper del aula virtual. Presentar conclusiones.
 * 2024-10-14 Capitulo 2 Redes Neuronales
@@ -205,7 +255,7 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - axones :: 
 - dendritas ::
 - funciones de activación ::
-- relu :: no comprendo bien la fórmula de la relu
+- relu :: $f(z) = \max(0,z)$
 - revisar ajuste de pesos del perceptron ::
 - gradient descent ::
 - stochastic gradient descent ::
@@ -267,13 +317,40 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
   | -1 | -1 | - 1 |
   |----+----+-----|
 - pooling :: obtiene un valor del resultado de la convolucional e.g. el max-pooling
-- flattening ::
+- flattening :: 
 - los pasos de convolucion y pooling se repitenn varias
   veces. mientras estoy raliezando convolution and pooling estoy en
   low level features, es decir reconociendo curvas y bordes y al final
   de la red ya tengo una operación de alto nivel que sería reconocer objetos.
 - redes neuronales convolucionales sirven para reconcoer objetos en imagenes 
 ** Summary
+Las redes neuronales artificiales son una simplificación matemática de
+las neuronas biológicas. En una red neuronal se usa una función de
+activación que le da un caracter no lineal para activar o desactivar a
+la neurona. El aprendizaje consiste en exponer la red a pares de
+ejemplo, respuesta y ajustar los valores de los pesos que conectan las
+diferentes unidades para obtener el mejor erendimiento.  Existen
+diferentes funciones de activación que buscan tanto mitigar los
+problemas del /vanishing gradient/ como dotar de no linealidad a la
+red. El entrenamiento de una red puede verse afectado por el
+/overfitting/ o sobre ajuste que es una condición en la que el modelo
+predice muy bien sobre los datos de entrenamiento. Pero falla cuando
+usamos el dataset de prueba.
+
+En cuanto a visión por computador, inicialmente se usaron filtros
+definidos para extraer características de las imágenes. Mas tarde con
+las redes convolucionales, este tema cambiaría ya que permiten obtener
+una autoextracción de características que son aprendidas por la
+red. Existen diferntes
+
+|-----------+-----------|
+| Red       | Num Capas |
+|-----------+-----------|
+| vgg16     |        16 |
+| YOLO      |        26 |
+| GoogleNet |        22 |
+|-----------+-----------|
+
 * 2024-10-16 Redes ConvNet VGG
 ** Questions and keywords
 - embeddings ::
@@ -303,17 +380,32 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 *** Series de tiempo
 - determinar coomo funcionan las convnets en series de tiempo
 *** Speech recognition
-- ????
+- Sugiere representar el sonido como un espectograma y tratarlo como
+  una imagen para usar las convolucionales.
   
 ** Summary
+Las convolucionales son intersantes porque extraen características
+locales y son invariables a la translación. También son
+jerárquicas. Existen modelos como vgg16, inception, resnet.  Un
+embedding es una representación numérica de un dato. Por ejemplo, se
+puede convertir una palabra de una cadena de texto a un vector
+numérico. Permiten reducir la dimensionalidad. Se debe tomar en cuenta
+que en cambio si representamos cada palabra de un texto en una
+codificación one-hot, se consumirá mucha más memoria.
+
+- word2vec:
+  - skip-gram: predecir el contexto dada una palabra
+  - CBOW: el continuos bag of words es predecir una palabra dada las de contexto
+- glove: usa matriz de co ocurrencia
 ** TODO Tareas
-- [ ] consulta sobre embeddings aula virtual
+- [-] consulta sobre embeddings aula virtual
   - [ ] word2vec
   - [ ] glove
-  - [ ] bert
+  - [X] bert
 * 2024-10-21 Redes Resneet
 ** Questions and keywords
-- bloque residual::
+- bloque residual :: skip connections, pasar los valores a una parte
+  más adelante de la red para mitigar la perdida del gradiente
 - revisar el ejemplo de calculo en los slides
 - ¿permite el bloque residual aumentar el número de capas de una red?
 - en los slides se menciona que fine tuning es reentrenar por completo
@@ -337,6 +429,26 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
   - para conjuntos de datos de pocos samples
 - Ejercicio 1 clasificación de imágenes con freeze layers
 ** Summary
+Son redes neuronales profundas que mitigan el problema del vanishing
+gradient gracias a las skip connections o conexiones de salto que
+pemiten conectar directamente una capa a otra. El bloque residual
+obliga, entonces, a la red a aprender la diferencia entre la entrada y
+salida al pasar la entrada directamentea a la salida del bloque sin
+afectarla de conversiones, operaciones y demas. Es decir aprende la
+diferencia entre $h(x)-x$. Obliga a la red a aprender pequeñas
+correcciones en vez de complejas transformaciones. con esto simplifica
+el aprendizaje reduciendo complejidad.
+
+Si se compara transfer learning  fine tuning se tiene que:
+- transfer learning o congelación de capas es más rápido.
+- transfer learning sólo entrena las últimas capas
+- transfer learning ideal para datasets pequeños
+- fine tuning ajusta todas las capas
+- fine tuning es más demoroso. ajusta todos los pesos
+- fine tuning adecuado cuando se tienen suficientes datos
+- fine tuning es más suceptible a overfiting sin pocos datos. Transfer
+  learning mitiga el overfitting.
+  
 * 2024-10-23 GoogleNet e Inception
 ** Questions and keywords
 - inception bloque ::
@@ -382,10 +494,12 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - lo malo es que requiere una gran cantidad de datos  para entrenar
 - costoso  para matrices grandes
 ** Summary
-
+GoogleNet o Inception utiliza la aplicación de varios kernels en
+paralelo para extraer características de la imagen. Es decir, extrae
+características de diferentes escalas simultáneamente. 
 ** 2024-10-28 YOLO
 ** Questions and keywords
-- YOLO ::
+- YOLO :: 
 - object detection :: identificar y localizar objetos en una imagen/escena
 - mAP :: mean average precision
 - idea :: combinar yolo y redes de grafos para poder explicar escenas
@@ -418,6 +532,10 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 - Mientras más cercano a 1 excelente superposición
 - cercano a 0, no hay objeto
 ** Summary
+YOLO es un modelo de computer vision que se emplea en tareas de real
+time de detección de objetos. Es intersante que combina clasificación
+y regresión para proveer de la clase del objeto así como el bounding
+box mediante las coordenadas $x$, $y$ y el $w$, $h$
 ** TODO [%]
 - app para celular, usar version 5
 - checar la aplicacion de detección de melanoma con YOLO
@@ -426,14 +544,14 @@ probabilidad de una etiqueta $y$ dada una observación $\mathbf{x}$
 
 * 2024-10-30 RNN
 ** Questions and keywords
-- RNN ::
+- RNN :: recurrent neural network
 - consultar la clasificación de muchos a uno y muchos a muchos en RNN
 - encoder :: representar la información en un embedding
 - decoder :: reconstruye la información de salida
-- unigram ::
-- bigram ::
-- trigram ::
-- token ::
+- unigram :: de uno en uno
+- bigram :: de dos en dos recorriendo
+- trigram :: de tres en tres
+- token :: unidad minima de analisis
 - preguntar a jonathan de donde saco la funcion print examples 
 ** Notes
 - retener información de los datos anteriores
@@ -534,6 +652,7 @@ print(next_chars)
   palabras padding equilibra esto.
 [[https://colab.research.google.com/drive/1g7p2hjIwdAswOuKua0OB_37mLSm09XXs?hl=es#scrollTo=-kY3hT8WOWLC][colab-rnn-keras-problema3]]
 ** Summary
+
 * 2024-11-06 RNN y LST
 ** Questions and keywords
 - forward propagation ::
