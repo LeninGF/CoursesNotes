@@ -768,3 +768,24 @@ print(next_chars)
 - mas grande el texto requeire más contexto i.e. más unidades RNN
 - Objetivo obtener un traductor de portugues a español
 ** Summary
+* 2024-11-25 Neural Machine Translation
+** Questions and keywords
+- encoder ::
+- decoder ::
+- NMT ::
+- No cacho para que es RepeatVector en el Encoder ::
+- No cacho para que va el TimeDistributed en el Decoder :: añada una
+  capa densa a cda una de las celdas
+- cómo se interpreta el BLEU score ¿cuándo es bueno? ¿cuándo es malo? :: 
+** Notes
+- Formado por encoder y decoder
+- El encoder toma la oración a traducir
+- El decoder genera la oración traducida
+*** Time Distributed
+- Aplica una capa a cada elemento de una capa
+*** BLEU
+- Métrica para evaluar la calidad de las traducciones automáticas.
+- una buena traducción tendria un valor de 0.4
+- no captura la semantica de las oraciones
+- se le incorpora una penalziación cuando la traducción es muy corta
+** Summary
