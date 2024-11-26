@@ -942,3 +942,63 @@ esta clase requiro observar que se añada automaticamente
 ** Notes
 - ingresar con correo de maria.perez y clave ftDoc2024%
 ** Summary
+* 2024-11-26 Procesamiento de Lenguaje Natural
+** Questions and keywords
+- token ::
+- ngrams ::
+- LLM ::
+- codificador o encoder ::
+- self attention o atención escalonada ::
+- BERT ::
+- GPT ::
+- K,Q,V :: 
+** Notes
+- Evolución de varias arquitecturas desde redes neuronales
+  convolucionales, recurrentes, autoencoders, hasta transformers
+- LLM :: IA para comprender y generar lenguaje humano.
+  - GPT
+  - LlaMa
+  - Gemma
+- En general, los LLM predicen la siguiente palabra más probable
+- Aplicaciones comunes que han hallado lugar son:
+  - ASISTENTES
+  - Analisis de sentimientos
+  - Traducción automática
+  - Educación Personalizada para los estudiantes
+*** Uso de LLM en Investigación
+- Encontrar articulos relevantes y resumir articulos
+- Generación de ideas mediante sugerir posiubles hipótesis o temas de investigación
+- Colabora en la escritura y ediciń mejorando el estilo del textp académico
+*** Transformers
+- Tipo de red neuronal profunda que procesa datos secuenciales como lenguaje
+- pero no procesa secuencialmente sino en paralelo viendo todas las palabras de una vez
+- Definido en attentino is all you need
+- Los transformers procesan las palabras en paralelo
+- tiene una estructura formada por mecanismo de atención, encoder y decoder
+- Atención escalonada :: Permite calcular la importanciá de todas las
+  palabras contra todas las palabras
+- Capa FeedForward :: no me queda claro pero se que lo importante es
+  que permite evitar el analisis secuencial
+- Decodificador :: hecha una mirada solo hacia atras de una posición
+- GPT sólo usa el decodificador para generar texto secuencial
+- Bert utiliza el codificador y un sismtea bidireccional mediante word
+  piece embeddings y masked training.
+**** Mecanismo de atención
+- componente clave en transformers
+- formado de query, key y value
+- para cada palabra se genera los tres vectores con proyecciones lineales
+- se multiplica las matrices de queries y keys seguido de normalizacion
+- el multi-head attention da riquesa de representación y paralelización
+**** Bert
+- modelo desarrollado por google
+- es bidireccional que le permite comprender mejor el contexto del lenguaje
+- se hace un pre entrenamiento mediante el enmascaramiento de palabras del texto
+- en la etapa de ajuste fino se adapta el modelo a las tareas
+**** Herramientas para trabajar con LLMs
+- OpenAI
+- HuggingFace
+- Google Cloud
+- Antropic
+- MS Azure
+- Deep AI
+** Summary
