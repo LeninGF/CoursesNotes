@@ -1002,3 +1002,21 @@ esta clase requiro observar que se añada automaticamente
 - MS Azure
 - Deep AI
 ** Summary
+* 2024-11-28 Fundamentos IAG
+** Questions and keywords
+- GAN :: redes neuronales adversariales
+- aplicacion de iag en video juegos me parece extraño :: 
+** Notes
+- La IAG tiene aplicaciones como creación de imágenes, música y texto
+- Genera debates en cuanto a la autoría de la creación artística
+- En informática se tiene aplicaciones como:
+  - Generación de texto
+  - Generación de código
+- Debido a la generación sintética de información, la IAG plantea
+  desafíos éticos y legales (e.g. fake news, fake images, fake videos)
+- a futuro se espera que sea integrada con otras
+  tecnologías. Aplicaciones que puedan revolucionar la transformación industrial
+** Aplicaciones
+1. Generar Imágen desde una herramienta Generativa
+2. Hacer un resumen de la IAG
+** Summary
