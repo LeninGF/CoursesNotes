@@ -789,3 +789,44 @@ print(next_chars)
 - no captura la semantica de las oraciones
 - se le incorpora una penalziación cuando la traducción es muy corta
 ** Summary
+* 2024-11-29 LLM Conceptos
+** Questions and keywords
+- LLM ::
+- huggingface ::
+- dónde puedo obtener las descripciones de las salidas que tengo de la
+  aplicación del pipeline? Supongo que el API debe indicar esto pero
+  ayer que intenté me confundí
+- que es sacremoses para tokenizacion ::
+- cómo colocar la gpu en huggingface pipeline :: 
+** Notes
+- LLM está entre NLP y Deep Learning
+- Proceso de cliclo de desarrollo tiene etapas:
+  1. preprocesamiento de datos
+  2. diseño modelo
+  3. pre-entrenamiento y fine tuning
+  4. evaluación
+- Se utiliza la plataforma de Huggingface
+
+*** Programa LLM
+#+begin_src python :session :results output :exports both
+from transformers import pipeline
+
+text_classifier = pipeline(task="text-classification",
+model="nlptown/bert-base-multilingual-uncased-sentiment")
+text = "The service at Hotel Atena was amazing. Food was great and service warm"
+sentiment = text_classifier(text)
+print(sentiment)
+#+end_src
+
+#+RESULTS:
+: Hardware accelerator e.g. GPU is available in the environment, but no `device` argument is passed to the `Pipeline` object. Model will be on CPU.
+: [{'label': '5 stars', 'score': 0.7138378024101257}]
+*** Tareas LLM
+1. Generación de Código
+2. Reconocimiento de Intención
+3. Reconocimiento de nombres
+4. Clasificación de texto
+5. Generación de texto
+6. Question Answering
+7. Traducción de un lenguaje a otro
+** Summary
