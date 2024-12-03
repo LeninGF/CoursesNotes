@@ -1019,4 +1019,94 @@ esta clase requiro observar que se añada automaticamente
 ** Aplicaciones
 1. Generar Imágen desde una herramienta Generativa
 2. Hacer un resumen de la IAG
+*** Enlaces de interés para el tema Ética IA
+- [[https://arxiv.org/abs/2409.00054][Automating Knowledge Discovery from Scientific Literature via LLMs]]
+- [[https://arxiv.org/abs/2408.06292][The AI Scientist: towards fully automated Open-Ended Scientific Discovery]]
+- [[https://www.google.com/search?q=arxiv+llm+model+automate+scientific+discovery+process&oq=arxiv+llm+model+automate+scientific+discovery+process&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigAdIBCTE2MTE4ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8][Busqueda en Google de LLM en revision literatura]]
+- [[https://xinmingtu.cn/blog/2023/LLM_science/][research ideas hypotesis llm generation]]
+- [[https://research.ibm.com/blog/science-expert-LLM][ibm and nasa build llm to make scientific knowledge accesible]]
+- [[https://arxiv.org/html/2408.15545v2][SciLitLLM how to adapt LLMs for Scientific Literature Understanding]]
+** Summary
+
+* 2024-12-03 Latex
+** Questions and keywords
+- ¿es lenguaje de programación?
+- babel :: internacionalización de \LaTeX para usar otros idiomas
+- averiguar como se puede ordenar las entradas bibtex en el archivo bib
+** Notes
+- Para documentación científica
+- es una herramienta que ya tiene su tiempo considerable en el área
+- licencia gratuita
+- latex genera .aux, .log y .??? para generar el .pdf
+- ~documentclass~ delimita el tipo de documento
+- en Opciones se configura el tamaño de la letra
+
+#+begin_src latex
+\documentclass[Opciones]{TipoDocumento}
+% instruccinoes de preámbulo del documento por ejemplo definir idioma
+% en español
+% titulos, autores, paquetería
+\begin{document}
+
+\end{document}
+#+end_src
+
+- Preámbulo: instrucciones de aspectos globales del documento
+  e.g. tipos de documentos, tamaño del papel, de la letra, abreviaturas
+- inputenc :: indica la codificación del fichero fuente. por ejemplo
+  para caracteres que no son propios del inglés pero sí del español.
+- latex es como un lenguaje de programación en donde se compila para
+  generar el documento 
+
+
+#+begin_src latex
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{times} % fechas
+
+\begin{document}
+\title{Is this a Paper?}
+\author{LeninGF}
+\date{clase 05/12/2023}
+\maketitle
+
+\begin{abstract}
+  this is an abstract
+\end{abstract}
+\section{Chapter1}
+\label{sec:chap1}
+This is an interesting chapter \ref{sec:chap1}
+\end{document}
+#+end_src
+*** Paquetes interesantes
+- cite :: para citas bibliográficas desde archivo bib ¿eso creo?
+- lmodern y T1 fontenc :: sirven para controlar caracteres especiales
+  del español
+- hay la siguiente observación para forzar titulados en español creo
+- ~thispagestyle{empty}~ :: para quitar los números de página en una
+  sección del documento
+-  :: 
+
+#+begin_src latex
+\usepackage[spanish, activeacute]{babel}
+#+end_src
+
+- Para las imágenes se recomienda usar pdfs y declarar las extensiones a usar
+  #+begin_src latex
+  \DeclareGraphicsExtensions{.bmp, .png, .pdf, .jpg}
+  #+end_src
+- Creación de glosarios ~\usepackage{glossaryl}~
+*** Enlaces y reclusos interesantes
+- [[https://github.com/s4m13337/org-ieee/tree/master][Repositorio Git para hacer un articulo IEEE con ORG]]
+- [[https://www.google.com/search?q=emacs+org+write+latex+paper&oq=emacs+org+write+latex+paper&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigATIHCAYQIRifBTIHCAcQIRifBTIHCAgQIRifBdIBCDQyNzlqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8][Videos de youtube y otros buscados en Google]]
+- [[https://opensource.com/article/20/4/emacs-org-mode][uso de org mode para generar latex]]
+- [[https://github.com/jkitchin/org-ref][org ref recomendado para manejar citas, glosarios y referencias]]
+- [[https://orgmode.org/manual/LaTeX-Export.html#LaTeX-Export][Latex export en Org explica algunas modificaciones para mejorar latex]]
+- [[https://opensource.com/article/18/2/org-mode-slides][como hacer revealjs slides con org]]
+*** Ejercicio
+- Descargar el plan de tesis LaTeX
+- Entrega del plan y parte de la slr
+- 
 ** Summary
