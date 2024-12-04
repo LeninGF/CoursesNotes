@@ -1138,3 +1138,36 @@ person1.saludar()
 : Hola Lenin
 
 ** Summary
+* 2024-12-04 Transformer sólo Decoder
+** Questions and keywords
+- PositionWiseFeedForward ::
+- Decoder layer :: atención cruzada
+- self attention ::
+- multiheadattention :: cada cabeza tiene un criterio diferentes. Calcula KQV
+- mascara causal o máscara de atenttion :: 
+** Notes
+- Revisar la ayuda memoria de Transformers en [[https://posgrado-virtual.epn.edu.ec/pluginfile.php/7931/mod_resource/content/1/Tarjetas%20de%20memoria%20sobre%20Transformers.pdf][aula virtual]]
+- La capa de decoder usa Atención Auto Regresiva
+- Un modelo autoregresivo genera *tokens* secuencialmente
+- Usa los tokens anteriores como contexto para su predicción
+- los criterios de finalización puede ser una longitud máxima de secuencia o una palabra de stop EoS
+- el sólo decoder usa máscaras para mejorar la predicción de la siguiente palabra
+- para poder estimar la probabilidad de las palabras el decoder
+  transformer usa capa lineal más softmax.
+- 
+*** Ejercicio Implementar un Transformer Encoder-Decoder
+Usar secuencias randoms y los valores hiperparametros para probar un
+transformer solo decoder para que pruebe con una secuencia random
+
+#+begin_src python
+num_classes = 3
+vocab_size = 10000
+batch_size = 8
+d_model = 512
+num_heads = 8
+num_layers = 6
+d_ff = 2048
+sequence_length = 256
+dropout = 0.1
+#+end_src
+** Summary
