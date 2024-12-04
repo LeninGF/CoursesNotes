@@ -1170,4 +1170,14 @@ d_ff = 2048
 sequence_length = 256
 dropout = 0.1
 #+end_src
+
+Sobre los hiperparametros
+
+- ~src_vocab_size~, ~tgt_vocab_size~: Vocabulary sizes for source and target sequences, both set to 5000.
+- ~d_model~: Dimensionality of the model's embeddings, set to 512.
+- ~num_heads~: Number of attention heads in the multi-head attention mechanism, set to 8.
+- ~num_layers~: Number of layers for both the encoder and the decoder, set to 6.
+- ~d_ff~: Dimensionality of the inner layer in the feed-forward network, set to 2048.
+- ~max_seq_length~: Maximum sequence length for positional encoding, set to 100.
+- ~dropout~: Dropout rate for regularization, set to 0.1.
 ** Summary
