@@ -1111,3 +1111,50 @@ This is an interesting chapter \ref{sec:chap1}
 - 
 ** Summary
 
+* 2024-12-10 Finalización del Curso 
+** Questions and keywords
+** Notes
+- Finalizar los trabajos a realizar:
+  - plan de tesis en Tex
+  - presentación Beamer
+  - Preparar examen
+** Enlaces finales
+Dado que la clase se termina y por tanto el acceso a la misma apunto
+los enlaces finales que tenía abierto en el computador a fin de
+revisarlos en caso de que sea necesario
+
+- [[https://doi.org/10.1007/s43681-024-00493-8][the ethics of using artificial intelligence in scientific research]]
+- [[https://www.researchgate.net/publication/372147879_Ethics_of_Artificial_Intelligence_in_Academia?enrichId=rgreq-a8c13da151c29f0fc278176e170bf376-XXX&enrichSource=Y292ZXJQYWdlOzM3MjE0Nzg3OTtBUzoxMTQzMTI4MTIzMTEzNTg0NkAxNzExMjcwOTkzNjgz&el=1_x_3][ethics of artificial intelligence in academia]]
+- [[https://emacs.stackexchange.com/questions/82290/how-do-i-force-remove-a-package][remove package in emacs]]
+- [[https://alexott.net/en/writings/emacs-vcs/EmacsGit.html][emacs git]]
+- [[https://github.com/emacs-helm/helm/wiki#from-melpa][helm mode emacs]]
+- [[https://easychair.org/][easy-chair]]
+- [[https://superuser.com/questions/549497/how-to-switch-back-text-encoding-to-utf-8-with-emacs][switch encoding emacs back to utf8]]
+- [[https://emacs.stackexchange.com/questions/74303/orgmode-how-to-make-references-to-chapter-section-name][emacs references]]
+- [[https://orgmode.org/org.html#Internal-links][org manual]]
+- [[https://emacs.stackexchange.com/questions/32648/in-org-mode-how-do-i-reference-a-figure][reference figures in org mode]]
+- [[https://arxiv.org/html/2408.15545v2][scilitllm how to adapt llm for scientific literature review]]
+- [[https://research.ibm.com/blog/science-expert-LLM][nasa sience expert]]
+- [[https://xinmingtu.cn/blog/2023/LLM_science/][ai for general science llms for scientific hypothesis research ideas generation]]
+- [[https://www.google.com/search?q=arxiv+llm+model+automate+scientific+discovery+process&oq=arxiv+llm+model+automate+scientific+discovery+process&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigAdIBCTE2MTE4ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8][google search about llm model automate scientific discovery process]]
+- [[https://arxiv.org/abs/2408.06292][the ai scientist towards fully automated open ended scientific discovery]]
+- [[https://arxiv.org/abs/2409.00054][automating knowledge discovery from scientific literature via LLMs]]
+- [[https://github.com/s4m13337/org-ieee/tree/master][ieee org template]]
+- [[https://www.google.com/search?q=emacs+org+write+latex+paper&oq=emacs+org+write+latex+paper&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigATIHCAYQIRifBTIHCAcQIRifBTIHCAgQIRifBdIBCDQyNzlqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8][google search about emacs org wirte latex paper]]
+- [[https://opensource.com/article/20/4/emacs-org-mode][use of emacs to easily create latex documents]]
+- [[https://github.com/jkitchin/org-ref][org-ref could be useful for citations in org mode]]
+- [[https://orgmode.org/manual/LaTeX-Export.html#LaTeX-Export][Latex Export Org Mode indicates all about using figures, tables and so far]]
+- [[https://opensource.com/article/18/2/org-mode-slides][create reveal js slides with emacs]]
+- [[https://www.um.es/innova/OCW/informatica-para-universitarios/ipu_docs/latex/tema1.html#todas_las_secciones][documentos cientificos con latex]]
+- [[https://ianyepan.github.io/posts/format-all/][format-all to format code in emacs most programming languages]]
+- [[https://www.gnu.org/software/auctex/manual/auctex/Indenting.html][about auctex]]
+- [[https://tex.stackexchange.com/questions/26102/latex-code-sniffer-and-or-beautifier][help about latex code beautifier]]
+- [[https://latexindentpl.readthedocs.io/en/latest/sec-how-to-use.html][latexindent a perl script that helps to fix identation of latex code and format]]
+- [[https://stackoverflow.com/questions/23712076/how-to-remove-m-in-emacs][remove ^M in emacs]]
+- [[https://latexindentpl.readthedocs.io/en/latest/sec-how-to-use.html#ubuntu-linux-users-without-perl][latexindent another section]]
+- [[https://newptcai.gitlab.io/blog/latexindent/][how to install latexindent in ubuntu]]
+- [[https://www.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_1)%3A_Basic_Structure][basic structure of tex document overleaf]]
+- [[https://emacspal.com/the-complexities-of-configuring-emacs-as-a-pdf-viewer/][emacs as pdf viewer]]
+- [[https://emacs.stackexchange.com/questions/43693/setting-up-emacs-auctex-viewer][emacs viewer pdf auctex]]
+- [[https://blog.chapagain.com.np/latex-generate-dummy-text-lorem-ipsum-in-your-document/][use of dummy text lorem ipsum]]
+** Summary
