@@ -1181,3 +1181,26 @@ Sobre los hiperparametros
 - ~max_seq_length~: Maximum sequence length for positional encoding, set to 100.
 - ~dropout~: Dropout rate for regularization, set to 0.1.
 ** Summary
+* 2024-12-09 Encoder Decoder
+** Questions and keywords
+- cross attention ::
+- output embedding :: mapean a tokens de salida esperados
+** Notes
+- del encoder salen hidden states??? al decoder
+- los output embeddings es unir dos partes ???
+- Hay un ejercicio de implementar el trnasformer encoder decoder para
+  probar en una secuencia random con los hiperparametros de la diapositiva.
+*** Book Tunstall
+- La idea de los mecanismos de atención es no producir un único estado oculto (i.e. single hidden state)
+- La idea de los mecanismos de atención es generar un estado oculto en
+  cada paso que el decoder puede acceder
+- Para evitar que el decoder tenga ver todos los estados al mismo
+  tiempo y generar una entrada muy grande se recurre a un mecanismo de
+  priorización de estados.
+- La atención es dar pesos a las salidas del encoder para dirigir la
+  atención a los estados del encoder más relevantes.
+- El transformador aprende alineamientos no triviales entre  palabras
+- El mecanismo de atención opera sobre cada uno de los estados del
+  decoder y el encoder y sus salidas van a una Feed Forward Neural Network
+- 
+** Summary
