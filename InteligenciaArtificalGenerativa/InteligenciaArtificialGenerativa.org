@@ -1204,3 +1204,117 @@ Sobre los hiperparametros
   decoder y el encoder y sus salidas van a una Feed Forward Neural Network
 - 
 ** Summary
+* 2024-12-16 LLMs Pre-Entrenadas Clasificación Resumen y QA
+** Questions and keywords
+- LLM ::
+- HuggingFace ::
+- pipeline :: ¿cómo se define o aque va el concetpo? vea primeras diapositivas
+- AutoModel :: 
+- AutoTokenizer :: preparacion del texto
+- last hidden state :: representación oculta final del encoder
+- es raro que no use el outputs.last_hidden_state ::
+- logits :: puntuaciones sin normalizar que dan la probabilidad
+** Notes
+- Pipeline
+  - interfaz sencilla de alto nivel
+  - mayor abstracción
+  - menor control y pesonalizacion
+- ~from_pretrained~ cara los pesos
+- Se utilizara las siguientes variables:
+- AutoModel y AutoTokenizer permiten adaptar a tareas específicas
+#+begin_src python
+model_name = ""
+#+end_src
+*** AutoModel head
+- tiene una capa de salida lineal
+- se declara una clase para tomar los pooled output
+*** AutoModel for sequence classification
+- facilita las tareas de clasificación
+- ya tiene el classification head
+- está preconfigurado
+- sus salidas son los logits
+- para obtener clases se usa ~argmax~ para saber en donde se tiene la mayor probabilidad
+*** AutoModelForCausalLM
+- Genera texto causal en función del texto anterior
+- Ejemplo es el GPT-2
+- Al hacer el ~decode~ se pasa por medio de los embeddings para
+  traducir los vectores en palabras.
+- Preconfigurado
+- Auto-regresivo: generar nuevas palabras en base a las anteriores
+- Usa un prompt?
+*** Datasets HuggingFace
+1. cargar el dataset ~load_dataset~
+2. el DataLoader de Pytorch procesa los datos por lotes i.e. batches
+3. Iterar los elementos a traves del DataLoader
+
+Clasificación :: Para clasificación se tiene el dataset IMDB
+generacion de texto :: Stanford NLP
+*** Entrenamiento del LLM para generacion de texto
+- Supervisado
+- el texto original proporciona tanto la entrada como las labels
+- una LLM en un proceso autoregresivo genera la siguiente palabra en
+  base a la anterior.
+*** Ejercicio Pipeline vs Clases Automáticas
+- la 2 es la falsa
+#+begin_src python :session :results output :exports both
+ from transformers import AutoModelForCausalLM, AutoTokenizer
+ from datasets import load_dataset
+
+ model_name = "gpt2"
+ tokenizer = AutoTokenizer.from_pretrained(model_name)
+ model = AutoModelForCausalLM.from_pretrained(model_name)
+
+ dataset = load_dataset("stanfordnlp/shp", "default")
+ train_data = dataset["train"]
+
+ prompt = train_data[0]["history"][:60]
+ inputs = tokenizer.encode(prompt, return_tensors="pt")
+ 
+ output = model.generate(inputs, max_length=29)
+ generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+
+#+end_src
+
+#+begin_src python :session :results output :exports both
+print(prompt)
+print(generated_text)
+#+end_src
+
+
+*** Ejercicios de clasificacion
+#+begin_src python :session :results output :exports both
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+
+model_name = "textattack/distilbert-base-uncased-SST-2"
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+
+text = ["awsome movie", "what an awful movie", "I regret it to have watched it"]
+
+inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+outputs = model(**inputs)
+logits = outputs.logits
+print(logits)
+predicted_classes = torch.argmax(logits, dim=1).tolist()
+for idx, predicted_class in enumerate(predicted_classes):
+    print(f"predicted class for {text[idx]}: {predicted_class}")
+#+end_src
+
+#+RESULTS:
+: tensor([[-2.2862,  1.7893],
+:         [-0.3728,  0.2801],
+:         [ 0.6427, -0.4970]], grad_fn=<AddmmBackward0>)
+: predicted class for awsome movie: 1
+: predicted class for what an awful movie: 1
+: predicted class for I regret it to have watched it: 0
+
+*** Resumenes Texto
+- extractivos :: reutiliza las palabras y usa un encoder
+- abstractivos :: genera secuecnias diferentes y no necesariamente
+  corresponde y usa un encoder y decoder
+
+Observar los demas ejemplos en GitHub
+
+** Summary
