@@ -1222,12 +1222,54 @@ Sobre los hiperparametros
 - ~from_pretrained~ cara los pesos
 - Se utilizara las siguientes variables:
 - AutoModel y AutoTokenizer permiten adaptar a tareas específicas
-#+begin_src python
-model_name = ""
-#+end_src
-*** AutoModel head
+*** AutoModel
 - tiene una capa de salida lineal
 - se declara una clase para tomar los pooled output
+AutoModel no proporciona una salida de clasificación o *classification
+head*. Por esta razón es mejor añadirla creando una clase. Ahora esto
+permite disponer de una maor personalización y control sobre la tarea,
+dejando sólo la tarea de tokenización en el otro pipeline.
+#+begin_src python :session :results output :exports both
+import torch.nn as nn
+from transformers import AutoModel, AutoTokenizer
+model_name = "bert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModel.from_pretrained(model_name)
+text = "I am an example sequence for text classification"
+#+end_src
+
+Se declara la siguiente clase para ajustar el modelo a una tarea de
+clasificacion
+#+begin_src python
+class SimpleClassifier(nn.Module):
+    def __init__(self, input_size, num_classes):
+        super(Simpleclassifier, self).__init__()
+        self.fc = nn.Linear(input_size, num_classes)
+    def forward(self, x):
+        return self.fc(x)
+#+end_src
+
+Ahora para aplicar la predicción es necesario tokenizar el texto de
+entrada y obtener el hidden state final
+
+#+begin_src python :session :results output :exports both
+ inputs = tokenizer(
+      text, return_tensors="pt", padding=True,
+     truncation=True, max_length=64
+      )
+ outputs = model(**inputs)
+ pooled_output = outputs.pooler_output
+ print("Hidden states size: ", outputs.last_hidden_state.shape)
+ print("Pooled output size: ", pooled_output.shape)
+ classifier_head = SimpleClassifier(
+ pooled_output.size(-1), num_classes=2
+ )
+ logits = classifier_head(pooled_output)
+ probs = torch.softmax(logits, dim=1)
+ print("Predicted Class Probabilities: ", probs)
+#+end_src
+
+
 *** AutoModel for sequence classification
 - facilita las tareas de clasificación
 - ya tiene el classification head
@@ -1316,5 +1358,10 @@ for idx, predicted_class in enumerate(predicted_classes):
   corresponde y usa un encoder y decoder
 
 Observar los demas ejemplos en GitHub
+
+*** Proceso de Traducción
+- mapeo del idioma fuente al idioma objetivo
+- se usa modelos de tipo encoder-decoder
+- Ejercicio de Traduccion para redactar libro de frases en español.
 
 ** Summary
