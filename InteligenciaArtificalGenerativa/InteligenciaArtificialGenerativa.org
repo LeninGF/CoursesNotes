@@ -1365,3 +1365,153 @@ Observar los demas ejemplos en GitHub
 - Ejercicio de Traduccion para redactar libro de frases en español.
 
 ** Summary
+
+* 2025-01-06 Metricas de Evaluación
+** Questions and keywords
+
+** Notes
+- Localidad de los modelos bajados de huggingface en
+  - linux: ~/.cache/huggingface/hub
+  - windows: c:\users\<username>\.cache\huggingface\hub
+- Clasificación utiliza metricas tradicionales que comparan los ground truth y los valores predichos
+- Para IAGenerativa se usa otras métricas
+- Para otros casos considerar el uso posible de KPIs u otros para
+  evaluar el rendimiento del modelo en un negocio
+*** Preplexity
+- mide la habilidad de un modelo para predecir la proima palabra en una secuencia de texto.
+- una perplexity menor a 10 es un buen valor de ata confianza ... excelente
+- perplexity de 10 a 50 es buena o aceptable
+- perplexity superior a 100 no es un valor aceptable
+- calcula la probabilidad condicional en logaritmo en base 2 de la
+  palabra actual dado las anteriores. Es la eexponencial de la entropia cruzada.
+  
+** Ejercicio Metricas básicas de Clasificación con Evaluate
+#+begin_src python :session :results output :exports both
+
+from evaluate import load
+
+accuracy = load("accuracy")
+precision = load("precision")
+recall = load("recall")
+f1 = load("f1")
+
+real_labels = [0,1,0,1,1]
+predicted_labels = [0,0,0,1,1]
+acc_val = accuracy.compute(references=real_labels, predictions=predicted_labels)
+precision_val = precision.compute(references=real_labels, predictions=predicted_labels)
+recall_val = recall.compute(references=real_labels, predictions=predicted_labels)
+f1_val = f1.compute(references=real_labels, predictions=predicted_labels)
+
+print(f"acc: {acc_val}")
+print(f"precision: {precision_val}")
+print(f"recall: {recall_val}")
+print(f"f1: {f1_val}")
+#+end_src
+
+#+RESULTS:
+: acc: {'accuracy': 0.8}
+: precision: {'precision': 1.0}
+: recall: {'recall': 0.6666666666666666}
+: f1: {'f1': 0.8}
+
+** Ejercicio Métricas de Clasificación con PipeLine
+Checkar porque parece que podemos resolver con PipeLine y con
+AutoModel estan los dos pero creo que debe ser uno u otro
+#+begin_src python :session :results output :exports both
+import torch
+from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification
+from evaluate import load
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model_name = "distilbert-base-uncased-finetuned-sst-2-english"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+model = model.to(device)
+classifier = pipeline("text-classification", model=model, tokenizer=tokenizer, device=0)
+
+new_data = ["this movie was terrible", "best movie ever"]
+
+predictions = classifier(new_data)
+predicted_labels = [1 if pred["label"]=="POSITIVE" else 0 for pred in predictions]
+print(predicted_labels)
+# tokenizar dato de entrada
+new_input = tokenizer(new_data, return_tensors="pt", padding=True, truncation=True, max_length=64)
+new_input = new_input.to(device)
+with torch.no_grad():
+    outputs = model(**new_input)
+
+predicted = torch.argmax(outputs.logits, dim=1).tolist()
+print(predicted)
+# etiquetas ground truth
+
+real = [0,1]
+
+accuracy = load("accuracy")
+precision = load("precision")
+recall = load("recall")
+f1 = load("f1")
+
+acc_val = accuracy.compute(references=real, predictions=predicted)
+precision_val = precision.compute(references=real, predictions=predicted)
+recall_val = recall.compute(references=real, predictions=predicted)
+f1_val = f1.compute(references=real, predictions=predicted)
+
+print(f"acc: {acc_val}")
+print(f"precision: {precision_val}")
+print(f"recall: {recall_val}")
+print(f"f1: {f1_val}")
+#+end_src
+
+#+RESULTS:
+: [0, 1]
+: [0, 1]
+: acc: {'accuracy': 1.0}
+: precision: {'precision': 1.0}
+: recall: {'recall': 1.0}
+: f1: {'f1': 1.0}
+** Perplexity
+
+#+begin_src python :session :results output :exports both
+import torch
+from evaluate import load
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# revisando si la GPU esta disponible
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+model_name = "gpt2"
+model = AutoModelForCausalLM.from_pretrained(model_name).to(device)
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+# Preparar el texto semilla
+prompt = "Latest research findings in Antartica show"
+input_ids = tokenizer.encode(prompt, return_tensors="pt").to(device)
+attention_mask = torch.ones(input_ids.shape, device=device)
+# Generacion de texto
+output = model.generate(input_ids,
+                        max_length=45,
+                        num_return_sequences=1)
+generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+print(generated_text)
+
+# Probando el Perplexity Score
+perplexity = load("perplexity", module_type="metric")
+
+results = perplexity.compute(predictions=generated_text, model_id="gpt2")
+print(results)
+print(results["mean_perplexity"])
+
+
+#+end_src
+
+#+RESULTS:
+: The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+: Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+: Latest research findings in Antartica show that the presence of a single molecule in the brain is associated with a number of neurodegenerative diseases, including Alzheimer's disease, Parkinson's disease, and Huntington's disease.
+: 
+:   0%|                                                                          | 0/15 [00:00<?, ?it/s] 27%|█████████████████▌                                                | 4/15 [00:00<00:00, 34.27it/s] 60%|███████████████████████████████████████▌                          | 9/15 [00:00<00:00, 39.70it/s] 93%|████████████████████████████████████████████████████████████▋    | 14/15 [00:00<00:00, 41.70it/s]100%|█████████████████████████████████████████████████████████████████| 15/15 [00:00<00:00, 40.72it/s]
+: {'perplexities': [245.6442413330078, 520.33837890625, 1159.1163330078125, 1623.47998046875, 503.7159423828125, 1159.1163330078125, 12869.322265625, 2127.1240234375, 1623.47998046875, 503.7159423828125, 1623.47998046875, 520.33837890625, 2127.1240234375, 1040.381591796875, 1109.62451171875, 12869.322265625, 1561.52978515625, 718.43896484375, 1117.892333984375, 1352.8355712890625, 718.43896484375, 1117.892333984375, 1365.4342041015625, 503.7159423828125, 12869.322265625, 718.43896484375, 1117.892333984375, 12869.322265625, 51.53877639770508, 1117.892333984375, 1159.1163330078125, 520.33837890625, 2127.1240234375, 1159.1163330078125, 718.43896484375, 1040.381591796875, 520.33837890625, 12869.322265625, 503.7159423828125, 1109.62451171875, 2440.78857421875, 1836.3836669921875, 12869.322265625, 1159.1163330078125, 1109.62451171875, 520.33837890625, 1159.1163330078125, 12869.322265625, 1159.1163330078125, 1109.62451171875, 1623.47998046875, 12869.322265625, 939.8240356445312, 2127.1240234375, 1623.47998046875, 503.7159423828125, 1623.47998046875, 1117.892333984375, 1040.381591796875, 1623.47998046875, 12869.322265625, 2440.78857421875, 1561.52978515625, 12869.322265625, 520.33837890625, 12869.322265625, 503.7159423828125, 718.43896484375, 1117.892333984375, 1365.4342041015625, 1823.9217529296875, 1623.47998046875, 12869.322265625, 1407.993408203125, 2440.78857421875, 1823.9217529296875, 1623.47998046875, 1040.381591796875, 2412.978271484375, 1823.9217529296875, 1623.47998046875, 12869.322265625, 718.43896484375, 1117.892333984375, 12869.322265625, 1159.1163330078125, 1109.62451171875, 1623.47998046875, 12869.322265625, 920.1004638671875, 2127.1240234375, 520.33837890625, 718.43896484375, 1117.892333984375, 12869.322265625, 718.43896484375, 503.7159423828125, 12869.322265625, 520.33837890625, 503.7159423828125, 503.7159423828125, 2440.78857421875, 1040.381591796875, 718.43896484375, 520.33837890625, 1159.1163330078125, 1623.47998046875, 1352.8355712890625, 12869.322265625, 1836.3836669921875, 718.43896484375, 1159.1163330078125, 1109.62451171875, 12869.322265625, 520.33837890625, 12869.322265625, 1117.892333984375, 2412.978271484375, 1407.993408203125, 920.1004638671875, 1623.47998046875, 2127.1240234375, 12869.322265625, 2440.78857421875, 1561.52978515625, 12869.322265625, 1117.892333984375, 1623.47998046875, 2412.978271484375, 2127.1240234375, 2440.78857421875, 1352.8355712890625, 1623.47998046875, 1365.4342041015625, 1623.47998046875, 1117.892333984375, 1623.47998046875, 2127.1240234375, 520.33837890625, 1159.1163330078125, 718.43896484375, 1615.80029296875, 1623.47998046875, 12869.322265625, 1352.8355712890625, 718.43896484375, 503.7159423828125, 1623.47998046875, 520.33837890625, 503.7159423828125, 1623.47998046875, 503.7159423828125, 287.0612487792969, 12869.322265625, 718.43896484375, 1117.892333984375, 1040.381591796875, 1823.9217529296875, 2412.978271484375, 1352.8355712890625, 718.43896484375, 1117.892333984375, 1365.4342041015625, 12869.322265625, 51.53877639770508, 1823.9217529296875, 3508.6806640625, 1109.62451171875, 1623.47998046875, 718.43896484375, 1407.993408203125, 1623.47998046875, 2127.1240234375, 166.67469787597656, 503.7159423828125, 12869.322265625, 1352.8355712890625, 718.43896484375, 503.7159423828125, 1623.47998046875, 520.33837890625, 503.7159423828125, 1623.47998046875, 287.0612487792969, 12869.322265625, 174.0450439453125, 520.33837890625, 2127.1240234375, 2060.523681640625, 718.43896484375, 1117.892333984375, 503.7159423828125, 2440.78857421875, 1117.892333984375, 166.67469787597656, 503.7159423828125, 12869.322265625, 1352.8355712890625, 718.43896484375, 503.7159423828125, 1623.47998046875, 520.33837890625, 503.7159423828125, 1623.47998046875, 287.0612487792969, 12869.322265625, 520.33837890625, 1117.892333984375, 1352.8355712890625, 12869.322265625, 195.56918334960938, 2412.978271484375, 1117.892333984375, 1159.1163330078125, 718.43896484375, 1117.892333984375, 1365.4342041015625, 1159.1163330078125, 2440.78857421875, 1117.892333984375, 166.67469787597656, 503.7159423828125, 12869.322265625, 1352.8355712890625, 718.4451293945312, 503.72027587890625, 1623.48779296875, 520.3369140625, 503.72027587890625, 1623.48779296875, 88.4808578491211, 16.051654815673828], 'mean_perplexity': 2735.931258448239}
+: 2735.931258448239
+
+** Summary
