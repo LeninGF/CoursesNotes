@@ -1694,5 +1694,6 @@ pip install gensim
 #+end_src
 
 - Hacer con GloVe, Sim-score y Word2vec como Tarea
+- texto prueba
 
 ** Summary
