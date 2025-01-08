@@ -1530,3 +1530,170 @@ print(results["mean_perplexity"])
 : Latest research findings in Antartica show that the presence of a single molecule in the brain is associated with a number of neurodegenerative diseases, including Alzheimer's disease, Parkinson's disease, and Huntington's disease.
 
 ** Summary
+
+* 2025-01-08 Metricas ROUGE y METEOR
+** Questions and keywords
+- ROUGE ::
+- stemmming :: palabras como good y well
+- lemamatizacion :: raizes de palabras
+** Notes
+*** Rouge
+- sirve para medir la similitudentre resumenesgenerados por modelos y por referencias humanas
+- puntaje cercanos a 1 indican mayor similitud
+- Requiere instalación
+  #+begin_src shell
+   pip install rouge-score
+  #+end_src
+
+#+begin_src python :session :results output :exports both
+import evaluate
+
+rouge = evaluate.load('rouge')
+
+predictions = ["The cat sat on the mat."]
+references = ["The cat is sitting on the mat."]
+
+results = rouge.compute(predictions=predictions,
+                        references=references)
+print(results)
+#+end_src
+
+#+RESULTS:
+: Downloading builder script:   0% 0.00/6.27k [00:00<?, ?B/s]Downloading builder script: 100% 6.27k/6.27k [00:00<00:00, 9.88MB/s]
+: {'rouge1': 0.7692307692307692, 'rouge2': 0.5454545454545454, 'rougeL': 0.7692307692307692, 'rougeLsum': 0.7692307692307692}
+
+Da un error al ejecutar
+#+begin_src python :session :results output :exports both
+from rouge_score import rouge_scorer
+
+scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
+scores = scorer.score(references, predictions)
+print(scores)
+
+#+end_src
+
+#+RESULTS:
+
+*** METEOR
+- presenta metricas como f1-score, precision y recall
+- se compara con BLEU que BLEU sólo usa palabras consecutivas
+- observar que BLEU compara en funcion de 1 grama bi grama tri grama y
+  tetragrama para indicar el desempeño
+#+begin_src python :session :results output :exports both
+from evaluate import load
+
+bleu_metric = load('bleu')
+meteor_metric = load('meteor')
+
+predictions = ["He thought it right and necessary to become a knight-errant, roaming the world in armor, seeking adventures."]
+references = ["He believed it was proper and essential to transform into a knight-errant, traveling the world in armor, pursuing adventures."]
+
+results_bleu = bleu_metric.compute(predictions=predictions, references=references)
+results_meteor = meteor_metric.compute(predictions=predictions, references=references)
+print(f"BLEU: {results_bleu}")
+print(f"Meteor: {results_meteor}")
+
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Downloading builder script:   0%|                                        | 0.00/5.94k [00:00<?, ?B/s]Downloading builder script: 100%|███████████████████████████████| 5.94k/5.94k [00:00<00:00, 3.22MB/s]
+Downloading extra modules:   0%|                                         | 0.00/1.55k [00:00<?, ?B/s]Downloading extra modules: 4.07kB [00:00, 3.85MB/s]                                                  
+Downloading extra modules:   0%|                                         | 0.00/3.34k [00:00<?, ?B/s]Downloading extra modules: 100%|████████████████████████████████| 3.34k/3.34k [00:00<00:00, 10.4MB/s]
+Downloading builder script:   0%|                                        | 0.00/7.02k [00:00<?, ?B/s]Downloading builder script: 100%|███████████████████████████████| 7.02k/7.02k [00:00<00:00, 18.0MB/s]
+[nltk_data] Downloading package wordnet to /home/leningfe/nltk_data...
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/leningfe/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
+[nltk_data] Downloading package omw-1.4 to /home/leningfe/nltk_data...
+BLEU: {'bleu': 0.25928256340208583, 'precisions': [0.7, 0.3684210526315789, 0.2222222222222222, 0.11764705882352941], 'brevity_penalty': 0.9048374180359595, 'length_ratio': 0.9090909090909091, 'translation_length': 20, 'reference_length': 22}
+Meteor: {'meteor': 0.6531090723751274}
+#+end_example
+*** Bert-Score
+- el mismo principio pero usa word2vec y glovec
+- se obtiene una mejor y mas correcta evaluacion con tecnologias nuevas
+#+begin_src shell
+pip install bert-score
+#+end_src
+#+begin_src python :session :results output :exports both
+from evaluate import load
+bertscore = load("bertscore")
+predictions = ["The burrow stretched forward like a narrow corridor for a while, then plunged abruptly downward, so quickly that Alice had no chance to stop herself before she was tumbling into an extremely deep shaft."]
+references = ["The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well."]
+
+results = bertscore.compute(predictions=predictions,
+                            references=references,
+                            model_type="roberta-large")
+print(f"Bert-Score: {results}")
+
+# para meteor
+meteor_score = load("meteor")
+results_meteor = meteor_score.compute(predictions=predictions,
+                                      references=references)
+print(f"Meteor-Score: {results_meteor}")
+
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Downloading builder script:   0%|                                         | 0.00/7.95k [00:00<?, ?B/s]Downloading builder script: 100%|████████████████████████████████| 7.95k/7.95k [00:00<00:00, 9.61MB/s]
+WARNING:matplotlib.font_manager:Matplotlib is building the font cache; this may take a moment.
+tokenizer_config.json:   0%|                                               | 0.00/25.0 [00:00<?, ?B/s]tokenizer_config.json: 100%|████████████████████████████████████████| 25.0/25.0 [00:25<00:00, 1.04s/B]tokenizer_config.json: 100%|████████████████████████████████████████| 25.0/25.0 [00:25<00:00, 1.04s/B]
+config.json:   0%|                                                          | 0.00/482 [00:00<?, ?B/s]config.json: 100%|████████████████████████████████████████████████████| 482/482 [00:00<00:00, 244kB/s]
+vocab.json:   0%|                                                          | 0.00/899k [00:00<?, ?B/s]vocab.json: 100%|██████████████████████████████████████████████████| 899k/899k [00:00<00:00, 2.50MB/s]vocab.json: 100%|██████████████████████████████████████████████████| 899k/899k [00:00<00:00, 2.31MB/s]
+merges.txt:   0%|                                                          | 0.00/456k [00:00<?, ?B/s]merges.txt: 100%|██████████████████████████████████████████████████| 456k/456k [00:00<00:00, 4.47MB/s]
+tokenizer.json:   0%|                                                     | 0.00/1.36M [00:00<?, ?B/s]tokenizer.json: 100%|████████████████████████████████████████████| 1.36M/1.36M [00:00<00:00, 10.2MB/s]tokenizer.json: 100%|████████████████████████████████████████████| 1.36M/1.36M [00:00<00:00, 7.38MB/s]
+model.safetensors:   0%|                                                  | 0.00/1.42G [00:00<?, ?B/s]model.safetensors:   1%|▎                                        | 10.5M/1.42G [00:01<02:19, 10.1MB/s]model.safetensors:   1%|▌                                        | 21.0M/1.42G [00:01<02:08, 10.9MB/s]model.safetensors:   2%|▉                                        | 31.5M/1.42G [00:02<01:41, 13.6MB/s]model.safetensors:   3%|█▏                                       | 41.9M/1.42G [00:03<01:34, 14.6MB/s]model.safetensors:   4%|█▌                                       | 52.4M/1.42G [00:03<01:21, 16.7MB/s]model.safetensors:   4%|█▊                                       | 62.9M/1.42G [00:04<01:14, 18.2MB/s]model.safetensors:   5%|██                                       | 73.4M/1.42G [00:30<19:15, 1.17MB/s]model.safetensors:  17%|███████                                   | 241M/1.42G [00:40<16:51, 1.17MB/s]model.safetensors:  18%|███████▍                                  | 252M/1.42G [00:40<02:51, 6.83MB/s]model.safetensors:  29%|████████████                              | 409M/1.42G [00:50<01:43, 9.78MB/s]model.safetensors:  40%|████████████████▋                         | 566M/1.42G [01:00<01:27, 9.78MB/s]model.safetensors:  51%|█████████████████████▎                    | 724M/1.42G [01:10<00:55, 12.6MB/s]model.safetensors:  74%|██████████████████████████████▌          | 1.06G/1.42G [01:30<00:28, 12.6MB/s]model.safetensors:  81%|█████████████████████████████████▎       | 1.15G/1.42G [01:10<00:09, 27.0MB/s]model.safetensors:  83%|██████████████████████████████████▏      | 1.18G/1.42G [01:13<00:09, 26.0MB/s]model.safetensors:  85%|██████████████████████████████████▊      | 1.21G/1.42G [01:14<00:08, 25.5MB/s]model.safetensors:  86%|███████████████████████████████████      | 1.22G/1.42G [01:40<00:08, 25.5MB/s]model.safetensors:  86%|███████████████████████████████████▍     | 1.23G/1.42G [01:15<00:08, 24.3MB/s]model.safetensors:  87%|███████████████████████████████████▋     | 1.24G/1.42G [01:16<00:07, 24.2MB/s]model.safetensors:  88%|███████████████████████████████████▉     | 1.25G/1.42G [01:16<00:07, 24.2MB/s]model.safetensors:  89%|████████████████████████████████████▎    | 1.26G/1.42G [01:17<00:07, 22.9MB/s]model.safetensors:  89%|████████████████████████████████████▌    | 1.27G/1.42G [01:17<00:06, 22.2MB/s]model.safetensors:  90%|████████████████████████████████████▉    | 1.28G/1.42G [01:18<00:06, 21.2MB/s]model.safetensors:  91%|█████████████████████████████████████▏   | 1.29G/1.42G [01:19<00:06, 19.7MB/s]model.safetensors:  91%|█████████████████████████████████████▍   | 1.30G/1.42G [01:20<00:07, 15.8MB/s]model.safetensors:  92%|█████████████████████████████████████▊   | 1.31G/1.42G [01:21<00:08, 13.3MB/s]model.safetensors:  93%|██████████████████████████████████████   | 1.32G/1.42G [01:22<00:07, 13.8MB/s]model.safetensors:  94%|██████████████████████████████████████▍  | 1.33G/1.42G [01:22<00:06, 14.9MB/s]model.safetensors:  94%|██████████████████████████████████████▋  | 1.34G/1.42G [01:23<00:04, 16.3MB/s]model.safetensors:  95%|███████████████████████████████████████  | 1.35G/1.42G [01:24<00:04, 16.4MB/s]model.safetensors:  96%|███████████████████████████████████████▎ | 1.36G/1.42G [01:24<00:03, 17.3MB/s]model.safetensors:  96%|███████████████████████████████████████▎ | 1.36G/1.42G [01:50<00:03, 17.3MB/s]model.safetensors:  97%|███████████████████████████████████████▌ | 1.37G/1.42G [01:25<00:02, 17.1MB/s]model.safetensors:  97%|███████████████████████████████████████▉ | 1.38G/1.42G [01:25<00:01, 19.1MB/s]model.safetensors:  98%|████████████████████████████████████████▏| 1.39G/1.42G [01:26<00:01, 17.3MB/s]model.safetensors:  99%|████████████████████████████████████████▌| 1.41G/1.42G [01:26<00:00, 17.9MB/s]model.safetensors: 100%|████████████████████████████████████████▊| 1.42G/1.42G [01:27<00:00, 19.3MB/s]model.safetensors: 100%|█████████████████████████████████████████| 1.42G/1.42G [01:27<00:00, 19.3MB/s]model.safetensors: 100%|█████████████████████████████████████████| 1.42G/1.42G [01:27<00:00, 16.2MB/s]
+Some weights of RobertaModel were not initialized from the model checkpoint at roberta-large and are newly initialized: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Bert-Score: {'precision': [0.9340652823448181], 'recall': [0.9245127439498901], 'f1': [0.929264485836029], 'hashcode': 'roberta-large_L17_no-idf_version=0.3.12(hug_trans=4.46.3)'}
+[nltk_data] Downloading package wordnet to /home/leningfe/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /home/leningfe/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to /home/leningfe/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+Meteor-Score: {'meteor': 0.37180012567275916}
+#+end_example
+*** Similitud de Textos
+- se usan dos enfoques principales basados en diccinarios lexicos. no captura el contexto
+- wordnet y meteor como que quedaron relegados
+*** Evaluacion de QA
+- metrica sensible
+- requiere de referencias
+- se usa metricas como Exact Match (EM)
+#+begin_src python :session :results output :exports both
+from evaluate import load
+exact_match = load("exact_match")
+
+predictions = ["The cat sat on the mat.",
+               "Theaters are great.",
+               "Like comparing oranges and apples."]
+references = ["The cat sat on the mat?",
+              "Theaters are great.",
+              "Like comparing apples and oranges."]
+
+results = exact_match.compute(predictions=predictions,
+                              references=references)
+
+print(f"Exact Match: {results}")
+
+#+end_src
+
+#+RESULTS:
+: Downloading builder script:   0%|                                         | 0.00/5.67k [00:00<?, ?B/s]Downloading builder script: 100%|█████████████████████████████████| 5.67k/5.67k [00:00<00:00, 979kB/s]
+: Exact Match: {'exact_match': 0.3333333333333333}
+*** Similitud coseno
+instalar:
+#+begin_src shell
+pip install tqdm
+pip install gensim
+#+end_src
+
+- Hacer con GloVe, Sim-score y Word2vec como Tarea
+- texto prueba
+
+** Summary
