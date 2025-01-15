@@ -1697,3 +1697,64 @@ pip install gensim
 - texto prueba
 
 ** Summary
+* 2025-01-15 Problemas LLMs
+** Questions and keywords
+- Aluucinacion ::
+** Notes
+- problemas de alucinación
+- problemas de sezgo
+- Para mitigar las alucinaciones es necesario construir prompts completos y específicos
+- Dentro de ~evaluate~ existe la librearia ~toxicity~ para identificar lenguaje de odio
+
+#+begin_src python :session :results output :exports both
+from evaluate import load
+toxicity = load("toxicity")
+
+text1 = ["""....and viciously telling the people of the United States, the greatest and most powerful Nation on earth,
+how our government is to be run. Why don’t they go back and help fix the totally broken and crime infested places
+from which they came. Then come back and show us how...."""]
+
+toxicity_results_1 = toxicity.compute(predictions=text1, aggregation="maximum")
+print(toxicity_results_1)
+#+end_src
+
+#+RESULTS:
+: Using default facebook/roberta-hate-speech-dynabench-r4-target checkpoint
+: {'max_toxicity': 0.042514387518167496}
+
+- Regard sirve para analizar la polarización de un texto
+- se recomienda que si el texto es negativo se revise
+
+** Summary
+
+* 2025-01-15 Transformers para Imagenes
+** Questions and keywords
+** Notes
+- requiere preprocesamiento
+  - cropping
+  - resize
+- se usa la biblioteca ~Pillow~ para abrir las imagenes
+
+#+begin_src python :session :results output graphics :exports both
+from transformers import image_transforms
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+original_image = Image.open("./images/elena.jfif")
+
+image_arr = np.array(original_image)
+print(image_arr.shape)
+cropped_img = image_transforms.center_crop(image=image_arr, size=(100,100))
+plt.imshow(cropped_img)
+plt.savefig("./images/cropped_elena.png")
+print("./images/cropped_elena.png")
+#+end_src
+
+#+RESULTS:
+: (511, 509, 3)
+: ./images/cropped_elena.png
+
+** Clasificacion de Imagenes
+
+
+** Summary
