@@ -1715,6 +1715,8 @@ pip install gensim
   superar las limitaciones de autoencoders que pueden producir
   resultados extraños cuando los vectores estan entre dos categorías
 - encoder y decoder se entrenan juntos formando el autoencoder
+- enoder comprime datos
+- encoder extrae caracteristicas
 *** Autoencoder
 - se entrena para codificación y decodficicacion usando el espacio latente
 - Fashion Mnist
@@ -1726,7 +1728,8 @@ pip install gensim
 - Ejercicio de AutoEncoder
   - aplicar la formula para calculaf el numero de parametros
 - sirve para limpiar ruido
-
+- reconstruye datos desde espacio latente
+- 
 *** Decoder
 - se usa la convolución transpuesta para en vez de reducir la
   inforamción tener informaciones bidimensionales
