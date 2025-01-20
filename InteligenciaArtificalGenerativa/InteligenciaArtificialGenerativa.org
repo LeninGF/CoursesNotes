@@ -1697,3 +1697,37 @@ pip install gensim
 - texto prueba
 
 ** Summary
+** 2025-01-20 AutoEnconders VAE
+** Questions and keywords
+- Sobre el proyecto
+  - 2025-01-27 Proyecto con Pruebas
+  - 2025-02-05 Paper final
+- Autoencoder ::
+- espacio latente ::
+- embedding vector ::
+- encoder :: toma una imagen de eentrada y la mapea al espacio latente
+- donde hay el bias  en la convolucional
+- conv2dtr :: duplican la informacion
+** Notes
+- uso de keras
+- autoencoders para generacion de imagenes con limitaciones
+- variational autoencoder al usar un espacio probabilistico permite
+  superar las limitaciones de autoencoders que pueden producir
+  resultados extraños cuando los vectores estan entre dos categorías
+- encoder y decoder se entrenan juntos formando el autoencoder
+*** Autoencoder
+- se entrena para codificación y decodficicacion usando el espacio latente
+- Fashion Mnist
+- En el autoencoder se crea un vector de embedding z que es el espacio latente
+- en ese vector se codifica la información original
+- la arquitectura del encoder permite obtener caracteristicas mas relevantes
+- se reduce el numero de dimensoines especiales
+- se generan objetos nuevos diferentes a las imagenes originales
+- Ejercicio de AutoEncoder
+  - aplicar la formula para calculaf el numero de parametros
+- sirve para limpiar ruido
+
+*** Decoder
+- se usa la convolución transpuesta para en vez de reducir la
+  inforamción tener informaciones bidimensionales
+- el inputlayer es la capa latente
