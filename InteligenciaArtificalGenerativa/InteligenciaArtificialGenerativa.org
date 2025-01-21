@@ -1796,3 +1796,4 @@ print("./images/cropped_elena.png")
 - se usa la convolución transpuesta para en vez de reducir la
   inforamción tener informaciones bidimensionales
 - el inputlayer es la capa latente
+** Summary
