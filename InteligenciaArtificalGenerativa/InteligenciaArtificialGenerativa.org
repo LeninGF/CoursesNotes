@@ -1758,3 +1758,15 @@ print("./images/cropped_elena.png")
 
 
 ** Summary
+
+* 2025-01-20 AutoEnconders VAE
+** Questions and keywords
+- Sobre el proyecto
+  - 2025-01-27 Proyecto con Pruebas
+  - 2025-02-05 Paper final
+- Autoencoder ::
+- espacio latente ::
+- embedding vector ::
+- encoder :: toma una imagen de eentrada y la mapea al espacio latente
+- donde hay el bias  en la convolucional
+- conv2dtr :: duplican la informacion
