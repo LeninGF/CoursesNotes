@@ -1797,3 +1797,25 @@ print("./images/cropped_elena.png")
   inforamción tener informaciones bidimensionales
 - el inputlayer es la capa latente
 ** Summary
+* 2025-01-22 VAE autoencoder varacional
+** Questions and keywords
+- zmean ::
+- zvar ::
+- función de perdida :: que es y a que se refiere ya he visto ese nombre con anterioridad
+** Notes
+- el encoder mapea la entrada a un vector mean y a un vector varianza
+- se mapea el logaritmo de la varianza
+- el encoder del vae es una red neuronal
+- con esto no solo se tiene una coordenada del espacio latente sino un conjunto de vectores
+- la idea es solucionar el problema de los autoencoders tradicionales
+- el decoder sigue siendo el mismo que ya se uso
+- de esta manera los puntos alrededor de un area producen imagenes similares
+- funció
+*** Ejercicio
+- revisar codigo  y ejecutar
+- explicar lo que hace el código
+- explicar loque cada parte hace enla tabla presentada ysu diferencia
+  wrt al autoencder normal
+*** Codigo Fashion
+- 
+** Summary
