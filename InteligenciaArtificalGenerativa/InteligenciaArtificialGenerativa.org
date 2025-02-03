@@ -1819,3 +1819,35 @@ print("./images/cropped_elena.png")
 *** Codigo Fashion
 - 
 ** Summary
+
+* 2025-01-27 VAE
+** Questions and keywords
+- espacio latente ::
+- que es el morphing de dos caras ::
+- generador :: producir datos indistinguilbles de los reales
+- discriminador :: predice si son falsos o reales
+** Notes
+- VAE con faces usa espacio latente de 200 dimensiones por la cantidad
+  de detall
+- La normalización en los VAE permite que podamos predecir en todo el
+  espacio latente
+- revisar en el dataset de faces como funciona el smiling para poder
+  hacer que un rostro tenga mas sonrisa
+- pero esto podria ser que aprenda mas o menos cancer?
+- podría aprender a generar imagenes cancerosas futuras?
+- El espacio latente permit hacer operaciones matematicas para hace
+  runa imagen con caracteristicas nuevas
+*** GAN
+- aparecen en 2014
+- creador Ian Godfellow
+- genera datos sinteticos a partir de un vector de ruido
+- Tiene un generador
+- Tiene un disccrimandor
+- juego de suma 0  en dond eel generador trata de confundir al discriminador
+- Hay procesos de entrenamiento tanto para el discrimnador y para el geneardor
+- un valor cercano a 0, el dato es falso
+- tanto el generador ocmo el discriminador incrementan su desempe;o
+- discriminador se entrena primero
+** Ejercicio
+Revisar y explicar el codigo de vae faces
+** Summary
