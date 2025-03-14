@@ -1,0 +1,664 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Inteligencia Artificial Generativa
+#+date: 2024-10-02
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+begin_comment
+* Lecture
+** Questions and keywords
+** Notes
+** Summary
+#+end_comment
+
+* Resources:
+- [[https://www.davidsilver.uk/teaching/][UCL Course on RL]]
+- [[https://www.youtube.com/watch?v=2pWv7GOvuf0][YouTube videos]]
+- [[https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf][Reinforcement Learning Algorithms Csaba Szepesvari]]
+- 
+* 2025-03-06 Introducción Aprendizaje por Refuerzo
+** Questions and keywords
+- Reinforcement Learning :: paradigma de aprendizaje en Machine Learning
+- Machine learning :: es una disciplina de la Inteligencia Artificial
+  en donde se busca que una maquina aprenda a través de datos
+  históricos sin necesidad de una programación explícita.
+- paradigma :: marco conceptual que engloba una manera de representar
+  o concebir el dominio de un problema. Machine Learning se puede
+  considerar un paradigma en la medida que propone una manera
+  alternativa de abordar el desarrollo de sistemas informáticos
+  (e.g. sin una programación explícita). Reinforcement Learning
+  también se puede considerar un paradigma de los tipos de
+  aprendizaje, ya que a diferencia del supervisado y no supervisado,
+  RL esencialmente se interesa por la interacción de un agente en un
+  entorno.
+- Agente :: programa que aprende por prueba y error obtiene una manera
+  óptima de realizar una tarea
+- Inteligencia Artificial ::  cualquier máquina (software) que imita
+  /función/ que realiza un ser humano. Campo de las ciencias de la
+  computación que busca crear sistemas capaces de resolver tareas
+  mediante el aprendizaje a través de datos. Característica que le
+  permite funcionar como una inteligencia de origen no humano. Si bien
+  puede imitar ciertas capacidades humanas, su objetivo no es replicar
+  la inteligencia humana. Más bien creo que lo mejor es la
+  *identificación automática de patrones* en los datos.
+- programación dinámica :: enfoque para resolver problemas de
+  optimización complejos mediante la división en subproblemas más
+  pequeños y superpuestos donde las soluciones se almacenan para
+  evitar recalculo innecesario. Depende de memorización o tabulación.
+- planeación al futuro :: se refiere a sistemas que cambian con el tiempo
+- aprender con sistema online :: el sistema aprende y se adapta de
+  manera continua mientras interactúa con su entorno o recibe nuevos
+  datos. Actualiza su modelo en tiempo real. En general, la aplicación
+  se da en sistemas donde el modelo debe actualizarse con los datos
+  del entorno ya que los patrones de los datos cambian con el tiempo.
+- sisteam offline :: aprende con un conjunto de datos estático y luego
+  se despliegan. Su mejora se hace enfrentando nuevamente ajustes a
+  través de datos estáticos tipo snapshot.
+- no me queda claro que se pueda usar en sistemas de recomendación RL ::
+- escenario o entorno ::
+- comportamiento emergente ::
+- cómo se enlazan las acciones de los agentes con los dispositivos electrónicos :: en
+  clase se habla de controlar un volante, podría ser una válvula, cómo
+  traduzco lo que me devuelve el agente en señales que puedan ir a los
+  actuadores
+- estado :: ¿tiene relación con los automatas finitos o maquinas de estado?
+- rolling horizonte:: ????
+- cuál es el dilema de la exploración y la explotación :: en RL
+- puede RL enfrentar problemas NP completos como el de la mochila o el
+  traveling salesman
+- se puede usar RL para problemas de optimización lineal :: replantear
+  la recompensa para que las soluciones esten dentro del conjunto de enteros
+- es muy indicado para problemas distribuidos en nodos
+- valor esperado :: esperanza pero asumio como el promedio para el
+  problema o media aritmética
+- esperanza :: 
+** Notes
+- RL es un paradigma de aprendizaje de machine learning.
+  - No hay un supervisor sino una señal de recompensa o reward
+  - El feedback o retroalimentación es retrasado
+  - El tiempo importa. Los datos son secuenciales no de tipo  i.i.d.
+- No hay instrucciones explícitas
+- las reglas se descubren
+- las estrategias desarrolladas para RL son métodos iterativos
+  esencialmente
+- Está relacionado con teoría del control(óptimo) y programación
+  dinámica
+- recibe tanto conceptos de machine learning como de deep learning
+- Machine learning clásico:
+  - KNN
+  - Regresión
+  - Clasificadores (e.g. regresión logística)
+  - SVM
+- Aprendizaje clásico no tiene la idea de *planeación a futuro*
+- Cuándo usar RL:
+  - EL se usa cuando se puede aprender con el sistema online
+  - RL se usa cuando el tiempo importa y los procesos no son estáticos
+    sino que cambian con el tiempo
+  - RL se usa cuando los problemas son de horizonte continuo/infinito
+    en el tiempo
+- Por ejemplo sistemas de temperatura que varán con el tiempo
+- Sistemas de recomendación manejan aprendizaje por refuerzo
+- El objetivo del RL es *maximizar la recompensa esperada a largo plazo*
+- es encontrar un conjunto de acciones que de la máxima recompensa
+*** Formalismo
+- Agente: aplicación o software o maquina que **interactúa** con un
+  **entorno**
+- El agente ejecuta acciones.
+- El entorno: es una descripción del sistema (i.e. sensores)
+- El estado: descripción exhaustiva por el entorno
+- Recompensa: manera de evaluar que tal va
+- Tareas: hay tareas continuas e.g. manejar el automóvil. La suspende
+  el usuario Otro ejemplo sistemas HVAC de control de temperatura
+- Tareas episódicas: son tareas con objetivos que se debe cumplir en
+  ciertas iteraciones y repetimos hasta obtener buen
+  rendimiento. E.g. video juegos
+- Entornos:
+  - parcialmente observables: poker con el paso del tiempo gano
+    información pero hay limitación
+  - completamente observable: e.g ajedrez. Cada que se mueve las
+    piezas cambia el estado
+- La recompensa se puede ver en un objetivo principal que puede
+  dividirse en pequeñas recompensas. La suma de recompensas lleva al
+  objetivo de ganar. Pero hay casos en que puede existir un sacrificio
+  de mini objetivos con el objeto de ganar.
+- la planificación es sacrificar pequeñas recompensas con la idea de
+  obtener o asegurar la victoria
+- Sobre las recompensas, todo objetivo se puede expresar como la
+  maximizaron de una recompensa acumulada *esperada*
+- se debe encontrar una manera de expresar el problema a resolver en
+  función de una recompensa.
+- recompensa acumulada -> planeación
+- recompensa acumulada esperada -> valor esperado (probabilidades)
+*** Ejemplos de recompensas
+- hvac: medir el confort edel usuario maximizar si se gasta mucha
+  energia puede ser negativo
+- en video jeugo si gano es + si pierdo -
+- en la conducci[on autonoma si choco es - si obtengo ruta optima es +
+- chat gpt +- exp del usuario
+- que es una estructura markov. eg. el mercado no es markov
+*** Laboratorio
+- el agente parte de un estado 0 $s_0$ y toma una acción inicial $A_0$
+- el entorno devuelve la recompensa $R_1$ y un estado $s_1$
+- el agente descubre por recompensas (refuerzo +/-) como obtener una
+  cadena de secuencias que me lleve al objetivo
+- los episodios acumulan varios cadenas de estados
+  $EP_1:s_0A_0R_1, s_1A_1R_2$
+*** Componentes del Agente
+- política :: conjunto de acciones/decisiones ?permitidas?  que el
+  agente puede tomar en un tiempo
+- función de valor del Estado $v$ ::
+- función de valor de acción estado $q$ ::
+- $v$ y $q$ usan la recompensa para cuantificar que tan bien me va
+- es posible que no existan ambas a la vez pero sí una polítca 
+*** Política $\pi$
+- Es un mapa desde los estados a las acciones
+- El objetivo es encontrar la política óptima
+- la política óptima maximiza la recompensa a largo plazo
+- $\pi(s) = a$ deterministica donde las acciones son siempre las mismas
+- $\pi(a|s) = P[A_t=a|s_t=s]$ Estocástica
+*** Ejemplos Introductorios
+- Maquina bandidos multi brazo: cada maquina recibe una moneda y da
+  una recompensa que puede ser 0 o varias monedas. Cada máquina tiene
+  una palanca. La hilera o arreglo de maquinas traga monedas es un
+  agente. Cada una tiene una distribución que no será estimada. Se
+  asume que hay infinitas monedas. Mi objetivo es maximizar el número
+  de monedas. Acciones: halar la palanca. Es un problema incompleto en
+  que cada episodio es más menos la misma dinámica. Es parecido al
+  sistema de recomendación de redes sociales. encontrar la palanca que
+  me de la maxima recompensa por ejemplo tiempo en pantalla para
+  lucrar. Otra aplicación de este problema es elegir un servidor para
+  mi cloud computing. En cuál la q es más pequeña para que el proceso
+  tome menos tiempo.
+- bandido es un traga monedas
+- ensayos clínicos: se expone a pacientes a diferentes medicinas
+  e.g. 3 y lo que se pretende es saber cual sana mas. 
+- explotación vs exploración
+*** Valores de acción estado $q$
+- $k$ número de acciones
+- recompensa estocástica
+- la recompensa viene despues de la acción
+- $q$ es la suma de recompensabas cuando tome una acción $a$ para el
+  total de acciones
+*** política
+- la política puede usar un concepto Greedy aunque en realidad no se
+  usa por limitaciones que tiene este concepto en la práctica en
+  cuanto a la situación de exploración y explotación
+- la política voraz parece limitar la exploración
+- la política greedy ayuda a ilustrar las decisiones pero no se usa ya
+  que anula la exploración
+*** exploración vs explotación
+- hay opciones más optimas?
+- cual es el balance entre la explotación y exploración
+- es decir si se hace mucha exploración se va a mucha incertidumbre en
+  el sistema
+- mucha explotacion ie. tomar la misma decision una y otra vez puede
+  llevar a que me quede en una solución suboptima o mínimo local tal
+  vez será lo que lleva el greedy
+** Summary
+Reinforcement Learning (RL) o aprendizaje por refuerzo es un paradigma
+de aprendizaje en Machine Learning (ML) en donde se busca **maximizar
+la recompensa esperada a largo plazo**. Para esto se usa un *agente*
+que realiza *acciones* permitidas de acuerdo a una *política* sobre un
+*entorno* y recibe una señal de retroalimentación retardada que es la
+*recompensa*. Se caracteriza por afrontar problemas secuenciales ya
+que el patrón de los datos cambia con el tiempo. Por esta razón
+requiere de un sistema online (i.e. adaptación continua)
+
+Machine learning es un paradigma que desarrolla programas que no
+tienen instrucciones explícitas sino que aprenden mediante prueba y
+error a optimizar una tarea. RL está como una técnica entre Machine
+Learning y Deep Learning (DL). Está relacionado con /Control Óptimo/ y
+/Programación Dinámica/.
+
+Una característica importante de RL es que es un modelo que permite
+una planeación futura. Algoritmos clásicos de ML como KNN, SVM, Redes
+Neuronales,usados en problemas de clasificación y clusterización,
+resuelven tareas específicas sobre un conocimiento histórico de datos
+estático. Se puede decir que son esencialmente de tipo /offline/. Es
+decir, aprenden de los datos obtenidos del sistema. RL es más bien de
+tipo sistema Online, es decir aprende conectado al sistema. Extrayendo
+datos y resultados de la interacción del agente con el entorno. Por
+esto para ML clásico no importa el tiempo. En cambio en RL el tiempo
+importa y de ahí que el foco de problemas de RL son procesos no
+estáticos en el tiempo. Sin embargo, surge una duda. Un ejemplo de
+sistemas de control son los HVAC. Sin embargo, hay que discutir la
+diferencia entre predecir la siguiente temperatura (i.e. regresión)
+considerando una colección de datos de temperatura y el que un agente
+desarrolle técnicas para controlar la apertura y cierre de una
+válvula. Podría ser una válvula controlada por PWM para mantener la
+temperatura constante. RL en este sentido no se usa para predecir la
+siguiente temperatura más probable. Ahora encuentro un problema,
+podría usar ML clásico para predecir, supongamos el ángulo de disparo
+de tiristores para controlar la temperatura? En este caso necesitaría
+abordar el problema desde un esquema supervisado. Por qué no debería
+hacerse con ML clásico este problema? Se nota que ML clásico no le
+importa el tiempo. Sólo le importaría la relación entre el dato de
+entrada y el de salida.
+
+Algunos conceptos a considerar son:
+- Entorno :: mundo o sistema en el que el agente se desenvuelve. Puede
+  ser físico o virtual. Es una descripción exhaustiva del
+  sistema. Puede ser determinista (i.e. misma acción y mismo estado
+  producen el mismo resultado) o estocástico. Puede ser observable
+  (ajedrez) o parcialmente observable (poker)
+- Estado :: situación del entorno en un momento $t$. Puede ser
+  discreto (rango finito de posibilidades)o continuo (rango infinito
+  de posibilidades).
+- Acción :: es la decisión que el agente toma para interactuar con el
+  entorno. Pueden ser discretas o continuas.
+- Episodio :: secuencia completa de interacciones entre un agente y su
+  entorno, desde un estado inicial hasta un estado terminal.
+  $Ep_1:S_0A_10R_1, S_1A_1R_2\dots$
+  $Ep_1:S_0A_10R_1, S_1A_1R_3\dots$
+- Política :: secuencia de decisiones que el agente ejecuta en una
+  instancia de tiempo. Se relaciona con dos funciones para medir el
+  éxito del agente frente al objetivo. Estas funciones usan la
+  recompensa y son $\nu, q$. La política *mapea estados a
+  acciones*. Define el comportamiento del agente. Le dice al agente
+  que acción puede tomar en cada estado. Puede ser determinista o
+  estocástica (distribución de probabilidad). $\pi(a|s)$: la
+  probabilidad de tomar la acción $a$ en el estado $s$.
+  - Política determinista: $\pi(s) = a$
+  - Política estocástica: $\pi(a|s)  = \mathbb{P}[A_t=a|s_t=s]$
+- Función valor de Estado $\nu$ (state value function):: estima cuán
+  bueno es un estado para el agente en términos de la recompensa
+  acumulada esperada a largo plazo. Mide la recompensa total que un
+  agente puede esperar recibir a partir de un estado dado, siguiendo
+  una política específica.
+- Función de valor Acción Estado $q(s,a)$ (action-state value
+  function):: estima que tan bueno es tomar una acción específica en
+  un estado dado en términos de la recompensa acumulada esperada a
+  largo plazo. Es la recompensa total que el agente puede esperar
+  recibir al tomar una acción específica en un estado dado, y luego de
+  seguir una política específica.
+
+
+El bucle de RL es:
+1. agente percibe el estado del entorno
+2. agente elige una acción basada en el estado
+3. el entorno responde a la acción y proporciona un nuevo estado y una
+   recompensa
+4. el agente aprende mediante el ajuste de la política de acciones
+   para maximizar la recompensa.
+
+*** Ejemplo de discusión
+Consideremos un sistema de control de temperatura formado por una
+válvula que inyecta el gas. La apertura de la válvula se controla
+mediante una señal PWM. ¿Se puede resolver por ML clásico?
+
+En una formulación ML clásica, se podría pensar que el ángulo de PWM
+es una regresión. Para esto debería tener previo un registro de cuanto
+incrementa la temperatura para un incremento del ángulo. Sin embargo,
+se nota dos problemas:
+1. si cambia el set point de control se tiene que registrar nuevos datos
+2. no se considera en sí el cambio con el tiempo ni el estar conectado
+   al sistema. Se observa que tratar como problema de regresión obliga
+   a pensar en disponer de una tabla de datos para inferir un modelo
+   que devuelva en cuanto abrir y cerrar la válvula dada la
+   temperatura como entrada.
+3. es difícil de modelar porque tendría que aislar el sistema
+   térmicamente para obtener datos y tal vez nunca termine de exigir
+   el disponer de datos. Es más, con el tiempo el mismo ángulo de pwm
+   puede generar diferentes curvas de calentamiento i.e. se puede
+   alcanzar el set point a distintos tiempos.
+*** Objetivo de RL
+Esencialmente es maximizar la recompensa esperada a largo plazo. Para
+esto un enfoque es obtener una suma de recompensas. Así se puede
+acumular pequeñas recompensas que acerquen al objetivo a largo
+plazo. En este proceso, puede darse un sacrificio en donde no siempre
+se busca maximizar la recompensa en cada paso si al hacerlo se puede
+tener una recompensa a largo plazo. Esto es la planeación.
+
+#+begin_quote
+Todo objetivo puede ser expresado como la maximización de una
+recompensa acumulada esperada.
+#+end_quote
+
+De ahí que es de interés describir los problemas y objetivos en
+términos de la recompensa.
+* 2025-03-11 Políticas
+** Questions and keywords
+- función de valor de acción ::
+- intervalo de confianza :: 
+** Notes
+
+*** Política Voraz (Greedy)
+- no se puede utilizar en RL
+- una política maximiza la función de valor de acción
+- greedy para una $A_t$ se aplica $1-\epsilon$
+- así por ejemplo $1-\epsilon \right_arrow 80\%$ tomo una acción que
+  maximice la recompensa es decir una accion muy conveniente
+- el 20% de las veces $\epsilon$ hago algo nuevo (exploración)
+- aleatorio significa que las acciones se toman con una distribución
+  uniforme y todas las acciones con misma probabilidad
+- la función de valor de la acción en un estado en tiempo $t$ es
+  $Q_t = \frac{R_1+R_2+\dots+R_{t-1}}{t-1}$
+- Para que $Q$ sea eficiente se plantea como una *implementación
+  incremental del promedio*. Este promedio de recompensas da idea de
+  $Q$
+- $t$ se entiende como el número de veces que se toma una acción $a$
+- Entonces el $Q$ queda como:
+  $Q_{t+1}=Q_t+\frac{1}{t}(R_t-Q_t)$
+- esto permite mantener en memoria valores anteriores
+- en general las estimaciones se entienden por:
+  $N_{est} = Old_{est}+\alpha(Target - Old_{est})$
+- el $\alpha$ está entre 0 y 1 y es el factor de olvido
+- hay que definir cual es el margen de tiempo relevante para mi
+  problema
+- es una ventaja asumir $\alpha$ constante
+- $Q(a) \neq 0$ inicializado con valor optimista ayuda a la exploración
+- optimismo implica saber que es ser potimista en el contexto del
+  problema i.e. conocer la recompensas del problema
+- el optimismo funciona al inicio
+- en proble no estacionarios optimismo no funciona bien
+
+*** politica UCB extremo superior de confianza
+- hacer estimaciones o calculos dentro de un intervalo de confianza
+- ucb aprovecha la información que da la función de valor de la acción
+  Q
+- la siguiente acción es *potencialmente* la mejor
+- el valor de Q se asume dentro de un intervalo de confianza, en un
+  sentido optimista pegado al borde superior
+- el denominador de la UCB da intervalo de confianza
+- la UCB se define por
+  $A_t = argmax_a(Q_t(a)+c\sqrt{\frac{\ln t}{N_t(a)})$
+
+*** Algoritmos de Bandidos de Gradiente GBA
+- usa soft max
+- la funcion softmax da varias probabilidades
+- se escoje la mayor
+- la función de preferencia $H_t$ no está relacinada con la recompensa
+
+
+*** Arrepentimiento
+- se explica con el ejemplo de TikTok
+- un arrepentimiento bajo garantiza en un tiempo crítico mantener al
+  cliente enganchado
+- crítico es rápido es decir que con un límite de iteraciones obtener
+  el resultado
+
+*** Bandidos Contextuales
+- el ejemplo de bandidos se asemeja a cosas de marketing
+- no solo se tiene información de la recompensa
+- sino también se incluye información histórica de episodios pasados
+  del usuario
+- usar informacion histŕoica nos pone en la intersección entre
+  aprendizaje por refuerzo y RL
+- 
+
+** Summary
+* 2025-03-11 Procesos de Markov
+** Questions and keywords
+- cadenas de markov ::
+- procesos con recompensa de markov MRP :: 
+- procesos de markov MP ::
+- planeación :: las acciones tienen consecuencias
+- se puede modelar un ajuste P&ID de una planta con RL ::
+- un virus con RL que podría hacer si el agente aprende a controlar el entorno ::
+- filtros de kalman ::
+- máquina de estado finito ::
+- matriz de probabilidad de transición de estado :: $p_{ss'}=P[s_{t+1}=s'|s_t=s]$
+- retorno ::
+- no es claro el tema del valor del estado vs recompensa vs mi objetivo ::
+- ley de esperanzas iteradas ::
+- diagrama de respaldo :: 
+** Notes
+- bandidos es un problema incompleto con una sola acción
+- en bandidos la única acción no influye en la recompensa
+- accionar la palanca no afecta al futuro
+- el problema del conejo lleva a recordar el problema de canivales que
+  se usa con BFS
+- el agente es el controlador
+- el entorno es el proceso
+- el entorno provee un feedback
+- el agente aprende a controlar el entorno
+*** Procesos de Decisión de Markov MDP
+- El proceso de decisión de Markov esta compuesto de acciones, estado,
+  recompensas
+- la recompensa es algo que el diseñador modela y no es real
+- hay varias variables que no se conocen. El RL se basa en cantidades
+  estimadas
+- En MDP:
+  1. ningun elmento es conocido por el diseñador
+  2. se trabaja con cantidades estimadas
+  3. el ámbito puede ser observable completamente o no el
+     entorno. Pero se considerará completamente observable en un inicio
+- hay los siguientes procesos: 
+- Procesos Markov que es una tupla <s,p>
+- Proceso de recompensa de markov <s,p,r,gamma> gamma es el olvido hay
+  una referencia a control
+- proeceso de decision de markov es la tupla completa <s,A,p,r,gamma>
+*** Procesos de Markov
+- El estado actual contiene toda la información necesaria (propiedad de Markov)
+- los procesos de markov son procesos sin memoria
+- la probabilidad de estimar el mismo estado es la misma que la del
+  acumulado de estados $P[s_{t+1}|s_t] = P[s_{t+1}|s_t, s_{t-1}, \dots, s_0]$
+- el paso entre estados en un automata finito se la hace con
+  probabilidades de transición
+- cómo puedo estimar la matriz de probabilidad de transicion
+- es el proceso el que me lleva a determinar las probabilidades
+*** Proceso de recompensa de markov
+- es una tupla de estados matriz de transicion recompensa y un factor
+  de olvido, donde los estados es un conjunto finito, p la matriz de
+  transición y la recompensa se define como una función que calcula el
+  valor esperado dado que me encuentro en un determinado estado
+- aun no se considera la acción pero de momento se obvia
+- $\gamma$ es el factor de olvido en control adaptativo
+- $\gamma$ es el factor de descuento con valores de 0 a 1.
+- objetivo de RL es obtener la Recompensa maxima acumulada esperada
+- el objetivo de RL se define como *retorno*
+- los valores del problema de RL como el retorno se obtienen de los
+  estados no de manera histórica
+- el descuento balancea cuanto quiero tomar en cuenta el futuro
+- $\gamma = 0$ es ser Miope hacia los valores futuros sólo me interesa
+  lo que pasa en el siguiente estado no a futuro
+- $\gamma = 1$trato de incluir lo más que pueda la información futura
+- $\gamma= 1$ es como estimar lo más lejos en el tiempo pero esto
+  genera problema para estimar adecuadamente. se vuelve mas incierto
+*** El descuento
+- desde un punto de vista matemático para evadir problemas de
+  recompensa infinita es necesario tener un factor de descuento
+- introduce modelado de la incertidumbre
+- es un balance entre recompensas a largo y corto plazo (inspiración
+  financiera o psicologica)
+- $\gamma = 0.01$ implica centrarse en recompensas inmediatas
+*** Función del valor del estado $v(s)$
+- indica el valor a largo plazo del estado en el que me encuentro
+- mientras más alto es mejor
+- matemáticamente es el retorno esperado empezando desde el estado $s$
+- Ejemplo
+  - Se requiere una secuencia de estados
+  - $\gamma = 0.5$
+- se requiere hacer mas cadenas
+- se toma el mejor valor posible de la esperanza (promedio)
+*** Ecuación de Bellman
+- se usa la ley de esperanzas iiteradas para
+- el valor esperado se asume lineal
+- el valor esperado no tiene un solo valor
+- lo anterior se asume
+- la Recompensa inmediata es la respueta del sistema (repsuesta a entrada paso?)
+- esta ecuacion es ver un paso adelante
+- es una estimacion o busqueda de un paso al futuro
+*** Diagramas de Respaldo
+- se usan para ver de manera grafica el proceso de estado accion recompensa
+- lineas indican la trayectoria seguida
+- burbujas que indican estados
+- puntos negros que indican acciones
+- Mediante el uso de algoritmos se trata de obtener los diferentes
+  valores que describen el proceso
+- la solución de los valores de estado se pueden resolver por medio de
+  ecuaciones lineales
+** Summary
+
+* 2025-03-12 Procesos de Decisión de Markov
+** Questions and keywords
+- Decisiónes de Markov ::
+- diagrama de respaldo :: ayuda a seguir el proceso que sigue el
+  algoritmo. Cambia segun las acciones a tomar
+- MDP  :: markov decision process??? 
+- MRP :: markov reward process???
+- El retorno ::  donde se definió
+- demostracion de la ley de esperanzas iterativas ::
+- recompensa inmediata :: $R_{t+1}$
+- valor con descuento del siguiente estado :: $\gamma q_{\pi}(s_{t+1},
+  A_{t+1})$ y $\gamma v_{\pi}(s_{t+1})$
+- politica uniforme :: todos los estados tienen la misma
+  probabilidad. Si tengo dos estados cada estado tiene 0.5 si son 3
+  entonces 1/3
+** Notes
+- Los procesos de decision markov es una tupla comprendida de los
+  estados, las acciones, la matriz de probabilida de transición de
+  estados, la recompensa y el descuento $<S, A, P_{ss'}, R, \gamma>$
+- Pss' será redifinida porque depende de la acción
+- $P_{ss'}^a\mathbb{P}[s_{t+1}=s'|s_t=s, A_t=a]$
+- La recompensa sera tambien en funcion del etado y la accion
+- $R_s^a = \mathbb{E}[R_{t+1}|s_t=s, A_t=a]$
+*** Políticas Estocásticas
+Una política es una distribución de aciones dado un estado en el que
+me encuentro en un tiempo t
+
+$\pi(a|s)=\mathbb{P}[A_t=a|s_t=s]$
+- La política define el comportamiento
+- usa el estado actual o estado markoviano.
+- son estacionarios en el tiempo $t$
+- En cada episodio la política es invariante en el tiempo. por ejemplo
+  puede variar $\epsilon$ greedy con el tiempo pero no la política.
+- para un proceso de decision de markov MDP que consta de $<S, A,
+  P_{ss'}, R, \gamma>$ + Política $\pi$ se redefine la matriz de
+  transición y la recompensa como
+
+  $P_{ss'}^{\pi} = \sum_{a \in A}\pi(a|s)P^a_{ss'}$
+  $R_s^{\pi} = \sum_{a \in A}\pi(a|s)R_s^a$
+*** Valor de Estado $v(s)$ y Valor de Acción Estado $Q$
+Se redefinen con respecto a la política. $n$ es el número de estados y
+$m$ el número de acciones
+
+Función valor estado: es el retorno esperado del estado siguiendo la
+policía $\pi$ (valor esperado) G es el retorno
+
+$V_{\pi}(s) = \mathbb{E}_{\pi}[G_t|s_t=s] \in \mathbb{R}^n$
+
+Funcion Valor accion estado> es el retonro esperado G despues de tomar
+la acción $a$ en el estado $s$ usando la política $\pi$
+
+$q_{\pi}(s)=\mathbb{E}_{\pi}[G_t|s_t=s, A_t=a] \in \mathbb{R}^{n \times m}$
+*** Ecuación de la esperanza o valor esperado de Bellman
+Es la recompensa del siguiente esatdo mas el valor condescuento del
+siguiente estado
+
+$v_{\pi}(s) = \mathbb{E}[R_{t+1}+ \gamma v_{\pi}(s_{t+1})|s_t=s]$
+
+$q_{\pi}(s,a) = \mathbb{E}[R_{t+1}+ \gamma q_{\pi}(s_{t+1}, A_{t+1})|s_t=s, A_t=a]$
+
+
+La secuencia que se ejecuta siempre es S -> A -> R es decir en un
+estado tomo una accion y recibo una recompensa. Este bucle se repite.
+
+Estando en un estado s y tomando una accion a puedo basado en la
+accion puedo estimar el q del estado y la acción
+
+$$v_{\pi}(s) = \sum_{a\in A}\pi(a|s)q_{\pi}(s,a)$$
+
+
+$$q_{\pi}(s,a) = R_s^a+\gamma\sum_{s'\in s}P_{ss'}^av_{\pi}(s')$$
+- dependiendo de las acciones que toomo el estado destino no siempre es fijo
+- el entorno decide a que estado llego desde una acción
+- no se sabe si las acciones me llevan a la misma respuesta
+- la q pi sa se puede reemplazar en la v pi s
+- revisar resultado en diapositaiva 9 de grabacion de 12 de marzo
+*** Ejercicio 12 de marzo diapositiva 10
+- politica uniforme
+- $\gamma = 1$
+- se busca hallar el valor en el estado c3
+** Summary
+* 2025-03-13 Programación Dinámica
+** Questions and keywords
+- problemas de evaluación MDP ::
+- problema de control de un proceso de decsision de markov MDP ::
+- porque la recompensa no es conocida :: pense que si era conocida
+  porque ponemos el objetivo en terminois de la recompensa
+- proceso iterativo ::
+- equacion esperanza bellman ::
+- ecuación optimalidad de bellman ::
+- principio de optimalidad :: ???
+- evaluacion sincrona ::
+- evaluación en su lugar (in place) ::
+- checkar grid world dynamic programing demo standord :: 
+** Notes
+- Un proceso de decisión de Markv tiene $S, A, P, R, \gamma + \pi$
+- la recompensa y la matriz de transicion son desconocidas
+- la evaluación de la política es cuantizar que tan buena es una política
+- evaluación politica input: \pi
+- output de la evaluacion politica v_{\pi}(s), q_{\pi}(s,a)
+- la mejora de la política o control trata de encontrar una política
+  óptima
+- el problema de la ecuacion de esperanza de bellman es que tiene un
+  costo computacional alto.
+- La ecuación optimalidad de bellman es no lineal y no tiene solución cerrada
+- para estimar la ecuacion de esperanza de bellman y la optimalidad de
+  bellman es necesario procesos iterativos
+- Bellman propone la programación dinámica para resolver
+  computacionalmente las ecuaciones reduciendo el costo computacional.
+- consiste la prog dinamica en dividir el problema ensubproblemas o suboptimos
+- unir dos caminos optimos o rapidos debe garantizar una entrega mas rapida
+- no es seguro que el optimo global sea la suma de los suboptimos
+- la programacion dinamica consiste en
+  1. dividir en subproblemas
+  2. resolver subproblemas
+  3. unir las soluciones
+- condiciones para plantear la prog dinámica
+  1. debe existir una subestructura i.e. el problema es divisible
+  2. la substructura debe cumplir elprincipio de optimalidad
+  3. los sub problemas deben ser superpuestos lo que permite re
+     utilzar las soluciones i.e. son reusables e iterables
+- El RL es:
+  - estructurado porque tiene subproblemas o substructuras e.g. el
+    diagrama de respaldo
+  - puede ser iterado
+- evaluacion sincrona tiene 2 copias de la v_{\pi} va de acuerdo con la matematica
+- evalucion sicron aactualiza fuera del loop
+- en su lugar es que cuando cambio uno de los valores inmediato cambio
+  todos los valores. es mas rapida
+- es riesgoso acercarse a estados con valores negativos
+- 
+*** Ejemplo numerico de calculo con PD
+- In: $\pi$
+- $\delta$ es un numero pequeño
+- en estaos terminales se da el valor de $v(terminal)=0$ Un control de
+  temperatura no tiene un estado terminal termina al rato de desconectar la maquina
+- los valores iniciales de $v(s)$ pueden usar optimismo
+- en el video de la clase grabada hay un ejemplo de mundo cuadricula
+- en el mundo cuadricula el agente ha de aprender la manera mas rapida
+  de llegar al estado terminal
+*** mejoramiento de la politica
+- cada que evaluamos iteramos sobre todos los estados
+- y se actualiza la politica con la optimalidad de bellman
+- es una alternacion entre evaluacion y control (actualizar politica)
+- la manera mas sencilla de encontrar una politica optima es usar greedy
+*** teorema de mejoramiento de la politica
+dado $\pi$ en un proceso iterativo y una siguiente iteracion tal que
+mi siguiente politica sea greedy $\pi' = greedy(v_{\pi}) =
+\text{argmax}_{a in A}q_{\pi}(s,a)$ Al tomar greedy es como asumir que
+la accion no influye y ase que V y q sean iguales
+Es decir una vez que se fija la accion v y q son iguales
+
+
+** Summary
+* TODO [60%]
+- [X] Ingresar al Moodle y revisar bibliografía y Temario
+- [ ] Implementar el laboratorio o hacer el proyecto
+- [ ] Atender clase de bandidos en aula virtual
+- [X] Responder las preguntas de la semana 1
+- [X] Solicitar en el foro la demostración de la implementación
+  incremental de Q
+- [ ] solicitar una descripcion del diagrama de respaldo de los
+  ejemplos no sé que está modelando parece un estudiante.
