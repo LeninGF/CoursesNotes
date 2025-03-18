@@ -651,8 +651,19 @@ mi siguiente politica sea greedy $\pi' = greedy(v_{\pi}) =
 la accion no influye y ase que V y q sean iguales
 Es decir una vez que se fija la accion v y q son iguales
 
-
 ** Summary
+
+
+* 2025-03-16 RL David Silver
+** Questions and keywords
+- Reward :: all goals can be described by the maximization of expected cumulative reward
+- Goal :: select actions to maximize total future reward
+** Notes
+- Reward could be delayed
+- Actions may have long term consequences. We need planing.
+- 
+** Summary
+
 * TODO [60%]
 - [X] Ingresar al Moodle y revisar bibliografía y Temario
 - [ ] Implementar el laboratorio o hacer el proyecto
