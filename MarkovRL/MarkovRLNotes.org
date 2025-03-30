@@ -24,7 +24,7 @@
 - [[https://www.davidsilver.uk/teaching/][UCL Course on RL]]
 - [[https://www.youtube.com/watch?v=2pWv7GOvuf0][YouTube videos]]
 - [[https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf][Reinforcement Learning Algorithms Csaba Szepesvari]]
-- 
+  - 
 * 2025-03-06 Introducción Aprendizaje por Refuerzo
 ** Questions and keywords
 - Reinforcement Learning :: paradigma de aprendizaje en Machine Learning
@@ -653,7 +653,6 @@ Es decir una vez que se fija la accion v y q son iguales
 
 ** Summary
 
-
 * 2025-03-16 RL David Silver
 ** Questions and keywords
 - Reward :: all goals can be described by the maximization of expected cumulative reward
@@ -664,6 +663,480 @@ Es decir una vez que se fija la accion v y q son iguales
 - 
 ** Summary
 
+* 2025-03-18 Renta de Autos Jack
+** Questions and keywords
+- Poisson ::
+- Funcion de Probabilidad FP ::
+- no me queda claro como leer los diagramas ::
+- no me queda claro porque es la optima :: dice que en 4 iteraciones
+  se obtiene la poltiica optima y que se vio en clase en cual?
+** Notes
+- cada lote tiene un maximo de 20 carros
+- esta relacionado a la optimizacion lineal entera
+- accines rentar y devolver
+- accion es mover los autos
+- por cada renta gano +10
+- **maximizar rentas**
+- si no tengo autos para dar a una persona por no disponer de autos
+  pierdo (recompensa negativa)
+- se puede mover los autos entre las dos pilas con R = -2
+- el algoritmo ha de aprender la distribucion de autos se requiere en
+  cada locacion
+- se usara una funcion de probabilidad discreta Distribucion de
+  Poisson
+*** Modelado
+- Se hara un modelado del #de rentas/devoluciones
+- $\lambda$: es valor esperado y varianza de la distribucion de poisson
+- $\lambda$: cuantos personas rentan un auto en localidad 1
+- $n$: numero de rentas o devoluciones
+- Funcion de Probabilidad FP:  $P(X=n)=\frac{\lambda^{n}}{n!}e^{-\lambda}$
+- Se asumen conocimientos previos por acopio de datos:
+  - Renta loc 1: $\lambda = 3$
+  - Renta loc 2: $\lambda = 4$
+  - Retorno loc 1: $\lambda = 3$
+  - Rentorno loc 2: $\lambda = 2$
+- Truncamiento de la función para valores mayores que 11 la prob es 0
+  i.e. mas de 11 solicitudes
+- maximo de numero de movimientos de local 1 a local 2 es 5.
+*** Entorno
+- acciones: que tantos carros puedo mover. Es un vector. + de loc 1 a
+  loc 2 y - de loc 2 a loc1.
+  $acciones  = [-maxMov, \dots, -2,-1,0,1,2,\dots, maxMov]$
+- estados es un vector que contiene el numero de autos por localidad $estados = [cars_1, cars_2]$
+- la funcion de valor sera un vector i.e. el valor de estado es una
+  matriz de  $20 \times 20$ que contran todos los valores de estados
+*** Politica
+- Ida basica de la politica: Si yo tengo /x/ num de autos en loc1, entonces debo tener /y/ en loc2
+- $\pi_0$ politica inicial ningun auto se mueve
+- los ejes son el numero de autos en cada locacion
+- la 4 es la politica optima
+* 2025-03-18 Métodos Monte Carlo e Iteracion de Politica
+** Questions and keywords
+- P :: matriz transicion
+- GPI :: Iteracion de poltica generalizada
+- PD :: Programacion denamica
+- en su lugar tiene 2 copias? ::
+- cual es el espacio de stados del ajedrez ::
+- MCMC :: Metodos Monte Carlo
+- aprendizaje por fuerzo libre de modelo :: es un RL con Montecarlo
+- experiencia ::  son los datos que obtengo del proceso u entorno
+- el retorno esta relacionado a la recompensa ::
+- MC :: montecarlo
+- MC 1era visita ::  utiliza solo el valor de la primera vez que uso
+  un estado
+- MC cada visita :: voy a reemplazar el valor anterior cada vez que
+  visito ese estado. cada visita actualizamos el vaor cada vez que
+  pasamos por el estado
+- First Visit MC :: 
+** Notes
+- Metodos de Montecarlo: no se necesita asumir P, R
+- Iteracion de politica: asume que conocemos P, R
+- Iteracion de valor: asume que conocemos P, R
+*** Policy Iteration estimacion de $\pi$
+- se divide en dos partes Policy Evaluation y Policy Improvement
+- $\Delta<\theta$ da una estmacion buena de V(s)
+- Solo cunado obtengo la buena estimacion aso a policy improvement
+*** Iteracion de valor
+- toma una sola iteracion del bucle pero devuelve solo el valor que
+  maximiza la funcion i.e. la que en esa iteracion con esa politica da
+  el mejor valor de V
+- es combinar la parte de prediccion y conrol en un solo paso
+- para balancear entre iteracion de politica e iteracino de valor para
+  no solo maximizar constantemente y hacer una sola iteracion o gastar
+  computacionalmente haciendo todo el proceso computacional se usa
+  GPI> iteracion de politica generalizado
+*** Algoritmos sincronos de Programacion Dinamica PD
+- Esperanza debellman hace prediccion y se llama algoritmo de
+  Evaluacion iterativa de la politica
+- Valor esperado de bellman + politica greedy permite hace prediccion
+  y control. Esto se denomina iteracion de politica
+- la ecuacion de optimalidad de bellman es el algoritmo de iteracion
+  de valor. Como hago una iteracion y tomo el max hago solo control.
+- La complejidad de todos tres algoritmos en terminos de tiempo es
+  $O(mn^2)$ con
+  - m numero de acciones
+  - n numero de estados
+- escalan peor que cuadraticamente
+- Si se considera q $O(m^2n^2)$
+*** Programacion Dinamica Asincrona
+- En todos los algoritmos se realiza un barrido de los estados o del
+  espacion de estdos
+- En prgramacion dinamica asincrona  los estados se actualizan en
+  cualquier orden y con a informacion disponible en t
+- P.D. Asincrona es el equivalente a actualizar V(s) en su lugar
+- PD asincrona reduce el computo. estrictamente necesario para
+  problemas reales
+- para que exista convergencia es necesrio que **visite** todos los estados
+- Ejemplos:
+  1. Juego d eestrategia con varios batallones de un ejercito: no
+     visitar la reserva si estoy lidiando con los soldados de forntera
+  2. Ruta mas rapida
+  3. arreglo de desgaste de piezas. e.g. una pieza que se da;a a cada
+     rato vs cada a;o
+- los estados importantes se aprenden no se definien
+*** Cosas que permite la PDA
+- la PDA permite visitar los estados mas importantes
+- se puede ignorar casi completamente ciertos estados no relevantes
+  para el problema
+- dada una politica actualizar los mas los estados que la politica visitada
+- algunas partes del problema cambian mas lento que otros
+*** Metodos MonteCarlo
+- su idea principal es estimar distribuiones que no conocemos de
+  manera eficiente
+- los proceso a aprender asemejar a los imanes a un arreglo de imanes
+- se cubre los imanes on una hoja de papel
+- aplicando acciones y montecarlo se va dsecubriendo como opero
+- distribuyendo uniformemente el material correcto
+- montercarlo permite estimar magnetic field lines
+- montecarlo es dar un monton de acciones y ver la respuesta del
+  prceso esto me permite ocnoncer coomo se ocmporta
+*** Condiciones del Metodo Monte Carlo
+1. Generar los Input con la Politica
+2. Observar los output es decir las salidas delsistema. La unica
+   salida que tengo del sistema son R las recompensas
+3. procesar
+4. se requeire muchos datos apa que funcione bien
+5. condiciones extra: elegir los inputs de manera uniforme
+   i.e. uniformemente en el sentido probabilisto de la palabra es
+   decir cada acciondebe ser elegida conlamisma probablidad
+*** Estrategia libre de modelo
+- Implica que P y R son desconocidas
+- El conocmiento de P y R se reemplaza con experiencia
+- experiencia viene de la exploracion del entorno
+- por tanto se van a recoger datos y estimar ciertas cantdades y se
+  obtendra la expericina
+- La Recompensa se puede ver
+- Metodo de Montecarlo permite aproximar el Retorno
+- MMC sonbuenos para aproximar Esperanzas, promedios
+- Con MC se da cadenas de estado
+- se obtiene un promedio de los estados visitados
+- y ese va ser los valore de estado
+*** First visit MC
+1. Iniciar una politica
+2. estimar los retornos
+3. generar un episodio siguiendo la politica i.e. interactuar conelentorno
+4. una vez que tengo las recompensas se hace un bucle para cada uno de
+   los pasos del episodio de T pasos
+5. calculo el retorno
+6. obtengo el promedio o media de los retornos que ouede ser una media
+   incremental
+
+note que el bucle va de reversa desde el ultimo paso hasta el
+primero. esto se hace por eficienca. 
+** Summary
+* 2025-03-20 Control MC en y fuera de la politica
+** Questions and keywords
+- en que orden se hace evaluacon y mejora ::
+- para que funcione MC :: debo visitar todos los pares (s,a) para
+  garantizar la exploracion al menos una vez
+- politica determinista :: no sucede la exploracion?
+- algoritmo de inicions que exploran (Exploring Starts ES) :: se
+  generan cadenas que voy a seguir pero el primer estadoes random y
+  uniforme i.e. misma probabilidad para todos los pares de estado
+  accion. en un bucle eventualmente se visitaran todos los etados.
+- en politica  :: es aprender haciendo i.e. aprendo la politica pi
+  usando la experiencia de la politica pi.
+- fuera politica  :: es copiarle a otro. Voy a copiar la politica
+  optima. Es decir, aprender la politica pi usando la experiencia de
+  otra politica /b/. Esta estrategia es la que se usa por default
+  - $\pi$: politica objetivo
+  - $b$ politica de comportamiento
+- cobertura :: cuando se trabaja fuera pi hay que asegurar la
+  cobertura. La cobertura dice que cada par (s,a) que pueda ocurrir
+  enla Pi target debe ser eexplorado al menos ocasionalmente por la
+  politica de comportamiento (i.e. la que estoycopiando) la /b/
+- Politica :: es una distribucion es una probabilidad. Recordar
+** Notes
+- en esta clase se realiza control
+- se estudia conceptos de hacer control dentro y fuera de politica
+- muestreo de importancia
+- recordar que P, R no son conocidas se obtienen de explorcion
+  mediante montecarlo que devuelve valores esperados
+- la exploracion es requerida cuando no se conocen P y R ya que greedy
+  explota el conocimiento por lo que no es muy real
+- hacer gpi es decir una o muchas iteraciones para hacer evaluacion y mejora
+- no se puede hacer GPI en el porblema completo de RL. porque se puede
+  maximizar la funcion de valor estado con respecto a la accion porque
+  P y R son conocidas
+- $\pi'(s)$ politica luego de una iteracion
+- $\pi'(s) = \text{argmax}_a[Q(s,a)]$
+- hallar valores y registrar en memoria
+- El espacio accion estado (s,a) es mayor siempre que el espacio s
+- recordar la condicion para que funcione montecarlo
+*** Exploring starts
+- 1 a 4 es la inicializacion
+- iniciar una politica que inice ddesde cada estado
+- retornos vacios
+- linea 12 acumula los retornos i.e. un array en 3 dimensiones
+- linea14 es la mejora
+- lineas 8,9,10,11,12 es la evaluacion su corazon esta en 10
+- linea 11 es la primera visita
+- si se omite la linea 11 ser[ia en cambio el algoritmo de Cada visita
+- Es siempre posible sobre todo enproblemas reales escoger un inicio
+  al azar??? : haycasos en donde es imposible aplicar por eemplo n un
+  auto no se podria iniciar sinprender elcarro . ES es como el
+  optimismo,sise puede selo ponepara que ayude
+*** Politicas $\epsilon$-soft
+- las polticas greede son un subconjunto de epsilonsoft
+- es una version mas general de $\epsilon$- greedy
+- es una politica estocastica que asegura que la probabilidad de
+  tomaruna accion dado un estado es mayor que 0 para todas las
+  acciones. es decir que todas las s,a van a pasar dadas suficientes iteraciones
+- Defnicino: $\pi$ es $\epsilon$-soft si todos los pares s,a tienen al
+  menos $\frac{\epsilon}{\Delta(s)}$ de prob de ocurrir
+- es decir que con cierta probabilidad se asegura que todas las
+  acciones de todos los estados
+- cada estado tiene un conjunto diferente de acciones
+- el deltas es la carrdinlaidad del conjunto de acciones de un estado
+- sobre el algoritmo este requiere inicializar arbitrariamente una
+  politica epsilon soft
+- cuando voy a usar MC genero un episodio
+- si quito la linea de primera visita se tiene el algortimo de CADA
+  VISITA
+- la politica epsilon greedy es optima?
+- las politicas epsiolon soft no son optimas.... ?siguen explorando
+  luego de allar un optimo?
+- epsion soft luego de varias iteraciones sigue explorando
+- es mas si el porcentaje exploracion es bajo sigue explorando asi sea
+  un valor peque;o
+*** Control en Politica y Fuera de Politica
+- son maneras de obtener la politica optima es un paradigma
+- la politica optima es $\pi_*$
+- control en politica es todo lo que hemos hecho hasta ahora
+- ver en keywords
+- por default se usa politica fuera de politica:
+  1. xq se deja la exploracion a la politica b y la politica $\pi$
+     alcanza la optimalidad. esto es una ventaja
+  2. podemos ganar experiencia de lo que otro agente hace. el agente
+     puede ser una persona.
+  3. permite reusar la experienciad e politicas antiguas
+  4. usando una sola politica de comportamiento /b/ podemos entrenar
+     varias politicas optimas u politicas objetivos $/pi$
+- no free lunch: las desventajas de Fuera de Politica
+  - Problema de la cobertura
+  - si $\pi(a|s)>0$ implica $b(a|s)>0$
+  - si eso no sucede no estamos explorando o notenemos datos de
+    /(s,a)/ yno sabemos que ocurre si tomamos este par
+*** Muestreo de Importancia (Importance Sampling)
+- Ejemplo: estimar la altura de personas enla provincia del guayas
+- segun profesor no eslogico usar los datos de una;o anterior para
+  estimar los del a;o 205
+- es una tecnica estadistica/probabilista para estimar esperanzars o
+  valores estimados de una distribucion dada usando otra distribucion.
+-  demistracin en el video de muestreo de importancia fuera de Pi
+
+** Summary
+
+* 2025-03-25 Aprendizaje Diferencia Temporales (TD $\lambda$)
+** Questions and keywords
+- Sortear los laboratorios
+- donde esta el temario?
+- semana para entregar tareas
+- $C(s,a)$ es un acumulador
+- /b/ es unapolitica on un a cobertura de $\pi$
+- que es hacer control y que es hacer estimacion
+- juego resuelto :: en el que el computador siempre gana e.g. ajedrez bagamon
+- bootstraping :: relacionado a modelo de hopfield
+- modelo de hopfield :: grafos
+- montecarlo es un subconjunto o caso especial de diferencias temporales
+- TD :: diferneicas temporales
+- $\alpha$ :: constante en el TD
+- lamina Acerca del Aprendizaje TD :: preguntas de la evaluacion siguiente
+- bootstrapping :: apoyarse de algo más sencillo para ejecutar algo
+  más complejo
+- overfitting :: sobreajustando los parametros del modelo. no se
+  generaliza bien el modelo a los datos. varianza alta. overfitting
+  tiene que ver con varianza alta. 
+- underfitting :: el modelo necesita mas no linealidad. Sesgo alto se
+  relaciona con underfitting
+- vision unificada de RL ::
+- busqueda exhaustiva :: es recorrer todo el espacio de estado
+** Notes
+
+- la clase se enfoca en TD0
+*** Muestreo de Importancia
+- se basa en encontrar una razon entre la politica y la b i.e. $\rho = \frac{\pi(x)}{b(x)}$
+- tomo una politica que me dice unas probabilidades sobre las acciones
+  y obtengo un arreglo de recompensas $R=[1,3,1]$ Se toma la accion 1
+  dos veces y la accion 3, una vez. (1,85%), (2,5%), (3,5%), (4,5%)
+- b es la politica d exploracion o comportamiento
+- supongamos otra distribucion de probabilidad en que la politica toma
+  40% del tiempo tomoa la accion 2, la 1 el 30%, 3 el 10%, 4 el 20%.
+- Para obtener el retorno con la política $\pi$ seria el promedio de
+  recompensas con la politica d ecomportamiento?
+
+  $G_{\pi} ¿ = 1/n\sum Rp$
+- La politica de comportamiento la pone el diseñador y sabe cuantas
+  veces sucede cada accion.
+- usando la politica /b/ de comportamineto se obtiene los retornos $G_b$
+- $\rho$ es un ajuste
+- los pasos a diferentes estados se analizan como la probabilidad de
+  la accion dado el estado $\rho(A|s)$.
+- la $\rho$ acumulada es la multiplicacion de los $\rho$
+  $\rho_{t:T-1}=\prod_{k=t}^{T-1}
+  \frac{\pi(A_k|s_k)}{b(A_k|s_k)}=\rho_1 \rho_2 \rho_3 \rho4$
+- en /V(s)/ se divide por elnumero de veces que pase por cada
+  estado. $\rho$ es difernte para cada estado. no se divide para la
+  longitud completa del episodio. $\tau$
+*** Dilema del sesgo/varianza o entre el bias/varianza
+- imagine dos conjuntos de datos uno para /b/ y otros para /pi/. los
+  datos van a arrastrar hacia el /b/ 
+*** Muestreo de importancia ponderado
+- si solo tengo una muestra , la estimacion del estado devuelve el retorno
+- hay un sesgo hacia el cojunto de datos de b
+- $v(s) = \frac{\rho_{t:T-1}G_t}{\rho_{t:T-1}}$
+- El muestreo de importancia ordinario estima $v_{\pi}(S)$ y tiene una
+  alta varianza y si la cadena de estados no es la suficiente larga la
+  estimacion del valor puede divergir
+- El muestreo de importancia ponderado esta sesgado hacia /b/ al
+  inicio. pero con mas iteracines converge a $v_{\pi}(s)$ y tiene baja
+  varianza. los valores van a estar cercanos uno del
+  otro. i.e. varianza se va a 0 conforme mas iteraciones y por tanto
+  converge al valor esperado. Por esta razon se usa en la practica
+*** Control con MC
+- Control implica que la poltica va a estar cambiando
+- la idea de **cobertura** es si existe la probabilida dde que pase en
+  $\pi$ tambien debe pasar para o en la politica /b/
+- control con MC no es effectivo
+  - es lento en conveger
+  - valores de /q(s,a)/ tienen alta varianza
+- Montecarlo es para sólo para tareas episódicas. pero no todas  las
+  tareas son episódicas.
+- montecarlo no usa la informacion disponible inmediatamente
+  $G_t = R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3} + \dots$
+- el problema de que no explote la informacion es que no podria
+  funcionar conectado a sistemas en linea
+- Montecarlo espera al finaldel episodio para actualizar valores
+- TD reporta observando cada estado
+- TD hace peque;as actualizaciones para llegar al valor final
+- 
+*** aprendizaje por diferencias temporales
+- funciona con episodios incompletos
+- esta relacionado al bootstrapping
+- hace peque;as actualizaciones en vez de MC que espera al final del episodio
+- TD(0) usa la recompensa inmediata luego de tomar una acción
+- en el algoritmo de TD el parametro $\alpha$ es importante
+- cada paso que se da de cada accion se actualiza el valor de v
+- a pesar de que tengo dos bucles uno de episodios y dentro de ese los
+  pasos ya o tengo que calcular retornos.
+- ya no necesito de preocuparme de si fuera de politica o si organizar
+  los valores desde t-1. sino que se hace constantemente la actualizacion.
+- TD usa el concepto de bootstraping
+- bootstraping usa el estimado de /V(s')/ para hallar /V(s)/
+- TD aprende sin necesidad de ver el resultado. no necesita llegar al
+  otro estado sino observar. es muy conveniente
+- TD puede aprender tareas sobre la marcha i.e. aprendizaje online
+- TD puede aprender tareas no episodicas
+- TD puede aprender tareas continuas e.g. control de temperatura
+- tD puede aprender de secuencias de stado incompletas
+- TD converge mas rapido que MC
+- 2025-03-27
+- no usa el retorno sino estimacion del siguienteestado
+- es como cortar a montecarlo
+- *caminata aleatoria* usa una politica random
+  - si usa MC tarda mucho en aprender por la exploracionque tiene que
+    hacer ya que **actualiza completamente al final de cada episodio**
+  - al usar TD, como *actualiza en cada paso del algoritmo*, el tiempo
+    es menor
+- el parametro $\alpha$ en la aproximacion incremental para TD esla
+  velocidad de convergencia
+- en montecarlo de igual manera si $\alpha$ es alto se converge mas
+  rapido pero con mas error
+- si $\alpha$ es bajo, voy a converger mas lento pero con menos error
+- POr que parece que TD se acerca mas rapido al verdadero valor?
+  revise la curva de $\alpha=0.5$. Solo significa que MC es mas lento
+  no erróneo
+*** Sesgo varianza
+- que tiendo a tomar mis decisiones en funcion de la politica b
+- se analiza en esta seccion en su totalidad wrt a MC y a TD
+- esta relacionado con *overfitting* y *underfitting*
+- en Montecarlo el retorno tiene bastantes datos de cada episodio por
+  loque se relaciona con el underfitting es decir un sesgo bajo
+- en TD como no ve los datos sino un estimado de los datos tiene sesgo
+- en TD tiene baja varianza
+- en TD, si el modelo cambia un poco yo puedo ajustarme por labaja varianza
+- es necesario estar entre overfitting y underfitting.
+- revisar tabla del dilema sesgo/varianza 2
+- Montecarlo sesgo vs varianza
+  - tiene alta varianza y bajo sesgo al iniciar
+  - buena convergencia
+  - insensible a las condiciones iniciales
+- TD
+  - tiene algo de sesgo al inicio
+  - mas eficiente
+  - es mas sensible a las condiciones iniciales
+*** Eficiencia y Utilidad TD para RL
+- MC converge a la solución con mínimo error medio cuadrático RMS
+- MC lo que hace es el mejor aproximado de los retornos en el sentido
+  de minimos cuadrados
+- TD0 converge ala solucion de maximo verosimilidad MLE
+- TD0 implicitamente halla el mejor vector de parametros $\theta$ para la
+  funcion probabilistica $(\cdot| \theta)$ que explica mis
+  muestras. esto consiste en maximizar el logaritmo de la
+  distribucion.
+- TD0 al ser un modelo probabilistico explota de mejor manera la
+  propiedad de markov
+- TD0 se ajusta a los modelos de RL
+*** vision unfiicada de RL
+- son dos ejes muestreo vs bootstraping
+- la idea de bootstraping es actualizar usando un estimado
+- la exploracion completa de un episodio hace que TD0 pase a MC
+- MC no hace bootstraping ya que no hace estimaciones. mira todo el episodio
+- la idea de muestreo es obtener muestras mediante la exploracion y
+  estima un valor esperado. MC sí saca valores esperados. PD no saca
+  muestras. TD sí saca muestras.
+- busqueda exhaustiva casi que nunca recomendable
+
+** Summary
+* 2025-03-27 
+** Questions and keywords
+- sarsa :: para control libre de modelo
+- q learning :: para control libre de modelo
+- idea del q learning ::
+- completar el proyecto hasta el 2 semanas despues de la proxima clase
+  del martes:: 
+** Notes
+- Estaremos viendo algorimos: Sarsa y Qlearning
+- la construccion del sistema es lo mas laborioso
+*** Control con Aprendizaje TD
+- SARSA aprendizaje en política
+- Aprendizaje Q es para fuera de politica
+- en politicas sin modelo necesito exploracion
+- hay iteraciones por vlor e iteracion por politica
+*** Sarsa
+- estado accion recompensa estado accion siguentes
+- considera transiciones s a s' y A a A'
+  $Q(s_t, A_t)=Q(s_t, A_t)+\alpha[R_{t+1}+\gamma Q(s_{t+1}, A_{t+1}) -
+  Q(s_t, A_t)]$
+- Trabaja con el estado actual $Q(s_t, A_t)$
+- target : $R_{t+1}+\gamma Q(s_{t+1}, A_{t+1})$
+- error es la diferencia con Q a tiempo t
+- SARSA cuando llega al siguiente estado solo ve el valor estimado de
+  la siguiente accion no ejecuta la siguiente accion
+- en el algoritmo el paso 8 que usa greedy es la mejora
+- en el algoritmo el paso 9 es la evaluacion. esta al revez que
+  normalmente evaluamos valores iniciales y de ahi mejoramos
+- esto es porque sarsa requeire del siguiente estado
+- sarsa observa *solo una** accion y tomo su estimado
+- 
+*** Aprendizaje Q
+- en aprendizaje Q de todo elconjunto de acciones tomo la que maximiza
+  Q. esto se conoce como **idea q learning**
+- sarsa esta relacionado conla ecuacion de valor esperado de bellman y
+- Q esta relacionado con la ecuacion de optimalidad de bellman
+** Summary
+* Sutton Book
+- greedy :: cuando se selecciona la accion cuyo valor es el mejor
+- explotacion :: usar el conocimiento de los valores de las acciones
+  para maximizar beneficion o recompensa esperada en un paso
+- exploracion :: seleccionar una accion no greedy. puede producir la
+  mayor recompensa total a la larga.
+- how do they use the law of large numbers :: $Q_t(a) \leftarrow q(s)$
+  para que converga al valor verdadero
+- greedy :: seleccinar la accion o una de las accnes con el mas alto
+  valor estimado del valor de la accion en un paso t $A_t =
+  \text{argmax}_a Q_t(a)$. Una accoin gredy simepre explota el
+  conocimiento disponible o actual para maximizar la recompensa inmediata
 * TODO [60%]
 - [X] Ingresar al Moodle y revisar bibliografía y Temario
 - [ ] Implementar el laboratorio o hacer el proyecto
@@ -673,3 +1146,4 @@ Es decir una vez que se fija la accion v y q son iguales
   incremental de Q
 - [ ] solicitar una descripcion del diagrama de respaldo de los
   ejemplos no sé que está modelando parece un estudiante.
+- [ ] solicitar revisar el cuestionario semana 2
