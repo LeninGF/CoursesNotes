@@ -328,11 +328,24 @@ términos de la recompensa.
 * 2025-03-11 Políticas
 ** Questions and keywords
 - función de valor de acción ::
-- intervalo de confianza :: 
+- intervalo de confianza ::
+- target ::
+- oldEstimate ::
+- optimismo esta relacionado con el sesgo de inicio :: Entiendo que si
+  existe un condicionamiento de condiciones iniciales, el problema de
+  aprendizaje podria no converger? o era que el optimismo garantiza
+  una exploracion inicial, pero si el problema es no estacionario
+  i.e. varia con el tiempo, ya no va a buscar nuevas mejores acciones
+  teniendo un mal desempe;o a largo plazo. En cambio si el problema es
+  estacionario, el optimismo puede funcionar bien.
 ** Notes
 
 *** Política Voraz (Greedy)
-- no se puede utilizar en RL
+- no se puede utilizar en RL completo. Trata de explotar el
+  conocimiento lo que le limita la capacidad de explorar nuevas
+  acciones/politicas que mejoren a largo plazo ya que trata de obtener
+  la mejor accion inmediata. Depende de disponer de una matriz de
+  transicion de estados.
 - una política maximiza la función de valor de acción
 - greedy para una $A_t$ se aplica $1-\epsilon$
 - así por ejemplo $1-\epsilon \right_arrow 80\%$ tomo una acción que
@@ -349,12 +362,14 @@ términos de la recompensa.
 - Entonces el $Q$ queda como:
   $Q_{t+1}=Q_t+\frac{1}{t}(R_t-Q_t)$
 - esto permite mantener en memoria valores anteriores
-- en general las estimaciones se entienden por:
+- en general, las estimaciones se entienden por:
   $N_{est} = Old_{est}+\alpha(Target - Old_{est})$
 - el $\alpha$ está entre 0 y 1 y es el factor de olvido
 - hay que definir cual es el margen de tiempo relevante para mi
   problema
-- es una ventaja asumir $\alpha$ constante
+- es una ventaja asumir $\alpha$ constante, porque de esa manera puedo
+  hacer que en las elecciones del agente pese mas la informacion
+  reciente que toda la informacion
 - $Q(a) \neq 0$ inicializado con valor optimista ayuda a la exploración
 - optimismo implica saber que es ser potimista en el contexto del
   problema i.e. conocer la recompensas del problema
@@ -370,7 +385,7 @@ términos de la recompensa.
   sentido optimista pegado al borde superior
 - el denominador de la UCB da intervalo de confianza
 - la UCB se define por
-  $A_t = argmax_a(Q_t(a)+c\sqrt{\frac{\ln t}{N_t(a)})$
+  $A_t = \underset{a}{\text{argmax}}(Q_t(a)+c\sqrt{\frac{\ln t}{N_t(a)})$
 
 *** Algoritmos de Bandidos de Gradiente GBA
 - usa soft max
@@ -394,8 +409,8 @@ términos de la recompensa.
 - usar informacion histŕoica nos pone en la intersección entre
   aprendizaje por refuerzo y RL
 - 
-
 ** Summary
+
 * 2025-03-11 Procesos de Markov
 ** Questions and keywords
 - cadenas de markov ::
@@ -657,12 +672,122 @@ Es decir una vez que se fija la accion v y q son iguales
 ** Questions and keywords
 - Reward :: all goals can be described by the maximization of expected cumulative reward
 - Goal :: select actions to maximize total future reward
+- history :: sequence of observations, actions and rewards $H_t =
+  A_1,O_1,R_1, \dots, A_t, O_t, R_t$
+- agent :: something that acts on the environment
+- state :: is the information used to detrmine what happenes next. It
+  is a function of the history $S_t = f(H_t)$. It is a summary of
+  all that has happened and helps to predict what comes next. State is
+  any function of history.
+- environment state :: the information within then environment and decides
+  what comes next.
+- agent_state :: it is the internal representation of the agent. a set
+  of numbers that captures what is going on. It is information gathered
+  by the agent to pick next action. It is function of history.
+- markov state or information state :: significa que el estado
+  siguiente depende exclusivamente del estado anterior, se puede
+  obviar todos los estados anteriores i.e. $P[S_{t+1}|s_t]
+  =P[S_{t+1}|S_1, S_2, \dots S_t]$
+- full observability :: full observability could it be agent state is
+  equal to environment satet?
+- partial observability :: poker player. The agent state is different
+  from the environment state. agent must build its ownstate representation
+- policy :: how the agent picks its actions.
+- value function :: how good is a state and or action. How much reward
+  do we expect to get by being in a state or taking an action. It is
+  the prediction of the **expected future reward**
+- $\gamma$ :: discount factor
+- model :: prediction of what the environment does next
+- exploration ::
+- explotation ::
+- prediction :: evaluate the future given a policy
+- control :: optimize the future. Find the best policy
 ** Notes
 - Reward could be delayed
 - Actions may have long term consequences. We need planing.
-- 
+- all goals can b described by the maximisation of expected cumulative reward
+- agent selects actions
+- environment selects observations and rewards
+- environment state is not visible to the agent
+- Markov state the future is independent of the past given the
+  present. El estado presente contiene suficiente informacion para
+  poder hacer predicciones hacia el futuro: $H_{1:t}\to S_t \to
+  H_{t+1:\infty}$.
+- En un Markov State, once the state $S_t$ is known, the history may be
+  thrown away
+- a markov state is always the environment state
+- what happens next depends on representational state
+*** Agent componentes
+- tiene una Policy, value function, model
+- polocy is a map from state to action
+- policy deterministic $a=\pi(s)$
+- stochastic policy helps to make random explorative decisions
+  $\pi(a|s) = \mathbb{P}[A=a|S=s]$
+- the value function is the prediction of the expected future reward:
+  $v_{\pi}(s)=\mathbb{E}_{\pi}[R_t+\gamma R_{t+1}+\gamma^2 R_{t+2}+\dots|S_t=s]$
+*** The model
+- predicts what the environment will do
+- it has a *State Transition Matrix/Model* $\mathcal{P}$ that predicts the next
+  state i.e. the dynamics. $\mathcal{P}_{ss'}^a =
+  \mathbb{P}[S'=s'|S=s, A=a]$
+- it has a *Rewards Matrx* $\mathcal{R}$ predicts the next immediate
+  reward $\mathcal{R}_s^a = \mathbb{E}[R|S=s, A=a]$
+- it is necessary to have this matrices or data because it is the
+  equivalent to model the environment.
+- RL bases on model free problems
+*** Categorizing RL Agents
+- **Value based**
+  - No Policy
+  - It has Value function
+- **Policy based**
+  - Policy
+  - no value function
+- **Action Critic**
+  - Policy
+  - Value Function
+- Model free: it has no model but represents the model through policy
+  and or value function
+- Model based: First episode make a model and also could use POlicy
+  and Value functions.
+*** Problems in RL
+- Learning and Planning
+- RL: first tires to learn how the model works and then goes to planing
+- Planning: the model of the environment is known
+- Exploration and Explotation: RL is like trial and error
+  learning. The agent should discover agood policy.
+- exploration: give up some reward to get more informatio about the environment
+- exploitatino: exploit the informationknown to maximise reward
+- In RL we need to solve the **prediction problem** to **(control)
+  optimize the policy**
 ** Summary
-
+*** Introduction
+El aprendizaje por refuerzo es una especia de trial and error i.e. de
+aprendizaje por error. Para esto, el agente de RL tiene que que
+observar el *entorno*, tomar una *accion* y recibir una respuesta a
+traves de una señal de recompensa. La *politica* define el
+comportamiento del agente i.e. como escoge las acciones. De ahi que el
+agente forma una representacion interna que obtiene el agente. Para
+poder realizar esto, el objetivo a alcanzar por el agente debe ser
+expresado como la maximización de la recompensa esperada. De ahi que
+el agente utiliza como componentes: 1. politica, 2. una funcion de
+valor del estado/accion y 3. modelo. La idea de RL es obtener la
+*politica optima* es decir aquella que nos conduzca al objetivo con la
+mayor recompensa posible. La policy es un mapa de los estados y las
+acciones. Puede ser determinista, donde una accion se deriva de un
+estado especifico o estocastica, en donde se puede tomar decisiones
+explorativas. Un estado puede ser del entorno o del agente. El del
+entorno es desconocido para el agente. El estado del agente tiene la
+representacion que hace el agente del entorno luego de explorarlo. La
+funcion de valor accion estado estima la accion o estado enfuncion de
+la recompensa y permite con sus valores decidir o predecir que accion
+tomar luego. Predecir el siguente estado es el problema de prediccion
+mientras que optimizar que hacer a futuro es el problema de
+control. En RL, los agentes enfrentan varios problemas como el de
+exploracion vs explotacion. La exploracion es que tanto puedo
+sacrificar mis recompensas inmediatas para poder descubrir
+alternativas nuevas que a largo plazo me conduzcan a una mayor
+ganancia. La explotacion es en cambio obtener la maxima recompensa a
+partir del conocimiento que se tiene. 
 * 2025-03-18 Renta de Autos Jack
 ** Questions and keywords
 - Poisson ::
@@ -1125,7 +1250,9 @@ primero. esto se hace por eficienca.
 - sarsa esta relacionado conla ecuacion de valor esperado de bellman y
 - Q esta relacionado con la ecuacion de optimalidad de bellman
 ** Summary
+
 * Sutton Book
+** k-armed multi bandid problem
 - greedy :: cuando se selecciona la accion cuyo valor es el mejor
 - explotacion :: usar el conocimiento de los valores de las acciones
   para maximizar beneficion o recompensa esperada en un paso
@@ -1135,12 +1262,41 @@ primero. esto se hace por eficienca.
   para que converga al valor verdadero
 - greedy :: seleccinar la accion o una de las accnes con el mas alto
   valor estimado del valor de la accion en un paso t $A_t =
-  \text{argmax}_a Q_t(a)$. Una accoin gredy simepre explota el
-  conocimiento disponible o actual para maximizar la recompensa inmediata
-* TODO [60%]
+  \underset{a}{\text{argmax}} Q_t(a)$. Una accoin gredy simepre explota el
+  conocimiento disponible o actual para maximizar la recompensa
+  inmediata
+- Cada accion tiene un valor experado o medio de recompensa
+- $A_t$ :: Accion tomada en un tiempo t
+- $R_t$ :: Recompensa correspondiente a $A_t$ en /t/
+- $q_*(a)$ :: Valor esperado de una accion /a/ $q_*(a) \doteq \mathbb{E}[R_t|A_t=a]$
+- $Q_t(a)$ :: valor estimado de la accion
+- Para estimar $Q_t(a)$ (i.e. el valor de la accion) partimos de que
+  se la puede definir como el promedio de las recompensas obtenidas de
+  la accion seleccionada
+  #+begin_export latex
+  \begin{equation}
+    \label{eq:def-action-value}
+    Q_t(a)=\frac{\text{suma de recompensas cuando se toma}}{\text{numero
+      de veces que se toma a}} = frac{\sum R_i\cdot A_i}{\sum A_i}
+  \end{equation}
+
+
+  #+end_export
+- El conflicto entre exploracion y explotacion, en control se llama el
+  conflicto entre estimacion y control
+- La estimacion del valor de una accion $Q_n$, luego de ser
+  seleccionada $n-1$ veces se define :
+  $$Q_n \doteq \frac{\sum_{i=1}^{n-1}R_i}{n-1}$$
+- La implementacion incremental de $Q_{n+1}$ es ::
+  $$Q_{n+1}=Q_n+\frac{1}{n}[R_n-Q_n]$$
+- $\alpha = \frac{1}{n}$
+- En general, la regla de actualizacion es:  $NewEstimate \gets
+  OldEstimate + StepSize[Target - OldEstimate]$ 
+** Markov Decision Process
+* TODO [57%]
 - [X] Ingresar al Moodle y revisar bibliografía y Temario
 - [ ] Implementar el laboratorio o hacer el proyecto
-- [ ] Atender clase de bandidos en aula virtual
+- [X] Atender clase de bandidos en aula virtual
 - [X] Responder las preguntas de la semana 1
 - [X] Solicitar en el foro la demostración de la implementación
   incremental de Q
