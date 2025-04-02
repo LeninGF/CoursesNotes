@@ -1250,7 +1250,29 @@ primero. esto se hace por eficienca.
 - sarsa esta relacionado conla ecuacion de valor esperado de bellman y
 - Q esta relacionado con la ecuacion de optimalidad de bellman
 ** Summary
-
+* 2025-04-01 Metodos tabulares
+- MC tiene sesgo de 0
+- MC actualiza los valores q y v al final del episodio
+- TD actualiza en lamarcha
+- TD tiene una baja varianza
+- En la practica queda usar TD
+- Una manera intermedia entre TD y MC es TD en n pasos
+- mientras mas pasos se toman mejor es el estimado del retorno
+*** Metodos de aproximacion
+- v y q se vuelven funciones con parametros
+- se libera de tener una matriz de memoria
+*** Metodos de evaluacion del curso
+1. abrir las evaluaciones. Ma;ana se sube evaluacion final. Las
+   evaluaciones tienen 2 intentos. para todas. Promedio de intentos. 30%
+2. Proyecto: uno de los laboratorios comentado. todo lo referente al
+   problema resolviendo y todo lo referente al aprendizaje por
+   refuerzo. que se note la revisión del material. No se comenta el
+   codigo relacionado a las graficas. 60%
+   - Ejecucion 40%
+   - Comentarios 60%: esto es la mejora de la politica. esto es
+     evaluacion, etc. esta es ecuacion de bellman.
+3. Entregar hasta el lunes 07-04-2025. 23:59 se sube el archivo en
+   formato de jupyter
 * Sutton Book
 ** k-armed multi bandid problem
 - greedy :: cuando se selecciona la accion cuyo valor es el mejor
