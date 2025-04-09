@@ -1,5 +1,7 @@
 # Introducción al Reinforcement Learning
 
+- Estudiante: Lenin G. Falconí, M.Sc.
+
 Curso online dictado por Cedia
 
 En este repositorio se tiene los apuntes tomados de las clases
