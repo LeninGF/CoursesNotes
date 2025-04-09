@@ -604,30 +604,65 @@ $$q_{\pi}(s,a) = R_s^a+\gamma\sum_{s'\in s}P_{ss'}^av_{\pi}(s')$$
 - proceso iterativo ::
 - equacion esperanza bellman ::
 - ecuación optimalidad de bellman ::
-- principio de optimalidad :: ???
-- evaluacion sincrona ::
+- principio de optimalidad :: que existe una subestructura en la que
+  podemos dividr el problema. los subproblemas son superpuestos,
+  reusables e iterables. Puedo iterar una funcion para ir entre
+  cualquier nodo del problema
+- evaluacion sincrona ::tiene dos copias d ela funcion de
+  valor. cuando termna el for loop tiene el nuevo valor . EN cada
+  estado se evalua el valor de v y en cada iteracion se ajusta el
+  valor de la funcion v
 - evaluación en su lugar (in place) ::
-- checkar grid world dynamic programing demo standord :: 
+- checkar grid world dynamic programing demo standord ::
+- evaluación política :: es la predicción. consiste en cuantizar que
+  tan buena es la política.
+- PD :: es un paradigma de optimización propuesto por Bellman que
+  consiste en dividir un problema grande en subproblemas.
+- problema de planeacion :: es hacer la prediccion y el control
+  . donde prediccio es calcular $v$ y $q$ y el control obtener $\pi_*$
+- iteracion de politica ::  en cada itereacion encuentro una neva
+  politica $\pi'$ que es la greedy, es decir la accion que me dio el
+  valor maximo de los estados.
+- teorema de mejoramiento de la politica :: 
+
 ** Notes
 - Un proceso de decisión de Markv tiene $S, A, P, R, \gamma + \pi$
-- la recompensa y la matriz de transicion son desconocidas
+- En la realidad la recompensa y la matriz de transición y la
+  recompensa son desconocidas. A excepción de que estemos modelando.
+- En esta clase se asume que $P$ y $R$ son conocidos.
 - la evaluación de la política es cuantizar que tan buena es una política
 - evaluación politica input: \pi
-- output de la evaluacion politica v_{\pi}(s), q_{\pi}(s,a)
+- output de la evaluacion politica v_{\pi}(s), q_{\pi}(s,a). Que son
+  las funciones de valor. A través de ellas medimos.
+- El problema completo de RL tiene dos partes Evaluación de POlítica
+  que es la prediccion y la mejora de la política (control)
 - la mejora de la política o control trata de encontrar una política
-  óptima
+  óptima $\pi_*$. Esto es maximizar la recompensa.
+- El proceso de politica optima tiene por IN: MDP y como salida la
+  política optima $\pi_*$y los estimados de $v_*$ y $q_*$
+- resolver el problema completo de RL no es sencillo así se conozca
+  $P_{ss'}$ y $R$. Para resolver este problema se recurre a la
+  Ecuación de la esperanza de Bellman. 
 - el problema de la ecuacion de esperanza de bellman es que tiene un
-  costo computacional alto.
+  costo computacional alto. Sobre todo para problemas reales. Porque
+  el costo computacional esta relacionado al tamaño lineal del
+  sistema. Por esta razón se requiere procesos iterativos-
 - La ecuación optimalidad de bellman es no lineal y no tiene solución cerrada
 - para estimar la ecuacion de esperanza de bellman y la optimalidad de
-  bellman es necesario procesos iterativos
+  bellman es necesario procesos iterativos. Es una manera para ayudar
+  a  resolver la ecuación de Bellman
 - Bellman propone la programación dinámica para resolver
   computacionalmente las ecuaciones reduciendo el costo computacional.
+- Por ejemplo si se quiere ir de NY a los Angeles pasando por Chicago,
+  y en cuentro dos caminos Optimos entre NY-CH y CH-LA, entonces el
+  optimo general es la suma de los optimos mas pequeños
 - consiste la prog dinamica en dividir el problema ensubproblemas o suboptimos
 - unir dos caminos optimos o rapidos debe garantizar una entrega mas rapida
-- no es seguro que el optimo global sea la suma de los suboptimos
+- no es seguro que el óptimo global sea la suma de los suboptimos
 - la programacion dinamica consiste en
-  1. dividir en subproblemas
+  1. dividir en subproblemas: la subestructura de un problema debe ser
+     visible o ya existen. Si la subestructura existe cumplimos con el
+     principio de optimalidad
   2. resolver subproblemas
   3. unir las soluciones
 - condiciones para plantear la prog dinámica
@@ -635,27 +670,82 @@ $$q_{\pi}(s,a) = R_s^a+\gamma\sum_{s'\in s}P_{ss'}^av_{\pi}(s')$$
   2. la substructura debe cumplir elprincipio de optimalidad
   3. los sub problemas deben ser superpuestos lo que permite re
      utilzar las soluciones i.e. son reusables e iterables
+- Los diagramas de estado accion muestran que RL tiene una sub
+  estructura, ya que una accion nace de un estado y llegar a otro
+  estado fue consecuencia de una accion. i.e. la ecuación se
+  mantiene. Asi la funcion $v_t$ esta realacionda con la $v_{t+1}$. Es
+  mas hay una solucion lineal para v haciendo $[v]=[A^{-1}][b]$
 - El RL es:
   - estructurado porque tiene subproblemas o substructuras e.g. el
     diagrama de respaldo
   - puede ser iterado
-- evaluacion sincrona tiene 2 copias de la v_{\pi} va de acuerdo con la matematica
-- evalucion sicron aactualiza fuera del loop
-- en su lugar es que cuando cambio uno de los valores inmediato cambio
-  todos los valores. es mas rapida
+
 - es riesgoso acercarse a estados con valores negativos
-- 
+*** Problema de evaluacion o prediccion
+- se denomina por prediccio porque se trata de estimar que va a pasar
+  en el siguiente estado. Pero la ecuacion se escribe de una manera
+  invertida. Por esta razon para que tenga sentido se convierte en una
+  regla de actualizacion:
+  $V_{k+1}(s)=\sum_a\pi(a|s)\sum_{s,r}P(s',r|s,a)[r+\gamma V_k(s')]$
+- Aqui hay que considerar que $k+1$ es el estado que estoy viendo y
+  $k$ el que transcurrio es una manera programatica de verlo
+- Se inicializa la funcion con valores optimos $v_0$ cuando $k \to
+  \infty$ alcanzamos la funcion real: $v_k \to v_{\pi}$
+- La evaluacion de la politica es aplicar la ecuacion de bellman
+*** Implementacion de la evaluacion
+- evaluacion sincrona: 
+- evaluacion in place o en su lugar: se ajusta cuando hay cambios en
+  el barrido de estados. inmediatamente se ajusta la funcion de
+  estado. por eso ajusta en el mismo lugar. no espero a ajustar cuando
+  todos los estados cambien. converge mas rapido es mejor en la practica
+- evaluacion sincrona tiene 2 copias de la v_{\pi} va de acuerdo con la matematica
+- evalucion sicron aactualiza fuera del loop.
+- en su lugar es que cuando cambio uno de los valores cambia, entonces
+  inmediato cambio todos los valores. es mas rapida. Es decir si tres
+  estado de 50 cambian, cambio los tres y la diferencia se queda igual.
+
 *** Ejemplo numerico de calculo con PD
-- In: $\pi$
-- $\delta$ es un numero pequeño
-- en estaos terminales se da el valor de $v(terminal)=0$ Un control de
+- algoritmo de valuacion:
+  - In: $\pi$,
+  - $\delta$ es un numero pequeño
+  - inicializar los estados $v(s)$ con algún numero excepto los estados terminales.
+  - en estaos terminales se da el valor de $v(terminal)=0$ Un control de
   temperatura no tiene un estado terminal termina al rato de desconectar la maquina
 - los valores iniciales de $v(s)$ pueden usar optimismo
-- en el video de la clase grabada hay un ejemplo de mundo cuadricula
-- en el mundo cuadricula el agente ha de aprender la manera mas rapida
+- en el video de la clase grabada hay un ejemplo de mundo cuadricula:
+  las acciones son up, down, left, right. La recompensa es -1 para
+  todos los estado no terminales. se asmume politica uniforme, es
+  decir que todas las acciones tienen una probabilidad de 0.25. y
+  determinista quiere decir que la accion elegida se cumple. El agente
+  va a tratar de encntrar la manera mas rapida de ir de su posicion
+  inicial a los estados terminales. Dikstra y A*(google maps) sn
+  algoritmos usados para ir de un punto A a un punto B. recordar que
+  se evalua todos los etados con todas las acciones mas acciones es
+  mas costo. Si todos los estados cambian de valor es evaluacion
+  sincrona.  porque no considero el cambio de valor y uso los valores
+  anteriores por eso cuando salgo del loop sobre los estados recien
+  actualizo los valores. si considera el cambio significa que se
+  actualizo el valor y con eso calcular otro valor seria en su lugar. 
+- en el mundo cuadricula el agente ha de aprender la manera más rápida
   de llegar al estado terminal
+- buscar gridWorld dynamic programming demo.
+#+begin_example
+
+loop
+    loop for all S
+    v obtiene el valor de V(s)
+    calculo v(s) con bellman
+    calculo una diferencia delta entre la v nueva y la v vieja
+    terminar si el delta es menor que un valor
+#+end_example
 *** mejoramiento de la politica
-- cada que evaluamos iteramos sobre todos los estados
+- cada que evaluamos iteramos sobre todos los estados e ingreso a otro
+  for loop para mejorar la politica . se alterna entre evaluacion y
+  control y se llega a valores optimos de v y de pi. Se usa la
+  optimilidad de bellman. la manera mas sencilla de hallar una
+  politica optima es usar greedy. voy mejorando la funcion d valor y
+  la politica. el tener los dos procesos prediccin y control permite
+  hacer una mejora de la politica rapidamente. 
 - y se actualiza la politica con la optimalidad de bellman
 - es una alternacion entre evaluacion y control (actualizar politica)
 - la manera mas sencilla de encontrar una politica optima es usar greedy
@@ -663,8 +753,12 @@ $$q_{\pi}(s,a) = R_s^a+\gamma\sum_{s'\in s}P_{ss'}^av_{\pi}(s')$$
 dado $\pi$ en un proceso iterativo y una siguiente iteracion tal que
 mi siguiente politica sea greedy $\pi' = greedy(v_{\pi}) =
 \text{argmax}_{a in A}q_{\pi}(s,a)$ Al tomar greedy es como asumir que
-la accion no influye y ase que V y q sean iguales
+la accion no influye y hace que V y q sean iguales
 Es decir una vez que se fija la accion v y q son iguales
+
+Es decir tomar greedy de la funcion de evaluacion de los estados, es
+igual a tomar el argumento maximo de la q para una accion fija. 
+
 
 ** Summary
 
@@ -702,6 +796,8 @@ Es decir una vez que se fija la accion v y q son iguales
 - explotation ::
 - prediction :: evaluate the future given a policy
 - control :: optimize the future. Find the best policy
+- MDP :: Markov Decision Process
+- optimal control :: ??
 ** Notes
 - Reward could be delayed
 - Actions may have long term consequences. We need planing.
@@ -759,6 +855,11 @@ Es decir una vez que se fija la accion v y q son iguales
 - exploitatino: exploit the informationknown to maximise reward
 - In RL we need to solve the **prediction problem** to **(control)
   optimize the policy**
+*** Markov Decision Process MDP
+- MDP the current state completely charecterises the process
+- Almost all RL problems can be formalised as MDPs
+- Optimal control deals with continuous MDPs
+- 
 ** Summary
 *** Introduction
 El aprendizaje por refuerzo es una especia de trial and error i.e. de
@@ -854,100 +955,182 @@ partir del conocimiento que se tiene.
   pasamos por el estado
 - First Visit MC :: 
 ** Notes
-- Metodos de Montecarlo: no se necesita asumir P, R
-- Iteracion de politica: asume que conocemos P, R
+- Métodos de Montecarlo: no se necesita asumir P, R
+- Iteracion de política: asume que conocemos P, R
 - Iteracion de valor: asume que conocemos P, R
-*** Policy Iteration estimacion de $\pi$
+*** Policy Iteration estimación de $\pi$
 - se divide en dos partes Policy Evaluation y Policy Improvement
-- $\Delta<\theta$ da una estmacion buena de V(s)
-- Solo cunado obtengo la buena estimacion aso a policy improvement
-*** Iteracion de valor
-- toma una sola iteracion del bucle pero devuelve solo el valor que
-  maximiza la funcion i.e. la que en esa iteracion con esa politica da
-  el mejor valor de V
-- es combinar la parte de prediccion y conrol en un solo paso
-- para balancear entre iteracion de politica e iteracino de valor para
-  no solo maximizar constantemente y hacer una sola iteracion o gastar
+- $\Delta<\theta$ da una estacón buena de V(s)
+- Solo cuando obtengo la buena estimación paso a policy improvement
+- El algoritmo de iteracion de politica el paso 2 es el de evaluacion
+  y usa la ecuacion de la esperanza de bellman.
+- Luego en el paso tres hace la mejora con la ecuacion de la
+  optimalidad de bellman
+- 
+*** Iteración de valor
+- toma una sola iteracion de la estimacion de la funcion de valor (del
+  bucle) pero devuelve solo el valor que maximiza la funcion i.e. la
+  que en esa iteración con esa política da el mejor valor de V
+- Ya no considera todas las acciones (media ponderada) sino que tomo
+  la que es mejor $v_{k+1}= max \sum p[r+\gamma V(s')]$.
+- iteracion de valor en un solo paso hace la estimacion de la accion
+  optima y de la politica optima.
+- la ecuacion con max usa la optimalidad de bellman. Este maxeo
+  permite de manera conveniente no ingresar al otro bucle de
+  ptimizacion de la politica
+- es combinar la parte de predicción y control en un solo paso
+- para balancear entre iteración de política e iteración de valor para
+  no solo maximizar constantemente y hacer una sola iteración o gastar
   computacionalmente haciendo todo el proceso computacional se usa
-  GPI> iteracion de politica generalizado
+  GPI> iteracion de politica generalizado. es no irse a los extremos
+  sino hacer un menor numero de iteraciones con lo cual se reduce el
+  costo computacional.
 *** Algoritmos sincronos de Programacion Dinamica PD
-- Esperanza debellman hace prediccion y se llama algoritmo de
+- Esperanza de bellman hace predicción y se llama algoritmo de
   Evaluacion iterativa de la politica
-- Valor esperado de bellman + politica greedy permite hace prediccion
-  y control. Esto se denomina iteracion de politica
-- la ecuacion de optimalidad de bellman es el algoritmo de iteracion
-  de valor. Como hago una iteracion y tomo el max hago solo control.
+- Valor esperado de bellman + politica greedy permite hace predicción
+  y control. Esto se denomina iteracion de politica. hace prediccion y control.
+- la ecuacion de optimalidad de bellman es el algoritmo de iteración
+  de valor. Como hago una iteración y tomo el max hago solo control.
+- estimacion de valor reduce mas. hace casi solo control. 
 - La complejidad de todos tres algoritmos en terminos de tiempo es
   $O(mn^2)$ con
   - m numero de acciones
   - n numero de estados
-- escalan peor que cuadraticamente
-- Si se considera q $O(m^2n^2)$
-*** Programacion Dinamica Asincrona
+- escalan peor que cuadraticamente porque mientras mas estados tengo
+  mas complicado se vuelve.
+- Si se considera q $O(m^2n^2)$ porque la probabilidad tambien depende
+  de las acciones.
+- en este enfoque se hace un barrido por todo el espacio de estados
+- esta es el equivalente a la actualizacion sincrona donde hay dos copias
+*** Programación Dinámica Asíncrona PDA
 - En todos los algoritmos se realiza un barrido de los estados o del
-  espacion de estdos
-- En prgramacion dinamica asincrona  los estados se actualizan en
-  cualquier orden y con a informacion disponible en t
-- P.D. Asincrona es el equivalente a actualizar V(s) en su lugar
-- PD asincrona reduce el computo. estrictamente necesario para
+  espacio de estados
+- En programación dinámica asíncrona  los estados se actualizan en
+  cualquier orden y con a información disponible en t
+- P.D. Asíncrona es el equivalente a actualizar V(s) en su lugar
+- PD asíncrona reduce el computo. estrictamente necesario para
   problemas reales
-- para que exista convergencia es necesrio que **visite** todos los estados
+- para que exista convergencia es necesario que **visite** todos los
+  estados. como puedo converger si no he visto todo el problema. es
+  si es que he visto algunas veces los estados puedo converger.
 - Ejemplos:
-  1. Juego d eestrategia con varios batallones de un ejercito: no
+  1. Juego d estrategia con varios batallones de un ejercito: no
      visitar la reserva si estoy lidiando con los soldados de forntera
-  2. Ruta mas rapida
+  2. Ruta mas rápida
   3. arreglo de desgaste de piezas. e.g. una pieza que se da;a a cada
      rato vs cada a;o
-- los estados importantes se aprenden no se definien
+- los estados importantes se aprenden no se definen
 *** Cosas que permite la PDA
 - la PDA permite visitar los estados mas importantes
 - se puede ignorar casi completamente ciertos estados no relevantes
   para el problema
-- dada una politica actualizar los mas los estados que la politica visitada
-- algunas partes del problema cambian mas lento que otros
+- dada una política actualizar los mas los estados que la política visitada
+- algunas partes del problema cambian mas lento que otros, por ejemplo
+  analizando problemas variables en el tiempo. POr ejemplo la
+  manufactura de una pieza. 
+- PDA permite que me centre en los estados mas importantes ya que no
+  estoy obligado a barrer todos el espacio de estados ni en un orden especifico
+- PDA tambien permite ignorar casi completamente (porque la condicion
+  es que visitemos todos los estados) los estados no relevantes para
+  el problema.  Ejemplo si tengo que encontrar una ruta entre dos
+  puntos y hay puntos completamente fuera de la zona de interes los
+  puedo obviar
+- PDA puede aprovechar la politica para actualizar mas los estados que
+  la politica por si misma obliga a visitar
+- PDA permite dar una prioridad a los estados a revisar en un problema
+  variable en el tiempo
+- no se sabe cual es el estado importante. si se conoce sobre el
+  problema se puede dar una prioridad al estado. solo son los estados
+  que mas peso tienen en el problema. Esto se aprende.
 *** Metodos MonteCarlo
-- su idea principal es estimar distribuiones que no conocemos de
-  manera eficiente
+- su idea principal es estimar distribuciones que no conocemos de
+  manera eficiente.
+- EL RL es similar al problema de los imanes. en donde se coloca un
+  juego de imanes cubiertos por una hoja que no nos permite ver que
+  ellos estan colocados. lo que nos ayuda montecarlo es a tomar
+  acciones para descubrir sobre el proceso. se distribuye
+  uniformemente limallas de acero. lo que da idea sobre los campos
+  magneticos que estan gobernando el proceso. 
 - los proceso a aprender asemejar a los imanes a un arreglo de imanes
-- se cubre los imanes on una hoja de papel
-- aplicando acciones y montecarlo se va dsecubriendo como opero
+- se cubre los imanes en una hoja de papel
+- aplicando acciones y montecarlo se va descubriendo como opero
 - distribuyendo uniformemente el material correcto
 - montercarlo permite estimar magnetic field lines
-- montecarlo es dar un monton de acciones y ver la respuesta del
-  prceso esto me permite ocnoncer coomo se ocmporta
+- montecarlo es dar un montón de acciones y ver la respuesta del
+  proceso esto me permite conocer como se comporta
+- desde la perspectiva de RL, se puede considerar que el problema a
+  conocer es una caja negra con entradas y salidas. Se pueden medir
+  las respuetas a las entradas. El sistema va a filtrar la
+  entrada. Para conocer sobre la caja negra necesito ingresar inputs
+  adecuadas. Es decir acciones adecuadas. porque en base a la
+  respuesta del proceso se va a estimar la política 
 *** Condiciones del Metodo Monte Carlo
-1. Generar los Input con la Politica
-2. Observar los output es decir las salidas delsistema. La unica
+1. Generar los Input con la Política i.e. la política se usa para
+   generar las acciones.
+2. Observar los output es decir las salidas del sistema. La única
    salida que tengo del sistema son R las recompensas
 3. procesar
-4. se requeire muchos datos apa que funcione bien
+4. se requiere muchos datos para que funcione bien
 5. condiciones extra: elegir los inputs de manera uniforme
-   i.e. uniformemente en el sentido probabilisto de la palabra es
-   decir cada acciondebe ser elegida conlamisma probablidad
+   i.e. uniformemente en el sentido probabilístico de la palabra es
+   decir cada acción debe ser elegida con la misma probabilidad
+Usar los métodos de montecarlo se denomina RL libre de Modelo. No se
+necesita saber la matriz de transición de estados $P_{ss'}$. También
+es desconocida la Recompensa $R$. Estas son reemplazadas con
+experiencia que se obtiene de la exploración del entorno (sistema).
 *** Estrategia libre de modelo
 - Implica que P y R son desconocidas
-- El conocmiento de P y R se reemplaza con experiencia
-- experiencia viene de la exploracion del entorno
+- El conocmiento de P y R se reemplaza con experiencia. i.e. en un
+  proceso real no son conocidas.
+- experiencia viene de la exploración del entorno
 - por tanto se van a recoger datos y estimar ciertas cantdades y se
-  obtendra la expericina
+  obtendrá la experiencia
 - La Recompensa se puede ver
-- Metodo de Montecarlo permite aproximar el Retorno
-- MMC sonbuenos para aproximar Esperanzas, promedios
+- Método de Montecarlo permite aproximar el Retorno
+- MMC son buenos para aproximar Esperanzas, promedios, por ejemplo en
+  $v_{\pi}(s)=\mathbb{E}_{\pi}[G_t|s_t=s]$ y
+  $q_{\pi}(s,a)=\mathbb{E}_{\pi}[G_t|s_t=s, A_t=a]$
+- La esperanza ayuda a encontrar el entorno.
+- Ejemplo de maquina de estado finito de estudiar. en MC significa que
+  el grafico es desconocido. 
 - Con MC se da cadenas de estado
 - se obtiene un promedio de los estados visitados
-- y ese va ser los valore de estado
-*** First visit MC
+- y ese va ser los valores de estado
+- usando el grafico se dan dos cadenas. en la primera pasada se da una
+  cadena c1, c2, c3, paso, dormir que da +4. en la segunda se pasa dos
+  veces por c1. como lo que se quiere tener es el valor del estado c1,
+  se puede tener dos valores en la segunda cadena. Por esta razon se
+  usa puede dfinir dos enfoques:
+  - c1, IG, IG, c1, c2, dormir que da -8 desde el primer c1 y -4 desde
+    el ultimo
+  - 1era visita solo el valor de la primera vez que uso un estado (+4-8)/2
+  - cada visita: actaulizamos el valor cada vez que pasamos por el
+    estado (+4-8-4)/3
+*** First visit MC 
 1. Iniciar una politica
 2. estimar los retornos
-3. generar un episodio siguiendo la politica i.e. interactuar conelentorno
+3. generar un episodio siguiendo la política i.e. interactuar con el entorno
 4. una vez que tengo las recompensas se hace un bucle para cada uno de
    los pasos del episodio de T pasos
 5. calculo el retorno
-6. obtengo el promedio o media de los retornos que ouede ser una media
+6. obtengo el promedio o media de los retornos que puede ser una media
    incremental
 
 note que el bucle va de reversa desde el ultimo paso hasta el
-primero. esto se hace por eficienca. 
+primero. esto se hace por eficiencia. 
+*** Algoritmo de prediccion evaluacion
+- iniciar la politica
+- iniciar V con valores arbitrarios
+- inicar los retoros como lista vacia
+- dentro de un lazo eterno para cada episoodio genero una cadena y
+  y ponto el retorno a 0. El episodio tiene T pasos
+- for cada paso del episodio escrito de ordencontrario calculo el
+  retorno con el factor gamma
+- solo si st ya se paso no se actualiza sino actualizo los valores de
+  V y optengo los promedios. el proceso se invierte porque de esta
+  manera es mas amigable computacionalmente que ir en el orden
+  episodico. porque los valores ya estaran calculados.
 ** Summary
 * 2025-03-20 Control MC en y fuera de la politica
 ** Questions and keywords
@@ -971,84 +1154,160 @@ primero. esto se hace por eficienca.
   enla Pi target debe ser eexplorado al menos ocasionalmente por la
   politica de comportamiento (i.e. la que estoycopiando) la /b/
 - Politica :: es una distribucion es una probabilidad. Recordar
+- problema completo rl :: cuando P y R son desconocidos tambien
+- GPI :: iteracion de politica generalizada. Hallo un buen valor de V
+  y hago unas cuantas iteraciones y obtengo la mejora de la politica
+- exploring starts ES :: se refiere a cadenas generadas pero el primer
+  estado es aleatorio y uniforme. lo que sucede es que eventualmente
+  luego de varias o muchas iteraciones se exploraran todos los
+  estados. es parecido al optimismo. despues del estado aleatorio se
+  sigue la politica propuesta. eventualmente se habran visitado todos
+  los pares de accion estado y de esta manera se asegura la exploracion.
+- $\pi$ :: politica objetivo target
+- $b$ :: politica de comportamiento. se encarga de exploracion
+- cobertura :: cada para (s,a) que pueda ocurrir en la politica
+  objetivo debe ser explorado al menos ocasionalmente por la politica
+  de comportamiento /b/. es asegurar la exploración
+- muestreo de importancia :: tecnica general del area de stadistica y
+  probabilidad que se usa para estimar valores esperados o esperanzas
+  matematicas de una distribucion dada otra distribucion diferente.
+- $\rho$ :: $\pi/b$
 ** Notes
+- montecarlo saca episodios. La clase anterior se vio esencialmente evaluacion
 - en esta clase se realiza control
 - se estudia conceptos de hacer control dentro y fuera de politica
 - muestreo de importancia
 - recordar que P, R no son conocidas se obtienen de explorcion
   mediante montecarlo que devuelve valores esperados
 - la exploracion es requerida cuando no se conocen P y R ya que greedy
-  explota el conocimiento por lo que no es muy real
+  explota el conocimiento por lo que no es muy real. se reemplazan con
+  los datos o la experiencia.
+- MC es bueno para calcular valores esperados i.e. la media de una distribucion.
 - hacer gpi es decir una o muchas iteraciones para hacer evaluacion y mejora
-- no se puede hacer GPI en el porblema completo de RL. porque se puede
-  maximizar la funcion de valor estado con respecto a la accion porque
-  P y R son conocidas
+- no se puede hacer GPI en el porblema completo de RL porque R y P son
+  desconocidas.
+- porque se puede maximizar la funcion de valor estado con respecto a
+  la accion porque P y R son conocidas
 - $\pi'(s)$ politica luego de una iteracion
-- $\pi'(s) = \text{argmax}_a[Q(s,a)]$
+- $\pi'(s) = \text{argmax}_a[Q(s,a)]$. En este caso la politica greedy
+  si funciona. Para empezar Q se ve como un objeeto matematico de 2 o
+  mas dimensiones porque tiene el estado y las acciones e.g. una
+  matriz de acciones x estados. esto deja ver cual es la mejor accion
+  que puedo tomar para un estado en un t.
+- El espacio de accion estado es mas grande que el espacio de los
+  estados. El espacio de s es un vector.
+- para usar MC es necesario garantizar la exploracion.
+- en una politica determinista la exploracion no sucede. Para asegurar
+  la exploracion tenemos el algoritmo inicios que exploran y epslons soft
 - hallar valores y registrar en memoria
 - El espacio accion estado (s,a) es mayor siempre que el espacio s
 - recordar la condicion para que funcione montecarlo
 *** Exploring starts
+- Este algoritmo hace control y evaluacion.
 - 1 a 4 es la inicializacion
-- iniciar una politica que inice ddesde cada estado
+- iniciar una politica que inice ddesde cada estado comience con cada estado
 - retornos vacios
+- linea 6 escogo un estado inicial aleatorio
+- linea 7 genera un episodio con la politica y el estado aleatorio escogido
+- linea 8 inicio el retorno en 0
+- linea 10 calcula los retornos es la evaluacion
+- linea 11 es el concetpo de primera visita.
 - linea 12 acumula los retornos i.e. un array en 3 dimensiones
-- linea14 es la mejora
+- linea14 es la mejora de la politica
 - lineas 8,9,10,11,12 es la evaluacion su corazon esta en 10
 - linea 11 es la primera visita
-- si se omite la linea 11 ser[ia en cambio el algoritmo de Cada visita
+- si se omite la linea 11 seria en cambio el algoritmo de Cada visita
 - Es siempre posible sobre todo enproblemas reales escoger un inicio
   al azar??? : haycasos en donde es imposible aplicar por eemplo n un
-  auto no se podria iniciar sinprender elcarro . ES es como el
-  optimismo,sise puede selo ponepara que ayude
+  auto no se podria iniciar sin prender elcarro . ES es como el
+  optimismo,sise puede selo pone para que ayude
+- como no siempre se puede usar inicios que exploran se requiere otras
+  maneras para ayudar la exploracion.
 *** Politicas $\epsilon$-soft
 - las polticas greede son un subconjunto de epsilonsoft
 - es una version mas general de $\epsilon$- greedy
+- $\epsilon$-greedy es que un porcentaje del tiempo hago una accion la
+  mas ambiciosa y   el resto del tiempo una accion randomica
 - es una politica estocastica que asegura que la probabilidad de
   tomaruna accion dado un estado es mayor que 0 para todas las
   acciones. es decir que todas las s,a van a pasar dadas suficientes iteraciones
+- son politicas estocasticas que para todos los pares s,a  estas tiene
+  al menos una probabilidad de ocurrir epsion sobre la cardinalidad de
+  las aciones del estado
 - Defnicino: $\pi$ es $\epsilon$-soft si todos los pares s,a tienen al
   menos $\frac{\epsilon}{\Delta(s)}$ de prob de ocurrir
 - es decir que con cierta probabilidad se asegura que todas las
   acciones de todos los estados
+- Si tengo un estado con 3 acciones. la cardinalidad del conjunto de
+  aciones seria 3. si epsilon es 3 entonces la politica epsilon soft
+  asegura que las acciones tendran una probabilidad pasar al menos
+  mayor a 0.1/3.
 - cada estado tiene un conjunto diferente de acciones
-- el deltas es la carrdinlaidad del conjunto de acciones de un estado
+- el deltas es la carrdinlaidad del conjunto de acciones del estado:
+  cuantas acciones tiene el estado? cada estado tiene un diferente
+  numero de acciones
 - sobre el algoritmo este requiere inicializar arbitrariamente una
   politica epsilon soft
-- cuando voy a usar MC genero un episodio
+- cuando voy a usar MC genero un episodio y obtengo el retorno que es
+  la evaluacion. El algoritmo usa primera visita. 
 - si quito la linea de primera visita se tiene el algortimo de CADA
   VISITA
+- como se aplica lo greedy es tomar el 90% la mejor accion y un 10% ir
+  a una accion random. La diferencia con epsilon greedy son los
+  coeficientes. a=A*  es 90% de mejora $a \neq A^*$ es el 10% de tomar
+  cualquier otra accion
 - la politica epsilon greedy es optima?
-- las politicas epsiolon soft no son optimas.... ?siguen explorando
-  luego de allar un optimo?
+- las politicas épsilon soft no son optimas.... ?siguen explorando
+  luego de hallar un óptimo. Siguen explorando luego de varias iteraciones.
 - epsion soft luego de varias iteraciones sigue explorando
 - es mas si el porcentaje exploracion es bajo sigue explorando asi sea
   un valor peque;o
-*** Control en Politica y Fuera de Politica
+- lo deseado es que sea estocastica y determinista. $\epsilon$-soft es
+  buena si no podemos usar ES
+*** Control en (dentro) Política y Fuera de Política (Black Jack)
 - son maneras de obtener la politica optima es un paradigma
 - la politica optima es $\pi_*$
 - control en politica es todo lo que hemos hecho hasta ahora
-- ver en keywords
-- por default se usa politica fuera de politica:
+- ver en keywords. es decir se aprende usando la experiencia de la
+  politica
+- en control fuera de politica es copiarle a otro. alguieen ya
+  encontro la politica optima y la uso. aprendo la politica pi usando
+  la experencia de otra politica /b/
+- la politica /b/ se queda explorando mientras que $\pi$ alcanza la
+  optimalidad. 
+- por default se usa politica fuera de politica y sus ventajas son:
   1. xq se deja la exploracion a la politica b y la politica $\pi$
      alcanza la optimalidad. esto es una ventaja
   2. podemos ganar experiencia de lo que otro agente hace. el agente
-     puede ser una persona.
-  3. permite reusar la experienciad e politicas antiguas
+     puede ser una persona. Es decir el agente puede estar aprendiendo
+     de una persona que se coloca en el lazo de entrenamiento. ChatGPT
+     uso esto para entrenar sus habilidades conversacionales mediante
+     puntajes que daban las personas a las respuestas. Es decir
+     usaron fuera de política para esto.
+  3. permite reusar la experienciad de políticas antiguas
   4. usando una sola politica de comportamiento /b/ podemos entrenar
-     varias politicas optimas u politicas objetivos $/pi$
+     varias politicas óptimas u políticas objetivos $/pi$
 - no free lunch: las desventajas de Fuera de Politica
   - Problema de la cobertura
   - si $\pi(a|s)>0$ implica $b(a|s)>0$
-  - si eso no sucede no estamos explorando o notenemos datos de
-    /(s,a)/ yno sabemos que ocurre si tomamos este par
+  - si eso no sucede no estamos explorando o no tenemos datos de
+    /(s,a)/ y no sabemos que ocurre si tomamos este par
+- la idea de tener dos politicas tiene por problema que: usar los
+  datos de otra distribucion para estimar la distribucion buscada en
+  principio no es posible. las distribuciones son distintas. 
 *** Muestreo de Importancia (Importance Sampling)
 - Ejemplo: estimar la altura de personas enla provincia del guayas
 - segun profesor no eslogico usar los datos de una;o anterior para
   estimar los del a;o 205
+- las politicas son distribuciones. 1:39:47
 - es una tecnica estadistica/probabilista para estimar esperanzars o
   valores estimados de una distribucion dada usando otra distribucion.
--  demistracin en el video de muestreo de importancia fuera de Pi
+- demistracin en el video de muestreo de importancia fuera de Pi
+- loque se observa es que la esperanza en la distribucion pi es la
+  misma que la en /b/ pero con una correccion que es la razon de
+  muestreo $\mathbb{E}_{\pi}[X] = \mathbb{E}_b[X\rho]$
+- para la demostracion son distribuciones evaluadas en una accion para
+  tener sus valores. 
 
 ** Summary
 
@@ -1213,7 +1472,7 @@ primero. esto se hace por eficienca.
 - busqueda exhaustiva casi que nunca recomendable
 
 ** Summary
-* 2025-03-27 
+* 2025-03-27 sarsa y  q learning 
 ** Questions and keywords
 - sarsa :: para control libre de modelo
 - q learning :: para control libre de modelo
