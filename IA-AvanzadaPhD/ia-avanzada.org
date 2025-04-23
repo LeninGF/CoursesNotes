@@ -1,0 +1,155 @@
+
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Inteligencia Artificial Generativa
+#+date: 2024-10-02
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+begin_comment
+* Lecture
+** Questions and keywords
+** Notes
+** Summary
+#+end_comment
+* 2025-04-16 Notas iniciales PEA
+** Questions and keywords
+- retropropagacion del gradiente
+- rmsprop, adam
+- test time compute y razonamiento
+- algoritmos avanzados para RL
+- scientific machine learning :: inyecta conocimiento a priori par
+  aque no sea solo a traves de datos. una RNN mapea o construye
+  funciones en espacio de caracteristicas las RN Fisicas mapean en un
+  espacio de funciones.
+- computacion cuantica e IA
+- Quedan tres años
+** Notes
+- Principios y Fundamentos
+- No hay primer semestre o segundo semestre
+- prsentar un articulo que tenga nivel de congreso tipo B o superior
+- tiene que ser en el  tema qeu etstamos haciendo
+- articulo ha de ser desarrollo de una idea en el trabajo de
+  investigacion
+- marco proporciona la metodologia....
+- hay que ver el grado de avance....
+- caṕ1 y cap2 usar en el tema de investigacion....
+- no articulo de juguete.....
+*** Libros
+- Deep learning bases y conceptos: empieza con el capitulo 7
+- checar capitulo 12del libro de bases tiene que ver con transformers
+- pagina 395 tiene transformers de vision
+- understanding deep learning de smunce prince
+- murphy advanced probabilistic machine learning 847 del pdf
+  - fundamentos actualizados
+  - topicos avanzados
+- el enfoque de la asignatura es investigacion basica
+** Summary
+* 2025-04-22 Capitulo 1 Modelos Generativos de Lenguaje
+** Questions and keywords
+- Procesamiento de Lenguaje natural
+- Modelos multimodal :: usan datos tanto lenguaje y visuales
+- lenguajes formales :: mas faciles de procesar
+- lenguaje natural :: es dificil de procesar por la maquina
+- funcion de probabilidad :: 
+- modelo de lenguaje ::
+- FF :: red feedforward 
+- LSTM :: funciono parcialmente
+- token ::
+- byte pair encoding ::
+- word2vec ::
+- de cuanto es la longitud de los embedings
+- de cuanto es el tamaño del tokenizador
+- influyen los pesos de los ids de los toekens
+** Notes
+- El boom de gpt es simular comprender el lenguaje
+- nlp es complejo y es punto de partida de transformers y mecanismos
+  de atención
+- los lenguajes formales y artificiales son mas faciles de maniobrar y
+  manipular pero no son conocidos o practicos para transmitir mensajes
+- estamos dentro dle campo de la percepcion computacional
+*** modelo de lenguajes
+- todo algorimot de machine learning es una funcion matematica
+- un modelo de lenguaje es una funcion que tiene como entrada lenguaje
+  y la salida puede ser numeros o lenguaje
+- es una funcion matematica
+- el lenguaje es ambiguo y por esta razon es preferible usar una
+  funcion de probabilidad que una determinstica
+- la funcion de probailidad me permite calcular la probabilidad de la
+  secuencia de tokens o palabras e.g. el modelo esta feliz
+- una distribucion d eprobabilida dsirve para calcular probabilidades
+- la distribucion d eprobabilidad sirve para sampling
+- los modelos generativos samplean a partir de la funcion de probabilidad
+- distribucion discretas sobre todo se usan
+- caundo uno no sabe que funcion de distribucion probabilidad usar
+  entoence recurro a usar una red neuronal. Ejemplo una FF con una softmax
+- uno de los problemas importantes en lenguaje es que las cadenas de
+  texto pueden llegar a ser secuencias largas. una palabra que esta
+  cientos de pasos atras puede cambiar el signficado de texto
+- feed forward no sirvieron para muchos casos
+- RNN: LSTM, GRU, Gated
+- LSTM era el estado del art hasta 10 años atras
+- luego surje LSTM + mecanismo de atención
+- finalmente llegan los transformers
+- si en el ejemplo las cadenas de texto si no tienen relacion tiene
+  que dar probabilidades baja y si tiene relacion tiene probabilidad alta
+- entonces la probabilidad condicional refleja como funciona el lenguaje.
+- modelos de lenguaje son distribuciones de probabilidad y estas
+  distribuciones se representan con RNA
+- porque no se usa tokens y no palabras
+- tokenization es como un diccionario
+- lo que se termina aprendiendo es el vector que representa a cada embediing
+- como generamos los tokens?
+- un token tiene en español e ingles una equiv de 3/4 de palabra
+- hay un punto que en funcion  de las iteraciones que alcanzamos un
+  maximo de tokens entonces hay que llegar a que no sean palabras
+  individuales ni tampoco llegar a un punto atomizante tanto que no
+  hay signficado
+- se tomo la idea fusionar bits para formar cadenas para poder llegar
+  a la formacion de los tokens. la termiinacion es algo arbitraria
+- gpt1 tokenizador es distinto al gpt2
+- otra cosa que no es evidente es que un computador tiene que procesar
+  numeros. necesito convertir las cadenas en texto en numeros
+- consideremos dos palabras que pueden estar juntas en el diccionario
+  pero que peuden tener significados distintos: diablo dios. por
+  ejemplo si ordeno alfabeticamente no refejaria que esos bojetos son
+  como contrarios. por esta razon es que necesito cada palabra se
+  represente con un vector de numeros.
+- como se hace la codificacion en vectores
+- crear un embeding de una imagen y analizar que partes del vector
+  tenia que ver con edad joven risa
+- modelo de incrustacion correspondiente para cada token. Para el
+  modelo del lenguaje ingresa una cadena de vectores
+- paper recomendado : a survey of large language models  en arxiv la
+  figura 7 es muy interesante.
+  1. tomar scrapping d etexto
+  2. filtrado y seleccion
+  3. dedupicacion es decir quitar repeticiones
+  4. privacy reduction quitar identificadores personales
+  5. tokenizar 
+** Summary
+* Enlaces
+- Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
+- Libros Machine Learning: https://drive.google.com/drive/folders/0B0w0jIatGZYGZHdNdW9FZ1ZycGs?resourcekey=0-6IrcgeLWNwIXoYq8lQ9e0Q&usp=sharing
+- https://platform.openai.com/tokenizer
+- https://jalammar.github.io/illustrated-word2vec/ 
+* TODO
+- [ ] Revisar EDOs y EDPs derivadas ordinarias y derivadas parciales
+- [ ] revisar el algoritmo de retro-propagacion del error
+- [ ] Principios y Fundamentos
+- [ ] Definir la idea con respecto a mi tema de investigacion y el
+  PEA: hacer pruebas y experimentacion. Hacer ajustes y trabajo Final.
+- [ ] despues de la siguiente semana contar la idea que se ha hecho
+  proponer la idea y esta idea contiene tales capitulos del temario
+  que vamos a ver. necesito saber que problema y que alternativas de
+  solucion van a probar esto seria 28 de abril. es sacar el articulo
+  con algo de la materia. que seria el bagage teorico.
+- [ ] localizar transformers en los llibros de Marco
