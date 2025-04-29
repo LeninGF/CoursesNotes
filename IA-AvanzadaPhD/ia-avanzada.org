@@ -231,6 +231,167 @@
   mejor que un modelo aleatorio.
 - aqui el tama;o importa y mientra mas grande mejor.
 ** Summary
+* 2025-04-29 Introducción a Transformers
+** Questions and keywords
+- mecanismo de atencion ::
+- matriz de atención ::
+- encoder ::
+- decoder ::
+- BLEU ::
+- multi head self attention :: esta presente tanto en el encoder como
+  el decoder
+- cross attention :: ingresa flujo de informacin del encoder y del
+  decoder es decir viene nifo de dos lineas
+- positional encoding :: indica el orden
+- no es claro como se integra KQV en los vectores ::
+- masked attention ::
+- es el masked attention una matriz triangular ::
+- modelos multimodales :: hablan de cross attention
+- layer normalization ::
+- LORA :: intencionalmente usan dos matrices para no hacer una mas
+  grande en el aprendizaje
+** Notes
+- paper a utilizar es Attention is all you need
+- revisar el video de gustavo etrala transformers de 40 minutos
+- como 8 científicos anónimos inventaron la ia generativa
+- ej el modelo se esta alistando para realizar su *presentacion* en el *desfile*
+- ej el modelo se esta alistando para que haga buenas **predicciones**
+- en ambos casos modelo tiene el mismo embedding pero en las oraciones
+  no hace referencia al mismo objeto
+- el contexto permite determinar a que objeto
+- en algun lado esta un embedding de persona y el mecanismo de
+  atencion va a relacionar en el primer caso el embedding d emodelo
+  con el de persona y en el segundo con el de un objeto matematico
+- los tokens/palabras que mas inciden son presentacion y desfile
+- parece logico que la idea seria sumar algo de cada uno de los
+  vectores
+- cuanto es un poco y eso se define a travies de matriz de atencion
+  mediante pesos
+- la idea ya estuvo propuesta por Bengio
+- el transformer aplicara transformaciones a los vectores para que los
+  vectores representen mejor los conceptos y modelar el lenguaje
+  e.g. bert y gpt que son encoder/decoder
+- cohere es una empreza fundada por uno de los autores
+- ya ninguno esta en google
+*** multihead self attention
+- matriz con las palabras el modelo esta feliz
+- el objetivo es ajuste el vector de la palabra modelo
+- los pesos de la matriz indican con cuanto aporta cada uno de los vectores
+- el orden de la matriz de atencion no influye
+- cada uno de los numeros es un porcentaje que indica cuanto influye
+  cada token, como el objetivo es hace run nuevo embedding de modelo
+  este se forma como 0.2xel+0.4*modelo+0.2*esta+0.2feliz
+- el vector esta formado o relacionado con Query Value y Key --Aclarar esto--
+- la matriz de self attention tiene el tamaño de la ventana de la
+  secuencia d etexto???
+- para calcular la matriz de atencionn necesito todos los tokens
+- el mecanismos de vaswani se usa en berts porque requiero todos los
+  tokens e.g. clasificacion
+- el mecanism de vaswani no se usa en los generativos
+- en los generativos necesito usar la masked attention
+- en el masked attentnio va descubriendo los valores conforme aparecen
+  las palabras
+- se pone un ejemplo con la oracion el modelo esta feliz y la idea en
+  generativos es que se va descubriendo palabra a palabra quitando las
+  influencias de otras
+- cross attention. por ejemplo tengo dos modalidades un idioma otro
+  idioma y texto. la idea es determinar como cada parte voz
+  representado por su embedding y como ajustar el embedding de la palabra
+- auto atncion es que los propios tokens de la secuencia influyen en
+- definir porciones y caracterizarlas por un embedding???
+- al cruzar texto e imagenes o texto y audio como se puede relacionar
+  los espacios entre los tokens
+*** como funcionaba antes con RNN
+- igual tienen encoder y decoder
+- las rnn sacan hiddens states que son entradas par alas siguientes rnns
+- luego se usaba una etapa de atencion
+- en la version que usa atencoin ingresa la salida de un hidden state
+  mas las salidas de cada uno de los hidden states particulares
+- los hidden states se ven afectados por los valores anteriores
+- la informacion solo influye en un sentido
+- no hay mecanismo explicito de attention en los hidden states
+- computacionalmente son pesasdas las RNN para secuencias largas
+- no podian abosrver un contexto amplio
+- le dieron el nombre de transformers porque los embeddings van
+  cambiando su significado en funcion del procesamiento
+*** qkv
+- vector de preguntas
+- vectotr de llaves
+- vector de values
+- multihead porque se puedene poner en paralelo
+- x1 embedding de el
+- wq, wk wv se amprenden en entrenamiento
+- se usa la idea como hace consultas en la base de datos
+- query representa la consulta
+- query pregunta y keys responde con cuanto aporta al significado
+- un vector que representa la pregunta cual de estos embeddings deben
+  influir mas para redefinir el significado
+- los keys en cambio indican con cuanto aportan los embeddings
+- keys es con cuanto
+- tom yeh buscar universidad colorado boulder machine learning by hand
+- hace calculos a mano de temas de machine learning
+- los embeddings que entran son despues de aplicar el positional
+  encodnig en el ejemplo de TOm Yeh
+- se multiplica Wq con la matriz de features
+- se asume un valor aprendidos de wq, wk y wv
+- hay tantos queries como tokens de entrada
+- hay tantos keys como tokens de entrada
+- esto es clave ya que no se representa toda la informacin en un solo
+  vector comprimido
+- ahora la informacion esta distribuida
+- em el segundo paso se hace un match entre los keys y queris haciendo K^TQ
+- el resultado del producto de K traspuesta con Q inidca cuanto debo
+  ajustar el token para ajustar el signfiicado
+- luego se hace una dvision para escalar los datos dividiendo por
+  factor de escala , en el ejemplo le aproximan a 2, cuando el dk es
+  la dimension de los keys
+- en la parte de softmax esta aplicando 3 elevado a los valores de la
+  anterior matriz
+- luego suma los valores de cada columna y luego hace la division
+  obteneiendo la matriz de pesos de atencion normalizada
+- con la mtriz de atencino se define los nuevos features
+- QKV sirven para calcular los pesos
+- el ajuste de los embeddings son los values multiplicados por la
+  matriz de atencion
+- el z1 es el embedding que representa el token el
+- la salida del multi head va para addicion y normalizacoin
+- los que son aprendibles son el Wq, Wk y el Wv
+- hay nucleos especiales para cualcups trigonometri para calcular el
+  factor de escalamiento
+- se observa que esta aptop par ausarse on gpus
+- en el transformer se pone varios bloques
+- cada bloque tiene pesos diferentes
+- cada cabezal aporta con sus representacions par los embeddings
+- luego se concatena los paortes yse multiplica por otra matriz de pesos
+- boque de adicion y normalizacion
+- normalizacion busca que todas las salidas tenga la misma escala y el
+  misma media
+- la normalizacion e spor features normalizacion
+- se obtiene media y desviacion std de cada vector y la normalizacion
+  en transformers es por token por cada embedding no por feature
+- la normalizacion en transformers es por embedding y es layer
+  normalization restar la media y dividir para la desviacion estandar
+  por capa
+- batch normalization es diferente y en esa defino un tamano
+- el ultimo wo que se pone es dar un formato que permite sumar con los
+  embeddings de entrada ya que la concatenacion me produciria una
+  matriz un tanto grande o mas grande que la entrada
+- en el vector z porque se aumentan parametros para aprender? esto
+  tiene una relacion a lo que se hace al final de una layer
+  normalization y una batch normalization con el objetivo de ajustar
+  para las capas que vienen ya que por ejemplo en el transformer le
+  suceden FF que podrian usar cualquier funcion de activacion
+  teoricamente
+- la historia cuenta que havia mas cosas o compoentnes en el
+  transformer pero se retiraron porque se mantuvieron con el mismo rendimeinto
+- hay que notar que se usa uniones resuduales
+- values son los valores d elos candidatos partieron de los concepts
+  de busquedas en sql
+- es una heurstica el raiz de dk
+- porque razon sacan la $d_k$
+- la ecuacion de atencion un paralelo a E = mc2? $Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})$
+** Summary
+
 * Enlaces
 - Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
 - Libros Machine Learning: https://drive.google.com/drive/folders/0B0w0jIatGZYGZHdNdW9FZ1ZycGs?resourcekey=0-6IrcgeLWNwIXoYq8lQ9e0Q&usp=sharing
@@ -238,6 +399,7 @@
 - https://jalammar.github.io/illustrated-word2vec/
 - paper A survey of large language models.
 - emergent abilities of large language models
+- [[https://youtu.be/HX8IMpnESxk?si=JhPz7Fi-_JNPaNR7][8 cientificos inventan IA generativa]]
 * TODO
 - [ ] Revisar EDOs y EDPs derivadas ordinarias y derivadas parciales
 - [ ] revisar el algoritmo de retro-propagacion del error
