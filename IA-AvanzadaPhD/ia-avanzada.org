@@ -136,11 +136,108 @@
   4. privacy reduction quitar identificadores personales
   5. tokenizar 
 ** Summary
+
+* 2025-04-23 
+** Questions and keywords
+- modo agente en LLM ::
+- pesos sinapticos ::
+- hay dudas sobre el costo de deepseek de 6 millones ::
+- checkar costo ofertas laborales de openai meta y otras empresas grandes ::
+- proyecto starlink ::
+- testime compute :: parece que es una manera de obtener mas de lo
+  poco que queda (limones)
+- FLOPS :: cuantas operaciones en punto flotante se puede hacer con
+  single y double precision hay formatos en 16 en machine learning
+  para reducir entrenamiento.
+- MAUs ::  numeor de nuevos usuarios agregandos por mes
+** Notes
+- forma de representar palabras como vectores
+- los embeddings en esencia aplicar transformacines no lineales a los vectores
+- los modelos d elenguaje no pueden crear nuevas cosas.... basicamente
+  simulan capacidad de comprension y transforman vectores
+- fig 6 del paper de survey of LLM se leen com giga tokens
+- la fig 6 muestra el desafio de la actuallidad de los datos con los
+  que aprende es decir que el conocimiento no este actualizado. por
+  costo computacional no puede analizar toda la data de internet. un
+  problema es como obtener datos actualizados
+- para que los modelos tengan un conocimiento mas exacto usar los
+  repositorios propios de IEEE, Springer ACM
+- los modelos no pueden crear nada nuevo con respecto a lo que ya existe.
+- pueden ser vistos como unos meros compresores de datos.
+- T5 es bastante antiguo
+- gpt3 es 2021 a 2022
+- otro problema que se tiene qes que la informacion disponible
+  completa es sobre los modelos abiertos y un poco antiguos. no hay
+  una LLM anclada a la universidad.
+- la barrera estaba en leer papers.
+- la barrera esta en que no hay papers
+- hay tres ejes en LLM: datos, hardware y conocimiento
+  - hardware: decenas de miles de gpus
+  - conocimiento avanzado: personas altamente especializadas. algo en
+    las universidades pero mas en las industrias.
+  - datos: 100tos de terabytes tokens
+- los tres ejes requieren bastante inversion
+- 500 k USD por a;o a personas que saben del tema
+*** leyes de escalado de LLM
+- LLama 3 cuesta unos 80 millones de dolares.
+- presenta la ecuacion 2 para cualcular la funcion de perdida dado el
+  tamaño del modelo y la cantidad de datos . los coefcientes A,B \alpha
+- mientras mas grande sea mmodelo y mas datos la funcion de perdida es menor
+- la generacion de datos sinteticos no es muy efectiva a la hora de
+  aportar nueva informacion
+- cuanto puede el modelo generar de informacion y lo ideal es que
+  genere mas bits de informacion que los bits de informacion que le llega
+- no se absorbe conocimiento desde lenguaje
+- no se cree que los LLMs sean los unicos detras de una IAGeneral
+- resulta que recibimos mas datos que una LLM si observamos desde otra perspectiva
+- una persona recibe 500x500 pixel y
+- la cantidad de informacion de una persona recibe hasta 25 años
+  obtiene mas menos 6 Peta Bytes.
+- se recicla algo del conocimiento de modelos previos. no se parte d
+  elos pesos aleatorios
+- En la formula es costo computacional $C \approx 6ND$ con N tamaño
+  del modelo y D el tamaño de los datos (tokens)
+- costo de entrenamiento de SOTA LLaMA 3 usa 15.6 TeraTokens. en bytes
+  es mas
+- hay que revisar en que se refiere los billones y trillones en ingles
+  y español
+- en lama 3 se usa 16 mil tarjetas h100.  esta tarjeta cuesta mas o
+  menos 30 mil dolares.
+- tema de gpus ver enlace GPU  nvidia h100 specs
+  H100
+- la compu del labo endra 48GB nvidia a6000 workstation ya hay un par
+  instalado 48GB
+- el entrenamiento de una LLM puede tomar 70 dias
+- costos viene del costo de alquilar el datacenter mas los
+  salarios. se considera como 2 dolares por hora de uso d euna gpu H100.
+- mas menos asumiendo el costo de entrenar  va a 75 millones
+- toneladas equivalentes de Co2
+- parece mucho el gasto de energia y co2 en el entrenamiento
+- el costo oculto esta en el uso....y la inferencia cuando se usa la IA.
+- cuanto hay de consumo del testeo.
+- cuanto es el consumo cuando se manda un prompt
+- en contra cuanto invierten en hacer sus modelos en cuanto cuanto gastan
+- Es el tamaño del modelo en hiperparametros....mas que la arquitectura
+- es como una compresion de la informacion y no puedo generar algo
+  nuevo
+- el modelo si generaliza lo que no pueden crear nada nuevo...
+- hacer como habilitades emergentes.....
+- es muy distinto que tenga capacidad de imaginacion o de descubirr cosas
+*** Emergent abilities por large language models
+- en la figura 2 eje vertical tiene exactitud y en el horizontal el
+  costo en FLOPS
+- a partir de un punto como $10^22$
+- cuando el modelo es significativamente grande el modelo exhibe o es
+  mejor que un modelo aleatorio.
+- aqui el tama;o importa y mientra mas grande mejor.
+** Summary
 * Enlaces
 - Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
 - Libros Machine Learning: https://drive.google.com/drive/folders/0B0w0jIatGZYGZHdNdW9FZ1ZycGs?resourcekey=0-6IrcgeLWNwIXoYq8lQ9e0Q&usp=sharing
 - https://platform.openai.com/tokenizer
-- https://jalammar.github.io/illustrated-word2vec/ 
+- https://jalammar.github.io/illustrated-word2vec/
+- paper A survey of large language models.
+- emergent abilities of large language models
 * TODO
 - [ ] Revisar EDOs y EDPs derivadas ordinarias y derivadas parciales
 - [ ] revisar el algoritmo de retro-propagacion del error
@@ -153,3 +250,5 @@
   solucion van a probar esto seria 28 de abril. es sacar el articulo
   con algo de la materia. que seria el bagage teorico.
 - [ ] localizar transformers en los llibros de Marco
+- [ ] Presentacion concreta de 20 minutos mas 10 minutos para
+  preguntas. Presentar la idea
