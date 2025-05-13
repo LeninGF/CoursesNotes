@@ -52,6 +52,45 @@
   - fundamentos actualizados
   - topicos avanzados
 - el enfoque de la asignatura es investigacion basica
+** Silabo:
+CAPÍTULO 1. Tópicos Avanzados sobre Error Backpropagation						
+1.1 Revisión del algoritmo de retro-propagación del error
+1.2 Cálculo numérico de gradientes
+1.3 Cálculo manual de gradientes						
+1.4 Cálculo simbólico de gradientes
+1.5 Cálculo automático de gradientes
+CAPÍTULO 2. Optimización Avanzada para RNAs
+2.1 Gradient descent with momentum					
+2.2 RMSProp			
+2.3 Adaptive Moment Estimation (Adam)
+2.4 Métodos Quasi-Newton (BFGS y L-BFGS)
+2.5 Hessian-Free Optimization 
+CAPÍTULO 3. Test-Time Compute y Razonamiento
+3.1 MCTS + Self Play + RNAs (AlphaGo, AlphaGo Zero y MuZero)
+3.2 Chain of Thought (CoT)
+3.3 Tree of Thoughts (ToT)
+3.4 Auto-refinamiento
+3.5 LLMs y razonamiento simbólico
+CAPÍTULO 4. Algoritmos Avanzados de Reinforcement Learning
+4.1 REINFORCE
+4.2 Advantage Actor-Critic (A2C)
+4.3 Proximal Policy Optimization (PPO)
+4.4 RL from Human Feedback (RLHF)
+4.5 Aplicaciones de RLHF
+CAPÍTULO 5. Introducción a Scientific Machine Learning (SciML)
+5.1 Introducción a SciML
+5.2 Ecuaciones diferenciales ordinarias (EDOs) y parciales (EDPs)
+5.3 Physics-Informed Neural Networks (PINNs)
+5.4 Aplicaciones de SciML
+CAPÍTULO 6. Tópicos Avanzados de IA
+6.1 Manifold Hypothesis
+6.2 Reward hypothesis
+6.3 Plasticidad en RNAs	
+6.4 Artificial General Intelligence (AGI)
+6.5 Artificial Super Intelligence (ASI)
+6.6 Computación cuántica e IA
+
+
 ** Summary
 * 2025-04-22 Capitulo 1 Modelos Generativos de Lenguaje
 ** Questions and keywords
@@ -391,6 +430,325 @@
 - porque razon sacan la $d_k$
 - la ecuacion de atencion un paralelo a E = mc2? $Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})$
 ** Summary
+* 2025-04-30 Presentaciones
+- sparse autoencoder ::
+- dictionary learning ::
+- gemma scope :: saes open source
+- como usan el sparse autoencoder ::
+- hipotesis de representacion lineal ::
+- feature splitting ::
+- composition of lattens ::
+- feature absortion ::
+- chunks ::
+- que es ralo en sparcity auto encoders ::
+- feature exploration ::
+- que va a vender  ::
+- IRL :: funcion de recompensa inversa
+- automatic feature extraction :: 
+** Notes
+*** Conceptos Trabajo Jonathan
+- las caracteristicas del sparse autoencoder tiene efecto en el modelo
+- los sparse autoencoders son metodo no supervisado
+- spas tiene problemas con conceptos jerarquicos
+- verificar que anthropic esta lider en explainable IA
+- no hay una estructura jerarquica en el spas
+- hay una version matryoshka de sparse autoencoders
+- modifica la funcion de costo
+- capturar relaciones jerarquicas
+- es interesante el grafico porque parece los conceptos como una nube
+  de particulas de gas y la idea seria atraerlos y condensarlos como
+  que fuera una gravitacion
+- idea: que pasa si la relacion entre neuronas no la hago de manera
+  lineal pero la hago como una ley de gravedad? pero habria un
+  problema con la division por la r cuadrada?
+- estan trantando de aportar una interpretabilidad para RL
+- que es una pregunta inocente....
+- en el tema de matryoshka yo me imagine como varias sparse y
+  relacionar entre ellas
+- parece que los pesos en la matryoshka es que los pesos no quedan igual
+- una variante de algoritmos no es suficiente con un solo ejemplo
+* Presentacion
+- prompt : You are a PhD research Assistant specialized in machine
+  learning, vision transformers, computer vision, image
+  segmentation. Your task is to help me to solve questions, conceptual
+  problems, locate relevant academic sources to improve my
+  research. When asked, provide factual answers supported by research
+  papers. Present examples and references that support
+  answers. Provide research advice with rigor.
+** observaciones doc
+- hacer el clasificador si el clasificador sirve para mi problema que
+  es el de segmentación
+- por ejemplo tratar de determinar como primera parte si ViT sirvió
+  para algo o no y por ejemplo si no sirvió usar ViT ponerme a usar
+  directo CNN
+- reducir complejidad debido a los costos computacionales
+- la observación de la arquitectura que hubo es que unet si saca algo
+  si le meto una imagen de cualquier tamaño en la entrada. luego hubo
+  retractación
+- Revisar si resolvemos primero termografía
+- el tema de entrenar clasificación si y solo si eso servirá para algo
+  de la tesis
+- tomar contacto con cedia con modemat y con lasinac
+- que no sea de juguete que significa? que sirva para la tesis
+- ideas --> podria hacer un reescalado progresivo? como iba lo de los
+  superpixels??
+- hubo una confusión en cuanto a la imagen de entrada y el paso por la unet
+- hay que acabar para pasar la nota y garantizar el paper
+- Garantizar los datos
+- el fundamento de la idea es importante
+- pero para saber que la idea sea brillante es experimentar
+- si no puedo evaluar no sirve
+- si puedo evaluar pero la idea no da un buen resultado entonces no sirve
+- el otro tema es la relevancia. proponer una idea y que no sirva.
+- cómo voy a evaluar y qué espero tener para decir que la idea es buena
+- **la idea esta clara**, revisar y estimar tiempos porque hay que
+  terminar el trabajo. si la idea es muy grande tratar de recortar
+  cosas y probar la parte conceptual lo que nos quede algo que sea
+  núcleo(i.e. core) y que sirva
+- asegurarse de cómo van a hacer los experimentos y que van a medir. y
+  midiendo *cuándo puedo decir es una buena idea y cuando no es*; hay que
+  llegar a decir que la arquitectura propuesta permite alcanzar tal cosa.
+- la validez científica de un modelo esta en que también predice.
+- que no sea de juguete porque nos gastaría el tiempo. es decir, tiene
+  que ser un ejercicio que aporte a la investigación
+* 2025-05-06 Tansformers
+** Questions and keywords
+- crossattention :: not so clear
+- maximum path length :: la loongitud de la trayector entre las
+  dependencias de largo rango. mientras mas peque;a son los paths mas
+  facil aprender dependencias de largo rango
+- self attention restricted :: usa ventanas para mitigar el efecto de
+  secuencias muy largas
+- pesos sinapticos o numero de parametros ::
+- self supervised :: porque el propio dataset me da la etiqueta
+- semi-suerpvisado :: es la mezcla del aprendizaje supervisado con no supervisado??
+- supervised fine tuning ::
+- reinforcemnt learnig from human feedback RLFH :: 
+** Notes
+- para hacer que las matrices v k y q sean diferentes en los heads del
+  attention multi head se aplica transformaciones lineales y esta capa
+  lineal es learnable. la capa lineal a la salida del multi head
+  attention reduce a tener un solo cabezal
+- la FFN son dos capas tiene una relu seguido de una capa lineal
+- el encoder recibe todo el texto de una
+- el decoder va obteniendo cada uno de los tokens de uno en uno segun
+  la retroalimentacion que reciben.
+- para la tabla 1 del paper n es el tamaño de la secuencia de texto
+- d es el tamaño del embedding
+- por capa el mecanismo introduce la complejidad $O(n^2d)$
+- k es el tam;o del kernel.
+- la segunda columna indica si es paralelizable o no
+- cada secuencia tenia 25000 tokens. si tengo mas tokens o si crece la
+  longitud de la sentencia crece la selfattention puede ser un problema
+- la sugerencia del paper es procesar por ventanas
+- Gemini y Llama al parecer son capaces de procesar decenas de
+  millones de tokens. no hay una respuesta clara de como esta
+  funcionando el mecanismo de atencion actualmente en bloques muy grandes
+- el modelo hace calculos de probabilidades condicionales
+- La ecuacion se traduce en una red neuronal que predice la
+  probabilidad del token n dado los tokens anteriores
+- usa un modelo que usa piezas del transformer y que aprende con un
+  gran corpus de texto
+- por cada tarea sea hace un fine tuning
+- el modelo inicial aprende una especia de diccionario y de reglas
+  gramaticales. esto es el pretrained
+- luego usa aprendizaje supervisado para hacer el fine tuning sobre la tarea
+- en el gpt se elimina el cross attention, se queda con el multi head
+  , la capa de noramlizacion la  capa de feed forward e interconectar
+  varios de estos bloques
+- gpt1 usa 12 bloques con embeddings de 768
+- la longitud de secuencia es de 512
+- el gpt solo usa decoder
+- que pasa como rellena cuando solo entra un token?
+- para que el modelo sea gpt tiene tres tetaps
+  - pre entrenamiento
+  - SFT
+  - RHLF
+- Pre entrenamiento:
+  - usan aprendizaje semi-supervisado o self-supervised
+  - se usa un gran corpus de texto que genera las secuencias de
+    entrenamiento usando una ventana de contexto k=4
+  - el modelo tiene que predecir el siguente token
+  - con una secuencia pequeña se obtiene una gran cantidad de ejemplos
+  - la fully connected layer tiene una softmax con el mismo tamaño
+    token
+  - la salida es una distribucion de 0s para todos los tokens excepto
+    el que se enmascaro
+  - se entrena con mini batch gradient descent
+  - esto le permite al gpt producir el siguiente token dados los
+    tokens previos
+  - el modelo era bueno para predecir el token siguiente y mejor que
+    otros del estado
+- SFT
+  - se necesita datos con etiqueta
+  - en este caso es un juego de inputs o prompts vs outputs
+  - hay dos maneras de hacer esto tomar el corpus y cortar la respuesta
+  - la otra es curar la respuesta
+  - supervised fine tuning. funcion de costo
+  - la salida del GPT se vuelve una secuencia de tokens
+  - la idea es tratar de obtener las respuesta de base de conocimiento
+  - se usa el pretrained con este dataset curado para entrenar el GPT
+  - africa se usa para hacer la generacion de los datasets input
+    output o prompt generated
+  - en el sft la input seria escribe una frase romantica en 2 palabras
+    y la salida es eres genial
+  - sft requeire muchos datos etiquetados que es un rpoblema
+- RHLF
+  - se supone que el modelo da cada vez salidas diferentes
+  - RHLF se basa en rankear las respuestas. ejemplo a una pregunta e
+    lmodelo sacaba otra pregunta
+  - por ejemplo a input hola como estas hay dos respuesta que mas ve y
+    estoy bien como estas tu. el RHLF escogia la segunda como mejor
+    respuesta
+  - un tema que queda aqui en estas etapas de alineamiento es el
+    problema de sesgos
+  - los anotadores tienen que evaluar las respuestas que da el modelo
+  - RLHF entra en que se entrea otra red neuronal artificial que tiene
+    el objetivo de ser un revisor
+  - el modelo de RLFH usa el dataset de ranking para entrenar un
+    modelo de recompensas
+  - el modelo de recompensas tiene como entrada dos secuencias de
+    texto y como salida tienen 0 a 1
+  - 1 satisface el requerimiento
+  - 0 no satisface lo que se esta pidiendo a chat gpt
+  - una vez entrenado el modelo de recompensas se lo usa para entrenar
+    chat gpt
+  - para esto se toma un sampling del dataset de rankin g de respuestas
+  - y se repite el proceso para taratr d emejorar el rendimiento del chatgpt
+- chat gpt tiene tres etapas, SFT y el RLFH son con datos especificos
+  de la tarea
+- GPT es un modelo autoregresivo es decir dado una entrada el gpt
+  predice la etiqueta
+- muestreo proporcional a la probabilidad
+- para darle creatividad a gpt se le da el muestreo de la softmax que sale
+- usualrmente sale el token mas probable
+- el cambio aleatorio en un token va a generar cambios en la respuesta
+  de salida
+- el muestreo permite que el modeloo de una respuesta diferencia
+  e.g. cambie el como escribe pero no el contenido es decir si
+  pregunto 2+2 siempre dara 4 pero lo escribira de maneras distintas
+- el proceso d egeneracion termian cuando aparece el token de finalizacoin
+- para evitar calculos repetitivos QKV para los tokens ya pasados eso
+  se mantiene porque QKV depnden del propio token lo ineficiente seria
+  volver ahacer el calculo de QKV cada vez para todos los tokens. es
+  decir se calcula el nuevo token (no muy claro como calcula solo lon nuevo)
+- enn el pricing del open ai tiene un cached input que son los tokens
+  que estan almacenados que se encuentran listos para hacer calculos
+- revisar el alineamiento y el preentranmiento del chat gpt. nos falta
+  ingresar en detalles que tiene el paper.
+- tambien se revisaran tecnicas distitnas de muestreo
+
+** Summary
+*** *Sección 1: Preguntas y Palabras Clave*  
+1. *Cross-Attention*: Mecanismo en el /decoder/ del Transformer que
+   permite a cada token del /decoder/ enfocarse en tokens específicos
+   del /encoder/. Por ejemplo, en traducción, el decoder usa
+   cross-attention para alinear palabras del idioma fuente (encoder)
+   con las del objetivo (decoder).
+
+2. *Maximum Path Length*: Longitud de la trayectoria entre tokens para
+   capturar dependencias de largo alcance. En *self-attention*, el
+   camino entre cualquier par de tokens es 1 (completa conectividad),
+   mientras que en RNNs es \(O(n)\). Esto facilita aprender relaciones
+   distantes.
+
+3. *Self-Attention Restricted*: Técnicas para reducir costos
+   computacionales en secuencias largas. Ejemplo: *atención local*
+   (ventanas de tokens cercanos) o *atención esparsa* (solo tokens
+   clave). Modelos modernos (Gemini, Llama) usan optimizaciones como
+   /flash attention/ o /memory caching/.
+
+4. *Número de Parámetros*: En un Transformer, los parámetros incluyen:
+   - Embeddings (\(d \times V\), con \(V\) = vocabulario).
+   - Matrices \(Q, K, V\) en cada cabeza de atención (\(d \times
+     d_k\)).
+   - Capas Feed-Forward (FFN: \(d \times 4d\) y \(4d \times d\)).
+   Ejemplo: GPT-1 (~117M parámetros) con 12 capas, \(d=768\), y 12
+   cabezas.
+
+5. *Self-Supervised Learning*: Aprendizaje donde las etiquetas se
+   generan automáticamente del dataset (ej: predecir el siguiente
+   token). *No es semi-supervisado* (este mezcla datos etiquetados y
+   no etiquetados).
+
+6. *Supervised Fine-Tuning (SFT)*: Fase donde se ajusta el modelo
+   pre-entrenado con datos etiquetados específicos (ej: pares de
+   pregunta-respuesta).
+
+7. *Reinforcement Learning from Human Feedback (RLHF)*:
+   - *Paso 1*: Humanos rankean respuestas del modelo.
+   - *Paso 2*: Se entrena un *modelo de recompensa* para predecir
+     preferencias humanas.
+   - *Paso 3*: Se optimiza el modelo con RL (ej: PPO) usando el modelo
+     de recompensa como guía.
+
+---
+
+*** *Resumen de Notas (Corregido y Ampliado)*  
+**** *Arquitectura del Transformer*  
+El Transformer usa *multi-head attention* para procesar
+secuencias. Cada cabeza aplica transformaciones lineales a \(Q, K, V\)
+(parámetros aprendibles), permitiendo capturar distintos tipos de
+dependencias. La salida de las cabezas se concatena y pasa por una
+capa lineal.
+- *Feed-Forward Network (FFN)*: Dos capas lineales con ReLU (\(d
+  \rightarrow 4d \rightarrow d\)).
+- *Encoder vs. Decoder*:
+  - /Encoder/: Procesa toda la secuencia de entrada simultáneamente
+    (bidireccional).
+  - /Decoder/: Genera tokens autoregresivamente (uno a la vez), usando
+    /masked self-attention/ para evitar "ver" tokens futuros.
+
+**** *Optimización y Desafíos*  
+- *Complejidad Computacional*: La self-attention tiene complejidad
+  \(O(n^2d)\), limitando su uso en secuencias largas. Soluciones:
+  atención por ventanas o caching de claves/valores (ej: KV-caching en
+  GPT).
+- *Longitud de Secuencia*: Modelos modernos (Gemini) manejan millones
+  de tokens usando técnicas como /sparse attention/ o /hierarchical
+  processing/.
+
+**** *Entrenamiento de GPT*  
+1. *Pre-entrenamiento*:
+   - *Self-Supervised*: Predicción del siguiente token en corpus no
+     etiquetado (ej: ventana de contexto de 512 tokens en GPT-1, *no
+     k=4*).
+   - Función de pérdida: Cross-entropy entre la salida (distribución
+     de probabilidad sobre tokens) y el token objetivo.
+
+2. *Supervised Fine-Tuning (SFT)*:
+   - Se ajusta el modelo con datos etiquetados (ej: pares de
+     instrucción-respuesta).
+   - Ejemplo: Entrada = "Escribe una frase romántica en 2 palabras",
+     Salida = "Eres genial".
+
+3. *RLHF*:
+   - *Modelo de Recompensa*: Clasifica respuestas (ej: 1 = buena, 0 =
+     mala) o compara pares (ej: respuesta A > B).
+   - *Alineamiento*: El modelo ajusta sus salidas para maximizar la
+     recompensa aprendida, mitigando sesgos o toxicidad.
+
+**** *Generación de Texto*  
+- *Autoregresión*: El modelo genera tokens secuencialmente, usando la
+  salida anterior como entrada.
+- *Muestreo*:
+  - /Greedy/: Token con mayor probabilidad (poco creativo).
+  - /Temperatura/: Suaviza la distribución para mayor diversidad.
+  - /Top-k/p/: Muestrea de los \(k\) tokens más probables o acumula
+    probabilidad hasta \(p\).
+- *Finalización*: La generación termina al producir un token especial
+  (ej: =<eos>=).
+
+**** *Correcciones Importantes*  
+1. *Pre-entrenamiento no es semi-supervisado*: Es *self-supervised*
+   (etiquetas generadas internamente).
+2. *Modelo de Recompensa en RLHF*: No clasifica en 0/1, sino que
+   asigna un score continuo (ej: 0.7 indica calidad media).
+3. *KV-Caching*: Durante la generación, se almacenan claves/valores de
+   tokens previos para evitar recalcularlos, reduciendo costos.
+
+Este resumen integra los conceptos clave, corrige errores, y
+contextualiza el funcionamiento de modelos como GPT. ¡Buen estudio!
 
 * Enlaces
 - Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
@@ -412,5 +770,8 @@
   solucion van a probar esto seria 28 de abril. es sacar el articulo
   con algo de la materia. que seria el bagage teorico.
 - [ ] localizar transformers en los llibros de Marco
-- [ ] Presentacion concreta de 20 minutos mas 10 minutos para
+- [X] Presentacion concreta de 20 minutos mas 10 minutos para
   preguntas. Presentar la idea
+- [ ] Pensar en dond publicar
+- [ ] Presentar la idea mas definida mas concreta
+- [ ] Leer paper Improving language with generative el paper del GPT
