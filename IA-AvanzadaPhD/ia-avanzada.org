@@ -750,6 +750,250 @@ capa lineal.
 Este resumen integra los conceptos clave, corrige errores, y
 contextualiza el funcionamiento de modelos como GPT. ¡Buen estudio!
 
+* 2025-05-13 Improving Language Understanding by generative pretraining
+** Questions and keywords
+- cross entropy ::
+- como funciona una red neuronal en aprendizaje no supervisado ::
+- W_e: embeddings ::
+-  :: 
+** Notes
+- es el paper del gpt1
+- usa SGD
+- utiliza el transformer decoder
+- $C_{bin} = \sum_{i=1}^N(-y_ilog(p_i)-(1-y_i)log(1-p_i))$
+- al ser binario significa que los dos terminos no aparecen
+  simultaneamente ya que $y \in [0,1]$
+- $C_{mul} = -\sum_{i=1}^N \mathbb{I}[y_i=j]log(P[y_i=j|X_i])$
+- $\mathbb{I} es la funcion indicador
+- en el gpt se trata de hacer maximizacion
+- el crossentropy es un problema de minimizacion
+- la ecaucion del gpt no tiene funcion indicador
+- el modelo es una probabilidad conjunnta que viene con el producto de probabilidades
+- $max_{\theta}[p(u_1,\dots, u_n) = \pi^nP_{\theta}(u_i|u1,u2,\dots, u_{i-1})]$: funcion de
+  verosimilitud que da la probabilidad conjunta
+- lo que se desea es que si tengo una secuencia d etokens que
+  pertenece al lenguaje se busca que la distribucion de probabilidad
+  sea alta. el valor de probabilidad debe ser alto lo que significa maximizar
+- busco el $\theta$ que maximice la verosimilidad
+- cuando tengo un problema de optimizacion o de maximizacion sobre una
+  producto lo que es complicado
+- funciones asintotaticamente crecientes
+- la idea es transformar multipliciones en sumas
+- al poner el logaritmo en ambos casos, la red neuronal no va a
+  cambiar y se obtiene la ecuacion 1 del GPT porque los productos se
+  transforman en sumas
+- la mutliplicacion de todas las probabilidades condicionales de una secuencia
+- desde el token 2 tengo tokens previos
+- peroo la ecuacion 1 del paper tiene una ventana k
+- lograr un suficiente contexto sin salirme del rendimiento
+- tiene sentido la ecuacion 1 del paper del gpt?
+- el profesor hace un grafico que tiene una black box que es el LLM y
+  que recibe de entrada Hola ¿Cómo
+- las salidas son P(a|hola ¿como) = 0
+- P(estás|hola ¿como) = 0.55
+- P(te|hola ¿como) = 0.45
+- P(zapato|hola ¿como) = 0.01
+- de toda la distribuion condicional que tengo solo tomo la
+  probabilidad del token siguiente y no dee todos los demas
+- es una logica interesante que es diferente de aprendizaje supervisado
+- solo tomo la porbabilidad que me da el modelo de lemguaje sobre el
+  siguiente token
+- se dibuja dos boxes una de LLM y le sigue una de FC+Softmax
+- la entrada a la LLM son los embedings de cada una d elas palabras
+  Hola ¿cómo
+- el sguendo bloque FC+Softwmax toma el $h_l^m$ que seria el ultimo
+  embedding como entrada de la capa FC+softmax y ahi obtiene un W_y
+- U puede ser un 1xk que multiplica por la matrix We
+- cuanto tiene que dar el h0 que es el token inicial?
+- no entiendo porque en el final de la ecuacion 2 se descarta el
+  contenido se toma la salida de la ultima capa de la red para ir a la softmax
+- logsig???? en que se usa esta funcion o es la sigmoide?
+- en este caso lo adecuado era la mexcla pre-entrenado y el fine tuning
+- tambien ajustan el modelo de lemguaje cuando hacne el fine tuning
+- aqui el profesor pone una preguta de que no queda claro como hacen
+  todo es entrenamiento
+- la ecuacion 2 dice que todas esas operaciones se hacen par atodos
+  los tokens [|v| n]
+- hace rlas operaciones de 2 por cada token de entrada y el masking
+  permite obtener de una sola pasada el resultado para no tner que
+  estar haciendo a cada rato el procesamiento
+- hay detalles escondidos.
+- leer el modelo GPT1 pre entrenado
+- video de LLM a partir de caracteres andrew karpathy build gpt from
+  scratch in code, spelled out
+- el gpt1 esta usando el fine tuning no un suerpvised fine tuning y no
+  tiene por tanto la parte de chat sino un modelo de lenguaje que
+  entiende la tarea
+- falta la figura del asistente que aparece en GPT2 y GPT3.
+** Summary
+* 2025-05-14 GPT Transformers Parametros de Configuracion
+** Questions and keywords
+- rumores cierre de tensorflow? :: There are no official announcements
+  about TensorFlow being discontinued. TensorFlow remains one of the
+  most widely used deep learning frameworks, though PyTorch has gained
+  significant popularity in research. Google continues to support
+  TensorFlow, with updates and new features being released.
+- problemas en tensorflow al hacer tarea simple como predecir una
+  imagen :: TensorFlow is a powerful framework, but beginners may
+  encounter issues such as:
+  - **Shape mismatches** (input dimensions not matching model
+    expectations).
+  - **Preprocessing errors** (incorrect normalization or resizing).
+  - **Model architecture issues** (wrong layer configurations).
+  - **Hardware/GPU compatibility problems**.
+- consultar la softmax con temperatura :: The **softmax with temperature** modifies the standard softmax function to control the entropy (randomness) of the output distribution. The formula is:
+
+\[
+\text{Softmax}(z_i, T) = \frac{e^{z_i / T}}{\sum_{j} e^{z_j / T}}
+\]
+
+- **High temperature (T > 1)**: Flattens the distribution, increasing entropy (more randomness).
+- **Low temperature (T < 1)**: Sharpens the distribution, favoring high-probability outputs.
+- **T = 1**: Standard softmax.
+- el valor de 0.7 parece heuristicamente el mejor. un valor mas alto
+  generaria una mayor alucinación. 
+- few shot learning ::
+- zero shot learning ::
+- chain of thoght ::
+** Notes
+- GPT2 calculado desde 1.5*4 da las 6 gigas
+- GPT base tiene 117*4 da los 479Megas
+- la funcion softmax con temperatura añade un cociente para dividir
+  los valores. la idea es relacionar entropia y temperatura como en fisica.
+- el hiperparametro controla que tan alto tiene la entropia
+- alta temperatura hara que tenga alta entropiaa
+- una baja temperatura va a dismiuir la entropia
+- a nivel probabilistico cuando tengo una alta entropia: la
+  distribucion uniforme es la que da la maxima entropia
+- una alta temperatura va a destruir la gaussiana y va hacer que todos
+  los tokens tengan la mmisma probabilidad
+- una baja temperatura hara que eventos que sean mas probables sean
+  mas probables o y los que sean mas improbables se vayan a 0
+- una temperatura alta hace que nuestro softmax se altere borrando l
+  ainformacion y devolviendo la distribucion uniforme
+- baja temperatura produce un efecto contrario
+- se usa en montecarlo research el muestreo con temperatura
+- con una temperatura muy baja el modelo seria deterministico
+- Se hace un experimentousando el AI SDK y al setear la temperatura en
+  un valor de 2 el modelo escribe cualquier cosa. La locura y la
+  creatividad tiene algo de relación
+- tomar en cuenta que en la ecuacion el T=1 no se usa
+- top p es un umbral de probabilidad que permite ordenar los tokens y
+  se toman los tokens cuya suma igual al valor de P
+- por defecto esta en 1 y considera que todos los tokens son candidatos
+- un top P bajo con un valor de temperatura alto, el modelo deberia
+  ser altampente repetitivo
+- el top k es un rankeo y selecciona los k palabras con probabilidad
+  mas alta
+- gpt2 usa espacio en blanco mas token
+- gpt1 usa token mas espacio en blanco y si hay varios espacios toma
+  uno solo 1
+- en few shot learning se da unos ejemplos de lo que se espera y luego
+  se le solicita al modelo que de una respuesta
+- el experimento del colab en su parte 6 es el punto de partida de
+  formar un asistente ya que no se esta haciendo aprendizaje de
+  maquina de manera tradicional con una tupla de ejemplos con sus etiquetas
+- se observa de donde nace el tema de chain of thought
+- lo interesante es que con few short learning el modelo empieza a dar
+  resultados bastantes congruentes e interesantes
+- se realiza el print del modelo gpt2 y se observa que el tama;o de la
+  secuencia es 1024 y el tamano del embedding es 1600
+** Summary
+*** 3. Softmax with Temperature
+The **softmax with temperature** modifies the standard softmax function to control the entropy (randomness) of the output distribution. The formula is:
+
+\[
+\text{Softmax}(z_i, T) = \frac{e^{z_i / T}}{\sum_{j} e^{z_j / T}}
+\]
+
+- **High temperature (T > 1)**: Flattens the distribution, increasing entropy (more randomness).
+- **Low temperature (T < 1)**: Sharpens the distribution, favoring high-probability outputs.
+- **T = 1**: Standard softmax.
+
+**Example in NLP**:  
+- **Low T (e.g., 0.1)**: Model confidently picks the most likely next word.  
+- **High T (e.g., 2.0)**: Model generates more diverse (but potentially nonsensical) text.
+- *Example* (NLP):
+     - \( T = 0.1 \): Model outputs "The cat sat" (deterministic).
+     - \( T = 2.0 \): Model outputs "The jazz pineapple danced" (creative).
+*** 4. Why is 0.7 Heuristically the Best Temperature?
+Empirical studies suggest:
+- **T ≈ 0.7** balances creativity and coherence.
+- **Higher T (e.g., 1.0+)** increases "hallucinations" (nonsensical outputs).
+- **Lower T (e.g., 0.1)** makes outputs deterministic and repetitive.
+- Optimal \( T \approx 0.7 \) balances creativity/coherence.
+- \( T > 1 \) risks hallucinations; \( T \ll 1 \) causes repetition.
+*** 5. Few-Shot Learning
+- **Definition**: The model is given a few examples (shots) of a task before making predictions.
+- **Example**:  
+  Prompt:  
+  ```
+  Translate English to French:  
+  "Hello" → "Bonjour"  
+  "Goodbye" → "Au revoir"  
+  "Thank you" → ?
+  ```
+  Model predicts: "Merci".
+
+*** 6. Zero-Shot Learning
+- **Definition**: The model performs a task without any explicit examples.
+- **Example**:  
+  Prompt:  
+  `"Translate 'Hello' to French."`  
+  Model outputs: `"Bonjour"`.
+
+*** 7. Chain of Thought (CoT)
+- **Definition**: The model breaks down reasoning step-by-step before giving an answer.
+- **Example**:  
+  Prompt:  
+  ```
+  Q: If Alice has 3 apples and gives Bob 1, how many does she have left?  
+  A: Alice started with 3 apples. After giving 1 to Bob, she has 3 - 1 = 2 apples left.
+  ```
+** Corrections and Notes Summary
+
+*** Model Sizes
+- **GPT-2**:  
+  - Parameters: ~1.5B → Size ≈ 1.5B * 4 bytes ≈ **6 GB** (correct).  
+- **GPT-1 Base**:  
+  - Parameters: 117M → Size ≈ 117M * 4 bytes ≈ **468 MB** (noted as 479MB, minor rounding difference).
+
+*** Softmax with Temperature
+- Corrected: "alta entropiaa" → "alta entropía".  
+- Key Points:  
+  - **High T** → Uniform distribution (max entropy).  
+  - **Low T** → Peaked distribution (low entropy).  
+  - Used in **Monte Carlo sampling** and **LLM text generation**.
+
+*** Top-p (Nucleus Sampling) and Top-k
+- **Top-p**: Selects the smallest set of tokens whose cumulative probability ≥ *p*.  
+  - *p = 1* → All tokens considered.  
+  - *p = 0.9* → Only the most likely tokens covering 90% probability mass.  
+- **Top-k**: Selects the *k* highest-probability tokens.  
+- **Interaction**:  
+  - High *T* + low *top-p* → Repetitive but random outputs.  
+  - Low *T* + high *top-p* → Deterministic and coherent.
+
+*** Tokenization in GPT-1 vs. GPT-2
+- **GPT-1**: Merges multiple spaces into one.  
+- **GPT-2**: Treats spaces as separate tokens.  
+
+*** Few-Shot Learning and Chain of Thought
+- **Few-shot** enables models to generalize from minimal examples.  
+- **CoT** emerges when models explain reasoning (e.g., "Let’s think step by step...").  
+
+*** GPT-2 Architecture Notes
+- **Sequence length**: 1024 tokens.  
+- **Embedding size**: 1600 (likely a typo; GPT-2 Large uses 1600, but base is 768).  
+
+---
+
+*** Final Takeaways**
+- **Temperature** controls output diversity (high = creative, low = stable).  
+- **Few/Zero-shot learning** reduces the need for fine-tuning.  
+- **Chain of Thought** improves interpretability.  
+- **TensorFlow** remains active despite competition from PyTorch.  
+
 * Enlaces
 - Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
 - Libros Machine Learning: https://drive.google.com/drive/folders/0B0w0jIatGZYGZHdNdW9FZ1ZycGs?resourcekey=0-6IrcgeLWNwIXoYq8lQ9e0Q&usp=sharing
@@ -758,6 +1002,9 @@ contextualiza el funcionamiento de modelos como GPT. ¡Buen estudio!
 - paper A survey of large language models.
 - emergent abilities of large language models
 - [[https://youtu.be/HX8IMpnESxk?si=JhPz7Fi-_JNPaNR7][8 cientificos inventan IA generativa]]
+- [[https://ai-sdk.dev/]]
+- [[https://colab.research.google.com/drive/1JitcCWOqOqdylobAbaFMlrySHrgVD58H#scrollTo=hfi0Oe0SDNFR][enlace-demo-gpt1-gpt2-colab]]
+- [[https://colab.research.google.com/drive/1741crQT9xjA3vZIblL50MNYtHsYUqdBX?usp=sharing][codigo original Marco Benalcazar colab]]
 * TODO
 - [ ] Revisar EDOs y EDPs derivadas ordinarias y derivadas parciales
 - [ ] revisar el algoritmo de retro-propagacion del error
@@ -775,3 +1022,5 @@ contextualiza el funcionamiento de modelos como GPT. ¡Buen estudio!
 - [ ] Pensar en dond publicar
 - [ ] Presentar la idea mas definida mas concreta
 - [ ] Leer paper Improving language with generative el paper del GPT
+- [ ] Siguiente semana cambio de horario a jueves y viernes
+- [ ] Martes pasa el jueves de 2 a 4
