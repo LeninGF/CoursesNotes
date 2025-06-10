@@ -4,8 +4,8 @@
 #+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
 #+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
-#+title: Inteligencia Artificial Generativa
-#+date: 2024-10-02
+#+title: Topicos Especiales II
+#+date: 2025-04-15
 #+author: Lenin G. Falconí
 #+email: lenin.falconi@epn.edu.ec
 #+language: es
@@ -994,6 +994,317 @@ Empirical studies suggest:
 - **Chain of Thought** improves interpretability.  
 - **TensorFlow** remains active despite competition from PyTorch.  
 
+* 2025-05-22 Revision de avances de trabajo
+** Recomendaciones
+- aterrizar la idea
+- estamos al 25% del semestre
+- el congreso sirve por colocar un deadline
+- el congreso de Springer es "prostituido" se puede conseguir algo de
+  mejor calidad
+- puede ser adecuado separar la idea
+*** Sobre el modelo
+- limitar a un solo dataset
+- probar a futuro con mas datasets
+- el tamaño del modelo debe ser acorde al dataset
+- se supone que los pesos pre entrenados de imagenes naturales en
+  segmentacion no deberían ser utiles
+- comparar la misma arquitectura emepzando con pesos aleatorios con
+  los pesos pre entrenados
+- definir la idea y escribir la metodología porque conforme se sigue
+  leyendo se va a querer seguir probando mas y mas cosas sin aterrizar
+*** Preguntas que se pueden hacer al profesor
+- Sirve data augmentation en transformers? Pienso que dado que un ViT
+  usa patches y los pregunta entre si no sé si sirva tener imagenes rotadas
+- Sobre repetir las imagenes parece que se ve como inevitable para una
+  red pre entrenada. aqui podria ser el tema de usar scratch. Si es adecuado.
+- hay que ver el ranking de la conferencia ejemplo A*
+- hay que realizar la SLR para el tema de lo de marco. esto seria lo primero.
+- antes de ponerse a trabajar terminar la revision de la literatura y congelar
+- presentar la idea preliminar
+- continuar trabajando la idea para llegar a una publicacion de revista
+- la participacion en el congreso puede ser significativa en cuanto al
+  feed back que se obtenga del congreso considerando que hagan un
+  trabjo serio.
+- no es significativo académicamente el congreso. Tener presente el
+  tema de los rankings
+*** Esquema para evaluar el trabajo
+- cual es la idea:
+- como va a evaluar la idea
+- que algoritmo usar para probar
+- que se ha encontrado en revision de literatura
+- como medir que Modelo se desempeña mejor. Aqui tendria que venir la estadistica.
+- con qué datos va a entrenar?
+- el 25% de trabajo es la idea y la revision de la literatura. el otro
+  25% seria la metodologia el 25% es entrenar y validar y el otro 25%
+  seria evaluar resultados.
+- no quiero que pase que hay algo que se esta proponiendo y que ya
+  esta hecho... la idea de la slr para que el probelam sea problema y
+  adapten la solcion el problema no se desea adaptar o forzar el problema
+- al ser un congreso especifico. tambien considerar el nivel.
+- para que le sirva para el Doctorado.
+- identificar el problema y proponer algo que valga la pena.
+** About procedings
+where can I find information about rankings of procedings 
+
+To find information about rankings of proceedings (conference proceedings), consider these resources:
+
+1. **CORE Conference Rankings** (http://www.core.edu.au/conference-portal):
+   - Widely used for computer science and related fields.
+   - Conferences are graded (A*, A, B, C).
+
+2. **Google Scholar Metrics** (https://scholar.google.com/citations?view_op=top_venues):
+   - Lists top publications (journals & conferences) by h5-index.
+
+3. **Scimago Journal & Country Rank (SJR)** (https://www.scimagojr.com):
+   - Offers rankings for journals and some conference proceedings.
+
+4. **Conference Portal (Microsoft Academic; archive)**:
+   - While deprecated, some rankings are still referenced online.
+
+5. **Institutional or Departmental Lists**:
+   - Many universities maintain their own lists of recommended/ranked proceedings for specific disciplines.
+
+6. **DBLP** (https://dblp.org):
+   - Useful for identifying major conferences, though doesn't rank them directly.
+
+Choose the resource based on your field, as rankings can vary widely
+by subject.
+
+* 2025-05-27
+** Questions and keywords
+- buscar como funciona positional embedding
+** Notes
+- GPT2 tiene 1.6 billones de parametros.
+- GPT2 el tamaño del archivo es 6.6
+*** Supervised Fine Tuning
+- V es el vocabulario
+- en el 2.2 se describe la matriz de embedings 2-1 del gpt-2. se
+  analiz ala dimensiones para un ejemplo.
+- los positional encodeing son calculados previos
+- para ingresar secuencias mas grandes que el tamaño maximo 1024 de gpt2
+- porque 1024?
+- el vector de positional encodings toma cada una de las posiciones y
+  en funcioni de eso añade el vector de embeddings
+- dropout de 0.1 usa como probabilidad para eliminar componentes. la
+  division por 1-p permite escalar . la idea es que el promedio antes
+  y despues del dropout sea el mismo
+- en layer normalization se normaliza a lo largo de las componetes del vector
+- cada una de las W de Q, K y V se calculan cocatenada
+- el vector de bias tambien es concatenado
+- el layer normalizado no le cambia al vector es una matriz
+- para sacar el resultado del bloque de atencion se les separa luego
+  por eso 1600x3 da 4800
+- el calculo que falta es el resultado del bloque de atencion
+- no es necesario hacer padding par acompletar secuecnias. parece que
+  en los transformers es independiente del tamaño de la secuencia
+- attnout solo pone el resultado despues de calcular el bloque de selfattention
+- se debe tomar enc uenca que ingresa un residual
+- se supone que si los positional econdings no esetuvieran ya
+  guardados se podria manejar el transformer para cualquier tamaño
+- cada cabezal calcula un vector de 64 componentes 1600/64 da 25
+  bloques o cabezales
+- 
+** Summary
+* 2025-05-28 GPT Supervised Fine Tuning
+** Questions and keywords
+- revisar lo que es la mascara causal
+- como se relaciona ocn el unsupervised
+** Notes
+- se previene la division por cero
+- la matriz de mascara causal es una matriz triangular cuyo objetivo
+  es evitar que GPT sea un BERT
+- el valor de -infinito se tiene que obsrevar que al ingresar a la
+  softmax nos da $e^{-\infty}\to 0$
+- Los prompts seran X
+- Las respuetas deseadas y
+- superindice es el numero de ejemplos
+- el subindice es la posicion de la secuencia
+- para hacer el supervised FT a la entrada del modelo ingresa el
+  prompt y la respuesta
+- en este contexto al trabajar por batch se debe tener el mismo tama;o
+  esto obliga a emliminar un token si suponemos que el numero de
+  palabras mas simbolos entre prompt y respuesta tiene un valor
+  fijo. se suele eliminar el primer tokem
+- por ejemplo si faltan cuatro tokens para completar la secuencia se
+  rellenan con tokens especiales <end>
+- en el SFT no interesa la secuencia del prompt:
+  - Hola como estas? Estoy muy bien como estas tu?
+    L=-log[P_\theta(Estoy|Hola Como estas?)]-...-log[P(?|Hola como
+    estas? Estoy muy bien Como estas tu?)]
+  - sobre que esenario puedo evaluar al modelo como asistente:
+    literatura, programa, conocimiento
+- uno de los problemas es que a ningun modelo se le ha entrenado a que
+  diga no sé. no dice no se cuando no puede.
+- es diferente que el caso etico que le han restringido para las
+  barreras de seguridad
+- hasta aqui el GPT ha entendido el lenguaje con el pre-trainig
+- el SFT lo convierte como asistente para que aprenda sobre disciplinas
+- estadisticamente no hay sufciente datos para decir que generaliza
+- en el caso del gpt si bien la cantidad de datos es alta, no son
+  estadisticamente descriptivos de lo que se quiere hacer con el modelo.
+- la cantidad de datos de SFT se estima como un 3% del total de datos
+  que se usa para pre-entrenamiento
+- Deepseek no usa SFT usan RLHF
+- buscar en google chat gpt pipeline training
+- quizas el problema de alucinaciones del modelo es un problema
+  estadistico cuantos datos necesito para tener una muestra suficiente
+  para que sea esetadisticamente representativo
+- [[https://openai.com/index/chatgpt/][enlace al pipeline de entrenamiento de chat gpt 4]]
+*** Step 2 del trainig del gpt collect comparison data and train a reward model
+- eliminar la ultima capa lineal y el softmax y tomar los vectores
+  transformados de los tokens de entrada
+- el modelo de recompensa se entrena con datos X y y
+- nos quedams con los embeddings transformados
+- el modelo de recompensas toma la ultima salida h_T que devuelve un
+  escalar y los h de 1 a T-1 se descartan
+- porque se toma el ultimo
+- no se toma el promedio de todos porque es un paso mas de calcular
+- el token a predeci esta embebido la informacion anterior
+- esto es porque para calcular el h_T embedding tuvo que calcularse
+  todo lo anterior
+- No es markoviano, para markoviano el WE_T seria suficiente para
+  predecir la salida del sistema
+*** Entrenamiento del modelo de recompensa
+- se necesita un ejercito de anotadores que dado un prompt X tiene
+  respuestas 1,2,...4
+- los anotadores leen las respuestas y van rankeando la mejor respuesta
+- El papel del modelo de recompensas es hacer lo que los humanos hacen
+  pero no dan un score sino que ellos ordenan de mejor a pear
+- el modelo tiene que ser entrenado tal que si la respuesta a es mejor
+  que b, entonces la recomepensa con a sea mayor a la de b
+- $y^{<a>}\ge y^{<b>} \to R(X,y^{<a>}) \ge R(X,y^{<a>})$
+- La ecuacion de optimizacion del modelo de bradley-Terry guarda
+  relacion en como pasar preferencias a scores. es decir si algo es
+  mejor que algo se puede cuantificar de con la logsig de las recompensas
+- bradley-terry pasa preferencias a scores
+- colocar la ecuacion del cuaderno
+- el objetivo es minimizar
+- porque se hace de la resta y de la funcion sigmoide
+- como en el ejemplo de clase hay cuatro respuestas a rankear se suma
+  las comparaciones de todos los pares,
+- sin embargo se hace un numero comparaciones como la combinacion de 4
+  en 2
+- sumo todas las combinaciones y divido para la combinacion de 4 en 2
+- la notacion es complicada
+- no entiendo para que esta ultima etapa
+- La ecuacion a minimizar es el modelo de recompensas
+- porque usan la funcion sigmoide. porque no hay opcion de empates se
+  escoge la una opcion o la otra.
+- el simbolo no es el mayor que sino uno parecido
+- por esta razon se relaciona con la logsig
+- hay otros procedimientos de RLHF añadiendo mas capas
+*** Proximal Policy Optimization PPO
+- porque se llama RLHF?
+- el termino a partir de beta busca que no cambie tanto
+- la divergencia KL mide que tan diferentes son dos distribuciones de probabilidad
+- el beta es un coeficiente de penalizacion
+- se busca que la respuesta sea buena y que las distribuciones no
+  cambie tanto
+- la idea de esto es evitar el catstrophy forgetting
+- porque usa una funcion de recompensa
+- el modelo de referencia deberia ser suficientemente bueno para que
+  tenga efectividad aplicar
+- el porque es esperanza
+- en datos y computacional es dificil
+- que es clipping y de que van las variantes del PPO
+- deep seek usa GPPO
+- hay problema cuando se hace un modelo de optimizacion con
+  restricciones porque no puede usarse descenso del gradietne
+- El segundo termino evita que se olvide el modelo lo que ya sabia
+- entre los problemas de optimizacion asoma divergencia KL, cross
+  entropy,
+- deep seek
+- diferenciacion automatica
+** Summary
+* 2025-06-03 Proximal Policy Optimization
+** Questions and keywords
+- surrogate :: heredada
+- off policy ::
+- on policy ::
+- advantage function ::
+- $\tau$ :: es una trayectoria $\tau =
+  s_0,a_0,r_1,s_1,a_1,r_2,s_2,\dots,s_{T}$ siguiendo una
+  $\pi_{\theta}(a \mid s)$
+- Policy Gradient Theorem ::
+- estimador :: no puedo calcular exactamente un valor
+- como crear en matlab una red graficamente ::
+- como obtener la derivada cuando es una entrada de n y una salida logsig ::
+- cual es la libreria FFN de N capas :: no habia limitantes para los
+  tam;aos pero sin salirse de la arquitectura
+- decaying weight ::
+- revisar el calculo de la diferencia KL ::
+- what is an actor-critic ::
+- what is an PPO actor-critic :: 
+** Notes
+- el paper propone una nueva funcion objetivo que va por mini batch
+- difdrencia entre aprendizaje supervisado con rl. en supervisado no
+  interesa el orden en el tiempo que vienen los datos.
+- en rl interesa aprender segun el tiempo
+- lo desafiante es entrenar un metodo que guarda la secuencia, pero en
+  minibatch se pierde esa secuencia. es decir a pesar que se pierde la
+  secuencia se optimiza o aprende la politica
+- el minibatch puede tener secuencias de diferentes episodios
+- en rl no se habla de funcion de costo como en ANN sino de una
+  funcion objetivo de ganancia
+- suponga que usamos una ANN que recibe un estado y devuelve una
+  distribucion de probabilidades sobre la politica dadas las acciones
+  y estados
+- resolver le problema de optimizacion se puede usar descenso del
+  gradiente para obtener los $\theta = \underset{\theta}{argmax}J(\theta)$
+- el probllema es que en la practica no se puede acceder a $R(\tau)$
+  que sería la función de recompensa del ambiente.
+- hay un teorema en RL que nos dice que el problema de optimizacion
+  planteado es similar a resolver otro problema de optimizacion
+- La expresion usa la politica cuya recompensa es conocida porque es
+  la respeusta a la ANN
+- todas las trayectorias se promedian
+- la ANN es la pol[itica
+- la r depende de la accion que la da la ann.
+- los valores de recompensa son empiricos por lo que accedo a un
+  estimado de la recompensa
+- por tantno la ecuacion 4 en los apuntes es un estimador \(\hat{g}\)
+- en aprendizaje supervisado trabajamos con el valor exacto del
+  gradiente en RL se trabao con valores aproximados del gradiente
+- en rl los datos cae a "cuentas gotas" tipo sparse
+- las trayectorias de los estados estan condicoinados
+- en aprendizaje supervisado asumimos IID: independientes e
+  identicamente distribuids
+- en rl en no son independientes los datos ni identicamente
+  distribuidos porque cada iteracion las politicas son diferentes
+- el algoritmo de retropropagacion inicialmente calculaba a mano
+- como funciona la derivacion automatica actualmente en redes que usan
+  tensorflow o pytorch
+- diferenciacion automatica
+- la derivacion automatica
+- el software tiene la funcion de costo y se obtiene los valores del
+  gradiente de la funcion de costo
+- nunca se ha entrenado con desenso del gradiente con restriccinoes
+- la expresion del paaper tiene una red neuronal actual y una anterior
+  pero se sujeta a restricciones
+- la restriccion tiene que entrar en la funcion para poder usa
+  rdesenso de gradiente. vea la ecuacion 3 del paper de PPO
+- el beta permite discriminar a que termino se le da importacia
+- los terminos $\pi_{\theta}$ actual y $\pi_{\theta_{old}}$ son
+  probabilidades que salen de la red neuronal. pero el old es hace
+  unas iteraciones anteriores y la otra es la actual. En los LLM seria
+  como tnener la salida del LLM luego del SFT y la actual seria la que
+  se recibe de RLHF
+- como se calcula la diferencia KL
+- el clipping recorta el valor de salida ya que la expresion del
+  cociente de la salida de las dos RNA si la una es 1 y la otra tiende
+  a 0 se puede hacer un valor muy grande casi infinito
+- value network ::
+- que es PPO como actor critic
+- se requeire ua tercera una red neuronal
+- alta varianza bajo vias
+- diferencia temporal baja varianza alto viaz
+- montecarlo bias 0 varianza alta diff temporal es lo contrario
+- bias variance trade off
+- en una LLM operan al menos tres redes neuronales
+- que es el openai gym
+
+** Summary
+
 * Enlaces
 - Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
 - Libros Machine Learning: https://drive.google.com/drive/folders/0B0w0jIatGZYGZHdNdW9FZ1ZycGs?resourcekey=0-6IrcgeLWNwIXoYq8lQ9e0Q&usp=sharing
@@ -1005,22 +1316,28 @@ Empirical studies suggest:
 - [[https://ai-sdk.dev/]]
 - [[https://colab.research.google.com/drive/1JitcCWOqOqdylobAbaFMlrySHrgVD58H#scrollTo=hfi0Oe0SDNFR][enlace-demo-gpt1-gpt2-colab]]
 - [[https://colab.research.google.com/drive/1741crQT9xjA3vZIblL50MNYtHsYUqdBX?usp=sharing][codigo original Marco Benalcazar colab]]
-* TODO
+- buscar google layer normalization explained
+* TODO [31%]
 - [ ] Revisar EDOs y EDPs derivadas ordinarias y derivadas parciales
 - [ ] revisar el algoritmo de retro-propagacion del error
 - [ ] Principios y Fundamentos
 - [ ] Definir la idea con respecto a mi tema de investigacion y el
   PEA: hacer pruebas y experimentacion. Hacer ajustes y trabajo Final.
-- [ ] despues de la siguiente semana contar la idea que se ha hecho
+- [X] despues de la siguiente semana contar la idea que se ha hecho
   proponer la idea y esta idea contiene tales capitulos del temario
   que vamos a ver. necesito saber que problema y que alternativas de
   solucion van a probar esto seria 28 de abril. es sacar el articulo
   con algo de la materia. que seria el bagage teorico.
-- [ ] localizar transformers en los llibros de Marco
+- [ ] localizar transformers en los libros de Marco
 - [X] Presentacion concreta de 20 minutos mas 10 minutos para
   preguntas. Presentar la idea
-- [ ] Pensar en dond publicar
+- [X] Pensar en dond publicar
 - [ ] Presentar la idea mas definida mas concreta
 - [ ] Leer paper Improving language with generative el paper del GPT
-- [ ] Siguiente semana cambio de horario a jueves y viernes
-- [ ] Martes pasa el jueves de 2 a 4
+- [X] Siguiente semana cambio de horario a jueves y viernes
+- [X] Martes pasa el jueves de 2 a 4
+- [ ] Escribir la idea que voy a desarrollar. Considerar el congreso
+- [ ] Hacer una revisión de la literatura para el tema
+- [ ] Iniciar fase de experimentación.
+- [ ] Mostrar el miércoles 4 de junio resultados preliminares 15
+  minutos cada uno el miércoles.
