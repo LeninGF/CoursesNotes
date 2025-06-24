@@ -1304,7 +1304,159 @@ by subject.
 - que es el openai gym
 
 ** Summary
-
+* 2025-06-10 Numerical Differenciation
+** Questions and keywords
+- derivación manual :: obtención de expresiones algebraicas de manera manual
+- algoritmo de retropropagacion del error :: es derivar a mano usando
+  la regla de la cadena
+- regla de la cadena ::
+- diferneciacion simbolica :: es calcular mediante software
+- swell expression :: hinchazon de expresion???
+- diferenciacion numerica ::
+- no comprendo porque diferenciacion numerica no serviria para relu o lazos ::
+- machine epsilon :: 
+** Notes
+- revisar las librerias de las feedforward de Marco
+- las derivadas estaban calculadas a mano e implementadas
+- ya en redes convolucionales es complicado hacer las derivadas
+- manualmente se obtiene expresiones para la diferenciacion de
+  funciones. se puede observar la complejidad algebraica.
+- se programa a que es igual ciertas derivadas primitivas en el software
+- el problema es que no puede hacer simplificaciones.
+- derivacion simbolica no usa simplificaciones y las expresiones
+  crecen. generando el expression swell
+- en redes neironales tratamos de resolver $\theta = \underset{\theta}{argmin}J(\theta)$
+- el desenso gradiente $\theta^{(new)}=\theta^{(old)}-\alpha \nabla_{\theta}J(\theta)$
+- para obtener el gradiente hay varios mediatos
+  - manual: obtengo expresion cerrada. su principal problema es que es
+    dificil de calcular. el calculo es exacto
+  - numerico: no obtengo la expresion cerrada sino el numero. tiene
+    una alta complejidad temporal y es aproximado
+    - errores truncamiento
+    - errores de redondeo
+    - $O(n^2)$
+  - simbolico: su principalmente es calculos repetitivos y expression
+    swelling. se hacen los calculos porque no hay simplificacion. sin
+    embargo es exacto. sirve para expresiones cerradas. no lazos.
+  - automatico: es exacto en el calculo
+- el calculo numerico del gradiente consisten en dibujar un eje de
+  coordenadas x y f(x) y obtener la pendiente, se observa que
+  obteniendo la tangente del angulo $\phi$ entre los puntos $x_0$ y
+  $x_0+h$ es similar a la definicion de la derivada sin aun poner el
+  limite
+  $tan(\phi)=\frac{f(x_0+h)-f(x_0)}{x_0+h-x_0}$
+  $\frac{df}{dx}\mid_{x_0} = lim_{h\to 0} [tan(\phi)]$
+- para calcular el gradiente de f con respecto a x cuando tenemos una
+  funcion de n variables evaluado en $x_0$, se tiene que perturbar una
+  a una las variable sindependientes y por eso el vector es 0 en todos
+  los puntos excepto en donde se calcula el gradiente
+- en codigo se usa un lazo for para pasar N veces por cada uno de las
+  variables calculando y tiene un orden de complejidad $O(n^2)$
+- en una red neuronal las n variables es muy grande
+- la complejidad espacial para el calculo numero el espacio es O(n)
+- en el calculo numerico se tiene varios problemas:
+  - orden cuadratico
+  - errores de truncameinto
+  - errores de redondeo
+- la serie de taylor nos permite expandir una derivada en una serie
+- el hacer la $h$ muy pequena se llega al error de redondeo porque no
+  habra como representar le numero
+- el error de truncamiento es de orden h que tiene que ver con el
+  resto de terminos que no considero para aproximar la derivada y
+  dejarla usando unos primeros terminos de la serie de Tyalor
+- al subir al cuadrado h, ell numero se hace mas pequeño
+- para disminuir el error de truncamiento se hace h al cuadrado
+- usando diferencias centrales se puede obtener que el termino de
+  error de truncamiento se acerque a O(h^2)
+- Error de redondeo :: tiene que ver con machine epsilon. cuando se
+  baja el h el error de redondeo sube
+- en el libro el grafico tiene una v
+- tipicamente los valores del epsilon son $10^{-7}$
+*** Diferenciacion Automatica
+- es de dos tipos:
+  - hacia adelante
+  - en reversa: usado en RNA
+- recuerde que RNA usa optimizacion por gradientes. y de ahi el
+  interes en obtener estos metodos para ayudar la diferenciacicon.
+- recuerde el problema con SVMs.
+** Summary
+* 2025-06-11 Automatic Differentiation
+** Questions and keywords
+- network designer ::
+- numeros duales ::
+- que es una funcion trascendental :: 
+** Notes
+*** Automatic Differenciation Forward-Model
+- considere el ejemplo en el cuaderno para obtener una derivada
+  $f(x_1,x_2)$ con respecto a $x_1$ evaluado en $(x_1,x_2)=(2,5)$
+- se definen variables auxiliares se definen hasta $v-0$ dependiendo
+  del numero de variables
+- se realiza un grafo con las operaciones necesarias hasta obtener la expresion
+- las operaciones se agrupan por pares
+- es forward mode porque se van derivando los terminos en el orden que
+  se procesa el grafo
+- hay que calcular las derivadas de cada vi puntp con respecto a la $x_j$
+- lo interesante es que no tuve que aplicar regla de la cadena
+- se pone las operaciones basicas
+- se pone la funcion y su derivada i.e. entrada y su derivada
+- el calculo del gradiente se reduce a realizar los reemplazos de los
+  valroes de las derivadas en las expresiones que van quedando
+- el metodo no da la expresion de la derivada pero me da el valor
+  exacto de la derivada
+- este no es el metodo que se usa en las librerias de RNA
+- network designer nadie me salva de colocar la funcion y la derivada
+  de la funcion
+- hay un algoritmo contra intuitivo para programar este resultado y
+  usa nnumeros duales
+*** Numeros Duales
+- un numero dual $\epsilon$ debe ser distinto de 0 y su cuadrado debe
+  ser 0
+  - $\epsilon \neq 0$
+  - $\epsilon^2 = 0$
+- sea la expresion $f(x) = x^2+3x+5$
+- si calculamos $f(x+\epsilon) = (x+\epsilon)^2+3(x+\epsilon)+5$
+- al parecer en funciones trascendentales no se sabe si esto
+  funcionara para llegar a la derivada. puede que si puede que no. Sí
+  vale para sin and cos.
+- tiene relacion con las series de Taylor
+- los numeros duales es otra forma de calcular la derivacion hacia adelante
+- permite ir calculando las derivadas con reemplazos y me olvido que
+  estoy derivando operamos y listo
+- se obtiene el numero pero no la expresion exacta de la derivada
+- si requiero la derivada como expresion se requiere el simbolic
+  differentation o derivacion manual
+- la serie de Taylor se observa com muy potente parecido a Serie de Fourier
+*** Automatic Differentiation Reverse Mode
+- Consideremos la misma expresion $f(x_1,x_2)=ln(x_1)+x_1x_2-sin(x_2)$
+  obtener la derivada parcia de f con respecto a $x_1$ evaluada en 2,5
+- se hace el grafo de solucion
+- se debe calcular las variables complementarias $v_i = $
+- se calcula en reversa orque se va desde la utima expresion hacia la
+  primera es decir desde la variable complementaria
+- la retropropagacion del error es un caso espcial de la automatic
+  differentation en reverse mode
+- si bien se aplica la regla de la cadena se facilta el calculo
+- si asumimos que queremos calcular el gradiente de una funcion $J:
+  \mathbb{R}^n \to \mathbb{R}^m$
+- la complejidad del calculo del gradiente depende de una constante c
+  ques es menor a 6 y dependen de n y m
+- se prefiere el metodo de reversa porque en RNA m = 1
+- este emtodo es general mientras que el backpropagation es especifico
+  para RNA. recuerde que en una RNA m termina siendo un numero
+** Summary
+* 2025-06-18 observaciones proyecto
+- es mas elegante trabajar el transformer de video
+- es mas elegante trabajar el modelo hybrido usando la convolucional
+  3d que generaria un feature map con informacion en 3 canales que
+  podria ingresar a la red del transformador
+- los problemas que se tiene es que tanto convolucionad como
+  transformer interpretan la informacion de manera espacial sin
+  considerar el tiempo
+- problema serio forzar los canales para mandar a tener datos
+- problema que se reducen los datos a nivel paciente...
+- generar sintetitocs?
+- acelerar para tener resultados y escribir el paper
+- siguiente semana clase y resultados
 * Enlaces
 - Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
 - Libros Machine Learning: https://drive.google.com/drive/folders/0B0w0jIatGZYGZHdNdW9FZ1ZycGs?resourcekey=0-6IrcgeLWNwIXoYq8lQ9e0Q&usp=sharing
