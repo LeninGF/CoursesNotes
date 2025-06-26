@@ -1457,6 +1457,138 @@ by subject.
 - generar sintetitocs?
 - acelerar para tener resultados y escribir el paper
 - siguiente semana clase y resultados
+
+* 2025-06-24 Alpha Go
+** Questions and keywords
+- value networks ::
+- monte carlo tree search ::
+- stochastic gradient ascent ::
+- policy network ::
+- rollout policy ::
+- alternating markov games ::
+- test time compute ::
+- self play :: el agente mejora compitiendo con otros programos y
+  ajeno al sesgo humano
+** Notes
+- convolutional neural networks are used to construct a representation
+  of the position
+- Test time compute para mejorar la respuesta
+- se volvio famoso en los LLMs
+- mientras mas tiempo de computacion le doy a un algoritmo de IA,
+  mejor es la respuesta
+- alpha go combina Monte carlo tree search con deep neural networks
+- Entender como se hace esta union para comprender el test time compute
+- esto puede permitir caracteristicas genuinas de razonamiento a los LLMs
+- El planing o busqueda es algo que falta para alcanzar este razonamiento
+- No se asigna la jugada al punto de mayor probabilidad sino un
+  muestreo con
+- agente seria deterministico si siempre escoge la mayor probabilidad
+- z parece ser el score.
+- Ubicar el fig del self play
+- Lo interesante es como se entrena la red neuronal para ayudar al
+  MonteCarlo Tree Search
+- cuando no hay algo que guie el MTTS se tomara mas tiempo y se usa la
+  red neuronal artificial para construir el arbol
+- tiene dos salidas 19x19 mas un valor v que ayuda a construir la RL
+- valores altos de temperatura hace llegar a una temepratura maxima
+- MCTS
+- u es upperbound confidence
+- v es el predictor del score del juego, y si bien es un valor real
+  entre -1 y 1, lo interpretan como una probabilidad de 0 a 1 se lo
+  toma como que gana
+- cuando selecciona un nodo cuaundo tiene Q alto y un U alto, pero
+  ambos no pueden crecer a la vez
+- Q(s,a) es la explotacion y U es la eexlporaciona
+- todo el tiempo si alcanzo a construir todo el argbol del juego
+  construyo el jugador invisible
+- si el tiempo tiende a infinito tendria un agente similar al que
+  tengo con mini max
+- mini max para que funcoine necesita todo el arbol
+- en go el arbol no cabe en memoria
+- usar podas es tiempo exponencial
+- heuristica es igual de complicado que encontrar un buen algoritmo
+- MCTS permite hacer crecer el arbol, su calidad de respuesta aumenta
+  a medida que doy mas tiempo para su ejecución
+- revisar la charla openai de una charla ted de noam brown test time
+  compute AI wont plateuau. la idea es como sacar mas si ya se
+  consumio el texto. Haacer que las LLM refinen la respuesta. if we
+  give it time to think. 
+- 
+** Summary
+
+* 2025-06-25 MonteCarlo Tree search
+** Questions and keywords
+- revisar minmax algoritmo para el tic tac
+- donde queda Montecarlo??
+- tiene Juan estos codigos o Mario o estas presentaciones
+** Notes
+- una desventaja que tiene el min max es que el arboll de busqueda
+  crece exponencialmente
+- en un tablero de 9x9 de tic tac, el arbol de busquedas ya tiene mas
+  estados qeue atomos en el universo $10^80$
+- MCTS es parte de una familia de algoritmos de Monte Carlo
+- Monte Carlo viene de usar aleatoriedad
+- La simulacion de montecarlo data de 1940 del siglo pasado y fue
+  propuesta por parte del Proyecto Manhattan
+- Stanislaw Ulam, Von Neumann
+- Simulacion Aleatoria vs Metodo de Monte Carlo
+- Montecarlo tree search usa 4 fases
+  - seleccion 3/6: debo seleccionar el nodo mas inferior que no ha
+    sido expandido (completamente). Se aplica nivel por nivel. 
+  - expansion: una vez seleccionado el nodo, se necesita expandirlo
+    . Es agregar uno de los estados posibles. La manera mas simple es
+    seleccionar una jugada al azar.
+  - simulación: dado un nodo se trata de ver que tan bueno se vienen
+    los siguientes estados. la idea es evaluar que tan bueno es el
+    nodo. se asume que los dos jugadores juegan al azar y se obtiene
+    un score.
+  - backpropagation:
+    - incrementar el numero de visitas de los nodos
+    - con el valor obtenido de score de la simulacion
+    - dependiendo de si el juego es entre adversarios aumentan las
+      victorias de uno de los adversarios
+- los numeros son 3/6 primero las victorais/numero de veces paso por
+  el nodo. Number of wins/Number of visits
+- Cada nodo pienselo como un tablero de tic tac toe con una
+  configuracion de las ficas x y o.
+- en alpha go, se puede evaluar cada estado a traves de la red
+  neuronal con el valor v. Y se expande el nodo con wrt al mejor valor
+  posible que me da la red.
+- fully expanded bool flag que se puede guardar para saber si al nodo
+  ya no se expande
+- otra variable a guardar seria la lista de hijos que no han sido
+  expandidos.
+- en cada iteracion el arbol de MCTS incrementa
+- El profesor tiene unos slides que explican bastante bien de que va
+  el juego
+- se necesita medir cada uno de los nodos mediante UCB1 es decir
+  interbalo de confianza superior 1.
+- el valor c en la UCB1 controla la importancia entre explotacion y
+  exploracion. Normalmente recibe $\sqrt(2)$
+- se selecciona al azar de los que tienen mejor UCVB1
+- del nuevo hijo se debe sacar mas hijos que tendra 8 opciones. La
+  mejor idea seria que expanda el caso que mas beneficie a 0
+- Considere un tres en raya vacio que seria la jugada de 0, luego se
+  da el turno de x y se expande a las 9 opcinoes o posibles posiciones
+  de x.
+- hay que ajustar las n y w
+- se calcula la UCB1
+- se rompe el empate por azar
+- y ahora si ya se tiene una ganancia se retropropaga.
+- alpha go no hace simulacion se usa la red neuronal par aobtener el
+  value del siguiente estado y con eso selecciono cual nodo a expandir.
+- alpha go selecciona uno de los 9 nodos siguiendo una distribucion de
+  probabilidad dada por la red neuronal
+- otras opciones seria escoger el nodo con mayor ratio de ganancia
+- u el nodo con mayor visitas
+- vgarciasc.github.io/mcts-viz
+- en la simulacion del profesor se observa que si bien se afecta el
+  tiempo de respuesta, la calidad de la respuesta mejora bastante
+- combinar arboles con MCTS con LLMs
+- los temas en IA regresan o resurgen de otra manera
+- alpha go requiere de tener las reglas del juego
+- el Mu zero en cambio no tiene las reglas del juego
+** Summary
 * Enlaces
 - Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
 - Libros Machine Learning: https://drive.google.com/drive/folders/0B0w0jIatGZYGZHdNdW9FZ1ZycGs?resourcekey=0-6IrcgeLWNwIXoYq8lQ9e0Q&usp=sharing
@@ -1469,6 +1601,8 @@ by subject.
 - [[https://colab.research.google.com/drive/1JitcCWOqOqdylobAbaFMlrySHrgVD58H#scrollTo=hfi0Oe0SDNFR][enlace-demo-gpt1-gpt2-colab]]
 - [[https://colab.research.google.com/drive/1741crQT9xjA3vZIblL50MNYtHsYUqdBX?usp=sharing][codigo original Marco Benalcazar colab]]
 - buscar google layer normalization explained
+- https://www.youtube.com/watch?v=MG9oqntiJKg
+- [[https://vgarciasc.github.io/mcts-viz/][simulador montecarlo]]
 * TODO [31%]
 - [ ] Revisar EDOs y EDPs derivadas ordinarias y derivadas parciales
 - [ ] revisar el algoritmo de retro-propagacion del error
@@ -1493,3 +1627,8 @@ by subject.
 - [ ] Iniciar fase de experimentación.
 - [ ] Mostrar el miércoles 4 de junio resultados preliminares 15
   minutos cada uno el miércoles.
+* Prompts
+- Your are Computer Science Expert. Your task is to assist in
+  answering questions with detail and illustrative explanations about
+  concepts. You may develop diagrams and pseudocode. Math equations
+  are welcome in the explanation.
