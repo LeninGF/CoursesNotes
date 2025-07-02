@@ -1589,6 +1589,34 @@ by subject.
 - alpha go requiere de tener las reglas del juego
 - el Mu zero en cambio no tiene las reglas del juego
 ** Summary
+* 2025-07-02 observaciones Proyecto
+- Observar que estamos analizando intensidades y no formas.
+- Una opcion dada la poca cantidad de datos es que se transfiera a la
+  red conocimiento de otra.... Ejemplo Redes Maestro
+  Estudiante... Pero de quien aprendo
+- Se sugiere que la red sea mas peque;a para la cantidad de datos
+- Se sugiere defacto hacer data augmentation ya que se observa que el
+  modelo esta replicando el desabalance de datos
+  - aumentar mas imagenes de la clase mas baja
+  - usar tecnicas de data augmentation coherentes ya que el proyecto
+    tiene que ver con intensidades y no con formas
+  - tambien se puede probar con class weights
+  - no usar ruido gaussiano
+  - estudiar si sirve el oversampling de la clase con menos datos
+  - porque al ser pocos o menores no aporta una diferencia en la
+    informacion
+  - otras tecnicas de aumento como los sheers y los crops no serian de
+    interes
+  - una tecnia que podria ser interesante seria el desplazar el torso
+    hacia derechas e izquierdas.
+- la unidad de medida de este proyecto es paciente. En este sentido
+  existe muy pocos datos.
+- fue bien bonito academicamente pero poco util en realidad
+- hablar con autore sobre el resultado que han tenido y los problemas
+  que han enfrentado.
+- tambien se recomiendo usar **cross validation** ya que la cantidad
+  de datos que se tiene i.e. la cantidad de pacientes es muy peque;a
+- la data sintetic puede no ser muy conveniente como sacar mas pacients
 * Enlaces
 - Libros Generativa: https://drive.google.com/drive/folders/1fjGzPM0VnL40AQd1AVWJfZO05NXsKTya?usp=sharing
 - Libros Machine Learning: https://drive.google.com/drive/folders/0B0w0jIatGZYGZHdNdW9FZ1ZycGs?resourcekey=0-6IrcgeLWNwIXoYq8lQ9e0Q&usp=sharing
