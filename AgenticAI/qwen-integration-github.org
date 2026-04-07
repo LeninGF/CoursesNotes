@@ -1,0 +1,29 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Integración Qwen con GitHub
+#+date: 2026-04-07
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 29.3 (Org mode 9.6.15)
+#+cite_export:
+* ¿Qué es Qwen?
+<completar con texto y referencias verificadas>
+* ¿Funcionalidades de Qwen?
+<completar con texto sobre las funcionalidades>
+* Integración con Github
+1. Login en [[https://coder.qwen.ai/]]
+2. Abrir Codex
+3. Sincronizar con Github y Autorizar
+   1. Un repositorio específico
+   2. Todos los repositorios
+4. Añadir Entorno (/Environment/): Despliega la organización y los
+   repositorios a los que se puede acceder. Seleccionar el repositorio
+   y dar en /Submit/. 
+5. Retornar a la vista inicial de [[https://coder.qwen.ai/]]
+6. Seleccionar el entorno y colocar un prompt
