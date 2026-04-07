@@ -13,9 +13,12 @@
 #+creator: Emacs 29.3 (Org mode 9.6.15)
 #+cite_export:
 * ¿Qué es Qwen?
-<completar con texto y referencias verificadas>
+<Write about what is QWEN in Spanish using emacs org syntaxis>
 * ¿Funcionalidades de Qwen?
-<completar con texto sobre las funcionalidades>
+<State the functionalities of QWEN what can I do with it?. Write in
+Spanish using emacs org syntaxis>
+* Qwen Coder
+<what is qwen coder for? write in spanish using emacs org syntaxis>
 * Integración con Github
 1. Login en [[https://coder.qwen.ai/]]
 2. Abrir Codex
