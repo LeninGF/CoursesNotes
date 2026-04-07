@@ -1,0 +1,51 @@
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Org-mode
+*.org~
+
+# Temporary files
+/tmp/
+*[
+].tmp
+
+# Environment variables
+.env*
+!config.org
+!settings.org
+
+# Local overrides
+*local.org
+*private.org
+
+# Build artifacts (if any)
+dist/
+build/
+target/
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.egg-info/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
