@@ -13,7 +13,10 @@
 #+creator: Emacs 29.3 (Org mode 9.6.15)
 #+cite_export:
 * ¿Qué es Qwen?
-Qwen es un modelo de lenguaje de gran tamaño (LLM) desarrollado por Alibaba Cloud. Es capaz de comprender y generar texto en múltiples idiomas, incluyendo español. Ofrece capacidades avanzadas de razonamiento, programación y análisis.
+Qwen es un modelo de lenguaje de gran tamaño (LLM) desarrollado por
+Alibaba Cloud. Es capaz de comprender y generar texto en múltiples
+idiomas, incluyendo español. Ofrece capacidades avanzadas de
+razonamiento, programación y análisis.
 
 * ¿Funcionalidades de Qwen?
 - Generación de código en diversos lenguajes de programación.
@@ -23,7 +26,11 @@ Qwen es un modelo de lenguaje de gran tamaño (LLM) desarrollado por Alibaba Clo
 - Integración con herramientas de desarrollo como GitHub.
 
 * Qwen Coder
-Qwen Coder es una versión especializada de Qwen enfocada en tareas de programación. Permite generar, explicar y depurar código automáticamente. Ideal para desarrolladores que buscan aumentar su productividad mediante asistencia inteligente en la escritura y mantenimiento de software.
+Qwen Coder es una versión especializada de Qwen enfocada en tareas de
+programación. Permite generar, explicar y depurar código
+automáticamente. Ideal para desarrolladores que buscan aumentar su
+productividad mediante asistencia inteligente en la escritura y
+mantenimiento de software.
 * Integración con Github
 1. Login en [[https://coder.qwen.ai/]]
 2. Abrir Codex
